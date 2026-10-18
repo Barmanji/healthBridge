@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { IoIosLogOut } from "react-icons/io";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -11,11 +10,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
-export default function UserButton({ user }: { user: UserButtonProp["user"] }) {
+interface AuthUserSummary {
+  name: string;
+  email: string;
+  image?: string | null;
+  createdAt: Date;
+}
+
+export default function UserButton({ user }: { user: AuthUserSummary }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -68,25 +73,23 @@ export default function UserButton({ user }: { user: UserButtonProp["user"] }) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="relative h-10 w-10 rounded-full p-0 hover:bg-accent"
-          disabled={isLoading}
-        >
-          <Avatar className="h-10 w-10">
-            <AvatarImage
-              src={user.image || ""}
-              alt={user.name || "User avatar"}
-            />
-            <AvatarFallback className="bg-primary text-primary-foreground font-medium">
-              {getUserInitials(user.name, user.email)}
-            </AvatarFallback>
-          </Avatar>
-        </Button>
+      <DropdownMenuTrigger
+        aria-label="Open account menu"
+        className="relative flex size-10 items-center justify-center rounded-full p-0 hover:bg-accent"
+        disabled={isLoading}
+      >
+        <Avatar className="h-10 w-10">
+          <AvatarImage
+            src={user.image || ""}
+            alt={`${user.name} avatar`}
+          />
+          <AvatarFallback className="bg-primary font-medium text-primary-foreground">
+            {getUserInitials(user.name, user.email)}
+          </AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-64" align="end" forceMount>
+      <DropdownMenuContent className="w-64" align="end">
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-2">
             <div className="flex items-center space-x-3">
@@ -123,7 +126,7 @@ export default function UserButton({ user }: { user: UserButtonProp["user"] }) {
           disabled={isLoading}
           className="cursor-pointer text-destructive focus:text-destructive"
         >
-          <IoIosLogOut className="mr-2 h-4 w-4" />
+          <span aria-hidden="true" className="mr-2">↪</span>
           {isLoading ? "Logging out..." : "Log out"}
         </DropdownMenuItem>
       </DropdownMenuContent>

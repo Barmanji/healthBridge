@@ -1,82 +1,36 @@
-import { UserRole } from "@/lib/generated/prisma/enums";
-import Image from "next/image";
 import Link from "next/link";
-import { SignInButton, SignUpButton, UserButton, Show } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
+import UserButton from "@/modules/auth/components/user-button";
 
-interface IUserRole {
-  userRole: UserRole | null;
+interface NavUser {
+  id: string;
+  name: string;
+  email: string;
+  image?: string | null;
+  createdAt: Date;
 }
 
-export const Navbar = ({ userRole }: IUserRole) => {
+export const Navbar = ({ user }: { user: NavUser | null }) => {
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-5xl px-4">
-      <div className="bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-2xl shadow-lg shadow-black/5 dark:shadow-black/20 transition-all duration-200 hover:bg-white/15 dark:hover:bg-black/15">
-        <div className="px-6 py-4 flex justify-between items-center">
-          <Link href={"/"} className="flex items-center gap-2">
-            <Image src={"/logo.svg"} alt="TreeBio" width={42} height={42} />
-            <span className="font-bold text-2xl tracking-widest text-amber-300">
-              CodeLeet
-            </span>
-          </Link>
+    <nav aria-label="Main navigation" className="mx-auto mt-4 w-full max-w-5xl px-4">
+      <div className="flex items-center justify-between rounded-2xl border border-border bg-card/90 px-5 py-3 shadow-sm backdrop-blur">
+        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
+          <span className="flex size-8 items-center justify-center rounded-xl bg-primary text-lg text-primary-foreground" aria-hidden="true">+</span>
+          <span>health<span className="text-primary">bridge</span></span>
+        </Link>
 
-          <div className="flex flex-row items-center justify-center gap-x-4">
-            <Link
-              href="/problems"
-              className="text-sm font-medium text-zinc-600 dark:text-zinc-400  hover:text-amber-600 cursor-pointer dark:hover:text-amber-400"
-            >
-              Problems
-            </Link>
-            <Link
-              href="/playlists"
-              className="text-sm font-medium text-zinc-600 dark:text-zinc-400  hover:text-amber-600 cursor-pointer dark:hover:text-amber-400"
-            >
-              Playlists
-            </Link>
-            <Link
-              href="/profile"
-              className="text-sm font-medium text-zinc-600 dark:text-zinc-400  hover:text-amber-600 cursor-pointer dark:hover:text-amber-400"
-            >
-              Profile
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <ModeToggle/>
-            <Show when={"signed-in"}>
-              {userRole && userRole === UserRole.ADMIN && (
-                <Link href={"/create-problem"}>
-                  <Button variant={"outline"} size={"default"}>
-                    Create Problem
-                  </Button>
-                </Link>
-              )}
-              <UserButton/>
-            </Show>
-
-            <Show when={"signed-out"}>
-              <SignInButton>
-                <Button
-                  size="sm"
-                  className="cursor-pointer text-sm font-medium bg-white text-amber-500 hover:bg-amber-100 hover:text-amber-600 border border-amber-400"
-                >
-                  Sign In
-                </Button>
-              </SignInButton>
-              <SignUpButton>
-                <Button
-                  size="sm"
-                  className="cursor-pointer text-sm font-medium bg-amber-400 hover:bg-amber-500 text-white"
-                >
-                  Sign Up
-                </Button>
-              </SignUpButton>
-            </Show>
-          </div>
+        <div className="flex items-center gap-3">
+          <ModeToggle />
+          {user ? (
+            <UserButton user={user} />
+          ) : (
+            <>
+              <Link href="/sign-in" className="rounded-full px-3 py-2 text-sm font-medium hover:bg-muted">Sign in</Link>
+              <Link href="/sign-up" className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90">Create account</Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
   );
 };
-
