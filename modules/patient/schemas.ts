@@ -44,3 +44,15 @@ export const patientOnboardingSchema = z.object({
   ...patientDetailsShape,
   consent: z.literal(true, { error: "Consent is required to save this profile." }),
 }).superRefine(validateEmergencyContact);
+
+export const createConversationSchema = z.object({
+  aiProcessingConsent: z.literal(true, { error: "Consent is required to start an AI conversation." }),
+});
+
+export const conversationMessageSchema = z.object({
+  clientMessageId: z.uuid(),
+  content: z.string().trim().min(1, "Write or say a message first.").max(1800, "Messages must be 1,800 characters or fewer."),
+  modality: z.enum(["text", "voice"]),
+  languageCode: z.string().trim().min(2).max(35).default("hi-IN"),
+  vapiCallId: z.string().trim().min(1).max(128).optional(),
+});

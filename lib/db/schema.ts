@@ -30,6 +30,10 @@ export const doctorDocumentTypeEnum = pgEnum("doctor_document_type", [
   "government_id",
   "profile_photo",
 ]);
+export const conversationStatusEnum = pgEnum("conversation_status", ["active", "halted", "closed"]);
+export const conversationMessageRoleEnum = pgEnum("conversation_message_role", ["patient", "assistant", "system"]);
+export const conversationModalityEnum = pgEnum("conversation_modality", ["text", "voice"]);
+export const riskAssessmentEnum = pgEnum("risk_assessment", ["not_critical", "critical", "needs_human_review"]);
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -130,6 +134,71 @@ export const patientProfiles = pgTable(
     check("patient_profiles_contact_pair_check", sql`(${table.emergencyContactName} is null) = (${table.emergencyContactPhone} is null)`),
     check("patient_profiles_consent_pair_check", sql`(${table.consentAcceptedAt} is null) = (${table.consentVersion} is null)`),
   ],
+);
+
+export const conversations = pgTable(
+  "conversations",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    patientId: uuid("patient_id").notNull().references(() => patientProfiles.id, { onDelete: "cascade" }),
+    languageCode: text("language_code").notNull().default("hi-IN"),
+    status: conversationStatusEnum("status").notNull().default("active"),
+    aiProcessingConsentAt: timestamp("ai_processing_consent_at").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+  },
+  (table) => [index("conversations_patient_created_idx").on(table.patientId, table.createdAt)],
+);
+
+export const conversationMessages = pgTable(
+  "conversation_messages",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    conversationId: uuid("conversation_id").notNull().references(() => conversations.id, { onDelete: "cascade" }),
+    replyToMessageId: uuid("reply_to_message_id"),
+    clientMessageId: text("client_message_id"),
+    role: conversationMessageRoleEnum("role").notNull(),
+    modality: conversationModalityEnum("modality").notNull(),
+    languageCode: text("language_code"),
+    content: text("content").notNull(),
+    contentEnglish: text("content_english"),
+    vapiCallId: text("vapi_call_id"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("conversation_messages_thread_idx").on(table.conversationId, table.createdAt),
+    uniqueIndex("conversation_messages_client_id_uq").on(table.conversationId, table.clientMessageId),
+  ],
+);
+
+export const riskEvents = pgTable(
+  "risk_events",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    conversationId: uuid("conversation_id").notNull().references(() => conversations.id, { onDelete: "cascade" }),
+    messageId: uuid("message_id").references(() => conversationMessages.id, { onDelete: "set null" }),
+    assessment: riskAssessmentEnum("assessment").notNull(),
+    triggeredBy: text("triggered_by").notNull(),
+    flags: jsonb("flags").$type<string[]>().notNull().default([]),
+    actionTaken: text("action_taken").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [index("risk_events_conversation_created_idx").on(table.conversationId, table.createdAt)],
+);
+
+export const voiceSessions = pgTable(
+  "voice_sessions",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    conversationId: uuid("conversation_id").notNull().references(() => conversations.id, { onDelete: "cascade" }),
+    tokenHash: text("token_hash").notNull().unique(),
+    vapiCallId: text("vapi_call_id").unique(),
+    consentAt: timestamp("consent_at", { withTimezone: true }).notNull(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    revokedAt: timestamp("revoked_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => [index("voice_sessions_conversation_expiry_idx").on(table.conversationId, table.expiresAt)],
 );
 
 export const doctorProfiles = pgTable(
@@ -254,6 +323,31 @@ export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),
   doctorProfiles: many(doctorProfiles),
+}));
+
+export const patientProfileRelations = relations(patientProfiles, ({ one, many }) => ({
+  user: one(user, { fields: [patientProfiles.userId], references: [user.id] }),
+  conversations: many(conversations),
+}));
+
+export const conversationRelations = relations(conversations, ({ one, many }) => ({
+  patient: one(patientProfiles, { fields: [conversations.patientId], references: [patientProfiles.id] }),
+  messages: many(conversationMessages),
+  riskEvents: many(riskEvents),
+  voiceSessions: many(voiceSessions),
+}));
+
+export const voiceSessionRelations = relations(voiceSessions, ({ one }) => ({
+  conversation: one(conversations, { fields: [voiceSessions.conversationId], references: [conversations.id] }),
+}));
+
+export const conversationMessageRelations = relations(conversationMessages, ({ one }) => ({
+  conversation: one(conversations, { fields: [conversationMessages.conversationId], references: [conversations.id] }),
+}));
+
+export const riskEventRelations = relations(riskEvents, ({ one }) => ({
+  conversation: one(conversations, { fields: [riskEvents.conversationId], references: [conversations.id] }),
+  message: one(conversationMessages, { fields: [riskEvents.messageId], references: [conversationMessages.id] }),
 }));
 
 export const doctorProfileRelations = relations(doctorProfiles, ({ one, many }) => ({
