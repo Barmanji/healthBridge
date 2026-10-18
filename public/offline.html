@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#176f60" />
+    <title>You're offline | Health-Bridge</title>
+    <style>
+      :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+      body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #f6f8f5; color: #1f2c29; }
+      main { width: min(32rem, calc(100% - 2rem)); padding: 2rem; border: 1px solid #dce5df; border-radius: 1.5rem; background: #fff; box-sizing: border-box; }
+      .mark { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 1rem; color: white; background: #176f60; font-size: 1.5rem; }
+      h1 { margin: 1.5rem 0 .5rem; font-size: 1.75rem; }
+      p { line-height: 1.6; color: #52615d; }
+      button { min-height: 2.75rem; padding: 0 1.25rem; border: 0; border-radius: 999px; color: white; background: #176f60; font: inherit; font-weight: 600; cursor: pointer; }
+      @media (prefers-color-scheme: dark) { body { background: #151c1a; color: #eff5f1; } main { background: #202a27; border-color: #3a4742; } p { color: #c1cfca; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="mark" aria-hidden="true">+</div>
+      <h1>You're offline</h1>
+      <p>Health-Bridge couldn't connect. Your private account pages are not stored on this device by the app. Reconnect to continue, or open the doctor directory if it was already loaded.</p>
+      <button type="button" onclick="location.reload()">Try again</button>
+    </main>
+  </body>
+</html>

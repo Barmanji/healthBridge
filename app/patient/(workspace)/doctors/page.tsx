@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { and, desc, eq, ilike, or, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { departments, doctorProfiles, user } from "@/lib/db/schema";
+import { DoctorDirectoryResults } from "@/modules/patient/doctor-directory-results";
 
 type DoctorSearchProps = { searchParams: Promise<{ q?: string; city?: string; department?: string }> };
 
@@ -44,7 +44,6 @@ export default async function DoctorSearchPage({ searchParams }: DoctorSearchPro
       <label className="grid gap-1.5 text-sm font-medium">Specialty<select name="department" defaultValue={departmentId} className="h-11 rounded-xl border bg-background px-3 font-normal"><option value="">All specialties</option>{departmentOptions.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}</select></label>
       <button className="min-h-11 self-end rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground">Search</button>
     </form>
-    <p className="text-sm text-muted-foreground">{doctors.length} verified {doctors.length === 1 ? "doctor" : "doctors"}{doctors.length === 60 ? " (showing first 60; refine your search)" : ""}</p>
-    {doctors.length ? <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{doctors.map((doctor) => <article key={doctor.id} className="flex flex-col rounded-2xl border bg-card p-5 shadow-sm"><div className="flex items-start justify-between gap-3"><div><p className="text-lg font-semibold">{doctor.name}</p><p className="mt-1 text-sm font-medium text-primary">{doctor.department ?? "Specialty pending"}</p></div><span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Verified</span></div><p className="mt-3 text-sm text-muted-foreground">{[doctor.city, doctor.state].filter(Boolean).join(", ") || "Location not listed"}</p><p className="mt-2 text-sm">{doctor.languages.length ? doctor.languages.join(", ") : "Languages not listed"}</p><p className="mt-2 text-sm text-muted-foreground">{doctor.yearsExperience === null ? "Experience not listed" : `${doctor.yearsExperience} years' experience`}{doctor.consultModes.length ? ` · ${doctor.consultModes.join(" / ")}` : ""}</p>{doctor.feeInr !== null && <p className="mt-2 text-sm">Consultation fee: ₹{doctor.feeInr}</p>}{doctor.bio && <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground">{doctor.bio}</p>}<Link href={`/patient/doctors/${doctor.id}`} className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border px-4 text-sm font-semibold hover:bg-muted">View profile</Link></article>)}</section> : <section className="rounded-2xl border bg-card p-8 text-center"><h2 className="text-lg font-semibold">No verified doctors match those filters</h2><p className="mt-2 text-sm text-muted-foreground">Try another specialty or location. Only approved doctor profiles appear here.</p><Link href="/patient/doctors" className="mt-4 inline-flex text-sm font-semibold text-primary underline underline-offset-4">Clear filters</Link></section>}
+    <DoctorDirectoryResults doctors={doctors} />
   </main>;
 }

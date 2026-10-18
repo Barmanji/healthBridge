@@ -111,6 +111,27 @@ export const departments = pgTable("departments", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const patientProfiles = pgTable(
+  "patient_profiles",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: text("user_id").notNull().unique().references(() => user.id, { onDelete: "cascade" }),
+    preferredLanguage: text("preferred_language").notNull(),
+    emergencyContactName: text("emergency_contact_name"),
+    emergencyContactPhone: text("emergency_contact_phone"),
+    consentAcceptedAt: timestamp("consent_accepted_at"),
+    consentVersion: text("consent_version"),
+    onboardingCompletedAt: timestamp("onboarding_completed_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),
+  },
+  (table) => [
+    index("patient_profiles_language_idx").on(table.preferredLanguage),
+    check("patient_profiles_contact_pair_check", sql`(${table.emergencyContactName} is null) = (${table.emergencyContactPhone} is null)`),
+    check("patient_profiles_consent_pair_check", sql`(${table.consentAcceptedAt} is null) = (${table.consentVersion} is null)`),
+  ],
+);
+
 export const doctorProfiles = pgTable(
   "doctor_profiles",
   {

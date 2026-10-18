@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -92,39 +93,38 @@ export default function UserButton({ user, dashboardHref = "/patient/dashboard",
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-64" align="end">
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-2">
-            <div className="flex items-center space-x-3">
-              <Avatar className="h-12 w-12">
-                <AvatarImage
-                  src={user.image || ""}
-                  alt={user.name || "User avatar"}
-                />
-                <AvatarFallback className="bg-primary text-primary-foreground font-medium text-lg">
-                  {getUserInitials(user.name, user.email)}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  {user.name || "User"}
-                </p>
-                {user.email && (
-                  <p className="text-xs leading-none text-muted-foreground">
-                    {user.email}
+        <DropdownMenuGroup>
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col space-y-2">
+              <div className="flex items-center space-x-3">
+                <Avatar className="h-12 w-12">
+                  <AvatarImage
+                    src={user.image || ""}
+                    alt={user.name || "User avatar"}
+                  />
+                  <AvatarFallback className="bg-primary text-primary-foreground font-medium text-lg">
+                    {getUserInitials(user.name, user.email)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col space-y-1">
+                  <p className="text-sm font-medium leading-none">
+                    {user.name || "User"}
                   </p>
-                )}
+                  {user.email && (
+                    <p className="text-xs leading-none text-muted-foreground">
+                      {user.email}
+                    </p>
+                  )}
+                </div>
               </div>
+              <p className="text-xs text-muted-foreground">
+                Member since {formatMemberSince(user.createdAt)}
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground">
-              Member since {formatMemberSince(user.createdAt)}
-            </p>
-          </div>
-        </DropdownMenuLabel>
-
-        <DropdownMenuSeparator />
-
-        <DropdownMenuItem render={<Link href={dashboardHref} />} className="cursor-pointer">My dashboard</DropdownMenuItem>
-        <DropdownMenuItem render={<Link href={settingsHref} />} className="cursor-pointer">Profile & settings</DropdownMenuItem>
+          </DropdownMenuLabel>
+          <DropdownMenuItem render={<Link href={dashboardHref} />} className="cursor-pointer">My dashboard</DropdownMenuItem>
+          <DropdownMenuItem render={<Link href={settingsHref} />} className="cursor-pointer">Profile & settings</DropdownMenuItem>
+        </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
 
