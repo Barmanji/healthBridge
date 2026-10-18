@@ -34,6 +34,9 @@ export const conversationStatusEnum = pgEnum("conversation_status", ["active", "
 export const conversationMessageRoleEnum = pgEnum("conversation_message_role", ["patient", "assistant", "system"]);
 export const conversationModalityEnum = pgEnum("conversation_modality", ["text", "voice"]);
 export const riskAssessmentEnum = pgEnum("risk_assessment", ["not_critical", "critical", "needs_human_review"]);
+export const triageSeverityEnum = pgEnum("triage_severity", ["routine", "soon", "urgent", "emergency"]);
+export const appointmentStatusEnum = pgEnum("appointment_status", ["held", "confirmed", "cancelled", "completed", "no_show", "expired", "declined"]);
+export const consultModeEnum = pgEnum("consult_mode", ["video", "audio"]);
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -186,6 +189,25 @@ export const riskEvents = pgTable(
   (table) => [index("risk_events_conversation_created_idx").on(table.conversationId, table.createdAt)],
 );
 
+export const triageAssessments = pgTable(
+  "triage_assessments",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    patientId: uuid("patient_id").notNull().references(() => patientProfiles.id, { onDelete: "cascade" }),
+    conversationId: uuid("conversation_id").notNull().unique().references(() => conversations.id, { onDelete: "cascade" }),
+    departmentId: uuid("department_id").references(() => departments.id, { onDelete: "set null" }),
+    languageCode: text("language_code").notNull(),
+    summary: text("summary").notNull(),
+    severity: triageSeverityEnum("severity").notNull(),
+    soap: jsonb("soap").$type<{ subjective: string; objective: string; assessment: string; plan: string }>().notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => [
+    index("triage_assessments_patient_created_idx").on(table.patientId, table.createdAt),
+    index("triage_assessments_department_severity_idx").on(table.departmentId, table.severity, table.createdAt),
+  ],
+);
+
 export const voiceSessions = pgTable(
   "voice_sessions",
   {
@@ -303,6 +325,50 @@ export const doctorTimeOff = pgTable(
     index("doctor_time_off_doctor_idx").on(table.doctorId, table.startsAt),
     check("doctor_time_off_range_check", sql`${table.startsAt} < ${table.endsAt}`),
   ],
+);
+
+export const appointments = pgTable(
+  "appointments",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    patientId: uuid("patient_id").notNull().references(() => patientProfiles.id, { onDelete: "cascade" }),
+    doctorId: uuid("doctor_id").notNull().references(() => doctorProfiles.id, { onDelete: "restrict" }),
+    triageId: uuid("triage_id").references(() => triageAssessments.id, { onDelete: "set null" }),
+    startsAt: timestamp("starts_at", { withTimezone: true }).notNull(),
+    endsAt: timestamp("ends_at", { withTimezone: true }).notNull(),
+    status: appointmentStatusEnum("status").default("held").notNull(),
+    holdExpiresAt: timestamp("hold_expires_at", { withTimezone: true }),
+    consultMode: consultModeEnum("consult_mode").notNull(),
+    confirmedByPatientAt: timestamp("confirmed_by_patient_at", { withTimezone: true }),
+    cancelledAt: timestamp("cancelled_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().$onUpdate(() => new Date()).notNull(),
+  },
+  (table) => [
+    index("appointments_patient_start_idx").on(table.patientId, table.startsAt),
+    index("appointments_doctor_start_idx").on(table.doctorId, table.startsAt),
+    uniqueIndex("appointments_active_doctor_start_uq").on(table.doctorId, table.startsAt).where(sql`${table.status} in ('held', 'confirmed')`),
+    check("appointments_range_check", sql`${table.startsAt} < ${table.endsAt}`),
+    check("appointments_hold_check", sql`(${table.status} = 'held' and ${table.holdExpiresAt} is not null) or (${table.status} <> 'held' and ${table.holdExpiresAt} is null)`),
+    check("appointments_confirmed_at_check", sql`${table.status} <> 'confirmed' or ${table.confirmedByPatientAt} is not null`),
+  ],
+);
+
+export const doctorSoapNotes = pgTable(
+  "doctor_soap_notes",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    appointmentId: uuid("appointment_id").notNull().unique().references(() => appointments.id, { onDelete: "cascade" }),
+    doctorId: uuid("doctor_id").notNull().references(() => doctorProfiles.id, { onDelete: "cascade" }),
+    subjective: text("subjective").notNull().default(""),
+    objective: text("objective").notNull().default(""),
+    assessment: text("assessment").notNull().default(""),
+    plan: text("plan").notNull().default(""),
+    reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().$onUpdate(() => new Date()).notNull(),
+  },
+  (table) => [index("doctor_soap_notes_doctor_idx").on(table.doctorId, table.updatedAt)],
 );
 
 export const auditLogs = pgTable(

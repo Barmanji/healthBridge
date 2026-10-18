@@ -6,6 +6,8 @@ import { FormEvent, useRef, useState } from "react";
 import type Vapi from "@vapi-ai/web";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { AppointmentProposal } from "@/modules/patient/appointment-proposal";
+import type { DoctorSuggestion } from "@/modules/patient/matching";
 
 type ThreadMessage = {
   id: string;
@@ -25,11 +27,14 @@ type Props = {
   initialMessages: ThreadMessage[];
   threads: ThreadSummary[];
   voiceEnabled: boolean;
+  triage: { id: string; summary: string; severity: "routine" | "soon" | "urgent" | "emergency"; languageCode: string } | null;
+  doctorSuggestions: DoctorSuggestion[];
+  appointment: { id: string; status: string; startsAt: string; endsAt: string; holdExpiresAt: string | null; consultMode: "video" | "audio"; timeZone: string } | null;
 };
 
 const fallbackMessage = "We could not safely review this message, so this chat has stopped. If you may be in immediate danger, contact local emergency services or someone you trust now.\n\nहम इस संदेश की सुरक्षित जाँच नहीं कर पाए, इसलिए यह चैट रोक दी गई है। अगर आपको तत्काल खतरा हो सकता है, तो अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें।";
 
-export function ConversationWorkspace({ currentId, currentStatus, initialMessages, threads, voiceEnabled }: Props) {
+export function ConversationWorkspace({ currentId, currentStatus, initialMessages, threads, voiceEnabled, triage, doctorSuggestions, appointment }: Props) {
   const router = useRouter();
   const [conversationId, setConversationId] = useState(currentId);
   const [status, setStatus] = useState(currentStatus);
@@ -304,6 +309,20 @@ export function ConversationWorkspace({ currentId, currentStatus, initialMessage
               {pending && <p className="text-sm text-muted-foreground" role="status">Checking this message safely…</p>}
               {(status === "halted" || localSafetyStop) && <div role="alert" className="rounded-2xl border border-destructive/40 bg-destructive/10 p-5 text-sm leading-6"><p className="font-semibold text-destructive">This conversation has stopped for safety.</p><p className="mt-2">If you may be in immediate danger, contact local emergency services or someone you trust now. Do not wait for this app.</p><p className="mt-2" lang="hi">अगर आपको तत्काल खतरा हो सकता है, तो अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें। इस ऐप का इंतज़ार न करें।</p></div>}
               {error && <p role="alert" className="rounded-xl bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
+              {conversationId && status !== "halted" && <AppointmentProposal
+                key={`triage-${conversationId}`}
+                conversationId={conversationId}
+                initialTriage={triage}
+                initialSuggestions={doctorSuggestions}
+                initialAppointment={appointment}
+              />}
+              {status === "halted" && triage?.severity === "emergency" && <AppointmentProposal
+                key={`emergency-${conversationId}`}
+                conversationId={conversationId ?? ""}
+                initialTriage={triage}
+                initialSuggestions={[]}
+                requiresEmergencyHelp
+              />}
             </div>
             <form onSubmit={sendMessage} className="border-t bg-background/80 p-3 sm:p-5">
               <label htmlFor="conversation-message" className="sr-only">Write your health message</label>

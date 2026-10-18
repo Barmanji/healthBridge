@@ -1,0 +1,2 @@
+ALTER TABLE "appointments" DROP CONSTRAINT "appointments_confirmed_at_check";--> statement-breakpoint
+ALTER TABLE "appointments" ADD CONSTRAINT "appointments_confirmed_at_check" CHECK ("appointments"."status" <> 'confirmed' or "appointments"."confirmed_by_patient_at" is not null);

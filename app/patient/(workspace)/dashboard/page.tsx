@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { desc, eq, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gt, sql } from "drizzle-orm";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { departments, doctorProfiles, user } from "@/lib/db/schema";
+import { appointments, departments, doctorProfiles, patientProfiles, user } from "@/lib/db/schema";
 
 const dashboardSections = [
   { href: "/patient/appointments", title: "Appointments", description: "Upcoming and past doctor bookings.", icon: "◷" },
@@ -17,8 +17,10 @@ export default async function PatientDashboardPage() {
   const session = await auth.api.getSession({ headers: await headers() });
   if (!session) redirect("/sign-in");
   if (session.user.role !== "patient") redirect(session.user.role === "admin" ? "/admin/applications" : "/doctor/onboarding");
+  const [patient] = await db.select({ id: patientProfiles.id }).from(patientProfiles).where(eq(patientProfiles.userId, session.user.id)).limit(1);
+  if (!patient) redirect("/patient/onboarding");
 
-  const [counts, featuredDoctors] = await Promise.all([
+  const [counts, featuredDoctors, nextAppointment] = await Promise.all([
     db.select({ doctors: sql<number>`count(*)::int` }).from(doctorProfiles).where(eq(doctorProfiles.verificationStatus, "verified")),
     db.select({ id: doctorProfiles.id, name: sql<string>`coalesce(${doctorProfiles.fullName}, ${user.name})`, department: departments.name, city: doctorProfiles.city, state: doctorProfiles.state, languages: doctorProfiles.languages, yearsExperience: doctorProfiles.yearsExperience })
       .from(doctorProfiles)
@@ -27,6 +29,10 @@ export default async function PatientDashboardPage() {
       .where(eq(doctorProfiles.verificationStatus, "verified"))
       .orderBy(desc(doctorProfiles.verifiedAt))
       .limit(3),
+    db.select({ id: appointments.id, startsAt: appointments.startsAt, consultMode: appointments.consultMode, timeZone: doctorProfiles.timeZone, doctorName: sql<string>`coalesce(${doctorProfiles.fullName}, ${user.name})`, department: departments.name })
+      .from(appointments).innerJoin(doctorProfiles, eq(doctorProfiles.id, appointments.doctorId)).innerJoin(user, eq(user.id, doctorProfiles.userId)).leftJoin(departments, eq(departments.id, doctorProfiles.departmentId))
+      .where(and(eq(appointments.patientId, patient.id), eq(appointments.status, "confirmed"), gt(appointments.startsAt, new Date())))
+      .orderBy(asc(appointments.startsAt)).limit(1),
   ]);
 
   return <main className="mx-auto max-w-7xl space-y-8 px-4 py-8 sm:px-8 sm:py-10">
@@ -42,7 +48,7 @@ export default async function PatientDashboardPage() {
     <section className="grid gap-5 lg:grid-cols-[1.3fr_0.7fr]">
       <article className="rounded-3xl border bg-card p-6 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="text-xl font-semibold">Your appointments</h2><p className="mt-1 text-sm text-muted-foreground">Bookings will appear here when you schedule a visit.</p></div><Link href="/patient/appointments" className="text-sm font-semibold text-primary">View all</Link></div>
-        <div className="mt-6 rounded-2xl bg-muted/60 p-5"><p className="font-medium">No appointments yet</p><p className="mt-1 text-sm text-muted-foreground">Browse verified doctors to find the right care for you.</p><Link href="/patient/doctors" className="mt-4 inline-flex text-sm font-semibold text-primary underline underline-offset-4">Search doctors</Link></div>
+        <div className="mt-6 rounded-2xl bg-muted/60 p-5">{nextAppointment.length ? <><p className="font-medium">Next visit with {nextAppointment[0].doctorName}</p><p className="mt-1 text-sm text-muted-foreground">{nextAppointment[0].department ?? "Verified clinician"} · {new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short", timeZone: nextAppointment[0].timeZone }).format(nextAppointment[0].startsAt)} · {nextAppointment[0].consultMode}</p><Link href="/patient/appointments" className="mt-4 inline-flex text-sm font-semibold text-primary underline underline-offset-4">View appointment details</Link></> : <><p className="font-medium">No appointments yet</p><p className="mt-1 text-sm text-muted-foreground">Browse verified doctors to find the right care for you.</p><Link href="/patient/doctors" className="mt-4 inline-flex text-sm font-semibold text-primary underline underline-offset-4">Search doctors</Link></>}</div>
       </article>
       <article className="rounded-3xl border bg-card p-6 sm:p-8"><h2 className="text-xl font-semibold">Care conversations</h2><p className="mt-1 text-sm text-muted-foreground">Your AI agent history will be saved here.</p><div className="mt-6 rounded-2xl bg-muted/60 p-5"><p className="font-medium">Conversation history is ready for you</p><p className="mt-1 text-sm text-muted-foreground">Start a conversation when the guided intake feature is available.</p><Link href="/patient/conversations" className="mt-4 inline-flex text-sm font-semibold text-primary underline underline-offset-4">View conversations</Link></div></article>
     </section>

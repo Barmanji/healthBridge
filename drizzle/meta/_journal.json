@@ -50,6 +50,20 @@
       "when": 1792312794817,
       "tag": "0006_loving_sugar_man",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1792314771235,
+      "tag": "0007_phase_5_triage_appointments",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1792315011459,
+      "tag": "0008_phase_5_appointment_confirmation_check",
+      "breakpoints": true
     }
   ]
 }

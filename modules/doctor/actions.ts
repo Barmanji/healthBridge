@@ -1,15 +1,18 @@
 "use server";
 
-import { and, eq } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import {
   auditLogs,
+  appointments,
   doctorAvailabilityRules,
   doctorDocuments,
   doctorProfiles,
+  doctorSoapNotes,
   doctorTimeOff,
 } from "@/lib/db/schema";
 import {
@@ -230,4 +233,88 @@ export async function reviewDoctorApplication(input: unknown) {
   revalidatePath("/doctor/onboarding");
   revalidatePath("/doctor/dashboard");
   return { ok: true as const };
+}
+
+const doctorSoapFormSchema = z.object({
+  appointmentId: z.uuid(),
+  subjective: z.string().trim().max(4000),
+  objective: z.string().trim().max(3000),
+  assessment: z.string().trim().max(4000),
+  plan: z.string().trim().max(4000),
+  reviewed: z.boolean(),
+});
+
+export async function saveDoctorSoapNote(formData: FormData) {
+  const doctor = await requireDoctor();
+  const [profile] = await db.select({ id: doctorProfiles.id, verificationStatus: doctorProfiles.verificationStatus })
+    .from(doctorProfiles).where(eq(doctorProfiles.userId, doctor.id)).limit(1);
+  if (!profile || profile.verificationStatus !== "verified") throw new Error("Verified doctor access is required.");
+  const parsed = doctorSoapFormSchema.safeParse({
+    appointmentId: formData.get("appointmentId"),
+    subjective: formData.get("subjective"),
+    objective: formData.get("objective"),
+    assessment: formData.get("assessment"),
+    plan: formData.get("plan"),
+    reviewed: formData.get("reviewed") === "on",
+  });
+  if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Check the SOAP note.");
+  const now = new Date();
+  await db.transaction(async (tx) => {
+    const [appointment] = await tx.select({ id: appointments.id }).from(appointments)
+      .where(and(eq(appointments.id, parsed.data.appointmentId), eq(appointments.doctorId, profile.id), inArray(appointments.status, ["confirmed", "completed"]))).limit(1).for("update");
+    if (!appointment) throw new Error("This patient is not assigned to your verified appointment queue.");
+    await tx.insert(doctorSoapNotes).values({
+      appointmentId: appointment.id,
+      doctorId: profile.id,
+      subjective: parsed.data.subjective,
+      objective: parsed.data.objective,
+      assessment: parsed.data.assessment,
+      plan: parsed.data.plan,
+      reviewedAt: parsed.data.reviewed ? now : null,
+      updatedAt: now,
+    }).onConflictDoUpdate({
+      target: doctorSoapNotes.appointmentId,
+      set: {
+        subjective: parsed.data.subjective,
+        objective: parsed.data.objective,
+        assessment: parsed.data.assessment,
+        plan: parsed.data.plan,
+        reviewedAt: parsed.data.reviewed ? now : null,
+        updatedAt: now,
+      },
+    });
+    await tx.insert(auditLogs).values({
+      actorUserId: doctor.id,
+      action: parsed.data.reviewed ? "doctor_soap_note_reviewed" : "doctor_soap_note_saved",
+      entity: "appointment",
+      entityId: appointment.id,
+      meta: null,
+    });
+  });
+  revalidatePath("/doctor/dashboard");
+}
+
+const appointmentOutcomeSchema = z.object({ appointmentId: z.uuid(), outcome: z.enum(["completed", "no_show"]) });
+
+export async function updateDoctorAppointmentOutcome(formData: FormData) {
+  const doctor = await requireDoctor();
+  const parsed = appointmentOutcomeSchema.safeParse({ appointmentId: formData.get("appointmentId"), outcome: formData.get("outcome") });
+  if (!parsed.success) throw new Error("Choose a valid appointment outcome.");
+  const [profile] = await db.select({ id: doctorProfiles.id, verificationStatus: doctorProfiles.verificationStatus })
+    .from(doctorProfiles).where(eq(doctorProfiles.userId, doctor.id)).limit(1);
+  if (!profile || profile.verificationStatus !== "verified") throw new Error("Verified doctor access is required.");
+  const now = new Date();
+  const updated = await db.transaction(async (tx) => {
+    const [appointment] = await tx.select({ id: appointments.id, endsAt: appointments.endsAt, startsAt: appointments.startsAt }).from(appointments)
+      .where(and(eq(appointments.id, parsed.data.appointmentId), eq(appointments.doctorId, profile.id), eq(appointments.status, "confirmed"))).limit(1).for("update");
+    if (!appointment || (parsed.data.outcome === "completed" && appointment.endsAt > now) || (parsed.data.outcome === "no_show" && appointment.startsAt > now)) return false;
+    const [changed] = await tx.update(appointments).set({ status: parsed.data.outcome, updatedAt: now })
+      .where(and(eq(appointments.id, appointment.id), eq(appointments.status, "confirmed"))).returning({ id: appointments.id });
+    if (!changed) return false;
+    await tx.insert(auditLogs).values({ actorUserId: doctor.id, action: `doctor_appointment_${parsed.data.outcome}`, entity: "appointment", entityId: appointment.id, meta: null });
+    return true;
+  });
+  if (!updated) throw new Error("This appointment is not ready for that outcome. Refresh and try again.");
+  revalidatePath("/doctor/dashboard");
+  revalidatePath("/patient/appointments");
 }
