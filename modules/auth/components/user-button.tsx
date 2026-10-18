@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -28,7 +29,8 @@ export default function UserButton({ user, dashboardHref = "/patient/dashboard",
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/sign-in");
+          router.replace("/");
+          router.refresh();
         },
       },
     });
@@ -121,8 +123,8 @@ export default function UserButton({ user, dashboardHref = "/patient/dashboard",
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem onClick={() => router.push(dashboardHref)} className="cursor-pointer">My dashboard</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => router.push(settingsHref)} className="cursor-pointer">Profile & settings</DropdownMenuItem>
+        <DropdownMenuItem render={<Link href={dashboardHref} />} className="cursor-pointer">My dashboard</DropdownMenuItem>
+        <DropdownMenuItem render={<Link href={settingsHref} />} className="cursor-pointer">Profile & settings</DropdownMenuItem>
 
         <DropdownMenuSeparator />
 

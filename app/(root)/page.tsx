@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { ModeToggle } from "@/components/mode-toggle";
 import { auth } from "@/lib/auth";
-import UserButton from "@/modules/auth/components/user-button";
 
 const careSteps = [
   {
@@ -27,11 +27,14 @@ const careSteps = [
 
 export default async function HomePage() {
   const session = await auth.api.getSession({ headers: await headers() });
-  const dashboardHref = session?.user.role === "admin"
-    ? "/admin/applications"
-    : session?.user.role === "doctor"
-      ? "/doctor/onboarding"
-      : "/patient/dashboard";
+  if (session) {
+    const dashboardHref = session.user.role === "admin"
+      ? "/admin/applications"
+      : session.user.role === "doctor"
+        ? "/doctor/onboarding"
+        : "/patient/dashboard";
+    redirect(dashboardHref);
+  }
   return (
     <>
       <header className="relative z-10 border-b border-[var(--hb-border)]/80 bg-[var(--hb-bg)]/70 backdrop-blur-xl">
@@ -53,17 +56,8 @@ export default async function HomePage() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <ModeToggle />
-            {session ? (
-              <>
-                <Link className="hb-button-primary inline-flex items-center justify-center px-5 text-sm font-semibold" href={dashboardHref}>My dashboard</Link>
-                <UserButton user={{ name: session.user.name, email: session.user.email, image: session.user.image, createdAt: session.user.createdAt }} dashboardHref={dashboardHref} settingsHref={session.user.role === "patient" ? "/patient/settings" : dashboardHref} />
-              </>
-            ) : (
-              <>
-                <Link className="hb-link hidden rounded-full px-3 py-2 text-sm font-semibold sm:inline-flex" href="/sign-in">Sign in</Link>
-                <Link className="hb-button-primary inline-flex items-center justify-center px-5 text-sm font-semibold" href="/sign-up">Get started <span className="ml-2" aria-hidden="true">→</span></Link>
-              </>
-            )}
+            <Link className="hb-link hidden rounded-full px-3 py-2 text-sm font-semibold sm:inline-flex" href="/sign-in">Sign in</Link>
+            <Link className="hb-button-primary inline-flex items-center justify-center px-5 text-sm font-semibold" href="/sign-up">Get started <span className="ml-2" aria-hidden="true">→</span></Link>
           </div>
         </div>
       </header>
