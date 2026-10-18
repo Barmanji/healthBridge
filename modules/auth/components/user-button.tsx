@@ -20,7 +20,7 @@ interface AuthUserSummary {
   createdAt: Date;
 }
 
-export default function UserButton({ user }: { user: AuthUserSummary }) {
+export default function UserButton({ user, dashboardHref = "/patient/dashboard", settingsHref = "/patient/settings" }: { user: AuthUserSummary; dashboardHref?: string; settingsHref?: string }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -118,6 +118,11 @@ export default function UserButton({ user }: { user: AuthUserSummary }) {
             </p>
           </div>
         </DropdownMenuLabel>
+
+        <DropdownMenuSeparator />
+
+        <DropdownMenuItem onClick={() => router.push(dashboardHref)} className="cursor-pointer">My dashboard</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push(settingsHref)} className="cursor-pointer">Profile & settings</DropdownMenuItem>
 
         <DropdownMenuSeparator />
 

@@ -56,7 +56,7 @@ export default async function HomePage() {
             {session ? (
               <>
                 <Link className="hb-button-primary inline-flex items-center justify-center px-5 text-sm font-semibold" href={dashboardHref}>My dashboard</Link>
-                <UserButton user={{ name: session.user.name, email: session.user.email, image: session.user.image, createdAt: session.user.createdAt }} />
+                <UserButton user={{ name: session.user.name, email: session.user.email, image: session.user.image, createdAt: session.user.createdAt }} dashboardHref={dashboardHref} settingsHref={session.user.role === "patient" ? "/patient/settings" : dashboardHref} />
               </>
             ) : (
               <>
