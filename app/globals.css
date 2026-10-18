@@ -123,6 +123,57 @@
     var(--hb-bg);
 }
 
+.dark {
+  color-scheme: dark;
+  --hb-bg: #101916;
+  --hb-bg-subtle: #17231f;
+  --hb-surface: #1b2924;
+  --hb-border: #30413a;
+  --hb-border-strong: #40564c;
+  --hb-text: #edf5f0;
+  --hb-text-muted: #b0c0b8;
+  --hb-text-faint: #9bada4;
+  --hb-brand-50: #19352e;
+  --hb-brand-100: #21473c;
+  --hb-brand-300: #5bb39b;
+  --hb-brand-500: #49b99d;
+  --hb-brand-600: #37a58b;
+  --hb-brand-700: #77ceb5;
+  --hb-accent-100: #20394a;
+  --hb-accent-500: #72aee0;
+  --hb-warm-100: #3a2c25;
+  --hb-warm-500: #e69a6f;
+  --hb-success: #71d3a0;
+  --hb-warning: #edc16e;
+  --hb-danger: #ff8585;
+  --hb-danger-bg: #3a2424;
+  --hb-shadow-sm: 0 1px 2px rgb(0 0 0 / 22%);
+  --hb-shadow-md: 0 10px 30px -12px rgb(0 0 0 / 38%);
+  --hb-shadow-lg: 0 24px 60px -24px rgb(0 0 0 / 52%);
+  --background: var(--hb-bg);
+  --foreground: var(--hb-text);
+  --card: var(--hb-surface);
+  --card-foreground: var(--hb-text);
+  --popover: var(--hb-surface);
+  --popover-foreground: var(--hb-text);
+  --primary: var(--hb-brand-700);
+  --primary-foreground: #10231d;
+  --secondary: var(--hb-bg-subtle);
+  --secondary-foreground: var(--hb-text);
+  --muted: var(--hb-bg-subtle);
+  --muted-foreground: var(--hb-text-muted);
+  --accent: var(--hb-brand-50);
+  --accent-foreground: var(--hb-brand-700);
+  --destructive: var(--hb-danger);
+  --border: var(--hb-border);
+  --input: var(--hb-border-strong);
+  --ring: var(--hb-brand-500);
+  --hb-grad-hero:
+    radial-gradient(900px 500px at 12% -10%, rgb(73 185 157 / 13%), transparent 60%),
+    radial-gradient(800px 480px at 95% 0%, rgb(70 114 146 / 14%), transparent 55%),
+    var(--hb-bg);
+}
+
 .hb-container {
   width: min(1160px, calc(100% - 48px));
   margin-inline: auto;
@@ -131,6 +182,27 @@
 .hb-display {
   font-family: var(--font-fraunces), var(--font-noto-devanagari), Georgia, serif;
   letter-spacing: -0.045em;
+}
+
+.hb-shine-text {
+  color: var(--hb-brand-700);
+  background: linear-gradient(
+    108deg,
+    var(--hb-brand-700) 0%,
+    var(--hb-brand-700) 42%,
+    #b8efd9 50%,
+    var(--hb-brand-700) 58%,
+    var(--hb-brand-700) 100%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hb-shine 5.5s ease-in-out infinite;
+}
+
+@keyframes hb-shine {
+  0%, 62%, 100% { background-position: 100% 0; }
+  82% { background-position: 0 0; }
 }
 
 .hb-link {
@@ -145,7 +217,7 @@
   min-height: 48px;
   border: 1px solid var(--hb-brand-700);
   border-radius: 999px;
-  background: linear-gradient(135deg, #35a58e, #1b6d5e);
+  background: linear-gradient(135deg, var(--hb-brand-500), var(--hb-brand-700));
   color: #fff;
   box-shadow: 0 8px 22px rgb(35 138 118 / 20%);
   transition: transform 180ms ease, box-shadow 180ms ease;
@@ -160,14 +232,14 @@
   min-height: 48px;
   border: 1px solid var(--hb-border-strong);
   border-radius: 999px;
-  background: rgb(255 255 255 / 68%);
+  background: color-mix(in srgb, var(--hb-surface) 82%, transparent);
   color: var(--hb-text);
   transition: background 180ms ease, border-color 180ms ease;
 }
 
 .hb-button-secondary:hover {
   border-color: var(--hb-brand-300);
-  background: #fff;
+  background: var(--hb-surface);
 }
 
 .hb-card {

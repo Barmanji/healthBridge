@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const careSteps = [
   {
@@ -42,6 +43,7 @@ export default function HomePage() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <ModeToggle />
             <Link className="hb-link hidden rounded-full px-3 py-2 text-sm font-semibold sm:inline-flex" href="/sign-in">
               Sign in
             </Link>
@@ -57,12 +59,12 @@ export default function HomePage() {
         <div className="hb-orb left-[7%] top-72 size-24 bg-[var(--hb-warm-100)]/80" aria-hidden="true" />
         <div className="hb-container relative grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-8">
           <div className="relative z-10 max-w-[620px]">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[var(--hb-border)] bg-white/75 px-3.5 py-2 text-xs font-semibold text-[var(--hb-brand-700)] shadow-sm">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[var(--hb-border)] bg-[var(--hb-surface)]/75 px-3.5 py-2 text-xs font-semibold text-[var(--hb-brand-700)] shadow-sm">
               <span className="size-2 rounded-full bg-[var(--hb-brand-500)]" aria-hidden="true" />
               Care that starts with being understood
             </div>
             <h1 className="hb-display max-w-[650px] text-[clamp(3rem,6.6vw,5.6rem)] leading-[0.99] text-[var(--hb-text)]">
-              Your health, <span className="text-[var(--hb-brand-700)]">your words.</span>
+              Your health, <span className="hb-shine-text">your words.</span>
             </h1>
             <p className="mt-7 max-w-[520px] text-lg leading-[1.75] text-[var(--hb-text-muted)] sm:text-xl">
               Talk or type about what you’re feeling. Get help understanding the next step, in a way that keeps you in control.
@@ -103,14 +105,14 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="mt-1 flex size-8 shrink-0 items-center justify-center rounded-xl bg-[var(--hb-bg-subtle)] text-sm text-[var(--hb-brand-700)]" aria-hidden="true">✳</span>
-                  <p className="max-w-[86%] rounded-[5px_20px_20px_20px] border border-[var(--hb-border)] bg-white px-4 py-3 text-sm leading-relaxed text-[var(--hb-text-muted)]">
+                  <p className="max-w-[86%] rounded-[5px_20px_20px_20px] border border-[var(--hb-border)] bg-[var(--hb-surface)] px-4 py-3 text-sm leading-relaxed text-[var(--hb-text-muted)]">
                     I’m here to listen. What has been bothering you most?
                   </p>
                 </div>
               </div>
 
               <div className="rounded-2xl border border-[var(--hb-border)] bg-[var(--hb-bg)] p-3">
-                <div className="flex items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 shadow-sm">
+                <div className="flex items-center justify-between gap-3 rounded-xl bg-[var(--hb-surface)] px-4 py-3 shadow-sm">
                   <span className="text-sm text-[var(--hb-text-faint)]">Write a message…</span>
                   <span className="flex size-9 items-center justify-center rounded-full bg-[var(--hb-brand-700)] text-white" aria-label="Voice input example">⌁</span>
                 </div>
@@ -130,7 +132,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="border-y border-[var(--hb-border)] bg-white/55 py-20 sm:py-24">
+      <section id="how-it-works" className="border-y border-[var(--hb-border)] bg-[var(--hb-surface)]/55 py-20 sm:py-24">
         <div className="hb-container">
           <div className="mx-auto max-w-[620px] text-center">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--hb-brand-700)]">A clearer path to care</p>
@@ -139,7 +141,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {careSteps.map((step) => (
-              <article key={step.number} className="rounded-3xl border border-[var(--hb-border)] bg-white p-6 sm:p-7">
+              <article key={step.number} className="rounded-3xl border border-[var(--hb-border)] bg-[var(--hb-surface)] p-6 sm:p-7">
                 <p className="text-sm font-semibold text-[var(--hb-brand-700)]">{step.number}</p>
                 <h3 className="mt-5 text-lg font-semibold tracking-[-0.02em]">{step.title}</h3>
                 <p className="mt-3 text-sm leading-[1.75] text-[var(--hb-text-muted)]">{step.description}</p>
@@ -175,7 +177,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="border-t border-[var(--hb-border)] bg-white/50 py-7">
+      <footer className="border-t border-[var(--hb-border)] bg-[var(--hb-surface)]/50 py-7">
         <div className="hb-container flex flex-col justify-between gap-3 text-xs text-[var(--hb-text-muted)] sm:flex-row sm:items-center">
           <span>© {new Date().getFullYear()} Health-Bridge</span>
           <span>Healthcare that speaks your language, even when your signal doesn’t.</span>

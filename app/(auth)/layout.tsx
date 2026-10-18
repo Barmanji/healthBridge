@@ -11,7 +11,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         </Link>
         <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">Back to home</Link>
       </div>
-      <div className="mx-auto mt-10 grid max-w-5xl overflow-hidden rounded-[2rem] border border-[var(--hb-border)] bg-white shadow-xl shadow-[var(--hb-brand-900)]/5 md:mt-16 md:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto mt-10 grid max-w-5xl overflow-hidden rounded-[2rem] border border-[var(--hb-border)] bg-[var(--hb-surface)] shadow-xl shadow-black/5 md:mt-16 md:grid-cols-[0.9fr_1.1fr]">
         <aside className="hidden flex-col justify-between bg-[var(--hb-brand-700)] p-10 text-white md:flex">
           <div>
             <p className="text-sm font-semibold text-white/75">Care that listens</p>

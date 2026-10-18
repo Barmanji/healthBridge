@@ -1,0 +1,2 @@
+ALTER TABLE "doctor_time_off" ALTER COLUMN "starts_at" SET DATA TYPE timestamp with time zone;--> statement-breakpoint
+ALTER TABLE "doctor_time_off" ALTER COLUMN "ends_at" SET DATA TYPE timestamp with time zone;

@@ -39,7 +39,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           attribute="class"
           defaultTheme="light"
           enableSystem={false}
-          disableTransitionOnChange
         >
           {children}
         </ThemeProvider>

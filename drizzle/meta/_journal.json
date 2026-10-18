@@ -15,6 +15,20 @@
       "when": 1792302686492,
       "tag": "0001_perfect_shooting_star",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792305588199,
+      "tag": "0002_romantic_shockwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792306002480,
+      "tag": "0003_orange_anita_blake",
+      "breakpoints": true
     }
   ]
 }
