@@ -1,0 +1,16 @@
+services:
+  health-bridge-pg:
+    image: postgres:17
+    container_name: health-bridge-db
+    environment:
+      POSTGRES_DB: health-bridge
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - health-bridge_pg_data:/var/lib/postgresql/data
+
+volumes:
+  health-bridge_pg_data:
+
