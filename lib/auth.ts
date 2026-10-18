@@ -29,7 +29,9 @@ export const auth = betterAuth({
     requireEmailVerification: true,
   },
   emailVerification: {
-    sendOnSignUp: true,
+    // Explicitly send from the signup flow so send errors reach the client and
+    // repeated signup attempts can resend to an existing unverified account.
+    sendOnSignUp: false,
     autoSignInAfterVerification: false,
     async afterEmailVerification(verifiedUser) {
       if (!("role" in verifiedUser && verifiedUser.role === "doctor")) return;
@@ -48,12 +50,14 @@ export const auth = betterAuth({
 
       const verificationUrl = htmlEscape(url);
       const name = htmlEscape(user.name || "there");
+      const greetingName = user.name || "there";
+      const subject = "Verify your Health-Bridge email";
       const { error } = await new Resend(apiKey).emails.send({
         from,
         to: user.email,
-        subject: "Verify your Health-Bridge email",
-        html: `<p>Hello ${name},</p><p>Verify your email to continue creating your Health-Bridge account.</p><p><a href="${verificationUrl}">Verify email address</a></p><p>If you did not request this, you can ignore this email.</p>`,
-        text: `Hello ${user.name || "there"},\n\nVerify your Health-Bridge email: ${url}\n\nIf you did not request this, you can ignore this email.`,
+        subject,
+        html: `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${subject}</title></head><body style="margin:0;background:#f3f8f6;color:#173a35;font-family:Arial,Helvetica,sans-serif"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f3f8f6;padding:36px 16px"><tr><td align="center"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:560px;background:#ffffff;border:1px solid #dce9e5;border-radius:20px;overflow:hidden"><tr><td style="background:#155e53;padding:24px 32px;color:#ffffff"><table role="presentation" cellspacing="0" cellpadding="0"><tr><td style="width:38px;height:38px;border-radius:12px;background:#ffffff;color:#155e53;text-align:center;vertical-align:middle;font-size:26px;font-weight:bold">+</td><td style="padding-left:12px;font-size:18px;font-weight:bold;letter-spacing:-.3px">health<span style="color:#bde7dc">bridge</span></td></tr></table></td></tr><tr><td style="padding:36px 32px 32px"><p style="margin:0 0 10px;color:#28796c;font-size:12px;font-weight:bold;letter-spacing:1.2px;text-transform:uppercase">One quick step</p><h1 style="margin:0 0 18px;color:#173a35;font-size:27px;line-height:1.25">Verify your email</h1><p style="margin:0 0 14px;font-size:16px;line-height:1.65">Hello ${name},</p><p style="margin:0 0 26px;color:#526b66;font-size:15px;line-height:1.7">Confirm this email address to continue with your Health-Bridge account. This helps us keep your account and care information protected.</p><table role="presentation" cellspacing="0" cellpadding="0"><tr><td align="center" style="border-radius:999px;background:#155e53"><a href="${verificationUrl}" style="display:inline-block;padding:14px 24px;color:#ffffff;font-size:15px;font-weight:bold;text-decoration:none">Verify email address</a></td></tr></table><p style="margin:24px 0 0;color:#71847f;font-size:13px;line-height:1.6">If the button does not work, copy this link into your browser:<br><a href="${verificationUrl}" style="color:#28796c;word-break:break-all">${verificationUrl}</a></p></td></tr><tr><td style="border-top:1px solid #e7efec;padding:20px 32px;color:#71847f;font-size:12px;line-height:1.6">If you did not create a Health-Bridge account, you can ignore this email.<br><span style="color:#28796c;font-weight:bold">Care that starts with being understood.</span></td></tr></table></td></tr></table></body></html>`,
+        text: `Hello ${greetingName},\n\nVerify your email address to continue with your Health-Bridge account:\n${url}\n\nIf you did not create a Health-Bridge account, you can ignore this email.\n\nCare that starts with being understood.`,
       });
 
       if (error) {

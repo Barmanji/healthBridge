@@ -27,6 +27,8 @@ export function AuthForm(props: AuthFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [canResendVerification, setCanResendVerification] = useState(false);
+  const [resending, setResending] = useState(false);
   const isSignIn = props.mode === "sign-in";
   const form = useForm<SignUpValues>({
     resolver: zodResolver(isSignIn ? signInSchema : signUpSchema) as unknown as Resolver<SignUpValues>,
@@ -46,9 +48,19 @@ export function AuthForm(props: AuthFormProps) {
           password: values.password,
         });
         if (result.error) {
+          if (result.error.code === "EMAIL_NOT_VERIFIED") {
+            setCanResendVerification(true);
+            setRequestError("Verify your email before signing in. You can request a fresh link below.");
+            return;
+          }
           setRequestError("We could not sign you in. Check your details and try again.");
           return;
         }
+        const role = result.data.user.role;
+        const destination = role === "admin" ? "/admin/applications" : role === "doctor" ? "/doctor/onboarding" : "/patient/dashboard";
+        router.replace(destination);
+        router.refresh();
+        return;
       } else {
         const result = await authClient.signUp.email({
           name: values.name,
@@ -60,15 +72,45 @@ export function AuthForm(props: AuthFormProps) {
           setRequestError("We could not create your account. Check your details and try again.");
           return;
         }
+        const verificationResult = await authClient.sendVerificationEmail({
+          email: values.email,
+          callbackURL: "/",
+        });
+        if (verificationResult.error) {
+          setRequestError("Your account request was accepted, but we could not send a verification link. Try signing in and requesting a fresh link.");
+          setCanResendVerification(true);
+          return;
+        }
         setEmailSent(true);
         return;
       }
-      router.replace("/");
-      router.refresh();
     } catch {
       setRequestError("A connection problem stopped this request. Please try again.");
     } finally {
       setIsSubmitting(false);
+    }
+  }
+
+  async function resendVerification() {
+    const email = form.getValues("email");
+    const validEmail = signInSchema.shape.email.safeParse(email);
+    if (!validEmail.success) {
+      setRequestError("Enter a valid email address first.");
+      return;
+    }
+    setResending(true);
+    setRequestError(null);
+    try {
+      const result = await authClient.sendVerificationEmail({ email: validEmail.data, callbackURL: "/" });
+      if (result.error) {
+        setRequestError("We could not send a verification link right now. Please retry shortly.");
+      } else {
+        setRequestError("If this account needs verification, a fresh link has been sent. Check your inbox.");
+      }
+    } catch {
+      setRequestError("We could not send a verification link right now. Please retry shortly.");
+    } finally {
+      setResending(false);
     }
   }
 
@@ -77,7 +119,7 @@ export function AuthForm(props: AuthFormProps) {
       <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5" role="status" aria-live="polite">
         <h3 className="font-semibold">Check your email</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          We sent a verification link to <strong className="break-all text-foreground">{form.getValues("email")}</strong>. Verify your address before signing in.
+          If this address needs verification, a fresh link is on its way. If it is already verified, you can sign in.
         </p>
         <Link className="mt-4 inline-flex text-sm font-semibold text-primary underline-offset-4 hover:underline" href="/sign-in">
           Go to sign in
@@ -140,6 +182,7 @@ export function AuthForm(props: AuthFormProps) {
       )}
 
       {requestError && <p className="text-sm text-destructive" role="alert">{requestError}</p>}
+      {canResendVerification && <Button className="w-full" type="button" variant="outline" disabled={resending} onClick={resendVerification}>{resending ? "Sending…" : "Resend verification email"}</Button>}
       <Button className="w-full" type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Please wait…" : isSignIn ? "Sign in" : "Create account"}
       </Button>

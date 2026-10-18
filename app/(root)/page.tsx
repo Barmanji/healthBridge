@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { ModeToggle } from "@/components/mode-toggle";
+import { auth } from "@/lib/auth";
+import UserButton from "@/modules/auth/components/user-button";
 
 const careSteps = [
   {
@@ -22,7 +25,13 @@ const careSteps = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await auth.api.getSession({ headers: await headers() });
+  const dashboardHref = session?.user.role === "admin"
+    ? "/admin/applications"
+    : session?.user.role === "doctor"
+      ? "/doctor/onboarding"
+      : "/patient/dashboard";
   return (
     <>
       <header className="relative z-10 border-b border-[var(--hb-border)]/80 bg-[var(--hb-bg)]/70 backdrop-blur-xl">
@@ -44,12 +53,17 @@ export default function HomePage() {
 
           <div className="flex items-center gap-2 sm:gap-3">
             <ModeToggle />
-            <Link className="hb-link hidden rounded-full px-3 py-2 text-sm font-semibold sm:inline-flex" href="/sign-in">
-              Sign in
-            </Link>
-            <Link className="hb-button-primary inline-flex items-center justify-center px-5 text-sm font-semibold" href="/sign-up">
-              Get started <span className="ml-2" aria-hidden="true">→</span>
-            </Link>
+            {session ? (
+              <>
+                <Link className="hb-button-primary inline-flex items-center justify-center px-5 text-sm font-semibold" href={dashboardHref}>My dashboard</Link>
+                <UserButton user={{ name: session.user.name, email: session.user.email, image: session.user.image, createdAt: session.user.createdAt }} />
+              </>
+            ) : (
+              <>
+                <Link className="hb-link hidden rounded-full px-3 py-2 text-sm font-semibold sm:inline-flex" href="/sign-in">Sign in</Link>
+                <Link className="hb-button-primary inline-flex items-center justify-center px-5 text-sm font-semibold" href="/sign-up">Get started <span className="ml-2" aria-hidden="true">→</span></Link>
+              </>
+            )}
           </div>
         </div>
       </header>
