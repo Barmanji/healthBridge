@@ -44,6 +44,7 @@ flowchart LR
 - Private doctor document storage through Cloudflare R2's S3-compatible API.
 - Admin application review and verification controls.
 - Verified-doctor appointment queue, severity ordering, and editable SOAP notes for assigned appointments.
+- Doctor-visible patient statements with an experimental category label and a clinician correction control. The label is a documentation aid only: it never diagnoses, never scores severity, and never touches the emergency path.
 
 ### Current scope boundaries
 
@@ -68,8 +69,13 @@ flowchart TB
     Routes --> AI[OpenAI API<br/>bounded conversation and triage requests]
     Routes --> Voice[Vapi<br/>optional voice sessions]
     Routes --> Storage[Cloudflare R2<br/>private uploaded files]
+    Routes -.->|after response, fail-open| Classifier[Local statement classifier<br/>FastAPI, CPU only]
+    Classifier -.-> DB
     DB --> Data[Drizzle ORM and migrations]
 ```
+
+The dashed path is the experimental classifier. It runs after a turn is committed, cannot
+block intake, and is not part of the risk or emergency path. See [`ml/README.md`](ml/README.md).
 
 ### Appointment confirmation
 
@@ -152,10 +158,26 @@ The seed script does not reset an existing administrator's password.
 | `pnpm dev` | Start local Postgres with Docker Compose and run Next.js in development mode |
 | `pnpm run build` | Create a production build |
 | `pnpm lint` | Run ESLint |
+| `pnpm test` | Run the TypeScript unit tests (Vitest) |
+| `pnpm vitest run --config vitest.live.config.ts` | Run live integration tests (needs Postgres and the ML service) |
 | `npx drizzle-kit generate` | Generate a migration from schema changes |
 | `npx drizzle-kit migrate` | Apply pending Drizzle migrations |
 | `npx drizzle-kit check` | Check migration consistency |
 | `pnpm db:seed` | Bootstrap the first administrator |
+
+### Optional: the statement classifier
+
+The experimental statement classifier in [`ml/`](ml/README.md) runs locally and is entirely
+optional. Without it, intake behaves exactly as before.
+
+```bash
+python3 -m venv ml/.venv && ml/.venv/bin/pip install -r ml/requirements.txt
+ml/.venv/bin/python ml/train.py
+ml/.venv/bin/uvicorn api:app --app-dir ml --host 127.0.0.1 --port 8000
+```
+
+The app calls it at `ML_SERVICE_URL` (default `http://127.0.0.1:8000`) and fails open if it
+is unreachable.
 
 ## Configuration
 
@@ -167,6 +189,7 @@ The committed [`.env.example`](.env.example) is the configuration reference. It 
 - Private R2 document storage.
 - Admin bootstrap.
 - Optional OpenAI-backed AI and Vapi voice.
+- Optional local statement classifier (`ML_SERVICE_URL`, `ML_CLASSIFIER_DISABLED`).
 - Future OCR, messaging, and background-job integrations, which are not active product features yet.
 
 Do not commit credentials, real user data, uploaded medical documents, or local database files. Keep doctor documents private and serve them only through the application's authorization checks.
@@ -180,6 +203,8 @@ lib/                 Auth, database schema, AI, scheduling, storage, utilities
 drizzle/              PostgreSQL migrations and migration metadata
 scripts/              Local administrative seed script
 public/               Static assets, offline page, and service worker
+ml/                   Experimental local statement classifier (Python); see ml/README.md
+tests/                Vitest suites, including live integration tests
 HEALTH-BRIDGE.md      Product specification and phased roadmap
 PHASE-5-PROGRESS.md   Phase 5 implementation and verification checkpoint
 ```
@@ -193,5 +218,6 @@ PHASE-5-PROGRESS.md   Phase 5 implementation and verification checkpoint
 | 3 — Patient experience | Patient dashboard, profile/onboarding, navigation, and offline shell |
 | 4 — AI intake and voice | Consent-based patient conversation, risk-aware intake, and optional Vapi voice flow |
 | 5 — Triage and appointments | Validated care summary, verified-doctor matching, slot holds, confirmation, cancellation/rescheduling, doctor queue, and SOAP review |
+| 6 — Statement classifier | Experimental local, CPU-only classifier that categorises patient statements for clinician review. Synthetic-only benchmark, fail-open integration, and no coupling to the risk or HALT path. |
 
 For detailed implementation decisions and the broader product roadmap, see [`HEALTH-BRIDGE.md`](HEALTH-BRIDGE.md). Phase-level resume notes are kept in [`PHASE-5-PROGRESS.md`](PHASE-5-PROGRESS.md).

@@ -1,6 +1,6 @@
 # Health-Bridge statement classifier — experiment report
 
-- Run at: `2026-10-19T17:28:56.859990+00:00`
+- Run at: `2026-10-19T17:40:00.811886+00:00`
 - Dataset: `synthetic-statements-v1` — 1281 statements, 427 scenario groups
 - Seed: `20261019` · split seed: `20261020`
 - Selected model: **tfidf_char_logreg** (chosen on validation macro-F1)
@@ -48,12 +48,12 @@ Training-set class balance: `symptom`=247, `duration`=104, `medication`=114, `al
 
 | Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Macro precision | Macro recall | Train time (s) |
 |---|---|---|---|---|---|---|
-| `majority_baseline` | 0.0805 | 0.3098 | 0.0788 | 0.0516 | 0.1667 | 0.006 |
+| `majority_baseline` | 0.0805 | 0.3098 | 0.0788 | 0.0516 | 0.1667 | 0.002 |
 | `keyword_baseline` | 0.6309 | 0.6078 | 0.5645 | 0.8304 | 0.5287 | 0.0 |
-| `tfidf_word_logreg` | 0.8887 | 0.9255 | 0.9248 | 0.9489 | 0.9078 | 3.851 |
-| `tfidf_word_linear_svc` | 0.8975 | 0.9255 | 0.9248 | 0.9506 | 0.9062 | 0.035 |
-| `tfidf_char_logreg` | 0.9718 | 0.949 | 0.9404 | 0.9465 | 0.9366 | 5.086 |
-| `tfidf_word_char_logreg` | 0.9684 | 0.9608 | 0.9575 | 0.9745 | 0.946 | 4.136 |
+| `tfidf_word_logreg` | 0.8887 | 0.9255 | 0.9248 | 0.9489 | 0.9078 | 3.324 |
+| `tfidf_word_linear_svc` | 0.8975 | 0.9255 | 0.9248 | 0.9506 | 0.9062 | 0.023 |
+| `tfidf_char_logreg` | 0.9718 | 0.949 | 0.9404 | 0.9465 | 0.9366 | 4.226 |
+| `tfidf_word_char_logreg` | 0.9684 | 0.9608 | 0.9575 | 0.9745 | 0.946 | 4.055 |
 
 ## Selected model — `tfidf_char_logreg`
 
@@ -87,11 +87,11 @@ Rows are the true category, columns the predicted category.
 
 ## Inference latency (local CPU)
 
-Measured over 4000 single-statement predictions (40 distinct statements, ±100 repeats).
+Measured over 8000 single-statement predictions (40 distinct statements, ±200 repeats).
 
-- Median: **0.824 ms**
-- p95: **1.846 ms**
-- Mean / min / max: 1.006 / 0.685 / 4.619 ms
+- Median: **0.475 ms**
+- p95: **0.637 ms**
+- Mean / min / max: 0.495 / 0.398 / 1.33 ms
 
 ## Performance by language
 
