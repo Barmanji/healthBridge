@@ -1,0 +1,41 @@
+{
+  "dataset_version": "synthetic-statements-v1",
+  "generator": "ml/generate_dataset.py",
+  "seed": 20261019,
+  "provenance": "fully synthetic — authored for this project, no scraped or patient data",
+  "license": "Authored for this repository; redistribute with the project.",
+  "synthetic_only": true,
+  "real_world_validation": false,
+  "warning": "Synthetic benchmark only. Metrics measure learnability of the labelling scheme, not clinical validity.",
+  "labels": [
+    "symptom",
+    "duration",
+    "medication",
+    "allergy",
+    "medical_history",
+    "other"
+  ],
+  "row_count": 1281,
+  "scenario_count": 427,
+  "counts_by_label": {
+    "symptom": 391,
+    "duration": 197,
+    "medication": 180,
+    "allergy": 153,
+    "medical_history": 180,
+    "other": 180
+  },
+  "counts_by_language": {
+    "en": 411,
+    "hi": 411,
+    "hinglish": 411,
+    "mixed": 48
+  },
+  "counts_by_source": {
+    "synthetic": 1281
+  },
+  "files": {
+    "dataset": "ml/data/dataset.jsonl",
+    "ambiguous": "ml/data/ambiguous_examples.jsonl"
+  }
+}

@@ -14,6 +14,15 @@ HEALTH-BRIDGE.md
 
 # testing
 /coverage
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# ML component (see ML.md) — virtualenv and trained binaries are generated, not committed.
+ml/.venv/
+ml/models/*.joblib
+ml/models/*.bin
+!ml/models/.gitkeep
 
 # next.js
 /.next/

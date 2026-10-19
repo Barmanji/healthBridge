@@ -1,0 +1,5 @@
+{"text": "Mujhe seene mein jalan hai jo do din se hai.", "labels": ["symptom", "duration"], "note": "Documentation-only multi-category statement; excluded from single-label accuracy."}
+{"text": "Mujhe teen hafte se sardi hai aur paracetamol leta hoon.", "labels": ["duration", "medication"], "note": "Documentation-only multi-category statement; excluded from single-label accuracy."}
+{"text": "I have asthma and I am allergic to dust.", "labels": ["medical_history", "allergy"], "note": "Documentation-only multi-category statement; excluded from single-label accuracy."}
+{"text": "Mujhe gale mein dard hai, teen din se.", "labels": ["symptom", "duration"], "note": "Documentation-only multi-category statement; excluded from single-label accuracy."}
+{"text": "I take insulin daily and I have type 2 diabetes.", "labels": ["medication", "medical_history"], "note": "Documentation-only multi-category statement; excluded from single-label accuracy."}

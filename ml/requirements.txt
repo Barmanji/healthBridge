@@ -1,0 +1,10 @@
+# Health-Bridge statement classifier — CPU-only, pinned for reproducibility.
+# Install into an isolated environment:  python3 -m venv ml/.venv && ml/.venv/bin/pip install -r ml/requirements.txt
+scikit-learn==1.9.1
+pandas==3.0.6
+matplotlib==3.11.2
+joblib==1.6.0
+fastapi==0.148.0
+uvicorn==0.54.0
+pytest==9.1.1
+httpx==0.28.1

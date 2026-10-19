@@ -1,0 +1,1281 @@
+{"text": "I am suffering from a sore throat.", "label": "symptom", "language": "en", "scenario_id": "8f96d7545d16704e", "source": "synthetic"}
+{"text": "I came because of a sore throat.", "label": "symptom", "language": "en", "scenario_id": "8f96d7545d16704e", "source": "synthetic"}
+{"text": "I have a sore throat.", "label": "symptom", "language": "en", "scenario_id": "8f96d7545d16704e", "source": "synthetic"}
+{"text": "मेरे गले में दर्द हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "4eaa76e820868b34", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत गले में दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "4eaa76e820868b34", "source": "synthetic"}
+{"text": "मुझे गले में दर्द की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "4eaa76e820868b34", "source": "synthetic"}
+{"text": "Doctor, mujhe gale mein dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "730531b79df25599", "source": "synthetic"}
+{"text": "Main gale mein dard ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "730531b79df25599", "source": "synthetic"}
+{"text": "Mujhe gale mein dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "730531b79df25599", "source": "synthetic"}
+{"text": "I am suffering from a headache.", "label": "symptom", "language": "en", "scenario_id": "f26bfa3c77a52180", "source": "synthetic"}
+{"text": "I am getting a headache.", "label": "symptom", "language": "en", "scenario_id": "f26bfa3c77a52180", "source": "synthetic"}
+{"text": "I have a headache.", "label": "symptom", "language": "en", "scenario_id": "f26bfa3c77a52180", "source": "synthetic"}
+{"text": "मैं सिरदर्द से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "c8bf1ae9d1a06c68", "source": "synthetic"}
+{"text": "मुझे सिरदर्द की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "c8bf1ae9d1a06c68", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे सिरदर्द है।", "label": "symptom", "language": "hi", "scenario_id": "c8bf1ae9d1a06c68", "source": "synthetic"}
+{"text": "Meri main problem sir dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "8dd2e4c0ddb92dd6", "source": "synthetic"}
+{"text": "Main sir dard se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "8dd2e4c0ddb92dd6", "source": "synthetic"}
+{"text": "Doctor, mujhe sir dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "8dd2e4c0ddb92dd6", "source": "synthetic"}
+{"text": "I am suffering from a burning pain in my chest.", "label": "symptom", "language": "en", "scenario_id": "8ad59a9c66ce9d0d", "source": "synthetic"}
+{"text": "I have a burning pain in my chest.", "label": "symptom", "language": "en", "scenario_id": "8ad59a9c66ce9d0d", "source": "synthetic"}
+{"text": "There is a burning pain in my chest bothering me.", "label": "symptom", "language": "en", "scenario_id": "8ad59a9c66ce9d0d", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत सीने में जलन है।", "label": "symptom", "language": "hi", "scenario_id": "2456aaba1f90bcaa", "source": "synthetic"}
+{"text": "मैं सीने में जलन से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "2456aaba1f90bcaa", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे सीने में जलन है।", "label": "symptom", "language": "hi", "scenario_id": "2456aaba1f90bcaa", "source": "synthetic"}
+{"text": "Mere seene mein jalan ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "eb2a057a367f434b", "source": "synthetic"}
+{"text": "Meri main problem seene mein jalan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "eb2a057a367f434b", "source": "synthetic"}
+{"text": "Mujhe seene mein jalan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "eb2a057a367f434b", "source": "synthetic"}
+{"text": "For me there is blurred vision.", "label": "symptom", "language": "en", "scenario_id": "c8f085f753c35ca5", "source": "synthetic"}
+{"text": "Doctor, I feel blurred vision.", "label": "symptom", "language": "en", "scenario_id": "c8f085f753c35ca5", "source": "synthetic"}
+{"text": "I came because of blurred vision.", "label": "symptom", "language": "en", "scenario_id": "c8f085f753c35ca5", "source": "synthetic"}
+{"text": "मुझे धुंधला दिखना है।", "label": "symptom", "language": "hi", "scenario_id": "ebd2442dc819d753", "source": "synthetic"}
+{"text": "मुझे धुंधला दिखना की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "ebd2442dc819d753", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे धुंधला दिखना है।", "label": "symptom", "language": "hi", "scenario_id": "ebd2442dc819d753", "source": "synthetic"}
+{"text": "Doctor, mujhe dhundhla dikhna hai.", "label": "symptom", "language": "hinglish", "scenario_id": "1f5bb05a447757ab", "source": "synthetic"}
+{"text": "Mere dhundhla dikhna ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "1f5bb05a447757ab", "source": "synthetic"}
+{"text": "Mujhe dhundhla dikhna ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "1f5bb05a447757ab", "source": "synthetic"}
+{"text": "I am getting itching on my arms.", "label": "symptom", "language": "en", "scenario_id": "73db4e09dee95902", "source": "synthetic"}
+{"text": "There is itching on my arms bothering me.", "label": "symptom", "language": "en", "scenario_id": "73db4e09dee95902", "source": "synthetic"}
+{"text": "For me there is itching on my arms.", "label": "symptom", "language": "en", "scenario_id": "73db4e09dee95902", "source": "synthetic"}
+{"text": "मुझे बाजुओं में खुजली की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "8ef238ff3e6fdc60", "source": "synthetic"}
+{"text": "मुझे बाजुओं में खुजली है।", "label": "symptom", "language": "hi", "scenario_id": "8ef238ff3e6fdc60", "source": "synthetic"}
+{"text": "मैं बाजुओं में खुजली की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "8ef238ff3e6fdc60", "source": "synthetic"}
+{"text": "Meri main problem baahon mein khujli hai.", "label": "symptom", "language": "hinglish", "scenario_id": "85f8a6a047c0dd08", "source": "synthetic"}
+{"text": "Mujhe baahon mein khujli hai.", "label": "symptom", "language": "hinglish", "scenario_id": "85f8a6a047c0dd08", "source": "synthetic"}
+{"text": "Doctor, mujhe baahon mein khujli hai.", "label": "symptom", "language": "hinglish", "scenario_id": "85f8a6a047c0dd08", "source": "synthetic"}
+{"text": "I am suffering from a cough at night.", "label": "symptom", "language": "en", "scenario_id": "1eab066d7e6e1ec4", "source": "synthetic"}
+{"text": "Doctor, I feel a cough at night.", "label": "symptom", "language": "en", "scenario_id": "1eab066d7e6e1ec4", "source": "synthetic"}
+{"text": "The main problem is a cough at night.", "label": "symptom", "language": "en", "scenario_id": "1eab066d7e6e1ec4", "source": "synthetic"}
+{"text": "मैं रात में खांसी से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "775a31b5c882a34b", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे रात में खांसी है।", "label": "symptom", "language": "hi", "scenario_id": "775a31b5c882a34b", "source": "synthetic"}
+{"text": "मुझे रात में खांसी की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "775a31b5c882a34b", "source": "synthetic"}
+{"text": "Doctor, mujhe raat mein khansi hai.", "label": "symptom", "language": "hinglish", "scenario_id": "99451cb9c069b7b6", "source": "synthetic"}
+{"text": "Main raat mein khansi ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "99451cb9c069b7b6", "source": "synthetic"}
+{"text": "Main raat mein khansi se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "99451cb9c069b7b6", "source": "synthetic"}
+{"text": "I am getting swelling in my feet.", "label": "symptom", "language": "en", "scenario_id": "826c343bd10614a8", "source": "synthetic"}
+{"text": "I am suffering from swelling in my feet.", "label": "symptom", "language": "en", "scenario_id": "826c343bd10614a8", "source": "synthetic"}
+{"text": "There is swelling in my feet bothering me.", "label": "symptom", "language": "en", "scenario_id": "826c343bd10614a8", "source": "synthetic"}
+{"text": "मेरे पैरों में सूजन हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "a65dc975402b18d0", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत पैरों में सूजन है।", "label": "symptom", "language": "hi", "scenario_id": "a65dc975402b18d0", "source": "synthetic"}
+{"text": "मैं पैरों में सूजन से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "a65dc975402b18d0", "source": "synthetic"}
+{"text": "Mujhe pairon mein sujan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "87f0efa6b98e53df", "source": "synthetic"}
+{"text": "Mere pairon mein sujan ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "87f0efa6b98e53df", "source": "synthetic"}
+{"text": "Main pairon mein sujan se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "87f0efa6b98e53df", "source": "synthetic"}
+{"text": "There is pain while passing urine bothering me.", "label": "symptom", "language": "en", "scenario_id": "05992ac970d9ca54", "source": "synthetic"}
+{"text": "I have pain while passing urine.", "label": "symptom", "language": "en", "scenario_id": "05992ac970d9ca54", "source": "synthetic"}
+{"text": "For me there is pain while passing urine.", "label": "symptom", "language": "en", "scenario_id": "05992ac970d9ca54", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे पेशाब में जलन है।", "label": "symptom", "language": "hi", "scenario_id": "8c6530a234be2ef0", "source": "synthetic"}
+{"text": "मुझे पेशाब में जलन की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "8c6530a234be2ef0", "source": "synthetic"}
+{"text": "मेरे पेशाब में जलन हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "8c6530a234be2ef0", "source": "synthetic"}
+{"text": "Mujhe peshab mein jalan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a9db8a65a96f0f33", "source": "synthetic"}
+{"text": "Mujhe peshab mein jalan ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a9db8a65a96f0f33", "source": "synthetic"}
+{"text": "Mere peshab mein jalan ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a9db8a65a96f0f33", "source": "synthetic"}
+{"text": "There is a stomach ache after eating bothering me.", "label": "symptom", "language": "en", "scenario_id": "686fea72a79b3af4", "source": "synthetic"}
+{"text": "I came because of a stomach ache after eating.", "label": "symptom", "language": "en", "scenario_id": "686fea72a79b3af4", "source": "synthetic"}
+{"text": "I am suffering from a stomach ache after eating.", "label": "symptom", "language": "en", "scenario_id": "686fea72a79b3af4", "source": "synthetic"}
+{"text": "मैं खाने के बाद पेट दर्द से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "6488df6923f18972", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे खाने के बाद पेट दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "6488df6923f18972", "source": "synthetic"}
+{"text": "मुझे खाने के बाद पेट दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "6488df6923f18972", "source": "synthetic"}
+{"text": "Doctor, mujhe khane ke baad pet dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "696fbf1e23e15e5f", "source": "synthetic"}
+{"text": "Mujhe khane ke baad pet dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "696fbf1e23e15e5f", "source": "synthetic"}
+{"text": "Mujhe khane ke baad pet dard ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "696fbf1e23e15e5f", "source": "synthetic"}
+{"text": "There is clogged ears bothering me.", "label": "symptom", "language": "en", "scenario_id": "8b46fdbd4841e913", "source": "synthetic"}
+{"text": "I am suffering from clogged ears.", "label": "symptom", "language": "en", "scenario_id": "8b46fdbd4841e913", "source": "synthetic"}
+{"text": "I am getting clogged ears.", "label": "symptom", "language": "en", "scenario_id": "8b46fdbd4841e913", "source": "synthetic"}
+{"text": "मैं कान बंद होना की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "67c8079743cd7372", "source": "synthetic"}
+{"text": "मुझे कान बंद होना की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "67c8079743cd7372", "source": "synthetic"}
+{"text": "मैं कान बंद होना से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "67c8079743cd7372", "source": "synthetic"}
+{"text": "Doctor, mujhe kaan band hona hai.", "label": "symptom", "language": "hinglish", "scenario_id": "af0ae62167fcaa4f", "source": "synthetic"}
+{"text": "Mujhe kaan band hona ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "af0ae62167fcaa4f", "source": "synthetic"}
+{"text": "Mujhe kaan band hona hai.", "label": "symptom", "language": "hinglish", "scenario_id": "af0ae62167fcaa4f", "source": "synthetic"}
+{"text": "The main problem is numbness in my fingers.", "label": "symptom", "language": "en", "scenario_id": "128351322afd3a63", "source": "synthetic"}
+{"text": "I am getting numbness in my fingers.", "label": "symptom", "language": "en", "scenario_id": "128351322afd3a63", "source": "synthetic"}
+{"text": "For me there is numbness in my fingers.", "label": "symptom", "language": "en", "scenario_id": "128351322afd3a63", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत उंगलियों में सुन्नपन है।", "label": "symptom", "language": "hi", "scenario_id": "40ab35ddb2997fdf", "source": "synthetic"}
+{"text": "मुझे उंगलियों में सुन्नपन है।", "label": "symptom", "language": "hi", "scenario_id": "40ab35ddb2997fdf", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे उंगलियों में सुन्नपन है।", "label": "symptom", "language": "hi", "scenario_id": "40ab35ddb2997fdf", "source": "synthetic"}
+{"text": "Main ungliyon mein sunnpan se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "5d02ccdd5be5bb15", "source": "synthetic"}
+{"text": "Mere ungliyon mein sunnpan ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "5d02ccdd5be5bb15", "source": "synthetic"}
+{"text": "Doctor, mujhe ungliyon mein sunnpan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "5d02ccdd5be5bb15", "source": "synthetic"}
+{"text": "I am suffering from a rash with small bumps.", "label": "symptom", "language": "en", "scenario_id": "1b15302f525b1aea", "source": "synthetic"}
+{"text": "I am getting a rash with small bumps.", "label": "symptom", "language": "en", "scenario_id": "1b15302f525b1aea", "source": "synthetic"}
+{"text": "For me there is a rash with small bumps.", "label": "symptom", "language": "en", "scenario_id": "1b15302f525b1aea", "source": "synthetic"}
+{"text": "मैं छोटे दानों वाला लाल चकत्ता से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "e573d736af35c6fc", "source": "synthetic"}
+{"text": "मुझे छोटे दानों वाला लाल चकत्ता की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "e573d736af35c6fc", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत छोटे दानों वाला लाल चकत्ता है।", "label": "symptom", "language": "hi", "scenario_id": "e573d736af35c6fc", "source": "synthetic"}
+{"text": "Doctor, mujhe chote daanon wala laal chakat hai.", "label": "symptom", "language": "hinglish", "scenario_id": "9dce35e6ae4c2789", "source": "synthetic"}
+{"text": "Main chote daanon wala laal chakat se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "9dce35e6ae4c2789", "source": "synthetic"}
+{"text": "Mujhe chote daanon wala laal chakat hai.", "label": "symptom", "language": "hinglish", "scenario_id": "9dce35e6ae4c2789", "source": "synthetic"}
+{"text": "I am suffering from shortness of breath while climbing stairs.", "label": "symptom", "language": "en", "scenario_id": "4eabaf185f6425a8", "source": "synthetic"}
+{"text": "I have shortness of breath while climbing stairs.", "label": "symptom", "language": "en", "scenario_id": "4eabaf185f6425a8", "source": "synthetic"}
+{"text": "The main problem is shortness of breath while climbing stairs.", "label": "symptom", "language": "en", "scenario_id": "4eabaf185f6425a8", "source": "synthetic"}
+{"text": "मैं सीढ़ी चढ़ते समय सांस फूलना से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "6e8f20d633054592", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे सीढ़ी चढ़ते समय सांस फूलना है।", "label": "symptom", "language": "hi", "scenario_id": "6e8f20d633054592", "source": "synthetic"}
+{"text": "मुझे सीढ़ी चढ़ते समय सांस फूलना की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "6e8f20d633054592", "source": "synthetic"}
+{"text": "Main seedhi chadhte waqt saans phulna se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "2fa2b9953316edbc", "source": "synthetic"}
+{"text": "Meri main problem seedhi chadhte waqt saans phulna hai.", "label": "symptom", "language": "hinglish", "scenario_id": "2fa2b9953316edbc", "source": "synthetic"}
+{"text": "Mere seedhi chadhte waqt saans phulna ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "2fa2b9953316edbc", "source": "synthetic"}
+{"text": "I am getting low back pain.", "label": "symptom", "language": "en", "scenario_id": "9144bc1f41db1032", "source": "synthetic"}
+{"text": "Doctor, I feel low back pain.", "label": "symptom", "language": "en", "scenario_id": "9144bc1f41db1032", "source": "synthetic"}
+{"text": "There is low back pain bothering me.", "label": "symptom", "language": "en", "scenario_id": "9144bc1f41db1032", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे कमर में दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "4e6aeeac657451c7", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत कमर में दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "4e6aeeac657451c7", "source": "synthetic"}
+{"text": "मेरे कमर में दर्द हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "4e6aeeac657451c7", "source": "synthetic"}
+{"text": "Mujhe kamar mein dard ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "81f1edd5adde3aec", "source": "synthetic"}
+{"text": "Doctor, mujhe kamar mein dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "81f1edd5adde3aec", "source": "synthetic"}
+{"text": "Mere kamar mein dard ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "81f1edd5adde3aec", "source": "synthetic"}
+{"text": "I am suffering from heavy bleeding during my period.", "label": "symptom", "language": "en", "scenario_id": "fc2d690d73a1f127", "source": "synthetic"}
+{"text": "I am getting heavy bleeding during my period.", "label": "symptom", "language": "en", "scenario_id": "fc2d690d73a1f127", "source": "synthetic"}
+{"text": "I have heavy bleeding during my period.", "label": "symptom", "language": "en", "scenario_id": "fc2d690d73a1f127", "source": "synthetic"}
+{"text": "मुझे माहवारी में ज्यादा खून आना है।", "label": "symptom", "language": "hi", "scenario_id": "e95393389f9cf6fb", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे माहवारी में ज्यादा खून आना है।", "label": "symptom", "language": "hi", "scenario_id": "e95393389f9cf6fb", "source": "synthetic"}
+{"text": "मेरे माहवारी में ज्यादा खून आना हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "e95393389f9cf6fb", "source": "synthetic"}
+{"text": "Mujhe mahwari mein zyada khoon aana hai.", "label": "symptom", "language": "hinglish", "scenario_id": "f98a7062824a3a09", "source": "synthetic"}
+{"text": "Doctor, mujhe mahwari mein zyada khoon aana hai.", "label": "symptom", "language": "hinglish", "scenario_id": "f98a7062824a3a09", "source": "synthetic"}
+{"text": "Main mahwari mein zyada khoon aana se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "f98a7062824a3a09", "source": "synthetic"}
+{"text": "The main problem is a fever with chills.", "label": "symptom", "language": "en", "scenario_id": "b91bcda0bd6594f5", "source": "synthetic"}
+{"text": "I am getting a fever with chills.", "label": "symptom", "language": "en", "scenario_id": "b91bcda0bd6594f5", "source": "synthetic"}
+{"text": "There is a fever with chills bothering me.", "label": "symptom", "language": "en", "scenario_id": "b91bcda0bd6594f5", "source": "synthetic"}
+{"text": "मैं ठंड लगकर बुखार की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "ccb48d87a4f8ae60", "source": "synthetic"}
+{"text": "मेरे ठंड लगकर बुखार हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "ccb48d87a4f8ae60", "source": "synthetic"}
+{"text": "मुझे ठंड लगकर बुखार की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "ccb48d87a4f8ae60", "source": "synthetic"}
+{"text": "Main thand lagkar bukhar ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "93d8d0843f45fd4c", "source": "synthetic"}
+{"text": "Doctor, mujhe thand lagkar bukhar hai.", "label": "symptom", "language": "hinglish", "scenario_id": "93d8d0843f45fd4c", "source": "synthetic"}
+{"text": "Mujhe thand lagkar bukhar ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "93d8d0843f45fd4c", "source": "synthetic"}
+{"text": "For me there is loose motions since morning.", "label": "symptom", "language": "en", "scenario_id": "0eaf19f0da7ce150", "source": "synthetic"}
+{"text": "I am getting loose motions since morning.", "label": "symptom", "language": "en", "scenario_id": "0eaf19f0da7ce150", "source": "synthetic"}
+{"text": "There is loose motions since morning bothering me.", "label": "symptom", "language": "en", "scenario_id": "0eaf19f0da7ce150", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत सुबह से दस्त है।", "label": "symptom", "language": "hi", "scenario_id": "429a80b7744ab84f", "source": "synthetic"}
+{"text": "मुझे सुबह से दस्त की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "429a80b7744ab84f", "source": "synthetic"}
+{"text": "मुझे सुबह से दस्त है।", "label": "symptom", "language": "hi", "scenario_id": "429a80b7744ab84f", "source": "synthetic"}
+{"text": "Main subah se dast ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "5d73895c78d7da88", "source": "synthetic"}
+{"text": "Meri main problem subah se dast hai.", "label": "symptom", "language": "hinglish", "scenario_id": "5d73895c78d7da88", "source": "synthetic"}
+{"text": "Mujhe subah se dast hai.", "label": "symptom", "language": "hinglish", "scenario_id": "5d73895c78d7da88", "source": "synthetic"}
+{"text": "For me there is joint pain in both knees.", "label": "symptom", "language": "en", "scenario_id": "c19baed7ea1f4dda", "source": "synthetic"}
+{"text": "The main problem is joint pain in both knees.", "label": "symptom", "language": "en", "scenario_id": "c19baed7ea1f4dda", "source": "synthetic"}
+{"text": "I am suffering from joint pain in both knees.", "label": "symptom", "language": "en", "scenario_id": "c19baed7ea1f4dda", "source": "synthetic"}
+{"text": "मैं दोनों घुटनों में दर्द की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "aed7d9825af22388", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे दोनों घुटनों में दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "aed7d9825af22388", "source": "synthetic"}
+{"text": "मैं दोनों घुटनों में दर्द से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "aed7d9825af22388", "source": "synthetic"}
+{"text": "Main dono ghutno mein dard ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "9c3f7d78da82e66b", "source": "synthetic"}
+{"text": "Mujhe dono ghutno mein dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "9c3f7d78da82e66b", "source": "synthetic"}
+{"text": "Main dono ghutno mein dard se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "9c3f7d78da82e66b", "source": "synthetic"}
+{"text": "I am suffering from vomiting after meals.", "label": "symptom", "language": "en", "scenario_id": "60e7015c89df2640", "source": "synthetic"}
+{"text": "I have vomiting after meals.", "label": "symptom", "language": "en", "scenario_id": "60e7015c89df2640", "source": "synthetic"}
+{"text": "The main problem is vomiting after meals.", "label": "symptom", "language": "en", "scenario_id": "60e7015c89df2640", "source": "synthetic"}
+{"text": "मुझे खाने के बाद उल्टी है।", "label": "symptom", "language": "hi", "scenario_id": "08819c9d0b44a010", "source": "synthetic"}
+{"text": "मैं खाने के बाद उल्टी की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "08819c9d0b44a010", "source": "synthetic"}
+{"text": "मैं खाने के बाद उल्टी से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "08819c9d0b44a010", "source": "synthetic"}
+{"text": "Mujhe khane ke baad ulti hai.", "label": "symptom", "language": "hinglish", "scenario_id": "6acdb2fbabdcffbb", "source": "synthetic"}
+{"text": "Meri main problem khane ke baad ulti hai.", "label": "symptom", "language": "hinglish", "scenario_id": "6acdb2fbabdcffbb", "source": "synthetic"}
+{"text": "Main khane ke baad ulti se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "6acdb2fbabdcffbb", "source": "synthetic"}
+{"text": "For me there is a headache with light sensitivity.", "label": "symptom", "language": "en", "scenario_id": "a91633e49fbb760c", "source": "synthetic"}
+{"text": "I have a headache with light sensitivity.", "label": "symptom", "language": "en", "scenario_id": "a91633e49fbb760c", "source": "synthetic"}
+{"text": "The main problem is a headache with light sensitivity.", "label": "symptom", "language": "en", "scenario_id": "a91633e49fbb760c", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत रोशनी में सिरदर्द बढ़ना है।", "label": "symptom", "language": "hi", "scenario_id": "3b872494c72b35e5", "source": "synthetic"}
+{"text": "मुझे रोशनी में सिरदर्द बढ़ना की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "3b872494c72b35e5", "source": "synthetic"}
+{"text": "मैं रोशनी में सिरदर्द बढ़ना की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "3b872494c72b35e5", "source": "synthetic"}
+{"text": "Mujhe roshni mein sir dard badhna ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "c8bbfab56d53cd8e", "source": "synthetic"}
+{"text": "Doctor, mujhe roshni mein sir dard badhna hai.", "label": "symptom", "language": "hinglish", "scenario_id": "c8bbfab56d53cd8e", "source": "synthetic"}
+{"text": "Main roshni mein sir dard badhna ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "c8bbfab56d53cd8e", "source": "synthetic"}
+{"text": "I came because of a throbbing pain on one side of my head.", "label": "symptom", "language": "en", "scenario_id": "c6d372b2f24b514d", "source": "synthetic"}
+{"text": "For me there is a throbbing pain on one side of my head.", "label": "symptom", "language": "en", "scenario_id": "c6d372b2f24b514d", "source": "synthetic"}
+{"text": "I am getting a throbbing pain on one side of my head.", "label": "symptom", "language": "en", "scenario_id": "c6d372b2f24b514d", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत सिर के एक तरफ तेज दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "14e2a0a1abaa49bb", "source": "synthetic"}
+{"text": "मेरे सिर के एक तरफ तेज दर्द हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "14e2a0a1abaa49bb", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे सिर के एक तरफ तेज दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "14e2a0a1abaa49bb", "source": "synthetic"}
+{"text": "Mere sir ke ek taraf tez dard ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "553ddd6fa9f1de07", "source": "synthetic"}
+{"text": "Meri main problem sir ke ek taraf tez dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "553ddd6fa9f1de07", "source": "synthetic"}
+{"text": "Main sir ke ek taraf tez dard ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "553ddd6fa9f1de07", "source": "synthetic"}
+{"text": "I am suffering from difficulty swallowing food.", "label": "symptom", "language": "en", "scenario_id": "646f27841373251f", "source": "synthetic"}
+{"text": "The main problem is difficulty swallowing food.", "label": "symptom", "language": "en", "scenario_id": "646f27841373251f", "source": "synthetic"}
+{"text": "I came because of difficulty swallowing food.", "label": "symptom", "language": "en", "scenario_id": "646f27841373251f", "source": "synthetic"}
+{"text": "मुझे खाना निगलने में कठिनाई की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "efd7e4ec87804bb1", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे खाना निगलने में कठिनाई है।", "label": "symptom", "language": "hi", "scenario_id": "efd7e4ec87804bb1", "source": "synthetic"}
+{"text": "मैं खाना निगलने में कठिनाई की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "efd7e4ec87804bb1", "source": "synthetic"}
+{"text": "Main khana nigalne mein kathinai se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "b14d24dd00fb5527", "source": "synthetic"}
+{"text": "Mujhe khana nigalne mein kathinai hai.", "label": "symptom", "language": "hinglish", "scenario_id": "b14d24dd00fb5527", "source": "synthetic"}
+{"text": "Main khana nigalne mein kathinai ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "b14d24dd00fb5527", "source": "synthetic"}
+{"text": "For me there is a dry cough that does not stop.", "label": "symptom", "language": "en", "scenario_id": "ea334985baf538fa", "source": "synthetic"}
+{"text": "I have a dry cough that does not stop.", "label": "symptom", "language": "en", "scenario_id": "ea334985baf538fa", "source": "synthetic"}
+{"text": "The main problem is a dry cough that does not stop.", "label": "symptom", "language": "en", "scenario_id": "ea334985baf538fa", "source": "synthetic"}
+{"text": "मुझे जो रुकती नहीं ऐसी सूखी खांसी की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "bfb8fb6f3d58c51a", "source": "synthetic"}
+{"text": "मेरे जो रुकती नहीं ऐसी सूखी खांसी हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "bfb8fb6f3d58c51a", "source": "synthetic"}
+{"text": "मैं जो रुकती नहीं ऐसी सूखी खांसी से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "bfb8fb6f3d58c51a", "source": "synthetic"}
+{"text": "Doctor, mujhe jo rukti nahi aisi sookhi khansi hai.", "label": "symptom", "language": "hinglish", "scenario_id": "2b4deee1f359de2d", "source": "synthetic"}
+{"text": "Main jo rukti nahi aisi sookhi khansi ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "2b4deee1f359de2d", "source": "synthetic"}
+{"text": "Mere jo rukti nahi aisi sookhi khansi ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "2b4deee1f359de2d", "source": "synthetic"}
+{"text": "For me there is chest tightness when I walk fast.", "label": "symptom", "language": "en", "scenario_id": "e86df7d4581073ca", "source": "synthetic"}
+{"text": "I am getting chest tightness when I walk fast.", "label": "symptom", "language": "en", "scenario_id": "e86df7d4581073ca", "source": "synthetic"}
+{"text": "The main problem is chest tightness when I walk fast.", "label": "symptom", "language": "en", "scenario_id": "e86df7d4581073ca", "source": "synthetic"}
+{"text": "मैं तेज चलने पर सीने में जकड़न की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "f3dbc491739477f4", "source": "synthetic"}
+{"text": "मेरे तेज चलने पर सीने में जकड़न हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "f3dbc491739477f4", "source": "synthetic"}
+{"text": "मुझे तेज चलने पर सीने में जकड़न की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "f3dbc491739477f4", "source": "synthetic"}
+{"text": "Main tez chalne par seene mein jakdan se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "a87dee8dfadb94f8", "source": "synthetic"}
+{"text": "Mujhe tez chalne par seene mein jakdan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a87dee8dfadb94f8", "source": "synthetic"}
+{"text": "Meri main problem tez chalne par seene mein jakdan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a87dee8dfadb94f8", "source": "synthetic"}
+{"text": "I came because of a burning sensation while urinating.", "label": "symptom", "language": "en", "scenario_id": "b990a2b7da3afa14", "source": "synthetic"}
+{"text": "The main problem is a burning sensation while urinating.", "label": "symptom", "language": "en", "scenario_id": "b990a2b7da3afa14", "source": "synthetic"}
+{"text": "I have a burning sensation while urinating.", "label": "symptom", "language": "en", "scenario_id": "b990a2b7da3afa14", "source": "synthetic"}
+{"text": "मैं पेशाब करते समय जलन से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "13bfca58f7b4d561", "source": "synthetic"}
+{"text": "मैं पेशाब करते समय जलन की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "13bfca58f7b4d561", "source": "synthetic"}
+{"text": "मुझे पेशाब करते समय जलन है।", "label": "symptom", "language": "hi", "scenario_id": "13bfca58f7b4d561", "source": "synthetic"}
+{"text": "Doctor, mujhe peshab karte samay jalan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "574b02c72a686544", "source": "synthetic"}
+{"text": "Mujhe peshab karte samay jalan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "574b02c72a686544", "source": "synthetic"}
+{"text": "Main peshab karte samay jalan se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "574b02c72a686544", "source": "synthetic"}
+{"text": "I am getting a constant ringing in my ears.", "label": "symptom", "language": "en", "scenario_id": "daa29994fa333de4", "source": "synthetic"}
+{"text": "Doctor, I feel a constant ringing in my ears.", "label": "symptom", "language": "en", "scenario_id": "daa29994fa333de4", "source": "synthetic"}
+{"text": "The main problem is a constant ringing in my ears.", "label": "symptom", "language": "en", "scenario_id": "daa29994fa333de4", "source": "synthetic"}
+{"text": "मेरे कानों में लगातार आवाज हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "c8c019d47611a7cb", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत कानों में लगातार आवाज है।", "label": "symptom", "language": "hi", "scenario_id": "c8c019d47611a7cb", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे कानों में लगातार आवाज है।", "label": "symptom", "language": "hi", "scenario_id": "c8c019d47611a7cb", "source": "synthetic"}
+{"text": "Meri main problem kaanon mein lagatar awaaz hai.", "label": "symptom", "language": "hinglish", "scenario_id": "49ae089f79f46dcc", "source": "synthetic"}
+{"text": "Main kaanon mein lagatar awaaz ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "49ae089f79f46dcc", "source": "synthetic"}
+{"text": "Mujhe kaanon mein lagatar awaaz hai.", "label": "symptom", "language": "hinglish", "scenario_id": "49ae089f79f46dcc", "source": "synthetic"}
+{"text": "The main problem is a lump in my neck that is growing.", "label": "symptom", "language": "en", "scenario_id": "93e781f2de011b36", "source": "synthetic"}
+{"text": "I am suffering from a lump in my neck that is growing.", "label": "symptom", "language": "en", "scenario_id": "93e781f2de011b36", "source": "synthetic"}
+{"text": "Doctor, I feel a lump in my neck that is growing.", "label": "symptom", "language": "en", "scenario_id": "93e781f2de011b36", "source": "synthetic"}
+{"text": "मुझे गर्दन में बढ़ती गांठ की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "b0a7ea52f39bca54", "source": "synthetic"}
+{"text": "मैं गर्दन में बढ़ती गांठ से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "b0a7ea52f39bca54", "source": "synthetic"}
+{"text": "मेरे गर्दन में बढ़ती गांठ हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "b0a7ea52f39bca54", "source": "synthetic"}
+{"text": "Doctor, mujhe gardan mein badhti gaanth hai.", "label": "symptom", "language": "hinglish", "scenario_id": "59e03006681223f1", "source": "synthetic"}
+{"text": "Mujhe gardan mein badhti gaanth ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "59e03006681223f1", "source": "synthetic"}
+{"text": "Main gardan mein badhti gaanth se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "59e03006681223f1", "source": "synthetic"}
+{"text": "The main problem is yellowing of my eyes.", "label": "symptom", "language": "en", "scenario_id": "565e2d06cbc70301", "source": "synthetic"}
+{"text": "I am getting yellowing of my eyes.", "label": "symptom", "language": "en", "scenario_id": "565e2d06cbc70301", "source": "synthetic"}
+{"text": "For me there is yellowing of my eyes.", "label": "symptom", "language": "en", "scenario_id": "565e2d06cbc70301", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे आंखों का पीलापन है।", "label": "symptom", "language": "hi", "scenario_id": "99e286686588cb20", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत आंखों का पीलापन है।", "label": "symptom", "language": "hi", "scenario_id": "99e286686588cb20", "source": "synthetic"}
+{"text": "मुझे आंखों का पीलापन की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "99e286686588cb20", "source": "synthetic"}
+{"text": "Doctor, mujhe aankhon ka peelapan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "64e867f897c9ac60", "source": "synthetic"}
+{"text": "Mujhe aankhon ka peelapan ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "64e867f897c9ac60", "source": "synthetic"}
+{"text": "Main aankhon ka peelapan ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "64e867f897c9ac60", "source": "synthetic"}
+{"text": "The main problem is excessive thirst through the day.", "label": "symptom", "language": "en", "scenario_id": "a3dce7a264a46a82", "source": "synthetic"}
+{"text": "Doctor, I feel excessive thirst through the day.", "label": "symptom", "language": "en", "scenario_id": "a3dce7a264a46a82", "source": "synthetic"}
+{"text": "I came because of excessive thirst through the day.", "label": "symptom", "language": "en", "scenario_id": "a3dce7a264a46a82", "source": "synthetic"}
+{"text": "मैं दिन भर अत्यधिक प्यास की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "09ef3fc236dd01fb", "source": "synthetic"}
+{"text": "मेरे दिन भर अत्यधिक प्यास हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "09ef3fc236dd01fb", "source": "synthetic"}
+{"text": "मैं दिन भर अत्यधिक प्यास से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "09ef3fc236dd01fb", "source": "synthetic"}
+{"text": "Mujhe din bhar atyadhik pyaas hai.", "label": "symptom", "language": "hinglish", "scenario_id": "35f7d26201da6d94", "source": "synthetic"}
+{"text": "Main din bhar atyadhik pyaas se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "35f7d26201da6d94", "source": "synthetic"}
+{"text": "Mujhe din bhar atyadhik pyaas ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "35f7d26201da6d94", "source": "synthetic"}
+{"text": "I am suffering from my hands shaking while holding things.", "label": "symptom", "language": "en", "scenario_id": "f1c495df0146825f", "source": "synthetic"}
+{"text": "I am getting my hands shaking while holding things.", "label": "symptom", "language": "en", "scenario_id": "f1c495df0146825f", "source": "synthetic"}
+{"text": "I came because of my hands shaking while holding things.", "label": "symptom", "language": "en", "scenario_id": "f1c495df0146825f", "source": "synthetic"}
+{"text": "मुझे चीजें पकड़ते समय हाथ कांपना है।", "label": "symptom", "language": "hi", "scenario_id": "30cd108befcfbdaf", "source": "synthetic"}
+{"text": "मुझे चीजें पकड़ते समय हाथ कांपना की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "30cd108befcfbdaf", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे चीजें पकड़ते समय हाथ कांपना है।", "label": "symptom", "language": "hi", "scenario_id": "30cd108befcfbdaf", "source": "synthetic"}
+{"text": "Mujhe cheezein pakadte samay haath kaanpna hai.", "label": "symptom", "language": "hinglish", "scenario_id": "0a020f2d34f29b45", "source": "synthetic"}
+{"text": "Main cheezein pakadte samay haath kaanpna se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "0a020f2d34f29b45", "source": "synthetic"}
+{"text": "Doctor, mujhe cheezein pakadte samay haath kaanpna hai.", "label": "symptom", "language": "hinglish", "scenario_id": "0a020f2d34f29b45", "source": "synthetic"}
+{"text": "I came because of a painful swelling in my armpit.", "label": "symptom", "language": "en", "scenario_id": "7d14f3117b5e735f", "source": "synthetic"}
+{"text": "For me there is a painful swelling in my armpit.", "label": "symptom", "language": "en", "scenario_id": "7d14f3117b5e735f", "source": "synthetic"}
+{"text": "The main problem is a painful swelling in my armpit.", "label": "symptom", "language": "en", "scenario_id": "7d14f3117b5e735f", "source": "synthetic"}
+{"text": "मुझे बगल में दर्दभरी सूजन की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "c5f7c4cf414e9b15", "source": "synthetic"}
+{"text": "मैं बगल में दर्दभरी सूजन की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "c5f7c4cf414e9b15", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत बगल में दर्दभरी सूजन है।", "label": "symptom", "language": "hi", "scenario_id": "c5f7c4cf414e9b15", "source": "synthetic"}
+{"text": "Mujhe bagal mein dardbhari sujan ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a0629935662b0336", "source": "synthetic"}
+{"text": "Mere bagal mein dardbhari sujan ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a0629935662b0336", "source": "synthetic"}
+{"text": "Main bagal mein dardbhari sujan se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "a0629935662b0336", "source": "synthetic"}
+{"text": "There is trouble falling asleep at night bothering me.", "label": "symptom", "language": "en", "scenario_id": "5c01e4768393df29", "source": "synthetic"}
+{"text": "For me there is trouble falling asleep at night.", "label": "symptom", "language": "en", "scenario_id": "5c01e4768393df29", "source": "synthetic"}
+{"text": "I came because of trouble falling asleep at night.", "label": "symptom", "language": "en", "scenario_id": "5c01e4768393df29", "source": "synthetic"}
+{"text": "मुझे रात में नींद न आना है।", "label": "symptom", "language": "hi", "scenario_id": "1001eb2105399aa2", "source": "synthetic"}
+{"text": "मेरे रात में नींद न आना हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "1001eb2105399aa2", "source": "synthetic"}
+{"text": "मैं रात में नींद न आना की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "1001eb2105399aa2", "source": "synthetic"}
+{"text": "Mujhe raat mein neend na aana hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a305af7dbe58731f", "source": "synthetic"}
+{"text": "Doctor, mujhe raat mein neend na aana hai.", "label": "symptom", "language": "hinglish", "scenario_id": "a305af7dbe58731f", "source": "synthetic"}
+{"text": "Main raat mein neend na aana se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "a305af7dbe58731f", "source": "synthetic"}
+{"text": "I came because of a white patch on my tongue.", "label": "symptom", "language": "en", "scenario_id": "9a7139adfb6f33f0", "source": "synthetic"}
+{"text": "There is a white patch on my tongue bothering me.", "label": "symptom", "language": "en", "scenario_id": "9a7139adfb6f33f0", "source": "synthetic"}
+{"text": "For me there is a white patch on my tongue.", "label": "symptom", "language": "en", "scenario_id": "9a7139adfb6f33f0", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे जीभ पर सफेद दाग है।", "label": "symptom", "language": "hi", "scenario_id": "9be0779a33f5b107", "source": "synthetic"}
+{"text": "मुझे जीभ पर सफेद दाग है।", "label": "symptom", "language": "hi", "scenario_id": "9be0779a33f5b107", "source": "synthetic"}
+{"text": "मेरे जीभ पर सफेद दाग हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "9be0779a33f5b107", "source": "synthetic"}
+{"text": "Main jeebh par safed daag se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "d9b48db640257249", "source": "synthetic"}
+{"text": "Main jeebh par safed daag ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "d9b48db640257249", "source": "synthetic"}
+{"text": "Doctor, mujhe jeebh par safed daag hai.", "label": "symptom", "language": "hinglish", "scenario_id": "d9b48db640257249", "source": "synthetic"}
+{"text": "There is cramps in my legs at night bothering me.", "label": "symptom", "language": "en", "scenario_id": "02992434be7483df", "source": "synthetic"}
+{"text": "I have cramps in my legs at night.", "label": "symptom", "language": "en", "scenario_id": "02992434be7483df", "source": "synthetic"}
+{"text": "I am getting cramps in my legs at night.", "label": "symptom", "language": "en", "scenario_id": "02992434be7483df", "source": "synthetic"}
+{"text": "मैं रात में पैरों में अकड़न से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "425321ba14181c16", "source": "synthetic"}
+{"text": "मुझे रात में पैरों में अकड़न की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "425321ba14181c16", "source": "synthetic"}
+{"text": "मेरे रात में पैरों में अकड़न हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "425321ba14181c16", "source": "synthetic"}
+{"text": "Main raat mein pairon mein akdan ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "79734c48c69857e5", "source": "synthetic"}
+{"text": "Main raat mein pairon mein akdan se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "79734c48c69857e5", "source": "synthetic"}
+{"text": "Meri main problem raat mein pairon mein akdan hai.", "label": "symptom", "language": "hinglish", "scenario_id": "79734c48c69857e5", "source": "synthetic"}
+{"text": "I have sudden weakness on my left side.", "label": "symptom", "language": "en", "scenario_id": "6a4bf520e9a158e6", "source": "synthetic"}
+{"text": "I am suffering from sudden weakness on my left side.", "label": "symptom", "language": "en", "scenario_id": "6a4bf520e9a158e6", "source": "synthetic"}
+{"text": "Doctor, I feel sudden weakness on my left side.", "label": "symptom", "language": "en", "scenario_id": "6a4bf520e9a158e6", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे बाईं तरफ अचानक कमजोरी है।", "label": "symptom", "language": "hi", "scenario_id": "9099e9301e301dcf", "source": "synthetic"}
+{"text": "मुझे बाईं तरफ अचानक कमजोरी है।", "label": "symptom", "language": "hi", "scenario_id": "9099e9301e301dcf", "source": "synthetic"}
+{"text": "मुझे बाईं तरफ अचानक कमजोरी की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "9099e9301e301dcf", "source": "synthetic"}
+{"text": "Mujhe baayi taraf achanak kamzori ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "9afa467efd6df374", "source": "synthetic"}
+{"text": "Doctor, mujhe baayi taraf achanak kamzori hai.", "label": "symptom", "language": "hinglish", "scenario_id": "9afa467efd6df374", "source": "synthetic"}
+{"text": "Mere baayi taraf achanak kamzori ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "9afa467efd6df374", "source": "synthetic"}
+{"text": "I am getting pain in my upper abdomen after tea.", "label": "symptom", "language": "en", "scenario_id": "7c66e58a2a9139f4", "source": "synthetic"}
+{"text": "For me there is pain in my upper abdomen after tea.", "label": "symptom", "language": "en", "scenario_id": "7c66e58a2a9139f4", "source": "synthetic"}
+{"text": "I am suffering from pain in my upper abdomen after tea.", "label": "symptom", "language": "en", "scenario_id": "7c66e58a2a9139f4", "source": "synthetic"}
+{"text": "मैं चाय के बाद ऊपरी पेट में दर्द से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "0cacab9d74df25c1", "source": "synthetic"}
+{"text": "मेरी मुख्य शिकायत चाय के बाद ऊपरी पेट में दर्द है।", "label": "symptom", "language": "hi", "scenario_id": "0cacab9d74df25c1", "source": "synthetic"}
+{"text": "मुझे चाय के बाद ऊपरी पेट में दर्द की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "0cacab9d74df25c1", "source": "synthetic"}
+{"text": "Mujhe chai ke baad upari pet mein dard ki takleef hai.", "label": "symptom", "language": "hinglish", "scenario_id": "584856fd9e5fe224", "source": "synthetic"}
+{"text": "Main chai ke baad upari pet mein dard se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "584856fd9e5fe224", "source": "synthetic"}
+{"text": "Meri main problem chai ke baad upari pet mein dard hai.", "label": "symptom", "language": "hinglish", "scenario_id": "584856fd9e5fe224", "source": "synthetic"}
+{"text": "I have my eyes watering constantly.", "label": "symptom", "language": "en", "scenario_id": "0299bfad05b238a2", "source": "synthetic"}
+{"text": "I came because of my eyes watering constantly.", "label": "symptom", "language": "en", "scenario_id": "0299bfad05b238a2", "source": "synthetic"}
+{"text": "I am suffering from my eyes watering constantly.", "label": "symptom", "language": "en", "scenario_id": "0299bfad05b238a2", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे आंखों से लगातार पानी आना है।", "label": "symptom", "language": "hi", "scenario_id": "51700d3b340c9d1b", "source": "synthetic"}
+{"text": "मैं आंखों से लगातार पानी आना की शिकायत लेकर आया हूं।", "label": "symptom", "language": "hi", "scenario_id": "51700d3b340c9d1b", "source": "synthetic"}
+{"text": "मैं आंखों से लगातार पानी आना से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "51700d3b340c9d1b", "source": "synthetic"}
+{"text": "Meri main problem aankhon se lagatar paani aana hai.", "label": "symptom", "language": "hinglish", "scenario_id": "3ad97b40c75c64e1", "source": "synthetic"}
+{"text": "Mujhe aankhon se lagatar paani aana hai.", "label": "symptom", "language": "hinglish", "scenario_id": "3ad97b40c75c64e1", "source": "synthetic"}
+{"text": "Main aankhon se lagatar paani aana se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "3ad97b40c75c64e1", "source": "synthetic"}
+{"text": "Doctor, I feel bleeding gums while brushing.", "label": "symptom", "language": "en", "scenario_id": "a97993bcf9895805", "source": "synthetic"}
+{"text": "I came because of bleeding gums while brushing.", "label": "symptom", "language": "en", "scenario_id": "a97993bcf9895805", "source": "synthetic"}
+{"text": "For me there is bleeding gums while brushing.", "label": "symptom", "language": "en", "scenario_id": "a97993bcf9895805", "source": "synthetic"}
+{"text": "डॉक्टर, मुझे ब्रश करते समय मसूड़ों से खून है।", "label": "symptom", "language": "hi", "scenario_id": "58b4f02e517b55ba", "source": "synthetic"}
+{"text": "मैं ब्रश करते समय मसूड़ों से खून से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "58b4f02e517b55ba", "source": "synthetic"}
+{"text": "मेरे ब्रश करते समय मसूड़ों से खून हो रहा है।", "label": "symptom", "language": "hi", "scenario_id": "58b4f02e517b55ba", "source": "synthetic"}
+{"text": "Meri main problem brush karte samay masudon se khoon hai.", "label": "symptom", "language": "hinglish", "scenario_id": "d8db541ba81e1316", "source": "synthetic"}
+{"text": "Main brush karte samay masudon se khoon se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "d8db541ba81e1316", "source": "synthetic"}
+{"text": "Mujhe brush karte samay masudon se khoon hai.", "label": "symptom", "language": "hinglish", "scenario_id": "d8db541ba81e1316", "source": "synthetic"}
+{"text": "I have a hoarse voice since yesterday.", "label": "symptom", "language": "en", "scenario_id": "9bd0e66ccc6dd295", "source": "synthetic"}
+{"text": "I am suffering from a hoarse voice since yesterday.", "label": "symptom", "language": "en", "scenario_id": "9bd0e66ccc6dd295", "source": "synthetic"}
+{"text": "For me there is a hoarse voice since yesterday.", "label": "symptom", "language": "en", "scenario_id": "9bd0e66ccc6dd295", "source": "synthetic"}
+{"text": "मुझे कल से आवाज बैठी हुई की तकलीफ है।", "label": "symptom", "language": "hi", "scenario_id": "7a8e2580299e70fc", "source": "synthetic"}
+{"text": "मैं कल से आवाज बैठी हुई से परेशान हूं।", "label": "symptom", "language": "hi", "scenario_id": "7a8e2580299e70fc", "source": "synthetic"}
+{"text": "मुझे कल से आवाज बैठी हुई है।", "label": "symptom", "language": "hi", "scenario_id": "7a8e2580299e70fc", "source": "synthetic"}
+{"text": "Main kal se awaaz baithi hui ki shikayat lekar aaya hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "59f2759022a431c2", "source": "synthetic"}
+{"text": "Main kal se awaaz baithi hui se pareshan hoon.", "label": "symptom", "language": "hinglish", "scenario_id": "59f2759022a431c2", "source": "synthetic"}
+{"text": "Mere kal se awaaz baithi hui ho raha hai.", "label": "symptom", "language": "hinglish", "scenario_id": "59f2759022a431c2", "source": "synthetic"}
+{"text": "It has lasted two days.", "label": "duration", "language": "en", "scenario_id": "ff25ffd1e58812f4", "source": "synthetic"}
+{"text": "It has continued for two days.", "label": "duration", "language": "en", "scenario_id": "ff25ffd1e58812f4", "source": "synthetic"}
+{"text": "I noticed it two days.", "label": "duration", "language": "en", "scenario_id": "ff25ffd1e58812f4", "source": "synthetic"}
+{"text": "यह दो दिन तक रहा।", "label": "duration", "language": "hi", "scenario_id": "377d4804813bffac", "source": "synthetic"}
+{"text": "शिकायत दो दिन से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "377d4804813bffac", "source": "synthetic"}
+{"text": "यह दो दिन पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "377d4804813bffac", "source": "synthetic"}
+{"text": "Ye do din tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "5a0ea859261b59ab", "source": "synthetic"}
+{"text": "Ye do din se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "5a0ea859261b59ab", "source": "synthetic"}
+{"text": "Ye do din tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "5a0ea859261b59ab", "source": "synthetic"}
+{"text": "The complaint began three weeks.", "label": "duration", "language": "en", "scenario_id": "48ae6e3662021316", "source": "synthetic"}
+{"text": "It has continued for three weeks.", "label": "duration", "language": "en", "scenario_id": "48ae6e3662021316", "source": "synthetic"}
+{"text": "It has lasted three weeks.", "label": "duration", "language": "en", "scenario_id": "48ae6e3662021316", "source": "synthetic"}
+{"text": "शिकायत तीन हफ्ते से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "6815c1a5d5e89a6f", "source": "synthetic"}
+{"text": "यह तीन हफ्ते से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "6815c1a5d5e89a6f", "source": "synthetic"}
+{"text": "यह तीन हफ्ते तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "6815c1a5d5e89a6f", "source": "synthetic"}
+{"text": "Ye teen hafte se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "95b04ce02c77ccdf", "source": "synthetic"}
+{"text": "Shikayat teen hafte se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "95b04ce02c77ccdf", "source": "synthetic"}
+{"text": "Maine ye teen hafte dekha.", "label": "duration", "language": "hinglish", "scenario_id": "95b04ce02c77ccdf", "source": "synthetic"}
+{"text": "I noticed it about six hours.", "label": "duration", "language": "en", "scenario_id": "01735b926dbbba94", "source": "synthetic"}
+{"text": "I have had this for about six hours.", "label": "duration", "language": "en", "scenario_id": "01735b926dbbba94", "source": "synthetic"}
+{"text": "The problem appears about six hours.", "label": "duration", "language": "en", "scenario_id": "01735b926dbbba94", "source": "synthetic"}
+{"text": "यह करीब छह घंटे से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "e9c73b12cd18c7ab", "source": "synthetic"}
+{"text": "शिकायत करीब छह घंटे से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "e9c73b12cd18c7ab", "source": "synthetic"}
+{"text": "मैंने यह करीब छह घंटे देखा।", "label": "duration", "language": "hi", "scenario_id": "e9c73b12cd18c7ab", "source": "synthetic"}
+{"text": "Ye karib chhe ghante tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "7ea85d0d1ad026a8", "source": "synthetic"}
+{"text": "Mujhe ye karib chhe ghante se hai.", "label": "duration", "language": "hinglish", "scenario_id": "7ea85d0d1ad026a8", "source": "synthetic"}
+{"text": "Maine ye karib chhe ghante dekha.", "label": "duration", "language": "hinglish", "scenario_id": "7ea85d0d1ad026a8", "source": "synthetic"}
+{"text": "This has been going on for since last Monday.", "label": "duration", "language": "en", "scenario_id": "e3e6b0e7f66f0733", "source": "synthetic"}
+{"text": "It has continued for since last Monday.", "label": "duration", "language": "en", "scenario_id": "e3e6b0e7f66f0733", "source": "synthetic"}
+{"text": "The complaint began since last Monday.", "label": "duration", "language": "en", "scenario_id": "e3e6b0e7f66f0733", "source": "synthetic"}
+{"text": "यह पिछले सोमवार से पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "760227b0ccd315a1", "source": "synthetic"}
+{"text": "यह पिछले सोमवार से तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "760227b0ccd315a1", "source": "synthetic"}
+{"text": "मैंने यह पिछले सोमवार से देखा।", "label": "duration", "language": "hi", "scenario_id": "760227b0ccd315a1", "source": "synthetic"}
+{"text": "Ye pichhle somwar se pehle shuru hua.", "label": "duration", "language": "hinglish", "scenario_id": "5804c4a45050f6ac", "source": "synthetic"}
+{"text": "Shikayat pichhle somwar se se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "5804c4a45050f6ac", "source": "synthetic"}
+{"text": "Ye pichhle somwar se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "5804c4a45050f6ac", "source": "synthetic"}
+{"text": "I noticed it for the past month.", "label": "duration", "language": "en", "scenario_id": "14504906fa5431d8", "source": "synthetic"}
+{"text": "It has continued for for the past month.", "label": "duration", "language": "en", "scenario_id": "14504906fa5431d8", "source": "synthetic"}
+{"text": "The problem appears for the past month.", "label": "duration", "language": "en", "scenario_id": "14504906fa5431d8", "source": "synthetic"}
+{"text": "यह पिछले एक महीने से पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "09167b9763646504", "source": "synthetic"}
+{"text": "यह पिछले एक महीने से तक रहा।", "label": "duration", "language": "hi", "scenario_id": "09167b9763646504", "source": "synthetic"}
+{"text": "यह पिछले एक महीने से से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "09167b9763646504", "source": "synthetic"}
+{"text": "Maine ye pichhle ek mahine se dekha.", "label": "duration", "language": "hinglish", "scenario_id": "d27b6f628952e071", "source": "synthetic"}
+{"text": "Shikayat pichhle ek mahine se se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "d27b6f628952e071", "source": "synthetic"}
+{"text": "Ye pichhle ek mahine se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "d27b6f628952e071", "source": "synthetic"}
+{"text": "The problem appears on and off for a year.", "label": "duration", "language": "en", "scenario_id": "d23983fbaa340ce6", "source": "synthetic"}
+{"text": "The complaint began on and off for a year.", "label": "duration", "language": "en", "scenario_id": "d23983fbaa340ce6", "source": "synthetic"}
+{"text": "It started on and off for a year ago.", "label": "duration", "language": "en", "scenario_id": "d23983fbaa340ce6", "source": "synthetic"}
+{"text": "यह एक साल से रुक-रुक कर पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "3cebc699e35c85e1", "source": "synthetic"}
+{"text": "मैंने यह एक साल से रुक-रुक कर देखा।", "label": "duration", "language": "hi", "scenario_id": "3cebc699e35c85e1", "source": "synthetic"}
+{"text": "शिकायत एक साल से रुक-रुक कर से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "3cebc699e35c85e1", "source": "synthetic"}
+{"text": "Ye ek saal se ruk ruk kar tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "5f1e62b43c335e3d", "source": "synthetic"}
+{"text": "Ye ek saal se ruk ruk kar tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "5f1e62b43c335e3d", "source": "synthetic"}
+{"text": "Ye ek saal se ruk ruk kar pehle shuru hua.", "label": "duration", "language": "hinglish", "scenario_id": "5f1e62b43c335e3d", "source": "synthetic"}
+{"text": "The problem appears just this morning.", "label": "duration", "language": "en", "scenario_id": "a6ca382e8113ca0a", "source": "synthetic"}
+{"text": "I noticed it just this morning.", "label": "duration", "language": "en", "scenario_id": "a6ca382e8113ca0a", "source": "synthetic"}
+{"text": "This has been going on for just this morning.", "label": "duration", "language": "en", "scenario_id": "a6ca382e8113ca0a", "source": "synthetic"}
+{"text": "शिकायत आज सुबह ही से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "faae8628eb2b07ce", "source": "synthetic"}
+{"text": "मैंने यह आज सुबह ही देखा।", "label": "duration", "language": "hi", "scenario_id": "faae8628eb2b07ce", "source": "synthetic"}
+{"text": "यह आज सुबह ही से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "faae8628eb2b07ce", "source": "synthetic"}
+{"text": "Maine ye aaj subah hi dekha.", "label": "duration", "language": "hinglish", "scenario_id": "670feffc7fb68ae3", "source": "synthetic"}
+{"text": "Ye aaj subah hi tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "670feffc7fb68ae3", "source": "synthetic"}
+{"text": "Mujhe ye aaj subah hi se hai.", "label": "duration", "language": "hinglish", "scenario_id": "670feffc7fb68ae3", "source": "synthetic"}
+{"text": "It has lasted since childhood.", "label": "duration", "language": "en", "scenario_id": "800d8e7032755c89", "source": "synthetic"}
+{"text": "This has been going on for since childhood.", "label": "duration", "language": "en", "scenario_id": "800d8e7032755c89", "source": "synthetic"}
+{"text": "The problem appears since childhood.", "label": "duration", "language": "en", "scenario_id": "800d8e7032755c89", "source": "synthetic"}
+{"text": "मैंने यह बचपन से देखा।", "label": "duration", "language": "hi", "scenario_id": "d27a07b667a22f57", "source": "synthetic"}
+{"text": "यह बचपन से तक रहा।", "label": "duration", "language": "hi", "scenario_id": "d27a07b667a22f57", "source": "synthetic"}
+{"text": "मुझे यह बचपन से से है।", "label": "duration", "language": "hi", "scenario_id": "d27a07b667a22f57", "source": "synthetic"}
+{"text": "Shikayat bachpan se se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "93c132f52d12b604", "source": "synthetic"}
+{"text": "Ye bachpan se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "93c132f52d12b604", "source": "synthetic"}
+{"text": "Maine ye bachpan se dekha.", "label": "duration", "language": "hinglish", "scenario_id": "93c132f52d12b604", "source": "synthetic"}
+{"text": "The complaint began for ten days now.", "label": "duration", "language": "en", "scenario_id": "0acf70caf670ffcf", "source": "synthetic"}
+{"text": "It has continued for for ten days now.", "label": "duration", "language": "en", "scenario_id": "0acf70caf670ffcf", "source": "synthetic"}
+{"text": "It started for ten days now ago.", "label": "duration", "language": "en", "scenario_id": "0acf70caf670ffcf", "source": "synthetic"}
+{"text": "यह अब दस दिन से से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "e68f7ba729a006a1", "source": "synthetic"}
+{"text": "शिकायत अब दस दिन से से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "e68f7ba729a006a1", "source": "synthetic"}
+{"text": "यह अब दस दिन से तक रहा।", "label": "duration", "language": "hi", "scenario_id": "e68f7ba729a006a1", "source": "synthetic"}
+{"text": "Maine ye ab das din se dekha.", "label": "duration", "language": "hinglish", "scenario_id": "9703aaceb9253f8c", "source": "synthetic"}
+{"text": "Ye ab das din se pehle shuru hua.", "label": "duration", "language": "hinglish", "scenario_id": "9703aaceb9253f8c", "source": "synthetic"}
+{"text": "Mujhe ye ab das din se se hai.", "label": "duration", "language": "hinglish", "scenario_id": "9703aaceb9253f8c", "source": "synthetic"}
+{"text": "This has been going on for a few minutes ago.", "label": "duration", "language": "en", "scenario_id": "4e2fffd6f7e63e83", "source": "synthetic"}
+{"text": "The complaint began a few minutes ago.", "label": "duration", "language": "en", "scenario_id": "4e2fffd6f7e63e83", "source": "synthetic"}
+{"text": "I noticed it a few minutes ago.", "label": "duration", "language": "en", "scenario_id": "4e2fffd6f7e63e83", "source": "synthetic"}
+{"text": "यह कुछ मिनट पहले से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "80c617d09e92a4e4", "source": "synthetic"}
+{"text": "यह कुछ मिनट पहले तक रहा।", "label": "duration", "language": "hi", "scenario_id": "80c617d09e92a4e4", "source": "synthetic"}
+{"text": "मैंने यह कुछ मिनट पहले देखा।", "label": "duration", "language": "hi", "scenario_id": "80c617d09e92a4e4", "source": "synthetic"}
+{"text": "Mujhe ye kuch minute pehle se hai.", "label": "duration", "language": "hinglish", "scenario_id": "0690c515ec26f601", "source": "synthetic"}
+{"text": "Ye kuch minute pehle tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "0690c515ec26f601", "source": "synthetic"}
+{"text": "Ye kuch minute pehle se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "0690c515ec26f601", "source": "synthetic"}
+{"text": "It has continued for every winter.", "label": "duration", "language": "en", "scenario_id": "653dd2a86145ce8c", "source": "synthetic"}
+{"text": "This has been going on for every winter.", "label": "duration", "language": "en", "scenario_id": "653dd2a86145ce8c", "source": "synthetic"}
+{"text": "The problem appears every winter.", "label": "duration", "language": "en", "scenario_id": "653dd2a86145ce8c", "source": "synthetic"}
+{"text": "यह हर सर्दी में तक रहा।", "label": "duration", "language": "hi", "scenario_id": "1774b683cfd19b1a", "source": "synthetic"}
+{"text": "शिकायत हर सर्दी में से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "1774b683cfd19b1a", "source": "synthetic"}
+{"text": "यह हर सर्दी में तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "1774b683cfd19b1a", "source": "synthetic"}
+{"text": "Shikayat har sardi mein se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "b3400769d545d5f0", "source": "synthetic"}
+{"text": "Ye har sardi mein tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "b3400769d545d5f0", "source": "synthetic"}
+{"text": "Ye har sardi mein tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "b3400769d545d5f0", "source": "synthetic"}
+{"text": "It has continued for since I started a new job.", "label": "duration", "language": "en", "scenario_id": "2533163574f96f79", "source": "synthetic"}
+{"text": "I noticed it since I started a new job.", "label": "duration", "language": "en", "scenario_id": "2533163574f96f79", "source": "synthetic"}
+{"text": "It started since I started a new job ago.", "label": "duration", "language": "en", "scenario_id": "2533163574f96f79", "source": "synthetic"}
+{"text": "यह नई नौकरी शुरू करने के बाद से पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "b335bdc6fe595f57", "source": "synthetic"}
+{"text": "यह नई नौकरी शुरू करने के बाद से तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "b335bdc6fe595f57", "source": "synthetic"}
+{"text": "मैंने यह नई नौकरी शुरू करने के बाद से देखा।", "label": "duration", "language": "hi", "scenario_id": "b335bdc6fe595f57", "source": "synthetic"}
+{"text": "Ye nayi naukri shuru karne ke baad se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "561c5b3a3e67d11d", "source": "synthetic"}
+{"text": "Mujhe ye nayi naukri shuru karne ke baad se se hai.", "label": "duration", "language": "hinglish", "scenario_id": "561c5b3a3e67d11d", "source": "synthetic"}
+{"text": "Ye nayi naukri shuru karne ke baad se tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "561c5b3a3e67d11d", "source": "synthetic"}
+{"text": "This has been going on for for two hours after each meal.", "label": "duration", "language": "en", "scenario_id": "c8780f3eb1b6daa0", "source": "synthetic"}
+{"text": "It started for two hours after each meal ago.", "label": "duration", "language": "en", "scenario_id": "c8780f3eb1b6daa0", "source": "synthetic"}
+{"text": "The complaint began for two hours after each meal.", "label": "duration", "language": "en", "scenario_id": "c8780f3eb1b6daa0", "source": "synthetic"}
+{"text": "मैंने यह हर खाने के बाद दो घंटे तक देखा।", "label": "duration", "language": "hi", "scenario_id": "a51bf40566eee1c3", "source": "synthetic"}
+{"text": "यह हर खाने के बाद दो घंटे तक तक रहा।", "label": "duration", "language": "hi", "scenario_id": "a51bf40566eee1c3", "source": "synthetic"}
+{"text": "यह हर खाने के बाद दो घंटे तक पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "a51bf40566eee1c3", "source": "synthetic"}
+{"text": "Ye har khane ke baad do ghante tak tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "0789a48954d6621f", "source": "synthetic"}
+{"text": "Mujhe ye har khane ke baad do ghante tak se hai.", "label": "duration", "language": "hinglish", "scenario_id": "0789a48954d6621f", "source": "synthetic"}
+{"text": "Ye har khane ke baad do ghante tak pehle shuru hua.", "label": "duration", "language": "hinglish", "scenario_id": "0789a48954d6621f", "source": "synthetic"}
+{"text": "I noticed it slowly over four months.", "label": "duration", "language": "en", "scenario_id": "daeb11262761a64e", "source": "synthetic"}
+{"text": "I have had this for slowly over four months.", "label": "duration", "language": "en", "scenario_id": "daeb11262761a64e", "source": "synthetic"}
+{"text": "The complaint began slowly over four months.", "label": "duration", "language": "en", "scenario_id": "daeb11262761a64e", "source": "synthetic"}
+{"text": "यह धीरे-धीरे चार महीनों में तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "0639e45018196eb5", "source": "synthetic"}
+{"text": "शिकायत धीरे-धीरे चार महीनों में से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "0639e45018196eb5", "source": "synthetic"}
+{"text": "यह धीरे-धीरे चार महीनों में पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "0639e45018196eb5", "source": "synthetic"}
+{"text": "Mujhe ye dheere dheere chaar mahino mein se hai.", "label": "duration", "language": "hinglish", "scenario_id": "1df8ea1003751f4e", "source": "synthetic"}
+{"text": "Maine ye dheere dheere chaar mahino mein dekha.", "label": "duration", "language": "hinglish", "scenario_id": "1df8ea1003751f4e", "source": "synthetic"}
+{"text": "Ye dheere dheere chaar mahino mein se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "1df8ea1003751f4e", "source": "synthetic"}
+{"text": "I have had this for only at night.", "label": "duration", "language": "en", "scenario_id": "aa0c701885497064", "source": "synthetic"}
+{"text": "I noticed it only at night.", "label": "duration", "language": "en", "scenario_id": "aa0c701885497064", "source": "synthetic"}
+{"text": "It has lasted only at night.", "label": "duration", "language": "en", "scenario_id": "aa0c701885497064", "source": "synthetic"}
+{"text": "यह सिर्फ रात में पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "07a37752a1f73173", "source": "synthetic"}
+{"text": "यह सिर्फ रात में तक रहा।", "label": "duration", "language": "hi", "scenario_id": "07a37752a1f73173", "source": "synthetic"}
+{"text": "यह सिर्फ रात में तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "07a37752a1f73173", "source": "synthetic"}
+{"text": "Shikayat sirf raat mein se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "b540916dc7eb7c98", "source": "synthetic"}
+{"text": "Ye sirf raat mein tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "b540916dc7eb7c98", "source": "synthetic"}
+{"text": "Ye sirf raat mein se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "b540916dc7eb7c98", "source": "synthetic"}
+{"text": "It has lasted since my delivery.", "label": "duration", "language": "en", "scenario_id": "47c05d020fb0206b", "source": "synthetic"}
+{"text": "The problem appears since my delivery.", "label": "duration", "language": "en", "scenario_id": "47c05d020fb0206b", "source": "synthetic"}
+{"text": "It has continued for since my delivery.", "label": "duration", "language": "en", "scenario_id": "47c05d020fb0206b", "source": "synthetic"}
+{"text": "शिकायत डिलीवरी के बाद से से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "c3d8d806cecf2cec", "source": "synthetic"}
+{"text": "यह डिलीवरी के बाद से तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "c3d8d806cecf2cec", "source": "synthetic"}
+{"text": "यह डिलीवरी के बाद से तक रहा।", "label": "duration", "language": "hi", "scenario_id": "c3d8d806cecf2cec", "source": "synthetic"}
+{"text": "Shikayat delivery ke baad se se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "62d0a1bb9fdf08b0", "source": "synthetic"}
+{"text": "Ye delivery ke baad se tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "62d0a1bb9fdf08b0", "source": "synthetic"}
+{"text": "Ye delivery ke baad se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "62d0a1bb9fdf08b0", "source": "synthetic"}
+{"text": "The problem appears for the last eighteen months.", "label": "duration", "language": "en", "scenario_id": "ec531cf7b7d19014", "source": "synthetic"}
+{"text": "It has lasted for the last eighteen months.", "label": "duration", "language": "en", "scenario_id": "ec531cf7b7d19014", "source": "synthetic"}
+{"text": "I noticed it for the last eighteen months.", "label": "duration", "language": "en", "scenario_id": "ec531cf7b7d19014", "source": "synthetic"}
+{"text": "यह पिछले अठारह महीनों से से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "c7802b541226e56c", "source": "synthetic"}
+{"text": "मुझे यह पिछले अठारह महीनों से से है।", "label": "duration", "language": "hi", "scenario_id": "c7802b541226e56c", "source": "synthetic"}
+{"text": "यह पिछले अठारह महीनों से तक रहा।", "label": "duration", "language": "hi", "scenario_id": "c7802b541226e56c", "source": "synthetic"}
+{"text": "Ye pichhle atharah mahino se tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "6778783c0d17c51e", "source": "synthetic"}
+{"text": "Ye pichhle atharah mahino se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "6778783c0d17c51e", "source": "synthetic"}
+{"text": "Ye pichhle atharah mahino se pehle shuru hua.", "label": "duration", "language": "hinglish", "scenario_id": "6778783c0d17c51e", "source": "synthetic"}
+{"text": "The problem appears after every meal for a week.", "label": "duration", "language": "en", "scenario_id": "b88ee62d8e801b09", "source": "synthetic"}
+{"text": "It started after every meal for a week ago.", "label": "duration", "language": "en", "scenario_id": "b88ee62d8e801b09", "source": "synthetic"}
+{"text": "It has lasted after every meal for a week.", "label": "duration", "language": "en", "scenario_id": "b88ee62d8e801b09", "source": "synthetic"}
+{"text": "शिकायत एक हफ्ते से हर खाने के बाद से शुरू हुई।", "label": "duration", "language": "hi", "scenario_id": "4e482d4fdad8695b", "source": "synthetic"}
+{"text": "यह एक हफ्ते से हर खाने के बाद तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "4e482d4fdad8695b", "source": "synthetic"}
+{"text": "यह एक हफ्ते से हर खाने के बाद तक रहा।", "label": "duration", "language": "hi", "scenario_id": "4e482d4fdad8695b", "source": "synthetic"}
+{"text": "Mujhe ye ek hafte se har khane ke baad se hai.", "label": "duration", "language": "hinglish", "scenario_id": "3891411c993f30bb", "source": "synthetic"}
+{"text": "Ye ek hafte se har khane ke baad pehle shuru hua.", "label": "duration", "language": "hinglish", "scenario_id": "3891411c993f30bb", "source": "synthetic"}
+{"text": "Ye ek hafte se har khane ke baad tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "3891411c993f30bb", "source": "synthetic"}
+{"text": "The problem appears since I changed my medication.", "label": "duration", "language": "en", "scenario_id": "afc4315ff5284899", "source": "synthetic"}
+{"text": "It started since I changed my medication ago.", "label": "duration", "language": "en", "scenario_id": "afc4315ff5284899", "source": "synthetic"}
+{"text": "It has continued for since I changed my medication.", "label": "duration", "language": "en", "scenario_id": "afc4315ff5284899", "source": "synthetic"}
+{"text": "मैंने यह दवा बदलने के बाद से देखा।", "label": "duration", "language": "hi", "scenario_id": "de15ab0cecccee29", "source": "synthetic"}
+{"text": "यह दवा बदलने के बाद से तक रहा।", "label": "duration", "language": "hi", "scenario_id": "de15ab0cecccee29", "source": "synthetic"}
+{"text": "मुझे यह दवा बदलने के बाद से से है।", "label": "duration", "language": "hi", "scenario_id": "de15ab0cecccee29", "source": "synthetic"}
+{"text": "Maine ye dawa badalne ke baad se dekha.", "label": "duration", "language": "hinglish", "scenario_id": "15b8aaa21b82a29f", "source": "synthetic"}
+{"text": "Ye dawa badalne ke baad se tak raha.", "label": "duration", "language": "hinglish", "scenario_id": "15b8aaa21b82a29f", "source": "synthetic"}
+{"text": "Ye dawa badalne ke baad se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "15b8aaa21b82a29f", "source": "synthetic"}
+{"text": "It has continued for during the monsoon every year.", "label": "duration", "language": "en", "scenario_id": "ba4f51b2d477176e", "source": "synthetic"}
+{"text": "The complaint began during the monsoon every year.", "label": "duration", "language": "en", "scenario_id": "ba4f51b2d477176e", "source": "synthetic"}
+{"text": "I noticed it during the monsoon every year.", "label": "duration", "language": "en", "scenario_id": "ba4f51b2d477176e", "source": "synthetic"}
+{"text": "यह हर साल मानसून में तक रहा।", "label": "duration", "language": "hi", "scenario_id": "974f3706bd820012", "source": "synthetic"}
+{"text": "मुझे यह हर साल मानसून में से है।", "label": "duration", "language": "hi", "scenario_id": "974f3706bd820012", "source": "synthetic"}
+{"text": "यह हर साल मानसून में पहले शुरू हुआ।", "label": "duration", "language": "hi", "scenario_id": "974f3706bd820012", "source": "synthetic"}
+{"text": "Shikayat har saal monsoon mein se shuru hui.", "label": "duration", "language": "hinglish", "scenario_id": "c6178ef6fe2274d1", "source": "synthetic"}
+{"text": "Ye har saal monsoon mein se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "c6178ef6fe2274d1", "source": "synthetic"}
+{"text": "Ye har saal monsoon mein tak jaari hai.", "label": "duration", "language": "hinglish", "scenario_id": "c6178ef6fe2274d1", "source": "synthetic"}
+{"text": "It started for exactly one week ago.", "label": "duration", "language": "en", "scenario_id": "b8c61de36250678d", "source": "synthetic"}
+{"text": "This has been going on for for exactly one week.", "label": "duration", "language": "en", "scenario_id": "b8c61de36250678d", "source": "synthetic"}
+{"text": "The problem appears for exactly one week.", "label": "duration", "language": "en", "scenario_id": "b8c61de36250678d", "source": "synthetic"}
+{"text": "यह ठीक एक हफ्ते से से चल रहा है।", "label": "duration", "language": "hi", "scenario_id": "de1051a1fc9b19c2", "source": "synthetic"}
+{"text": "मैंने यह ठीक एक हफ्ते से देखा।", "label": "duration", "language": "hi", "scenario_id": "de1051a1fc9b19c2", "source": "synthetic"}
+{"text": "यह ठीक एक हफ्ते से तक जारी है।", "label": "duration", "language": "hi", "scenario_id": "de1051a1fc9b19c2", "source": "synthetic"}
+{"text": "Maine ye theek ek hafte se dekha.", "label": "duration", "language": "hinglish", "scenario_id": "cb2ecb75b8ef4241", "source": "synthetic"}
+{"text": "Mujhe ye theek ek hafte se se hai.", "label": "duration", "language": "hinglish", "scenario_id": "cb2ecb75b8ef4241", "source": "synthetic"}
+{"text": "Ye theek ek hafte se se chal raha hai.", "label": "duration", "language": "hinglish", "scenario_id": "cb2ecb75b8ef4241", "source": "synthetic"}
+{"text": "I have been using metformin 500 mg twice a day.", "label": "medication", "language": "en", "scenario_id": "ab6615aca2804653", "source": "synthetic"}
+{"text": "My doctor prescribed metformin 500 mg twice a day.", "label": "medication", "language": "en", "scenario_id": "ab6615aca2804653", "source": "synthetic"}
+{"text": "I am on metformin 500 mg twice a day.", "label": "medication", "language": "en", "scenario_id": "ab6615aca2804653", "source": "synthetic"}
+{"text": "डॉक्टर ने मेटफॉर्मिन 500 मिलीग्राम दिन में दो बार लिखा था।", "label": "medication", "language": "hi", "scenario_id": "c0c45c58348bc289", "source": "synthetic"}
+{"text": "मैं मेटफॉर्मिन 500 मिलीग्राम दिन में दो बार लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "c0c45c58348bc289", "source": "synthetic"}
+{"text": "मुझे मेटफॉर्मिन 500 मिलीग्राम दिन में दो बार की दोबारा जरूरत है।", "label": "medication", "language": "hi", "scenario_id": "c0c45c58348bc289", "source": "synthetic"}
+{"text": "Main metformin 500 mg din mein do baar leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "20b2ef445eee60fd", "source": "synthetic"}
+{"text": "Main metformin 500 mg din mein do baar par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "20b2ef445eee60fd", "source": "synthetic"}
+{"text": "Meri chal rahi dawa metformin 500 mg din mein do baar hai.", "label": "medication", "language": "hinglish", "scenario_id": "20b2ef445eee60fd", "source": "synthetic"}
+{"text": "I take insulin every morning.", "label": "medication", "language": "en", "scenario_id": "59576052fcda2427", "source": "synthetic"}
+{"text": "My current medicine is insulin every morning.", "label": "medication", "language": "en", "scenario_id": "59576052fcda2427", "source": "synthetic"}
+{"text": "I need a refill of insulin every morning.", "label": "medication", "language": "en", "scenario_id": "59576052fcda2427", "source": "synthetic"}
+{"text": "मुझे हर सुबह इंसुलिन की दोबारा जरूरत है।", "label": "medication", "language": "hi", "scenario_id": "436e6e879e14cdfc", "source": "synthetic"}
+{"text": "मैं हर सुबह इंसुलिन लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "436e6e879e14cdfc", "source": "synthetic"}
+{"text": "मैं हर सुबह इंसुलिन इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "436e6e879e14cdfc", "source": "synthetic"}
+{"text": "Main har subah insulin par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "45d540d2006f1c2b", "source": "synthetic"}
+{"text": "Doctor ne har subah insulin likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "45d540d2006f1c2b", "source": "synthetic"}
+{"text": "Meri chal rahi dawa har subah insulin hai.", "label": "medication", "language": "hinglish", "scenario_id": "45d540d2006f1c2b", "source": "synthetic"}
+{"text": "My current medicine is amlodipine 5 mg at night.", "label": "medication", "language": "en", "scenario_id": "c6e9675aed199693", "source": "synthetic"}
+{"text": "I take amlodipine 5 mg at night.", "label": "medication", "language": "en", "scenario_id": "c6e9675aed199693", "source": "synthetic"}
+{"text": "I am on amlodipine 5 mg at night.", "label": "medication", "language": "en", "scenario_id": "c6e9675aed199693", "source": "synthetic"}
+{"text": "डॉक्टर ने रात में एम्लोडिपिन 5 मिलीग्राम लिखा था।", "label": "medication", "language": "hi", "scenario_id": "58e1f3d66af4d29b", "source": "synthetic"}
+{"text": "मैं रात में एम्लोडिपिन 5 मिलीग्राम लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "58e1f3d66af4d29b", "source": "synthetic"}
+{"text": "मेरी चल रही दवा रात में एम्लोडिपिन 5 मिलीग्राम है।", "label": "medication", "language": "hi", "scenario_id": "58e1f3d66af4d29b", "source": "synthetic"}
+{"text": "Main raat mein amlodipine 5 mg par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "f6fb1e15c5ea5762", "source": "synthetic"}
+{"text": "Meri chal rahi dawa raat mein amlodipine 5 mg hai.", "label": "medication", "language": "hinglish", "scenario_id": "f6fb1e15c5ea5762", "source": "synthetic"}
+{"text": "Main raat mein amlodipine 5 mg leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "f6fb1e15c5ea5762", "source": "synthetic"}
+{"text": "I am continuing paracetamol when the fever rises.", "label": "medication", "language": "en", "scenario_id": "0024c203c61821ae", "source": "synthetic"}
+{"text": "My current medicine is paracetamol when the fever rises.", "label": "medication", "language": "en", "scenario_id": "0024c203c61821ae", "source": "synthetic"}
+{"text": "I am on paracetamol when the fever rises.", "label": "medication", "language": "en", "scenario_id": "0024c203c61821ae", "source": "synthetic"}
+{"text": "मैं बुखार बढ़ने पर पैरासिटामोल लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "025143bca6420191", "source": "synthetic"}
+{"text": "मुझे बुखार बढ़ने पर पैरासिटामोल की दोबारा जरूरत है।", "label": "medication", "language": "hi", "scenario_id": "025143bca6420191", "source": "synthetic"}
+{"text": "मैं बुखार बढ़ने पर पैरासिटामोल इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "025143bca6420191", "source": "synthetic"}
+{"text": "Meri chal rahi dawa bukhar badhne par paracetamol hai.", "label": "medication", "language": "hinglish", "scenario_id": "1ce2f5c3f0538bd9", "source": "synthetic"}
+{"text": "Doctor ne bukhar badhne par paracetamol likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "1ce2f5c3f0538bd9", "source": "synthetic"}
+{"text": "Main bukhar badhne par paracetamol leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "1ce2f5c3f0538bd9", "source": "synthetic"}
+{"text": "I am continuing an inhaler twice daily.", "label": "medication", "language": "en", "scenario_id": "9700614622cfebba", "source": "synthetic"}
+{"text": "I am on an inhaler twice daily.", "label": "medication", "language": "en", "scenario_id": "9700614622cfebba", "source": "synthetic"}
+{"text": "My current medicine is an inhaler twice daily.", "label": "medication", "language": "en", "scenario_id": "9700614622cfebba", "source": "synthetic"}
+{"text": "मैं दिन में दो बार इनहेलर इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "2ee054d5bb1f915e", "source": "synthetic"}
+{"text": "मेरी चल रही दवा दिन में दो बार इनहेलर है।", "label": "medication", "language": "hi", "scenario_id": "2ee054d5bb1f915e", "source": "synthetic"}
+{"text": "मैं दिन में दो बार इनहेलर पर हूं।", "label": "medication", "language": "hi", "scenario_id": "2ee054d5bb1f915e", "source": "synthetic"}
+{"text": "Main din mein do baar inhaler leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "2d0fc3626a66fbd8", "source": "synthetic"}
+{"text": "Meri chal rahi dawa din mein do baar inhaler hai.", "label": "medication", "language": "hinglish", "scenario_id": "2d0fc3626a66fbd8", "source": "synthetic"}
+{"text": "Doctor ne din mein do baar inhaler likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "2d0fc3626a66fbd8", "source": "synthetic"}
+{"text": "I have been using thyroid tablets before breakfast.", "label": "medication", "language": "en", "scenario_id": "f19e2b51f6a973ae", "source": "synthetic"}
+{"text": "My current medicine is thyroid tablets before breakfast.", "label": "medication", "language": "en", "scenario_id": "f19e2b51f6a973ae", "source": "synthetic"}
+{"text": "My doctor prescribed thyroid tablets before breakfast.", "label": "medication", "language": "en", "scenario_id": "f19e2b51f6a973ae", "source": "synthetic"}
+{"text": "मैं नाश्ते से पहले थायरॉइड की गोली पर हूं।", "label": "medication", "language": "hi", "scenario_id": "42c09c1021754403", "source": "synthetic"}
+{"text": "मेरी चल रही दवा नाश्ते से पहले थायरॉइड की गोली है।", "label": "medication", "language": "hi", "scenario_id": "42c09c1021754403", "source": "synthetic"}
+{"text": "डॉक्टर ने नाश्ते से पहले थायरॉइड की गोली लिखा था।", "label": "medication", "language": "hi", "scenario_id": "42c09c1021754403", "source": "synthetic"}
+{"text": "Mujhe nashte se pehle thyroid ki goli ki dobara zaroorat hai.", "label": "medication", "language": "hinglish", "scenario_id": "5ca8ae7963dfe063", "source": "synthetic"}
+{"text": "Meri chal rahi dawa nashte se pehle thyroid ki goli hai.", "label": "medication", "language": "hinglish", "scenario_id": "5ca8ae7963dfe063", "source": "synthetic"}
+{"text": "Main nashte se pehle thyroid ki goli use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "5ca8ae7963dfe063", "source": "synthetic"}
+{"text": "My current medicine is iron and folic acid tablets.", "label": "medication", "language": "en", "scenario_id": "332ae1324099905a", "source": "synthetic"}
+{"text": "I need a refill of iron and folic acid tablets.", "label": "medication", "language": "en", "scenario_id": "332ae1324099905a", "source": "synthetic"}
+{"text": "I am on iron and folic acid tablets.", "label": "medication", "language": "en", "scenario_id": "332ae1324099905a", "source": "synthetic"}
+{"text": "मुझे आयरन और फोलिक एसिड की गोलियां की दोबारा जरूरत है।", "label": "medication", "language": "hi", "scenario_id": "82d86721237d29ae", "source": "synthetic"}
+{"text": "मेरी चल रही दवा आयरन और फोलिक एसिड की गोलियां है।", "label": "medication", "language": "hi", "scenario_id": "82d86721237d29ae", "source": "synthetic"}
+{"text": "मैं आयरन और फोलिक एसिड की गोलियां इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "82d86721237d29ae", "source": "synthetic"}
+{"text": "Main iron aur folic acid ki goliyan leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "64e2711912e671a0", "source": "synthetic"}
+{"text": "Main iron aur folic acid ki goliyan par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "64e2711912e671a0", "source": "synthetic"}
+{"text": "Meri chal rahi dawa iron aur folic acid ki goliyan hai.", "label": "medication", "language": "hinglish", "scenario_id": "64e2711912e671a0", "source": "synthetic"}
+{"text": "I am on an antacid after lunch.", "label": "medication", "language": "en", "scenario_id": "9cca329c7f5aee39", "source": "synthetic"}
+{"text": "I have been using an antacid after lunch.", "label": "medication", "language": "en", "scenario_id": "9cca329c7f5aee39", "source": "synthetic"}
+{"text": "I am continuing an antacid after lunch.", "label": "medication", "language": "en", "scenario_id": "9cca329c7f5aee39", "source": "synthetic"}
+{"text": "मैं दोपहर के खाने के बाद एंटासिड पर हूं।", "label": "medication", "language": "hi", "scenario_id": "2a45c82ef9a0008f", "source": "synthetic"}
+{"text": "डॉक्टर ने दोपहर के खाने के बाद एंटासिड लिखा था।", "label": "medication", "language": "hi", "scenario_id": "2a45c82ef9a0008f", "source": "synthetic"}
+{"text": "मेरी चल रही दवा दोपहर के खाने के बाद एंटासिड है।", "label": "medication", "language": "hi", "scenario_id": "2a45c82ef9a0008f", "source": "synthetic"}
+{"text": "Main dopahar ke khane ke baad antacid leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "2f7ff2b152e11be0", "source": "synthetic"}
+{"text": "Main dopahar ke khane ke baad antacid use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "2f7ff2b152e11be0", "source": "synthetic"}
+{"text": "Doctor ne dopahar ke khane ke baad antacid likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "2f7ff2b152e11be0", "source": "synthetic"}
+{"text": "I am continuing a blood thinner daily.", "label": "medication", "language": "en", "scenario_id": "c30edb068126156f", "source": "synthetic"}
+{"text": "I need a refill of a blood thinner daily.", "label": "medication", "language": "en", "scenario_id": "c30edb068126156f", "source": "synthetic"}
+{"text": "My current medicine is a blood thinner daily.", "label": "medication", "language": "en", "scenario_id": "c30edb068126156f", "source": "synthetic"}
+{"text": "डॉक्टर ने रोज खून पतला करने की दवा लिखा था।", "label": "medication", "language": "hi", "scenario_id": "3c9d752f8598e484", "source": "synthetic"}
+{"text": "मुझे रोज खून पतला करने की दवा की दोबारा जरूरत है।", "label": "medication", "language": "hi", "scenario_id": "3c9d752f8598e484", "source": "synthetic"}
+{"text": "मैं रोज खून पतला करने की दवा पर हूं।", "label": "medication", "language": "hi", "scenario_id": "3c9d752f8598e484", "source": "synthetic"}
+{"text": "Doctor ne roz khoon patla karne ki dawa likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "6171a79186e7c5bf", "source": "synthetic"}
+{"text": "Meri chal rahi dawa roz khoon patla karne ki dawa hai.", "label": "medication", "language": "hinglish", "scenario_id": "6171a79186e7c5bf", "source": "synthetic"}
+{"text": "Mujhe roz khoon patla karne ki dawa ki dobara zaroorat hai.", "label": "medication", "language": "hinglish", "scenario_id": "6171a79186e7c5bf", "source": "synthetic"}
+{"text": "My current medicine is eye drops three times a day.", "label": "medication", "language": "en", "scenario_id": "4c144073792fa7e1", "source": "synthetic"}
+{"text": "My doctor prescribed eye drops three times a day.", "label": "medication", "language": "en", "scenario_id": "4c144073792fa7e1", "source": "synthetic"}
+{"text": "I have been using eye drops three times a day.", "label": "medication", "language": "en", "scenario_id": "4c144073792fa7e1", "source": "synthetic"}
+{"text": "मेरी चल रही दवा दिन में तीन बार आई ड्रॉप है।", "label": "medication", "language": "hi", "scenario_id": "9d9e32c9555a37ab", "source": "synthetic"}
+{"text": "मैं दिन में तीन बार आई ड्रॉप इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "9d9e32c9555a37ab", "source": "synthetic"}
+{"text": "मैं दिन में तीन बार आई ड्रॉप लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "9d9e32c9555a37ab", "source": "synthetic"}
+{"text": "Main din mein teen baar eye drop use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "2264a6c198c2e5cb", "source": "synthetic"}
+{"text": "Mujhe din mein teen baar eye drop ki dobara zaroorat hai.", "label": "medication", "language": "hinglish", "scenario_id": "2264a6c198c2e5cb", "source": "synthetic"}
+{"text": "Meri chal rahi dawa din mein teen baar eye drop hai.", "label": "medication", "language": "hinglish", "scenario_id": "2264a6c198c2e5cb", "source": "synthetic"}
+{"text": "I am on vitamin D once a week.", "label": "medication", "language": "en", "scenario_id": "e9a63984a23c0335", "source": "synthetic"}
+{"text": "I need a refill of vitamin D once a week.", "label": "medication", "language": "en", "scenario_id": "e9a63984a23c0335", "source": "synthetic"}
+{"text": "I have been using vitamin D once a week.", "label": "medication", "language": "en", "scenario_id": "e9a63984a23c0335", "source": "synthetic"}
+{"text": "डॉक्टर ने हफ्ते में एक बार विटामिन डी लिखा था।", "label": "medication", "language": "hi", "scenario_id": "bfc4f3fee94d544e", "source": "synthetic"}
+{"text": "मैं हफ्ते में एक बार विटामिन डी इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "bfc4f3fee94d544e", "source": "synthetic"}
+{"text": "मैं हफ्ते में एक बार विटामिन डी पर हूं।", "label": "medication", "language": "hi", "scenario_id": "bfc4f3fee94d544e", "source": "synthetic"}
+{"text": "Main hafte mein ek baar vitamin D par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "df349b6e5d41a658", "source": "synthetic"}
+{"text": "Mujhe hafte mein ek baar vitamin D ki dobara zaroorat hai.", "label": "medication", "language": "hinglish", "scenario_id": "df349b6e5d41a658", "source": "synthetic"}
+{"text": "Main hafte mein ek baar vitamin D leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "df349b6e5d41a658", "source": "synthetic"}
+{"text": "My doctor prescribed an antibiotic course for five days.", "label": "medication", "language": "en", "scenario_id": "c29e978e2875b0eb", "source": "synthetic"}
+{"text": "I am continuing an antibiotic course for five days.", "label": "medication", "language": "en", "scenario_id": "c29e978e2875b0eb", "source": "synthetic"}
+{"text": "I need a refill of an antibiotic course for five days.", "label": "medication", "language": "en", "scenario_id": "c29e978e2875b0eb", "source": "synthetic"}
+{"text": "मेरी चल रही दवा पांच दिन का एंटीबायोटिक कोर्स है।", "label": "medication", "language": "hi", "scenario_id": "4ca49b7e25fac564", "source": "synthetic"}
+{"text": "मैं पांच दिन का एंटीबायोटिक कोर्स लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "4ca49b7e25fac564", "source": "synthetic"}
+{"text": "मुझे पांच दिन का एंटीबायोटिक कोर्स की दोबारा जरूरत है।", "label": "medication", "language": "hi", "scenario_id": "4ca49b7e25fac564", "source": "synthetic"}
+{"text": "Doctor ne paanch din ka antibiotic course likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "5988221b1e6332c8", "source": "synthetic"}
+{"text": "Main paanch din ka antibiotic course use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "5988221b1e6332c8", "source": "synthetic"}
+{"text": "Meri chal rahi dawa paanch din ka antibiotic course hai.", "label": "medication", "language": "hinglish", "scenario_id": "5988221b1e6332c8", "source": "synthetic"}
+{"text": "I am on painkillers only when needed.", "label": "medication", "language": "en", "scenario_id": "97d9d8755a8c60c9", "source": "synthetic"}
+{"text": "I take painkillers only when needed.", "label": "medication", "language": "en", "scenario_id": "97d9d8755a8c60c9", "source": "synthetic"}
+{"text": "My doctor prescribed painkillers only when needed.", "label": "medication", "language": "en", "scenario_id": "97d9d8755a8c60c9", "source": "synthetic"}
+{"text": "मैं जरूरत पड़ने पर ही दर्द निवारक पर हूं।", "label": "medication", "language": "hi", "scenario_id": "7b669a47e056db0f", "source": "synthetic"}
+{"text": "डॉक्टर ने जरूरत पड़ने पर ही दर्द निवारक लिखा था।", "label": "medication", "language": "hi", "scenario_id": "7b669a47e056db0f", "source": "synthetic"}
+{"text": "मेरी चल रही दवा जरूरत पड़ने पर ही दर्द निवारक है।", "label": "medication", "language": "hi", "scenario_id": "7b669a47e056db0f", "source": "synthetic"}
+{"text": "Main zaroorat padne par hi dard nivarak par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "e622625b7c89f8db", "source": "synthetic"}
+{"text": "Main zaroorat padne par hi dard nivarak use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "e622625b7c89f8db", "source": "synthetic"}
+{"text": "Doctor ne zaroorat padne par hi dard nivarak likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "e622625b7c89f8db", "source": "synthetic"}
+{"text": "I need a refill of a steroid cream on the rash.", "label": "medication", "language": "en", "scenario_id": "bc0060db6ea07256", "source": "synthetic"}
+{"text": "I take a steroid cream on the rash.", "label": "medication", "language": "en", "scenario_id": "bc0060db6ea07256", "source": "synthetic"}
+{"text": "My doctor prescribed a steroid cream on the rash.", "label": "medication", "language": "en", "scenario_id": "bc0060db6ea07256", "source": "synthetic"}
+{"text": "मैं चकत्ते पर स्टेरॉयड क्रीम पर हूं।", "label": "medication", "language": "hi", "scenario_id": "53a4474608899087", "source": "synthetic"}
+{"text": "डॉक्टर ने चकत्ते पर स्टेरॉयड क्रीम लिखा था।", "label": "medication", "language": "hi", "scenario_id": "53a4474608899087", "source": "synthetic"}
+{"text": "मैं चकत्ते पर स्टेरॉयड क्रीम लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "53a4474608899087", "source": "synthetic"}
+{"text": "Main chakatte par steroid cream par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "ee3939657be4973d", "source": "synthetic"}
+{"text": "Main chakatte par steroid cream use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "ee3939657be4973d", "source": "synthetic"}
+{"text": "Meri chal rahi dawa chakatte par steroid cream hai.", "label": "medication", "language": "hinglish", "scenario_id": "ee3939657be4973d", "source": "synthetic"}
+{"text": "I need a refill of atenolol 25 mg each morning.", "label": "medication", "language": "en", "scenario_id": "1fc448c0aec4700d", "source": "synthetic"}
+{"text": "My doctor prescribed atenolol 25 mg each morning.", "label": "medication", "language": "en", "scenario_id": "1fc448c0aec4700d", "source": "synthetic"}
+{"text": "I am continuing atenolol 25 mg each morning.", "label": "medication", "language": "en", "scenario_id": "1fc448c0aec4700d", "source": "synthetic"}
+{"text": "डॉक्टर ने हर सुबह एटेनोलोल 25 मिलीग्राम लिखा था।", "label": "medication", "language": "hi", "scenario_id": "60bbc3c78c49bb29", "source": "synthetic"}
+{"text": "मैं हर सुबह एटेनोलोल 25 मिलीग्राम पर हूं।", "label": "medication", "language": "hi", "scenario_id": "60bbc3c78c49bb29", "source": "synthetic"}
+{"text": "मैं हर सुबह एटेनोलोल 25 मिलीग्राम इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "60bbc3c78c49bb29", "source": "synthetic"}
+{"text": "Meri chal rahi dawa har subah atenolol 25 mg hai.", "label": "medication", "language": "hinglish", "scenario_id": "5ef14fa9c859132a", "source": "synthetic"}
+{"text": "Mujhe har subah atenolol 25 mg ki dobara zaroorat hai.", "label": "medication", "language": "hinglish", "scenario_id": "5ef14fa9c859132a", "source": "synthetic"}
+{"text": "Main har subah atenolol 25 mg leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "5ef14fa9c859132a", "source": "synthetic"}
+{"text": "I am on calcium tablets after dinner.", "label": "medication", "language": "en", "scenario_id": "903197d352778f44", "source": "synthetic"}
+{"text": "I have been using calcium tablets after dinner.", "label": "medication", "language": "en", "scenario_id": "903197d352778f44", "source": "synthetic"}
+{"text": "I take calcium tablets after dinner.", "label": "medication", "language": "en", "scenario_id": "903197d352778f44", "source": "synthetic"}
+{"text": "मैं रात के खाने के बाद कैल्शियम की गोली पर हूं।", "label": "medication", "language": "hi", "scenario_id": "5cfd568797621e3f", "source": "synthetic"}
+{"text": "मैं रात के खाने के बाद कैल्शियम की गोली इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "5cfd568797621e3f", "source": "synthetic"}
+{"text": "मेरी चल रही दवा रात के खाने के बाद कैल्शियम की गोली है।", "label": "medication", "language": "hi", "scenario_id": "5cfd568797621e3f", "source": "synthetic"}
+{"text": "Mujhe raat ke khane ke baad calcium ki goli ki dobara zaroorat hai.", "label": "medication", "language": "hinglish", "scenario_id": "f197a8152a8f3f89", "source": "synthetic"}
+{"text": "Doctor ne raat ke khane ke baad calcium ki goli likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "f197a8152a8f3f89", "source": "synthetic"}
+{"text": "Main raat ke khane ke baad calcium ki goli par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "f197a8152a8f3f89", "source": "synthetic"}
+{"text": "I need a refill of an antihistamine at bedtime.", "label": "medication", "language": "en", "scenario_id": "d180a304459ac479", "source": "synthetic"}
+{"text": "My doctor prescribed an antihistamine at bedtime.", "label": "medication", "language": "en", "scenario_id": "d180a304459ac479", "source": "synthetic"}
+{"text": "I am continuing an antihistamine at bedtime.", "label": "medication", "language": "en", "scenario_id": "d180a304459ac479", "source": "synthetic"}
+{"text": "मैं सोने से पहले एंटीहिस्टामिन इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "f4eac18ffb9e0237", "source": "synthetic"}
+{"text": "मेरी चल रही दवा सोने से पहले एंटीहिस्टामिन है।", "label": "medication", "language": "hi", "scenario_id": "f4eac18ffb9e0237", "source": "synthetic"}
+{"text": "डॉक्टर ने सोने से पहले एंटीहिस्टामिन लिखा था।", "label": "medication", "language": "hi", "scenario_id": "f4eac18ffb9e0237", "source": "synthetic"}
+{"text": "Doctor ne sone se pehle antihistamine likha tha.", "label": "medication", "language": "hinglish", "scenario_id": "bc3b7d486fcd46e1", "source": "synthetic"}
+{"text": "Main sone se pehle antihistamine par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "bc3b7d486fcd46e1", "source": "synthetic"}
+{"text": "Main sone se pehle antihistamine use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "bc3b7d486fcd46e1", "source": "synthetic"}
+{"text": "My doctor prescribed ORS whenever I feel weak.", "label": "medication", "language": "en", "scenario_id": "51077d067923d6cb", "source": "synthetic"}
+{"text": "I am continuing ORS whenever I feel weak.", "label": "medication", "language": "en", "scenario_id": "51077d067923d6cb", "source": "synthetic"}
+{"text": "I have been using ORS whenever I feel weak.", "label": "medication", "language": "en", "scenario_id": "51077d067923d6cb", "source": "synthetic"}
+{"text": "मैं कमजोरी लगने पर ओआरएस पर हूं।", "label": "medication", "language": "hi", "scenario_id": "db543d519804aad5", "source": "synthetic"}
+{"text": "मैं कमजोरी लगने पर ओआरएस लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "db543d519804aad5", "source": "synthetic"}
+{"text": "मैं कमजोरी लगने पर ओआरएस इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "db543d519804aad5", "source": "synthetic"}
+{"text": "Mujhe kamzori lagne par ORS ki dobara zaroorat hai.", "label": "medication", "language": "hinglish", "scenario_id": "14c7f70119a496df", "source": "synthetic"}
+{"text": "Meri chal rahi dawa kamzori lagne par ORS hai.", "label": "medication", "language": "hinglish", "scenario_id": "14c7f70119a496df", "source": "synthetic"}
+{"text": "Main kamzori lagne par ORS leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "14c7f70119a496df", "source": "synthetic"}
+{"text": "I have been using a nasal spray in the morning.", "label": "medication", "language": "en", "scenario_id": "8a3f77774cb3e949", "source": "synthetic"}
+{"text": "I need a refill of a nasal spray in the morning.", "label": "medication", "language": "en", "scenario_id": "8a3f77774cb3e949", "source": "synthetic"}
+{"text": "I am continuing a nasal spray in the morning.", "label": "medication", "language": "en", "scenario_id": "8a3f77774cb3e949", "source": "synthetic"}
+{"text": "मुझे सुबह नाक की स्प्रे की दोबारा जरूरत है।", "label": "medication", "language": "hi", "scenario_id": "84bb2aa6bbd24d12", "source": "synthetic"}
+{"text": "मैं सुबह नाक की स्प्रे इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "84bb2aa6bbd24d12", "source": "synthetic"}
+{"text": "मैं सुबह नाक की स्प्रे लेता हूं।", "label": "medication", "language": "hi", "scenario_id": "84bb2aa6bbd24d12", "source": "synthetic"}
+{"text": "Main subah naak ki spray use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "511a2028cf005604", "source": "synthetic"}
+{"text": "Main subah naak ki spray leta hoon.", "label": "medication", "language": "hinglish", "scenario_id": "511a2028cf005604", "source": "synthetic"}
+{"text": "Main subah naak ki spray par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "511a2028cf005604", "source": "synthetic"}
+{"text": "I am on two tablets of the same medicine together.", "label": "medication", "language": "en", "scenario_id": "6776bb8142f95544", "source": "synthetic"}
+{"text": "I have been using two tablets of the same medicine together.", "label": "medication", "language": "en", "scenario_id": "6776bb8142f95544", "source": "synthetic"}
+{"text": "I need a refill of two tablets of the same medicine together.", "label": "medication", "language": "en", "scenario_id": "6776bb8142f95544", "source": "synthetic"}
+{"text": "मैं एक ही दवा की दो गोलियां साथ इस्तेमाल कर रहा हूं।", "label": "medication", "language": "hi", "scenario_id": "3bd983b5ed94f72f", "source": "synthetic"}
+{"text": "मेरी चल रही दवा एक ही दवा की दो गोलियां साथ है।", "label": "medication", "language": "hi", "scenario_id": "3bd983b5ed94f72f", "source": "synthetic"}
+{"text": "मैं एक ही दवा की दो गोलियां साथ पर हूं।", "label": "medication", "language": "hi", "scenario_id": "3bd983b5ed94f72f", "source": "synthetic"}
+{"text": "Main ek hi dawa ki do goliyan saath par hoon.", "label": "medication", "language": "hinglish", "scenario_id": "75491cdb06408ce7", "source": "synthetic"}
+{"text": "Main ek hi dawa ki do goliyan saath use kar raha hoon.", "label": "medication", "language": "hinglish", "scenario_id": "75491cdb06408ce7", "source": "synthetic"}
+{"text": "Meri chal rahi dawa ek hi dawa ki do goliyan saath hai.", "label": "medication", "language": "hinglish", "scenario_id": "75491cdb06408ce7", "source": "synthetic"}
+{"text": "Please avoid penicillin, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "47758398c014829d", "source": "synthetic"}
+{"text": "I had a reaction to penicillin before.", "label": "allergy", "language": "en", "scenario_id": "47758398c014829d", "source": "synthetic"}
+{"text": "I have an allergy to penicillin.", "label": "allergy", "language": "en", "scenario_id": "47758398c014829d", "source": "synthetic"}
+{"text": "कृपया पेनिसिलिन न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "9cb23cbc6fa5ddf8", "source": "synthetic"}
+{"text": "मुझे पेनिसिलिन से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "9cb23cbc6fa5ddf8", "source": "synthetic"}
+{"text": "मुझे पेनिसिलिन से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "9cb23cbc6fa5ddf8", "source": "synthetic"}
+{"text": "Mujhe penicillin se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "2e3d01b7197cf837", "source": "synthetic"}
+{"text": "Pehle bhi penicillin se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "2e3d01b7197cf837", "source": "synthetic"}
+{"text": "Mujhe penicillin se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "2e3d01b7197cf837", "source": "synthetic"}
+{"text": "I am allergic to sulfa drugs.", "label": "allergy", "language": "en", "scenario_id": "2ec735b30d4fe27a", "source": "synthetic"}
+{"text": "I react badly to sulfa drugs.", "label": "allergy", "language": "en", "scenario_id": "2ec735b30d4fe27a", "source": "synthetic"}
+{"text": "Do not give me sulfa drugs, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "2ec735b30d4fe27a", "source": "synthetic"}
+{"text": "पहले भी सल्फा दवाइयां से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "96bdd729f256a806", "source": "synthetic"}
+{"text": "कृपया सल्फा दवाइयां न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "96bdd729f256a806", "source": "synthetic"}
+{"text": "मुझे सल्फा दवाइयां से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "96bdd729f256a806", "source": "synthetic"}
+{"text": "Mujhe sulfa davaiyan se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "7540e79e1e19e605", "source": "synthetic"}
+{"text": "Mujhe sulfa davaiyan se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "7540e79e1e19e605", "source": "synthetic"}
+{"text": "Kripya sulfa davaiyan na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "7540e79e1e19e605", "source": "synthetic"}
+{"text": "Please avoid peanuts, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "86c67be32b345861", "source": "synthetic"}
+{"text": "I have an allergy to peanuts.", "label": "allergy", "language": "en", "scenario_id": "86c67be32b345861", "source": "synthetic"}
+{"text": "I am allergic to peanuts.", "label": "allergy", "language": "en", "scenario_id": "86c67be32b345861", "source": "synthetic"}
+{"text": "मुझे मूंगफली से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "01db09c74b97cca2", "source": "synthetic"}
+{"text": "पहले भी मूंगफली से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "01db09c74b97cca2", "source": "synthetic"}
+{"text": "मुझे मूंगफली से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "01db09c74b97cca2", "source": "synthetic"}
+{"text": "Mujhe moongphali se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "b04e2e9b16e2f8be", "source": "synthetic"}
+{"text": "Mujhe moongphali se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "b04e2e9b16e2f8be", "source": "synthetic"}
+{"text": "Pehle bhi moongphali se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "b04e2e9b16e2f8be", "source": "synthetic"}
+{"text": "I am allergic to dust and pollen.", "label": "allergy", "language": "en", "scenario_id": "d1c76ee05513b95e", "source": "synthetic"}
+{"text": "Please avoid dust and pollen, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "d1c76ee05513b95e", "source": "synthetic"}
+{"text": "Do not give me dust and pollen, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "d1c76ee05513b95e", "source": "synthetic"}
+{"text": "मुझे धूल और पराग से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "fb9e1434012c97a2", "source": "synthetic"}
+{"text": "मुझे धूल और पराग से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "fb9e1434012c97a2", "source": "synthetic"}
+{"text": "मुझे धूल और पराग से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "fb9e1434012c97a2", "source": "synthetic"}
+{"text": "Mujhe dhool aur parag se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "b2906b30edc65c08", "source": "synthetic"}
+{"text": "Mujhe dhool aur parag se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "b2906b30edc65c08", "source": "synthetic"}
+{"text": "Pehle bhi dhool aur parag se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "b2906b30edc65c08", "source": "synthetic"}
+{"text": "I am allergic to seafood.", "label": "allergy", "language": "en", "scenario_id": "9879942a4e4c5ca4", "source": "synthetic"}
+{"text": "Please avoid seafood, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "9879942a4e4c5ca4", "source": "synthetic"}
+{"text": "I had a reaction to seafood before.", "label": "allergy", "language": "en", "scenario_id": "9879942a4e4c5ca4", "source": "synthetic"}
+{"text": "कृपया समुद्री भोजन न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "605028a6d5ed14ba", "source": "synthetic"}
+{"text": "मुझे समुद्री भोजन से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "605028a6d5ed14ba", "source": "synthetic"}
+{"text": "पहले भी समुद्री भोजन से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "605028a6d5ed14ba", "source": "synthetic"}
+{"text": "Mujhe samudri bhojan se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "c5bb34e66b4b68a2", "source": "synthetic"}
+{"text": "Mujhe samudri bhojan se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "c5bb34e66b4b68a2", "source": "synthetic"}
+{"text": "Mujhe samudri bhojan se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "c5bb34e66b4b68a2", "source": "synthetic"}
+{"text": "I am allergic to aspirin.", "label": "allergy", "language": "en", "scenario_id": "6f44432c43c58b49", "source": "synthetic"}
+{"text": "I had a reaction to aspirin before.", "label": "allergy", "language": "en", "scenario_id": "6f44432c43c58b49", "source": "synthetic"}
+{"text": "Do not give me aspirin, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "6f44432c43c58b49", "source": "synthetic"}
+{"text": "मुझे एस्पिरिन से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "3377c6c002611946", "source": "synthetic"}
+{"text": "मुझे एस्पिरिन से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "3377c6c002611946", "source": "synthetic"}
+{"text": "पहले भी एस्पिरिन से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "3377c6c002611946", "source": "synthetic"}
+{"text": "Mujhe aspirin se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "370c936687f701ea", "source": "synthetic"}
+{"text": "Mujhe aspirin se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "370c936687f701ea", "source": "synthetic"}
+{"text": "Mujhe aspirin se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "370c936687f701ea", "source": "synthetic"}
+{"text": "Do not give me animal fur, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "8775e566f84dbb53", "source": "synthetic"}
+{"text": "I react badly to animal fur.", "label": "allergy", "language": "en", "scenario_id": "8775e566f84dbb53", "source": "synthetic"}
+{"text": "Please avoid animal fur, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "8775e566f84dbb53", "source": "synthetic"}
+{"text": "पहले भी जानवरों के बाल से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "a4d760b3e2447f34", "source": "synthetic"}
+{"text": "कृपया जानवरों के बाल न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "a4d760b3e2447f34", "source": "synthetic"}
+{"text": "मुझे जानवरों के बाल से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "a4d760b3e2447f34", "source": "synthetic"}
+{"text": "Kripya janwaron ke baal na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "3b62c9420d0b210f", "source": "synthetic"}
+{"text": "Mujhe janwaron ke baal se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "3b62c9420d0b210f", "source": "synthetic"}
+{"text": "Pehle bhi janwaron ke baal se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "3b62c9420d0b210f", "source": "synthetic"}
+{"text": "I am allergic to latex.", "label": "allergy", "language": "en", "scenario_id": "774e5f2e32a4bfbb", "source": "synthetic"}
+{"text": "I react badly to latex.", "label": "allergy", "language": "en", "scenario_id": "774e5f2e32a4bfbb", "source": "synthetic"}
+{"text": "Please avoid latex, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "774e5f2e32a4bfbb", "source": "synthetic"}
+{"text": "पहले भी लेटेक्स से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "dbb2ce905b30bb42", "source": "synthetic"}
+{"text": "कृपया लेटेक्स न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "dbb2ce905b30bb42", "source": "synthetic"}
+{"text": "मुझे लेटेक्स से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "dbb2ce905b30bb42", "source": "synthetic"}
+{"text": "Mujhe latex se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "712cca37689c7135", "source": "synthetic"}
+{"text": "Kripya latex na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "712cca37689c7135", "source": "synthetic"}
+{"text": "Pehle bhi latex se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "712cca37689c7135", "source": "synthetic"}
+{"text": "Do not give me milk and dairy, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "b88521703b0a05e1", "source": "synthetic"}
+{"text": "Please avoid milk and dairy, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "b88521703b0a05e1", "source": "synthetic"}
+{"text": "I am allergic to milk and dairy.", "label": "allergy", "language": "en", "scenario_id": "b88521703b0a05e1", "source": "synthetic"}
+{"text": "मुझे दूध और डेयरी से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "406b751403f1fedb", "source": "synthetic"}
+{"text": "मुझे दूध और डेयरी से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "406b751403f1fedb", "source": "synthetic"}
+{"text": "मुझे दूध और डेयरी से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "406b751403f1fedb", "source": "synthetic"}
+{"text": "Mujhe doodh aur dairy se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "77d7c60fd952521c", "source": "synthetic"}
+{"text": "Pehle bhi doodh aur dairy se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "77d7c60fd952521c", "source": "synthetic"}
+{"text": "Kripya doodh aur dairy na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "77d7c60fd952521c", "source": "synthetic"}
+{"text": "I react badly to iodine contrast dye.", "label": "allergy", "language": "en", "scenario_id": "dae7af4c81141610", "source": "synthetic"}
+{"text": "Do not give me iodine contrast dye, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "dae7af4c81141610", "source": "synthetic"}
+{"text": "Please avoid iodine contrast dye, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "dae7af4c81141610", "source": "synthetic"}
+{"text": "पहले भी आयोडीन कंट्रास्ट डाई से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "fe2f33f332ff3bbb", "source": "synthetic"}
+{"text": "मुझे आयोडीन कंट्रास्ट डाई से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "fe2f33f332ff3bbb", "source": "synthetic"}
+{"text": "कृपया आयोडीन कंट्रास्ट डाई न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "fe2f33f332ff3bbb", "source": "synthetic"}
+{"text": "Mujhe iodine contrast dye se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "926973ab091a9c60", "source": "synthetic"}
+{"text": "Kripya iodine contrast dye na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "926973ab091a9c60", "source": "synthetic"}
+{"text": "Mujhe iodine contrast dye se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "926973ab091a9c60", "source": "synthetic"}
+{"text": "I am allergic to bee stings.", "label": "allergy", "language": "en", "scenario_id": "0b20598cadb4f66e", "source": "synthetic"}
+{"text": "Please avoid bee stings, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "0b20598cadb4f66e", "source": "synthetic"}
+{"text": "I have an allergy to bee stings.", "label": "allergy", "language": "en", "scenario_id": "0b20598cadb4f66e", "source": "synthetic"}
+{"text": "पहले भी मधुमक्खी के काटने से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "d7eb770b9b91d10b", "source": "synthetic"}
+{"text": "कृपया मधुमक्खी के काटने न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "d7eb770b9b91d10b", "source": "synthetic"}
+{"text": "मुझे मधुमक्खी के काटने से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "d7eb770b9b91d10b", "source": "synthetic"}
+{"text": "Pehle bhi madhumakkhi ke kaatne se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "d41868c2b09f3e02", "source": "synthetic"}
+{"text": "Kripya madhumakkhi ke kaatne na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "d41868c2b09f3e02", "source": "synthetic"}
+{"text": "Mujhe madhumakkhi ke kaatne se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "d41868c2b09f3e02", "source": "synthetic"}
+{"text": "I have an allergy to a specific antibiotic I cannot recall the name of.", "label": "allergy", "language": "en", "scenario_id": "20800569e35096c0", "source": "synthetic"}
+{"text": "I react badly to a specific antibiotic I cannot recall the name of.", "label": "allergy", "language": "en", "scenario_id": "20800569e35096c0", "source": "synthetic"}
+{"text": "Do not give me a specific antibiotic I cannot recall the name of, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "20800569e35096c0", "source": "synthetic"}
+{"text": "पहले भी एक एंटीबायोटिक जिसका नाम याद नहीं से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "7141db4012996e1a", "source": "synthetic"}
+{"text": "मुझे एक एंटीबायोटिक जिसका नाम याद नहीं से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "7141db4012996e1a", "source": "synthetic"}
+{"text": "कृपया एक एंटीबायोटिक जिसका नाम याद नहीं न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "7141db4012996e1a", "source": "synthetic"}
+{"text": "Kripya ek antibiotic jiska naam yaad nahi na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "0672b78ee35ae032", "source": "synthetic"}
+{"text": "Mujhe ek antibiotic jiska naam yaad nahi se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "0672b78ee35ae032", "source": "synthetic"}
+{"text": "Mujhe ek antibiotic jiska naam yaad nahi se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "0672b78ee35ae032", "source": "synthetic"}
+{"text": "I have an allergy to wheat flour.", "label": "allergy", "language": "en", "scenario_id": "b261c131e4751c78", "source": "synthetic"}
+{"text": "Please avoid wheat flour, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "b261c131e4751c78", "source": "synthetic"}
+{"text": "Do not give me wheat flour, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "b261c131e4751c78", "source": "synthetic"}
+{"text": "पहले भी गेहूं का आटा से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "97e45803377c168e", "source": "synthetic"}
+{"text": "कृपया गेहूं का आटा न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "97e45803377c168e", "source": "synthetic"}
+{"text": "मुझे गेहूं का आटा से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "97e45803377c168e", "source": "synthetic"}
+{"text": "Pehle bhi gehun ka aata se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "a790f05bbc9b0610", "source": "synthetic"}
+{"text": "Kripya gehun ka aata na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "a790f05bbc9b0610", "source": "synthetic"}
+{"text": "Mujhe gehun ka aata se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "a790f05bbc9b0610", "source": "synthetic"}
+{"text": "I have an allergy to cold weather.", "label": "allergy", "language": "en", "scenario_id": "88f988e957605aa7", "source": "synthetic"}
+{"text": "Please avoid cold weather, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "88f988e957605aa7", "source": "synthetic"}
+{"text": "Do not give me cold weather, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "88f988e957605aa7", "source": "synthetic"}
+{"text": "कृपया ठंडा मौसम न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "5f1d9e9603476453", "source": "synthetic"}
+{"text": "मुझे ठंडा मौसम से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "5f1d9e9603476453", "source": "synthetic"}
+{"text": "मुझे ठंडा मौसम से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "5f1d9e9603476453", "source": "synthetic"}
+{"text": "Mujhe thanda mausam se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "190db7be43343bec", "source": "synthetic"}
+{"text": "Pehle bhi thanda mausam se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "190db7be43343bec", "source": "synthetic"}
+{"text": "Mujhe thanda mausam se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "190db7be43343bec", "source": "synthetic"}
+{"text": "I had a reaction to mosquito repellent before.", "label": "allergy", "language": "en", "scenario_id": "0f3da75b8948d542", "source": "synthetic"}
+{"text": "Do not give me mosquito repellent, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "0f3da75b8948d542", "source": "synthetic"}
+{"text": "I react badly to mosquito repellent.", "label": "allergy", "language": "en", "scenario_id": "0f3da75b8948d542", "source": "synthetic"}
+{"text": "मुझे मच्छर भगाने वाली क्रीम से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "326ef0869acb6ab4", "source": "synthetic"}
+{"text": "पहले भी मच्छर भगाने वाली क्रीम से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "326ef0869acb6ab4", "source": "synthetic"}
+{"text": "कृपया मच्छर भगाने वाली क्रीम न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "326ef0869acb6ab4", "source": "synthetic"}
+{"text": "Mujhe machhar bhagane wali cream se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "b1a94a03c69c8fc4", "source": "synthetic"}
+{"text": "Mujhe machhar bhagane wali cream se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "b1a94a03c69c8fc4", "source": "synthetic"}
+{"text": "Mujhe machhar bhagane wali cream se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "b1a94a03c69c8fc4", "source": "synthetic"}
+{"text": "Please avoid soybean products, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "308a76f012d5df9d", "source": "synthetic"}
+{"text": "Do not give me soybean products, I am allergic.", "label": "allergy", "language": "en", "scenario_id": "308a76f012d5df9d", "source": "synthetic"}
+{"text": "I am allergic to soybean products.", "label": "allergy", "language": "en", "scenario_id": "308a76f012d5df9d", "source": "synthetic"}
+{"text": "कृपया सोया उत्पाद न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "668e725b367fedc2", "source": "synthetic"}
+{"text": "मुझे सोया उत्पाद से तकलीफ होती है।", "label": "allergy", "language": "hi", "scenario_id": "668e725b367fedc2", "source": "synthetic"}
+{"text": "मुझे सोया उत्पाद से एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "668e725b367fedc2", "source": "synthetic"}
+{"text": "Kripya soya utpad na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "d3d4e2eaf532e067", "source": "synthetic"}
+{"text": "Mujhe soya utpad se allergy ki samasya hai.", "label": "allergy", "language": "hinglish", "scenario_id": "d3d4e2eaf532e067", "source": "synthetic"}
+{"text": "Mujhe soya utpad se takleef hoti hai.", "label": "allergy", "language": "hinglish", "scenario_id": "d3d4e2eaf532e067", "source": "synthetic"}
+{"text": "I have an allergy to a cough syrup I tried last year.", "label": "allergy", "language": "en", "scenario_id": "bff6af7ebf5e0dea", "source": "synthetic"}
+{"text": "I had a reaction to a cough syrup I tried last year before.", "label": "allergy", "language": "en", "scenario_id": "bff6af7ebf5e0dea", "source": "synthetic"}
+{"text": "I am allergic to a cough syrup I tried last year.", "label": "allergy", "language": "en", "scenario_id": "bff6af7ebf5e0dea", "source": "synthetic"}
+{"text": "मुझे पिछले साल ली एक कफ सिरप से एलर्जी की समस्या है।", "label": "allergy", "language": "hi", "scenario_id": "3bd7ea24bc2cf8bf", "source": "synthetic"}
+{"text": "पहले भी पिछले साल ली एक कफ सिरप से रिएक्शन हुआ था।", "label": "allergy", "language": "hi", "scenario_id": "3bd7ea24bc2cf8bf", "source": "synthetic"}
+{"text": "कृपया पिछले साल ली एक कफ सिरप न दें, मुझे एलर्जी है।", "label": "allergy", "language": "hi", "scenario_id": "3bd7ea24bc2cf8bf", "source": "synthetic"}
+{"text": "Kripya pichhle saal li ek cough syrup na dein, mujhe allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "ab36f184985085e8", "source": "synthetic"}
+{"text": "Pehle bhi pichhle saal li ek cough syrup se reaction hua tha.", "label": "allergy", "language": "hinglish", "scenario_id": "ab36f184985085e8", "source": "synthetic"}
+{"text": "Mujhe pichhle saal li ek cough syrup se allergy hai.", "label": "allergy", "language": "hinglish", "scenario_id": "ab36f184985085e8", "source": "synthetic"}
+{"text": "I was diagnosed with asthma.", "label": "medical_history", "language": "en", "scenario_id": "1c4d1456ee5a3758", "source": "synthetic"}
+{"text": "I have asthma.", "label": "medical_history", "language": "en", "scenario_id": "1c4d1456ee5a3758", "source": "synthetic"}
+{"text": "I had asthma.", "label": "medical_history", "language": "en", "scenario_id": "1c4d1456ee5a3758", "source": "synthetic"}
+{"text": "मुझे दमा हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "da14b261beca452c", "source": "synthetic"}
+{"text": "मेरा दमा का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "da14b261beca452c", "source": "synthetic"}
+{"text": "मेरे इतिहास में दमा है।", "label": "medical_history", "language": "hi", "scenario_id": "da14b261beca452c", "source": "synthetic"}
+{"text": "Mere history mein dama hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "a4344016c8f5ec47", "source": "synthetic"}
+{"text": "Mujhe dama hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "a4344016c8f5ec47", "source": "synthetic"}
+{"text": "Mujhe dama hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "a4344016c8f5ec47", "source": "synthetic"}
+{"text": "I had type 2 diabetes.", "label": "medical_history", "language": "en", "scenario_id": "2057a6625da7582c", "source": "synthetic"}
+{"text": "I have type 2 diabetes.", "label": "medical_history", "language": "en", "scenario_id": "2057a6625da7582c", "source": "synthetic"}
+{"text": "There is type 2 diabetes in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "2057a6625da7582c", "source": "synthetic"}
+{"text": "मुझे टाइप 2 डायबिटीज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "65a7d06e511b9e34", "source": "synthetic"}
+{"text": "मेरे इतिहास में टाइप 2 डायबिटीज है।", "label": "medical_history", "language": "hi", "scenario_id": "65a7d06e511b9e34", "source": "synthetic"}
+{"text": "मुझे टाइप 2 डायबिटीज का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "65a7d06e511b9e34", "source": "synthetic"}
+{"text": "Mujhe type 2 diabetes hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "8f24422346ec441f", "source": "synthetic"}
+{"text": "Mere history mein type 2 diabetes hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "8f24422346ec441f", "source": "synthetic"}
+{"text": "Mera type 2 diabetes ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "8f24422346ec441f", "source": "synthetic"}
+{"text": "There is high blood pressure in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "bf1dccbd67fe6607", "source": "synthetic"}
+{"text": "I have a history of high blood pressure.", "label": "medical_history", "language": "en", "scenario_id": "bf1dccbd67fe6607", "source": "synthetic"}
+{"text": "I have high blood pressure.", "label": "medical_history", "language": "en", "scenario_id": "bf1dccbd67fe6607", "source": "synthetic"}
+{"text": "मुझे उच्च रक्तचाप का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "3333590955a1b6be", "source": "synthetic"}
+{"text": "मुझे उच्च रक्तचाप हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "3333590955a1b6be", "source": "synthetic"}
+{"text": "मेरे इतिहास में उच्च रक्तचाप है।", "label": "medical_history", "language": "hi", "scenario_id": "3333590955a1b6be", "source": "synthetic"}
+{"text": "Mujhe high blood pressure ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "63593be2800130c8", "source": "synthetic"}
+{"text": "Mera high blood pressure ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "63593be2800130c8", "source": "synthetic"}
+{"text": "Mere history mein high blood pressure hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "63593be2800130c8", "source": "synthetic"}
+{"text": "I was diagnosed with a heart attack two years ago.", "label": "medical_history", "language": "en", "scenario_id": "ea77236b750c8291", "source": "synthetic"}
+{"text": "I was treated for a heart attack two years ago.", "label": "medical_history", "language": "en", "scenario_id": "ea77236b750c8291", "source": "synthetic"}
+{"text": "I have a history of a heart attack two years ago.", "label": "medical_history", "language": "en", "scenario_id": "ea77236b750c8291", "source": "synthetic"}
+{"text": "मेरे इतिहास में दो साल पहले दिल का दौरा है।", "label": "medical_history", "language": "hi", "scenario_id": "8f7d5c9808a0b972", "source": "synthetic"}
+{"text": "मुझे दो साल पहले दिल का दौरा है।", "label": "medical_history", "language": "hi", "scenario_id": "8f7d5c9808a0b972", "source": "synthetic"}
+{"text": "मुझे दो साल पहले दिल का दौरा का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "8f7d5c9808a0b972", "source": "synthetic"}
+{"text": "Mere history mein do saal pehle dil ka daura hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "4c00bcbfac3e08a3", "source": "synthetic"}
+{"text": "Mujhe do saal pehle dil ka daura hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "4c00bcbfac3e08a3", "source": "synthetic"}
+{"text": "Mujhe do saal pehle dil ka daura ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "4c00bcbfac3e08a3", "source": "synthetic"}
+{"text": "I was treated for tuberculosis treated in 2019.", "label": "medical_history", "language": "en", "scenario_id": "e7e3fc52d4283459", "source": "synthetic"}
+{"text": "I had tuberculosis treated in 2019.", "label": "medical_history", "language": "en", "scenario_id": "e7e3fc52d4283459", "source": "synthetic"}
+{"text": "I have a history of tuberculosis treated in 2019.", "label": "medical_history", "language": "en", "scenario_id": "e7e3fc52d4283459", "source": "synthetic"}
+{"text": "मुझे 2019 में इलाज हुई टीबी का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "9ed480f686f10d78", "source": "synthetic"}
+{"text": "मुझे 2019 में इलाज हुई टीबी है।", "label": "medical_history", "language": "hi", "scenario_id": "9ed480f686f10d78", "source": "synthetic"}
+{"text": "मेरे इतिहास में 2019 में इलाज हुई टीबी है।", "label": "medical_history", "language": "hi", "scenario_id": "9ed480f686f10d78", "source": "synthetic"}
+{"text": "Mujhe 2019 mein ilaaj hui TB hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "e89e5ecd0251a1f9", "source": "synthetic"}
+{"text": "Mujhe 2019 mein ilaaj hui TB hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "e89e5ecd0251a1f9", "source": "synthetic"}
+{"text": "Mera 2019 mein ilaaj hui TB ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "e89e5ecd0251a1f9", "source": "synthetic"}
+{"text": "I was treated for a thyroid problem.", "label": "medical_history", "language": "en", "scenario_id": "cc4401af1b228ac1", "source": "synthetic"}
+{"text": "I have a thyroid problem.", "label": "medical_history", "language": "en", "scenario_id": "cc4401af1b228ac1", "source": "synthetic"}
+{"text": "I was diagnosed with a thyroid problem.", "label": "medical_history", "language": "en", "scenario_id": "cc4401af1b228ac1", "source": "synthetic"}
+{"text": "मुझे थायरॉइड की समस्या हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "348c0dfe4f1cb28a", "source": "synthetic"}
+{"text": "मेरा थायरॉइड की समस्या का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "348c0dfe4f1cb28a", "source": "synthetic"}
+{"text": "मेरे इतिहास में थायरॉइड की समस्या है।", "label": "medical_history", "language": "hi", "scenario_id": "348c0dfe4f1cb28a", "source": "synthetic"}
+{"text": "Mujhe thyroid ki samasya hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "246befca6e7d405d", "source": "synthetic"}
+{"text": "Mera thyroid ki samasya ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "246befca6e7d405d", "source": "synthetic"}
+{"text": "Mujhe thyroid ki samasya hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "246befca6e7d405d", "source": "synthetic"}
+{"text": "I was diagnosed with kidney stones.", "label": "medical_history", "language": "en", "scenario_id": "cbbde2d0e7930301", "source": "synthetic"}
+{"text": "I have a history of kidney stones.", "label": "medical_history", "language": "en", "scenario_id": "cbbde2d0e7930301", "source": "synthetic"}
+{"text": "There is kidney stones in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "cbbde2d0e7930301", "source": "synthetic"}
+{"text": "मेरा गुर्दे की पथरी का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "184a2f146b56151f", "source": "synthetic"}
+{"text": "मेरे इतिहास में गुर्दे की पथरी है।", "label": "medical_history", "language": "hi", "scenario_id": "184a2f146b56151f", "source": "synthetic"}
+{"text": "मुझे गुर्दे की पथरी हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "184a2f146b56151f", "source": "synthetic"}
+{"text": "Mujhe gurde ki pathri hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "845b6ae51c5f933b", "source": "synthetic"}
+{"text": "Mera gurde ki pathri ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "845b6ae51c5f933b", "source": "synthetic"}
+{"text": "Mujhe gurde ki pathri hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "845b6ae51c5f933b", "source": "synthetic"}
+{"text": "There is an appendectomy in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "707cb5b7e455bc7c", "source": "synthetic"}
+{"text": "I have a history of an appendectomy.", "label": "medical_history", "language": "en", "scenario_id": "707cb5b7e455bc7c", "source": "synthetic"}
+{"text": "I have an appendectomy.", "label": "medical_history", "language": "en", "scenario_id": "707cb5b7e455bc7c", "source": "synthetic"}
+{"text": "मेरे इतिहास में अपेंडिक्स का ऑपरेशन है।", "label": "medical_history", "language": "hi", "scenario_id": "32b8daf2d6ddd5cc", "source": "synthetic"}
+{"text": "मुझे अपेंडिक्स का ऑपरेशन हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "32b8daf2d6ddd5cc", "source": "synthetic"}
+{"text": "मुझे अपेंडिक्स का ऑपरेशन है।", "label": "medical_history", "language": "hi", "scenario_id": "32b8daf2d6ddd5cc", "source": "synthetic"}
+{"text": "Mujhe appendix ka operation ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "5011ab23e34a85e1", "source": "synthetic"}
+{"text": "Mujhe appendix ka operation hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "5011ab23e34a85e1", "source": "synthetic"}
+{"text": "Mere history mein appendix ka operation hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "5011ab23e34a85e1", "source": "synthetic"}
+{"text": "I have migraine.", "label": "medical_history", "language": "en", "scenario_id": "3c7aa6de06e5e07b", "source": "synthetic"}
+{"text": "There is migraine in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "3c7aa6de06e5e07b", "source": "synthetic"}
+{"text": "I had migraine.", "label": "medical_history", "language": "en", "scenario_id": "3c7aa6de06e5e07b", "source": "synthetic"}
+{"text": "मुझे माइग्रेन का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "a7ba3a202452e350", "source": "synthetic"}
+{"text": "मुझे माइग्रेन है।", "label": "medical_history", "language": "hi", "scenario_id": "a7ba3a202452e350", "source": "synthetic"}
+{"text": "मुझे माइग्रेन हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "a7ba3a202452e350", "source": "synthetic"}
+{"text": "Mere history mein migraine hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "212e497a68ca0d96", "source": "synthetic"}
+{"text": "Mujhe migraine ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "212e497a68ca0d96", "source": "synthetic"}
+{"text": "Mujhe migraine hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "212e497a68ca0d96", "source": "synthetic"}
+{"text": "There is anemia during pregnancy in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "84171f4aea3d6995", "source": "synthetic"}
+{"text": "I have a history of anemia during pregnancy.", "label": "medical_history", "language": "en", "scenario_id": "84171f4aea3d6995", "source": "synthetic"}
+{"text": "I was diagnosed with anemia during pregnancy.", "label": "medical_history", "language": "en", "scenario_id": "84171f4aea3d6995", "source": "synthetic"}
+{"text": "मेरे इतिहास में गर्भावस्था में खून की कमी है।", "label": "medical_history", "language": "hi", "scenario_id": "11aa994e28851d4b", "source": "synthetic"}
+{"text": "मुझे गर्भावस्था में खून की कमी है।", "label": "medical_history", "language": "hi", "scenario_id": "11aa994e28851d4b", "source": "synthetic"}
+{"text": "मुझे गर्भावस्था में खून की कमी का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "11aa994e28851d4b", "source": "synthetic"}
+{"text": "Mujhe garbhavastha mein khoon ki kami hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "84b12bd31a02b15d", "source": "synthetic"}
+{"text": "Mere history mein garbhavastha mein khoon ki kami hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "84b12bd31a02b15d", "source": "synthetic"}
+{"text": "Mujhe garbhavastha mein khoon ki kami ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "84b12bd31a02b15d", "source": "synthetic"}
+{"text": "I have a history of a family history of stroke.", "label": "medical_history", "language": "en", "scenario_id": "d4720d169245e240", "source": "synthetic"}
+{"text": "I was diagnosed with a family history of stroke.", "label": "medical_history", "language": "en", "scenario_id": "d4720d169245e240", "source": "synthetic"}
+{"text": "I was treated for a family history of stroke.", "label": "medical_history", "language": "en", "scenario_id": "d4720d169245e240", "source": "synthetic"}
+{"text": "मुझे परिवार में लकवे का इतिहास है।", "label": "medical_history", "language": "hi", "scenario_id": "5a826e15f08b8994", "source": "synthetic"}
+{"text": "मेरे इतिहास में परिवार में लकवे का इतिहास है।", "label": "medical_history", "language": "hi", "scenario_id": "5a826e15f08b8994", "source": "synthetic"}
+{"text": "मुझे परिवार में लकवे का इतिहास का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "5a826e15f08b8994", "source": "synthetic"}
+{"text": "Mujhe parivar mein lakwe ka itihas hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "ba0654384e323678", "source": "synthetic"}
+{"text": "Mujhe parivar mein lakwe ka itihas hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "ba0654384e323678", "source": "synthetic"}
+{"text": "Mere history mein parivar mein lakwe ka itihas hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "ba0654384e323678", "source": "synthetic"}
+{"text": "I have a history of childhood chickenpox.", "label": "medical_history", "language": "en", "scenario_id": "d9a54bd6ac579de6", "source": "synthetic"}
+{"text": "I had childhood chickenpox.", "label": "medical_history", "language": "en", "scenario_id": "d9a54bd6ac579de6", "source": "synthetic"}
+{"text": "I have childhood chickenpox.", "label": "medical_history", "language": "en", "scenario_id": "d9a54bd6ac579de6", "source": "synthetic"}
+{"text": "मेरा बचपन में चेचक का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "9748a68808a7f839", "source": "synthetic"}
+{"text": "मुझे बचपन में चेचक का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "9748a68808a7f839", "source": "synthetic"}
+{"text": "मुझे बचपन में चेचक है।", "label": "medical_history", "language": "hi", "scenario_id": "9748a68808a7f839", "source": "synthetic"}
+{"text": "Mujhe bachpan mein chechak hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "81685b8061b1d3e4", "source": "synthetic"}
+{"text": "Mujhe bachpan mein chechak hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "81685b8061b1d3e4", "source": "synthetic"}
+{"text": "Mujhe bachpan mein chechak ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "81685b8061b1d3e4", "source": "synthetic"}
+{"text": "I have two caesarean deliveries.", "label": "medical_history", "language": "en", "scenario_id": "bf5acfdcea878278", "source": "synthetic"}
+{"text": "There is two caesarean deliveries in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "bf5acfdcea878278", "source": "synthetic"}
+{"text": "I have a history of two caesarean deliveries.", "label": "medical_history", "language": "en", "scenario_id": "bf5acfdcea878278", "source": "synthetic"}
+{"text": "मुझे दो सिजेरियन डिलीवरी हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "d5e6cef28a114d39", "source": "synthetic"}
+{"text": "मेरा दो सिजेरियन डिलीवरी का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "d5e6cef28a114d39", "source": "synthetic"}
+{"text": "मेरे इतिहास में दो सिजेरियन डिलीवरी है।", "label": "medical_history", "language": "hi", "scenario_id": "d5e6cef28a114d39", "source": "synthetic"}
+{"text": "Mujhe do caesarean delivery hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "640eb26c130abc05", "source": "synthetic"}
+{"text": "Mujhe do caesarean delivery ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "640eb26c130abc05", "source": "synthetic"}
+{"text": "Mere history mein do caesarean delivery hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "640eb26c130abc05", "source": "synthetic"}
+{"text": "I have depression treated with counselling.", "label": "medical_history", "language": "en", "scenario_id": "7630ab4d1a3e99aa", "source": "synthetic"}
+{"text": "I was treated for depression treated with counselling.", "label": "medical_history", "language": "en", "scenario_id": "7630ab4d1a3e99aa", "source": "synthetic"}
+{"text": "I have a history of depression treated with counselling.", "label": "medical_history", "language": "en", "scenario_id": "7630ab4d1a3e99aa", "source": "synthetic"}
+{"text": "मेरे इतिहास में काउंसलिंग से इलाज हुआ अवसाद है।", "label": "medical_history", "language": "hi", "scenario_id": "a149069df9e78468", "source": "synthetic"}
+{"text": "मेरा काउंसलिंग से इलाज हुआ अवसाद का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "a149069df9e78468", "source": "synthetic"}
+{"text": "मुझे काउंसलिंग से इलाज हुआ अवसाद हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "a149069df9e78468", "source": "synthetic"}
+{"text": "Mere history mein counselling se ilaaj hua avsad hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "099442545ffbdd16", "source": "synthetic"}
+{"text": "Mera counselling se ilaaj hua avsad ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "099442545ffbdd16", "source": "synthetic"}
+{"text": "Mujhe counselling se ilaaj hua avsad hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "099442545ffbdd16", "source": "synthetic"}
+{"text": "I was diagnosed with chronic kidney disease stage two.", "label": "medical_history", "language": "en", "scenario_id": "62db30171143b465", "source": "synthetic"}
+{"text": "There is chronic kidney disease stage two in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "62db30171143b465", "source": "synthetic"}
+{"text": "I had chronic kidney disease stage two.", "label": "medical_history", "language": "en", "scenario_id": "62db30171143b465", "source": "synthetic"}
+{"text": "मुझे गुर्दे की पुरानी बीमारी चरण दो हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "fc8ea0721f71aab1", "source": "synthetic"}
+{"text": "मेरे इतिहास में गुर्दे की पुरानी बीमारी चरण दो है।", "label": "medical_history", "language": "hi", "scenario_id": "fc8ea0721f71aab1", "source": "synthetic"}
+{"text": "मुझे गुर्दे की पुरानी बीमारी चरण दो है।", "label": "medical_history", "language": "hi", "scenario_id": "fc8ea0721f71aab1", "source": "synthetic"}
+{"text": "Mujhe gurde ki purani bimari stage do hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "4aee6deafa399f01", "source": "synthetic"}
+{"text": "Mujhe gurde ki purani bimari stage do ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "4aee6deafa399f01", "source": "synthetic"}
+{"text": "Mere history mein gurde ki purani bimari stage do hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "4aee6deafa399f01", "source": "synthetic"}
+{"text": "I had a fracture in my wrist last year.", "label": "medical_history", "language": "en", "scenario_id": "ac0064b121ba0fc6", "source": "synthetic"}
+{"text": "I have a fracture in my wrist last year.", "label": "medical_history", "language": "en", "scenario_id": "ac0064b121ba0fc6", "source": "synthetic"}
+{"text": "I have a history of a fracture in my wrist last year.", "label": "medical_history", "language": "en", "scenario_id": "ac0064b121ba0fc6", "source": "synthetic"}
+{"text": "मेरा पिछले साल कलाई की हड्डी टूटी थी का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "6a15e58ae26637b4", "source": "synthetic"}
+{"text": "मुझे पिछले साल कलाई की हड्डी टूटी थी का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "6a15e58ae26637b4", "source": "synthetic"}
+{"text": "मुझे पिछले साल कलाई की हड्डी टूटी थी है।", "label": "medical_history", "language": "hi", "scenario_id": "6a15e58ae26637b4", "source": "synthetic"}
+{"text": "Mujhe pichhle saal kalai ki haddi tooti thi hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "c7a8e9601f3ebea7", "source": "synthetic"}
+{"text": "Mujhe pichhle saal kalai ki haddi tooti thi ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "c7a8e9601f3ebea7", "source": "synthetic"}
+{"text": "Mujhe pichhle saal kalai ki haddi tooti thi hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "c7a8e9601f3ebea7", "source": "synthetic"}
+{"text": "I have typhoid as a teenager.", "label": "medical_history", "language": "en", "scenario_id": "5a67e9b7b0ee475e", "source": "synthetic"}
+{"text": "I was diagnosed with typhoid as a teenager.", "label": "medical_history", "language": "en", "scenario_id": "5a67e9b7b0ee475e", "source": "synthetic"}
+{"text": "I have a history of typhoid as a teenager.", "label": "medical_history", "language": "en", "scenario_id": "5a67e9b7b0ee475e", "source": "synthetic"}
+{"text": "मुझे किशोरावस्था में टाइफाइड हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "7b71d4c073641850", "source": "synthetic"}
+{"text": "मेरे इतिहास में किशोरावस्था में टाइफाइड है।", "label": "medical_history", "language": "hi", "scenario_id": "7b71d4c073641850", "source": "synthetic"}
+{"text": "मुझे किशोरावस्था में टाइफाइड का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "7b71d4c073641850", "source": "synthetic"}
+{"text": "Mujhe kishoravastha mein typhoid hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "f3e1be79f455402b", "source": "synthetic"}
+{"text": "Mujhe kishoravastha mein typhoid hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "f3e1be79f455402b", "source": "synthetic"}
+{"text": "Mujhe kishoravastha mein typhoid ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "f3e1be79f455402b", "source": "synthetic"}
+{"text": "I have a thyroidectomy.", "label": "medical_history", "language": "en", "scenario_id": "ed58db20aecf4b70", "source": "synthetic"}
+{"text": "I was treated for a thyroidectomy.", "label": "medical_history", "language": "en", "scenario_id": "ed58db20aecf4b70", "source": "synthetic"}
+{"text": "There is a thyroidectomy in my medical history.", "label": "medical_history", "language": "en", "scenario_id": "ed58db20aecf4b70", "source": "synthetic"}
+{"text": "मेरे इतिहास में थायरॉइड का ऑपरेशन है।", "label": "medical_history", "language": "hi", "scenario_id": "b297537d438edeb1", "source": "synthetic"}
+{"text": "मेरा थायरॉइड का ऑपरेशन का इलाज हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "b297537d438edeb1", "source": "synthetic"}
+{"text": "मुझे थायरॉइड का ऑपरेशन है।", "label": "medical_history", "language": "hi", "scenario_id": "b297537d438edeb1", "source": "synthetic"}
+{"text": "Mujhe thyroid ka operation hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "d0c44b762027b7f4", "source": "synthetic"}
+{"text": "Mera thyroid ka operation ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "d0c44b762027b7f4", "source": "synthetic"}
+{"text": "Mere history mein thyroid ka operation hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "d0c44b762027b7f4", "source": "synthetic"}
+{"text": "I have a history of glaucoma in my right eye.", "label": "medical_history", "language": "en", "scenario_id": "a6a00d8314124039", "source": "synthetic"}
+{"text": "I have glaucoma in my right eye.", "label": "medical_history", "language": "en", "scenario_id": "a6a00d8314124039", "source": "synthetic"}
+{"text": "I had glaucoma in my right eye.", "label": "medical_history", "language": "en", "scenario_id": "a6a00d8314124039", "source": "synthetic"}
+{"text": "मुझे दाईं आंख में काला मोतिया है।", "label": "medical_history", "language": "hi", "scenario_id": "cd11df61cb8b5481", "source": "synthetic"}
+{"text": "मुझे दाईं आंख में काला मोतिया हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "cd11df61cb8b5481", "source": "synthetic"}
+{"text": "मेरे इतिहास में दाईं आंख में काला मोतिया है।", "label": "medical_history", "language": "hi", "scenario_id": "cd11df61cb8b5481", "source": "synthetic"}
+{"text": "Mujhe daayin aankh mein kala motiya hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "12d5038840ebd201", "source": "synthetic"}
+{"text": "Mujhe daayin aankh mein kala motiya hai.", "label": "medical_history", "language": "hinglish", "scenario_id": "12d5038840ebd201", "source": "synthetic"}
+{"text": "Mujhe daayin aankh mein kala motiya ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "12d5038840ebd201", "source": "synthetic"}
+{"text": "I was treated for a family history of breast cancer.", "label": "medical_history", "language": "en", "scenario_id": "2e0ab0a9fa421633", "source": "synthetic"}
+{"text": "I had a family history of breast cancer.", "label": "medical_history", "language": "en", "scenario_id": "2e0ab0a9fa421633", "source": "synthetic"}
+{"text": "I have a family history of breast cancer.", "label": "medical_history", "language": "en", "scenario_id": "2e0ab0a9fa421633", "source": "synthetic"}
+{"text": "मुझे परिवार में स्तन कैंसर का इतिहास का पता चला था।", "label": "medical_history", "language": "hi", "scenario_id": "0c0b4ecfa7b2d15c", "source": "synthetic"}
+{"text": "मेरे इतिहास में परिवार में स्तन कैंसर का इतिहास है।", "label": "medical_history", "language": "hi", "scenario_id": "0c0b4ecfa7b2d15c", "source": "synthetic"}
+{"text": "मुझे परिवार में स्तन कैंसर का इतिहास हुआ था।", "label": "medical_history", "language": "hi", "scenario_id": "0c0b4ecfa7b2d15c", "source": "synthetic"}
+{"text": "Mera parivar mein breast cancer ka itihas ka ilaaj hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "b1dd3c7add78e5c9", "source": "synthetic"}
+{"text": "Mujhe parivar mein breast cancer ka itihas hua tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "b1dd3c7add78e5c9", "source": "synthetic"}
+{"text": "Mujhe parivar mein breast cancer ka itihas ka pata chala tha.", "label": "medical_history", "language": "hinglish", "scenario_id": "b1dd3c7add78e5c9", "source": "synthetic"}
+{"text": "Also, my village is two hours from the nearest clinic.", "label": "other", "language": "en", "scenario_id": "7e35f4bc4bfb6c52", "source": "synthetic"}
+{"text": "For context, my village is two hours from the nearest clinic.", "label": "other", "language": "en", "scenario_id": "7e35f4bc4bfb6c52", "source": "synthetic"}
+{"text": "One more thing: my village is two hours from the nearest clinic.", "label": "other", "language": "en", "scenario_id": "7e35f4bc4bfb6c52", "source": "synthetic"}
+{"text": "जानकारी के लिए, मेरा गांव नजदीकी क्लिनिक से दो घंटे दूर है।", "label": "other", "language": "hi", "scenario_id": "4497c156db6c405b", "source": "synthetic"}
+{"text": "मेरा गांव नजदीकी क्लिनिक से दो घंटे दूर है।", "label": "other", "language": "hi", "scenario_id": "4497c156db6c405b", "source": "synthetic"}
+{"text": "और, मेरा गांव नजदीकी क्लिनिक से दो घंटे दूर है।", "label": "other", "language": "hi", "scenario_id": "4497c156db6c405b", "source": "synthetic"}
+{"text": "mera gaon najdiki clinic se do ghante door hai.", "label": "other", "language": "hinglish", "scenario_id": "a574bc0704e0938a", "source": "synthetic"}
+{"text": "Jaankari ke liye, mera gaon najdiki clinic se do ghante door hai.", "label": "other", "language": "hinglish", "scenario_id": "a574bc0704e0938a", "source": "synthetic"}
+{"text": "Ek baat aur: mera gaon najdiki clinic se do ghante door hai.", "label": "other", "language": "hinglish", "scenario_id": "a574bc0704e0938a", "source": "synthetic"}
+{"text": "Also, I live with my parents and two children.", "label": "other", "language": "en", "scenario_id": "7ba8c64b8fe70580", "source": "synthetic"}
+{"text": "For context, I live with my parents and two children.", "label": "other", "language": "en", "scenario_id": "7ba8c64b8fe70580", "source": "synthetic"}
+{"text": "One more thing: I live with my parents and two children.", "label": "other", "language": "en", "scenario_id": "7ba8c64b8fe70580", "source": "synthetic"}
+{"text": "और, मैं अपने माता-पिता और दो बच्चों के साथ रहती हूं।", "label": "other", "language": "hi", "scenario_id": "bc9b5ffa9ca7ae9d", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैं अपने माता-पिता और दो बच्चों के साथ रहती हूं।", "label": "other", "language": "hi", "scenario_id": "bc9b5ffa9ca7ae9d", "source": "synthetic"}
+{"text": "एक बात और: मैं अपने माता-पिता और दो बच्चों के साथ रहती हूं।", "label": "other", "language": "hi", "scenario_id": "bc9b5ffa9ca7ae9d", "source": "synthetic"}
+{"text": "Jaankari ke liye, main apne mata pita aur do bachon ke saath rehti hoon.", "label": "other", "language": "hinglish", "scenario_id": "0b8e593b1b34ab1c", "source": "synthetic"}
+{"text": "Ek baat aur: main apne mata pita aur do bachon ke saath rehti hoon.", "label": "other", "language": "hinglish", "scenario_id": "0b8e593b1b34ab1c", "source": "synthetic"}
+{"text": "main apne mata pita aur do bachon ke saath rehti hoon.", "label": "other", "language": "hinglish", "scenario_id": "0b8e593b1b34ab1c", "source": "synthetic"}
+{"text": "One more thing: I work night shifts at a factory.", "label": "other", "language": "en", "scenario_id": "45166d1f0872baed", "source": "synthetic"}
+{"text": "I work night shifts at a factory.", "label": "other", "language": "en", "scenario_id": "45166d1f0872baed", "source": "synthetic"}
+{"text": "Just so you know, I work night shifts at a factory.", "label": "other", "language": "en", "scenario_id": "45166d1f0872baed", "source": "synthetic"}
+{"text": "मैं कारखाने में नाइट शिफ्ट करता हूं।", "label": "other", "language": "hi", "scenario_id": "19300fb51cc747ca", "source": "synthetic"}
+{"text": "और, मैं कारखाने में नाइट शिफ्ट करता हूं।", "label": "other", "language": "hi", "scenario_id": "19300fb51cc747ca", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैं कारखाने में नाइट शिफ्ट करता हूं।", "label": "other", "language": "hi", "scenario_id": "19300fb51cc747ca", "source": "synthetic"}
+{"text": "Ek baat aur: main karkhane mein night shift karta hoon.", "label": "other", "language": "hinglish", "scenario_id": "1d238ecc5f4bfa29", "source": "synthetic"}
+{"text": "Aur, main karkhane mein night shift karta hoon.", "label": "other", "language": "hinglish", "scenario_id": "1d238ecc5f4bfa29", "source": "synthetic"}
+{"text": "main karkhane mein night shift karta hoon.", "label": "other", "language": "hinglish", "scenario_id": "1d238ecc5f4bfa29", "source": "synthetic"}
+{"text": "One more thing: I do not have insurance.", "label": "other", "language": "en", "scenario_id": "a7a245c723c60fed", "source": "synthetic"}
+{"text": "I do not have insurance.", "label": "other", "language": "en", "scenario_id": "a7a245c723c60fed", "source": "synthetic"}
+{"text": "Just so you know, I do not have insurance.", "label": "other", "language": "en", "scenario_id": "a7a245c723c60fed", "source": "synthetic"}
+{"text": "और, मेरे पास बीमा नहीं है।", "label": "other", "language": "hi", "scenario_id": "295bcec7bd1d9531", "source": "synthetic"}
+{"text": "जानकारी के लिए, मेरे पास बीमा नहीं है।", "label": "other", "language": "hi", "scenario_id": "295bcec7bd1d9531", "source": "synthetic"}
+{"text": "मेरे पास बीमा नहीं है।", "label": "other", "language": "hi", "scenario_id": "295bcec7bd1d9531", "source": "synthetic"}
+{"text": "Aur, mere paas bima nahi hai.", "label": "other", "language": "hinglish", "scenario_id": "782556269e9caab6", "source": "synthetic"}
+{"text": "Jaankari ke liye, mere paas bima nahi hai.", "label": "other", "language": "hinglish", "scenario_id": "782556269e9caab6", "source": "synthetic"}
+{"text": "Ek baat aur: mere paas bima nahi hai.", "label": "other", "language": "hinglish", "scenario_id": "782556269e9caab6", "source": "synthetic"}
+{"text": "Also, my son can translate for me.", "label": "other", "language": "en", "scenario_id": "97661d8f493b59cd", "source": "synthetic"}
+{"text": "Just so you know, my son can translate for me.", "label": "other", "language": "en", "scenario_id": "97661d8f493b59cd", "source": "synthetic"}
+{"text": "For context, my son can translate for me.", "label": "other", "language": "en", "scenario_id": "97661d8f493b59cd", "source": "synthetic"}
+{"text": "एक बात और: मेरा बेटा मेरे लिए अनुवाद कर सकता है।", "label": "other", "language": "hi", "scenario_id": "1098238f15f87cf0", "source": "synthetic"}
+{"text": "और, मेरा बेटा मेरे लिए अनुवाद कर सकता है।", "label": "other", "language": "hi", "scenario_id": "1098238f15f87cf0", "source": "synthetic"}
+{"text": "मेरा बेटा मेरे लिए अनुवाद कर सकता है।", "label": "other", "language": "hi", "scenario_id": "1098238f15f87cf0", "source": "synthetic"}
+{"text": "Jaankari ke liye, mera beta mere liye translate kar sakta hai.", "label": "other", "language": "hinglish", "scenario_id": "5f11a8119b53d015", "source": "synthetic"}
+{"text": "mera beta mere liye translate kar sakta hai.", "label": "other", "language": "hinglish", "scenario_id": "5f11a8119b53d015", "source": "synthetic"}
+{"text": "Aur, mera beta mere liye translate kar sakta hai.", "label": "other", "language": "hinglish", "scenario_id": "5f11a8119b53d015", "source": "synthetic"}
+{"text": "Just so you know, I want a video call because travel is hard.", "label": "other", "language": "en", "scenario_id": "7770b5d25520a1de", "source": "synthetic"}
+{"text": "Also, I want a video call because travel is hard.", "label": "other", "language": "en", "scenario_id": "7770b5d25520a1de", "source": "synthetic"}
+{"text": "One more thing: I want a video call because travel is hard.", "label": "other", "language": "en", "scenario_id": "7770b5d25520a1de", "source": "synthetic"}
+{"text": "एक बात और: यात्रा कठिन है इसलिए वीडियो कॉल चाहिए।", "label": "other", "language": "hi", "scenario_id": "3a9ab5162e30e220", "source": "synthetic"}
+{"text": "और, यात्रा कठिन है इसलिए वीडियो कॉल चाहिए।", "label": "other", "language": "hi", "scenario_id": "3a9ab5162e30e220", "source": "synthetic"}
+{"text": "जानकारी के लिए, यात्रा कठिन है इसलिए वीडियो कॉल चाहिए।", "label": "other", "language": "hi", "scenario_id": "3a9ab5162e30e220", "source": "synthetic"}
+{"text": "Ek baat aur: yatra kathin hai isliye video call chahiye.", "label": "other", "language": "hinglish", "scenario_id": "7d3f4efc7946c349", "source": "synthetic"}
+{"text": "yatra kathin hai isliye video call chahiye.", "label": "other", "language": "hinglish", "scenario_id": "7d3f4efc7946c349", "source": "synthetic"}
+{"text": "Jaankari ke liye, yatra kathin hai isliye video call chahiye.", "label": "other", "language": "hinglish", "scenario_id": "7d3f4efc7946c349", "source": "synthetic"}
+{"text": "For context, I stopped smoking four months ago.", "label": "other", "language": "en", "scenario_id": "673f8679d2e95f28", "source": "synthetic"}
+{"text": "I stopped smoking four months ago.", "label": "other", "language": "en", "scenario_id": "673f8679d2e95f28", "source": "synthetic"}
+{"text": "One more thing: I stopped smoking four months ago.", "label": "other", "language": "en", "scenario_id": "673f8679d2e95f28", "source": "synthetic"}
+{"text": "एक बात और: मैंने चार महीने पहले धूम्रपान छोड़ दिया।", "label": "other", "language": "hi", "scenario_id": "d12fb30bcc6b0e60", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैंने चार महीने पहले धूम्रपान छोड़ दिया।", "label": "other", "language": "hi", "scenario_id": "d12fb30bcc6b0e60", "source": "synthetic"}
+{"text": "मैंने चार महीने पहले धूम्रपान छोड़ दिया।", "label": "other", "language": "hi", "scenario_id": "d12fb30bcc6b0e60", "source": "synthetic"}
+{"text": "Aur, maine chaar mahine pehle smoking chhod diya.", "label": "other", "language": "hinglish", "scenario_id": "c9cd65fb96703522", "source": "synthetic"}
+{"text": "Jaankari ke liye, maine chaar mahine pehle smoking chhod diya.", "label": "other", "language": "hinglish", "scenario_id": "c9cd65fb96703522", "source": "synthetic"}
+{"text": "Ek baat aur: maine chaar mahine pehle smoking chhod diya.", "label": "other", "language": "hinglish", "scenario_id": "c9cd65fb96703522", "source": "synthetic"}
+{"text": "I am vegetarian.", "label": "other", "language": "en", "scenario_id": "0817c7f3cf75bf16", "source": "synthetic"}
+{"text": "Just so you know, I am vegetarian.", "label": "other", "language": "en", "scenario_id": "0817c7f3cf75bf16", "source": "synthetic"}
+{"text": "For context, I am vegetarian.", "label": "other", "language": "en", "scenario_id": "0817c7f3cf75bf16", "source": "synthetic"}
+{"text": "मैं शाकाहारी हूं।", "label": "other", "language": "hi", "scenario_id": "b53ef221acaeb922", "source": "synthetic"}
+{"text": "एक बात और: मैं शाकाहारी हूं।", "label": "other", "language": "hi", "scenario_id": "b53ef221acaeb922", "source": "synthetic"}
+{"text": "और, मैं शाकाहारी हूं।", "label": "other", "language": "hi", "scenario_id": "b53ef221acaeb922", "source": "synthetic"}
+{"text": "Ek baat aur: main shakahari hoon.", "label": "other", "language": "hinglish", "scenario_id": "83a421d55c69c214", "source": "synthetic"}
+{"text": "Aur, main shakahari hoon.", "label": "other", "language": "hinglish", "scenario_id": "83a421d55c69c214", "source": "synthetic"}
+{"text": "Jaankari ke liye, main shakahari hoon.", "label": "other", "language": "hinglish", "scenario_id": "83a421d55c69c214", "source": "synthetic"}
+{"text": "Also, I need a reminder for my appointment.", "label": "other", "language": "en", "scenario_id": "17c86977d90c677f", "source": "synthetic"}
+{"text": "For context, I need a reminder for my appointment.", "label": "other", "language": "en", "scenario_id": "17c86977d90c677f", "source": "synthetic"}
+{"text": "One more thing: I need a reminder for my appointment.", "label": "other", "language": "en", "scenario_id": "17c86977d90c677f", "source": "synthetic"}
+{"text": "जानकारी के लिए, मुझे अपॉइंटमेंट की याद दिलानी है।", "label": "other", "language": "hi", "scenario_id": "a17ad5d0e008ec97", "source": "synthetic"}
+{"text": "और, मुझे अपॉइंटमेंट की याद दिलानी है।", "label": "other", "language": "hi", "scenario_id": "a17ad5d0e008ec97", "source": "synthetic"}
+{"text": "एक बात और: मुझे अपॉइंटमेंट की याद दिलानी है।", "label": "other", "language": "hi", "scenario_id": "a17ad5d0e008ec97", "source": "synthetic"}
+{"text": "Aur, mujhe appointment ki yaad dilani hai.", "label": "other", "language": "hinglish", "scenario_id": "3de24ee43ea74c0f", "source": "synthetic"}
+{"text": "mujhe appointment ki yaad dilani hai.", "label": "other", "language": "hinglish", "scenario_id": "3de24ee43ea74c0f", "source": "synthetic"}
+{"text": "Jaankari ke liye, mujhe appointment ki yaad dilani hai.", "label": "other", "language": "hinglish", "scenario_id": "3de24ee43ea74c0f", "source": "synthetic"}
+{"text": "my phone battery drains quickly.", "label": "other", "language": "en", "scenario_id": "4cfc55473fa8bec8", "source": "synthetic"}
+{"text": "Just so you know, my phone battery drains quickly.", "label": "other", "language": "en", "scenario_id": "4cfc55473fa8bec8", "source": "synthetic"}
+{"text": "Also, my phone battery drains quickly.", "label": "other", "language": "en", "scenario_id": "4cfc55473fa8bec8", "source": "synthetic"}
+{"text": "जानकारी के लिए, मेरे फोन की बैटरी जल्दी खत्म हो जाती है।", "label": "other", "language": "hi", "scenario_id": "58f48f5d2eaefc98", "source": "synthetic"}
+{"text": "मेरे फोन की बैटरी जल्दी खत्म हो जाती है।", "label": "other", "language": "hi", "scenario_id": "58f48f5d2eaefc98", "source": "synthetic"}
+{"text": "और, मेरे फोन की बैटरी जल्दी खत्म हो जाती है।", "label": "other", "language": "hi", "scenario_id": "58f48f5d2eaefc98", "source": "synthetic"}
+{"text": "mere phone ki battery jaldi khatam ho jati hai.", "label": "other", "language": "hinglish", "scenario_id": "4a630ac6c0c07ab5", "source": "synthetic"}
+{"text": "Ek baat aur: mere phone ki battery jaldi khatam ho jati hai.", "label": "other", "language": "hinglish", "scenario_id": "4a630ac6c0c07ab5", "source": "synthetic"}
+{"text": "Aur, mere phone ki battery jaldi khatam ho jati hai.", "label": "other", "language": "hinglish", "scenario_id": "4a630ac6c0c07ab5", "source": "synthetic"}
+{"text": "Also, I have three children under ten.", "label": "other", "language": "en", "scenario_id": "18a24a40d25e70d4", "source": "synthetic"}
+{"text": "I have three children under ten.", "label": "other", "language": "en", "scenario_id": "18a24a40d25e70d4", "source": "synthetic"}
+{"text": "One more thing: I have three children under ten.", "label": "other", "language": "en", "scenario_id": "18a24a40d25e70d4", "source": "synthetic"}
+{"text": "मेरे दस साल से छोटे तीन बच्चे हैं।", "label": "other", "language": "hi", "scenario_id": "c4c99c7d2fa1a8ca", "source": "synthetic"}
+{"text": "जानकारी के लिए, मेरे दस साल से छोटे तीन बच्चे हैं।", "label": "other", "language": "hi", "scenario_id": "c4c99c7d2fa1a8ca", "source": "synthetic"}
+{"text": "और, मेरे दस साल से छोटे तीन बच्चे हैं।", "label": "other", "language": "hi", "scenario_id": "c4c99c7d2fa1a8ca", "source": "synthetic"}
+{"text": "Jaankari ke liye, mere das saal se chote teen bachche hain.", "label": "other", "language": "hinglish", "scenario_id": "877549ebea426506", "source": "synthetic"}
+{"text": "Ek baat aur: mere das saal se chote teen bachche hain.", "label": "other", "language": "hinglish", "scenario_id": "877549ebea426506", "source": "synthetic"}
+{"text": "Aur, mere das saal se chote teen bachche hain.", "label": "other", "language": "hinglish", "scenario_id": "877549ebea426506", "source": "synthetic"}
+{"text": "One more thing: please speak slowly, I am hard of hearing.", "label": "other", "language": "en", "scenario_id": "cb90257561b649d5", "source": "synthetic"}
+{"text": "please speak slowly, I am hard of hearing.", "label": "other", "language": "en", "scenario_id": "cb90257561b649d5", "source": "synthetic"}
+{"text": "For context, please speak slowly, I am hard of hearing.", "label": "other", "language": "en", "scenario_id": "cb90257561b649d5", "source": "synthetic"}
+{"text": "और, कृपया धीरे बोलिए, मुझे सुनने में कठिनाई है।", "label": "other", "language": "hi", "scenario_id": "50b672f6857227c8", "source": "synthetic"}
+{"text": "एक बात और: कृपया धीरे बोलिए, मुझे सुनने में कठिनाई है।", "label": "other", "language": "hi", "scenario_id": "50b672f6857227c8", "source": "synthetic"}
+{"text": "कृपया धीरे बोलिए, मुझे सुनने में कठिनाई है।", "label": "other", "language": "hi", "scenario_id": "50b672f6857227c8", "source": "synthetic"}
+{"text": "kripya dheere boliye, mujhe sunne mein kathinai hai.", "label": "other", "language": "hinglish", "scenario_id": "064ee38f21495dd9", "source": "synthetic"}
+{"text": "Ek baat aur: kripya dheere boliye, mujhe sunne mein kathinai hai.", "label": "other", "language": "hinglish", "scenario_id": "064ee38f21495dd9", "source": "synthetic"}
+{"text": "Aur, kripya dheere boliye, mujhe sunne mein kathinai hai.", "label": "other", "language": "hinglish", "scenario_id": "064ee38f21495dd9", "source": "synthetic"}
+{"text": "I can only come on Sundays.", "label": "other", "language": "en", "scenario_id": "1fbc9fab95a3f011", "source": "synthetic"}
+{"text": "Just so you know, I can only come on Sundays.", "label": "other", "language": "en", "scenario_id": "1fbc9fab95a3f011", "source": "synthetic"}
+{"text": "Also, I can only come on Sundays.", "label": "other", "language": "en", "scenario_id": "1fbc9fab95a3f011", "source": "synthetic"}
+{"text": "एक बात और: मैं सिर्फ रविवार को आ सकता हूं।", "label": "other", "language": "hi", "scenario_id": "11cf3b25d8c97c84", "source": "synthetic"}
+{"text": "मैं सिर्फ रविवार को आ सकता हूं।", "label": "other", "language": "hi", "scenario_id": "11cf3b25d8c97c84", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैं सिर्फ रविवार को आ सकता हूं।", "label": "other", "language": "hi", "scenario_id": "11cf3b25d8c97c84", "source": "synthetic"}
+{"text": "Jaankari ke liye, main sirf ravivar ko aa sakta hoon.", "label": "other", "language": "hinglish", "scenario_id": "aac375e10c9bbf4d", "source": "synthetic"}
+{"text": "Ek baat aur: main sirf ravivar ko aa sakta hoon.", "label": "other", "language": "hinglish", "scenario_id": "aac375e10c9bbf4d", "source": "synthetic"}
+{"text": "main sirf ravivar ko aa sakta hoon.", "label": "other", "language": "hinglish", "scenario_id": "aac375e10c9bbf4d", "source": "synthetic"}
+{"text": "One more thing: I do not drink alcohol.", "label": "other", "language": "en", "scenario_id": "7c89e8e512a207a9", "source": "synthetic"}
+{"text": "For context, I do not drink alcohol.", "label": "other", "language": "en", "scenario_id": "7c89e8e512a207a9", "source": "synthetic"}
+{"text": "Just so you know, I do not drink alcohol.", "label": "other", "language": "en", "scenario_id": "7c89e8e512a207a9", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैं शराब नहीं पीता।", "label": "other", "language": "hi", "scenario_id": "71c190d40a41a70a", "source": "synthetic"}
+{"text": "मैं शराब नहीं पीता।", "label": "other", "language": "hi", "scenario_id": "71c190d40a41a70a", "source": "synthetic"}
+{"text": "और, मैं शराब नहीं पीता।", "label": "other", "language": "hi", "scenario_id": "71c190d40a41a70a", "source": "synthetic"}
+{"text": "main sharab nahi peeta.", "label": "other", "language": "hinglish", "scenario_id": "98214a471900e075", "source": "synthetic"}
+{"text": "Ek baat aur: main sharab nahi peeta.", "label": "other", "language": "hinglish", "scenario_id": "98214a471900e075", "source": "synthetic"}
+{"text": "Aur, main sharab nahi peeta.", "label": "other", "language": "hinglish", "scenario_id": "98214a471900e075", "source": "synthetic"}
+{"text": "Just so you know, my husband will join the call.", "label": "other", "language": "en", "scenario_id": "f0db243c0f1013fd", "source": "synthetic"}
+{"text": "Also, my husband will join the call.", "label": "other", "language": "en", "scenario_id": "f0db243c0f1013fd", "source": "synthetic"}
+{"text": "For context, my husband will join the call.", "label": "other", "language": "en", "scenario_id": "f0db243c0f1013fd", "source": "synthetic"}
+{"text": "एक बात और: मेरे पति कॉल में शामिल होंगे।", "label": "other", "language": "hi", "scenario_id": "5d79bdf12978b98d", "source": "synthetic"}
+{"text": "और, मेरे पति कॉल में शामिल होंगे।", "label": "other", "language": "hi", "scenario_id": "5d79bdf12978b98d", "source": "synthetic"}
+{"text": "जानकारी के लिए, मेरे पति कॉल में शामिल होंगे।", "label": "other", "language": "hi", "scenario_id": "5d79bdf12978b98d", "source": "synthetic"}
+{"text": "mere pati call mein shamil honge.", "label": "other", "language": "hinglish", "scenario_id": "e91573b45e8a53dc", "source": "synthetic"}
+{"text": "Aur, mere pati call mein shamil honge.", "label": "other", "language": "hinglish", "scenario_id": "e91573b45e8a53dc", "source": "synthetic"}
+{"text": "Jaankari ke liye, mere pati call mein shamil honge.", "label": "other", "language": "hinglish", "scenario_id": "e91573b45e8a53dc", "source": "synthetic"}
+{"text": "One more thing: I am a daily wage worker.", "label": "other", "language": "en", "scenario_id": "83d1540174ce1273", "source": "synthetic"}
+{"text": "Also, I am a daily wage worker.", "label": "other", "language": "en", "scenario_id": "83d1540174ce1273", "source": "synthetic"}
+{"text": "For context, I am a daily wage worker.", "label": "other", "language": "en", "scenario_id": "83d1540174ce1273", "source": "synthetic"}
+{"text": "एक बात और: मैं दिहाड़ी मजदूर हूं।", "label": "other", "language": "hi", "scenario_id": "b0c26a4118a6ca6d", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैं दिहाड़ी मजदूर हूं।", "label": "other", "language": "hi", "scenario_id": "b0c26a4118a6ca6d", "source": "synthetic"}
+{"text": "और, मैं दिहाड़ी मजदूर हूं।", "label": "other", "language": "hi", "scenario_id": "b0c26a4118a6ca6d", "source": "synthetic"}
+{"text": "main dihari mazdoor hoon.", "label": "other", "language": "hinglish", "scenario_id": "636ba22dd06ad707", "source": "synthetic"}
+{"text": "Jaankari ke liye, main dihari mazdoor hoon.", "label": "other", "language": "hinglish", "scenario_id": "636ba22dd06ad707", "source": "synthetic"}
+{"text": "Aur, main dihari mazdoor hoon.", "label": "other", "language": "hinglish", "scenario_id": "636ba22dd06ad707", "source": "synthetic"}
+{"text": "One more thing: the network is weak where I live.", "label": "other", "language": "en", "scenario_id": "7d2a86da04a663b2", "source": "synthetic"}
+{"text": "For context, the network is weak where I live.", "label": "other", "language": "en", "scenario_id": "7d2a86da04a663b2", "source": "synthetic"}
+{"text": "Just so you know, the network is weak where I live.", "label": "other", "language": "en", "scenario_id": "7d2a86da04a663b2", "source": "synthetic"}
+{"text": "एक बात और: जहां मैं रहता हूं वहां नेटवर्क कमजोर है।", "label": "other", "language": "hi", "scenario_id": "ded3cb6cbf051dac", "source": "synthetic"}
+{"text": "जहां मैं रहता हूं वहां नेटवर्क कमजोर है।", "label": "other", "language": "hi", "scenario_id": "ded3cb6cbf051dac", "source": "synthetic"}
+{"text": "जानकारी के लिए, जहां मैं रहता हूं वहां नेटवर्क कमजोर है।", "label": "other", "language": "hi", "scenario_id": "ded3cb6cbf051dac", "source": "synthetic"}
+{"text": "jahan main rehta hoon wahan network kamzor hai.", "label": "other", "language": "hinglish", "scenario_id": "97406198ec69c3cd", "source": "synthetic"}
+{"text": "Jaankari ke liye, jahan main rehta hoon wahan network kamzor hai.", "label": "other", "language": "hinglish", "scenario_id": "97406198ec69c3cd", "source": "synthetic"}
+{"text": "Ek baat aur: jahan main rehta hoon wahan network kamzor hai.", "label": "other", "language": "hinglish", "scenario_id": "97406198ec69c3cd", "source": "synthetic"}
+{"text": "Also, I am visiting from another district.", "label": "other", "language": "en", "scenario_id": "56906940ce22f283", "source": "synthetic"}
+{"text": "For context, I am visiting from another district.", "label": "other", "language": "en", "scenario_id": "56906940ce22f283", "source": "synthetic"}
+{"text": "Just so you know, I am visiting from another district.", "label": "other", "language": "en", "scenario_id": "56906940ce22f283", "source": "synthetic"}
+{"text": "और, मैं दूसरे जिले से आया हूं।", "label": "other", "language": "hi", "scenario_id": "b7127d9fd6ac4a83", "source": "synthetic"}
+{"text": "एक बात और: मैं दूसरे जिले से आया हूं।", "label": "other", "language": "hi", "scenario_id": "b7127d9fd6ac4a83", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैं दूसरे जिले से आया हूं।", "label": "other", "language": "hi", "scenario_id": "b7127d9fd6ac4a83", "source": "synthetic"}
+{"text": "Aur, main doosre zile se aaya hoon.", "label": "other", "language": "hinglish", "scenario_id": "0e40faa6a56d3ae9", "source": "synthetic"}
+{"text": "Jaankari ke liye, main doosre zile se aaya hoon.", "label": "other", "language": "hinglish", "scenario_id": "0e40faa6a56d3ae9", "source": "synthetic"}
+{"text": "Ek baat aur: main doosre zile se aaya hoon.", "label": "other", "language": "hinglish", "scenario_id": "0e40faa6a56d3ae9", "source": "synthetic"}
+{"text": "I exercise for thirty minutes daily.", "label": "other", "language": "en", "scenario_id": "dcf9418dde6c26a2", "source": "synthetic"}
+{"text": "For context, I exercise for thirty minutes daily.", "label": "other", "language": "en", "scenario_id": "dcf9418dde6c26a2", "source": "synthetic"}
+{"text": "Just so you know, I exercise for thirty minutes daily.", "label": "other", "language": "en", "scenario_id": "dcf9418dde6c26a2", "source": "synthetic"}
+{"text": "जानकारी के लिए, मैं रोज तीस मिनट व्यायाम करता हूं।", "label": "other", "language": "hi", "scenario_id": "56dbd96f8a242a17", "source": "synthetic"}
+{"text": "एक बात और: मैं रोज तीस मिनट व्यायाम करता हूं।", "label": "other", "language": "hi", "scenario_id": "56dbd96f8a242a17", "source": "synthetic"}
+{"text": "और, मैं रोज तीस मिनट व्यायाम करता हूं।", "label": "other", "language": "hi", "scenario_id": "56dbd96f8a242a17", "source": "synthetic"}
+{"text": "Ek baat aur: main roz tees minute vyayam karta hoon.", "label": "other", "language": "hinglish", "scenario_id": "ace8c9b408e3270a", "source": "synthetic"}
+{"text": "Jaankari ke liye, main roz tees minute vyayam karta hoon.", "label": "other", "language": "hinglish", "scenario_id": "ace8c9b408e3270a", "source": "synthetic"}
+{"text": "main roz tees minute vyayam karta hoon.", "label": "other", "language": "hinglish", "scenario_id": "ace8c9b408e3270a", "source": "synthetic"}
+{"text": "Also, I cannot afford the tests right now.", "label": "other", "language": "en", "scenario_id": "874dd1cdaf0cc76b", "source": "synthetic"}
+{"text": "I cannot afford the tests right now.", "label": "other", "language": "en", "scenario_id": "874dd1cdaf0cc76b", "source": "synthetic"}
+{"text": "For context, I cannot afford the tests right now.", "label": "other", "language": "en", "scenario_id": "874dd1cdaf0cc76b", "source": "synthetic"}
+{"text": "जानकारी के लिए, अभी मैं जांच का खर्च नहीं उठा सकता।", "label": "other", "language": "hi", "scenario_id": "41fc5f8c8dd05dde", "source": "synthetic"}
+{"text": "और, अभी मैं जांच का खर्च नहीं उठा सकता।", "label": "other", "language": "hi", "scenario_id": "41fc5f8c8dd05dde", "source": "synthetic"}
+{"text": "अभी मैं जांच का खर्च नहीं उठा सकता।", "label": "other", "language": "hi", "scenario_id": "41fc5f8c8dd05dde", "source": "synthetic"}
+{"text": "abhi main jaanch ka kharch nahi utha sakta.", "label": "other", "language": "hinglish", "scenario_id": "c27dccd53a708a43", "source": "synthetic"}
+{"text": "Ek baat aur: abhi main jaanch ka kharch nahi utha sakta.", "label": "other", "language": "hinglish", "scenario_id": "c27dccd53a708a43", "source": "synthetic"}
+{"text": "Aur, abhi main jaanch ka kharch nahi utha sakta.", "label": "other", "language": "hinglish", "scenario_id": "c27dccd53a708a43", "source": "synthetic"}
+{"text": "I have fever but the sir dard started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "4c998884d9885b92", "source": "synthetic"}
+{"text": "Doctor, mujhe sir dard hai, especially fever.", "label": "symptom", "language": "mixed", "scenario_id": "4c998884d9885b92", "source": "synthetic"}
+{"text": "Mere ko sir dard hai aur fever bhi.", "label": "symptom", "language": "mixed", "scenario_id": "4c998884d9885b92", "source": "synthetic"}
+{"text": "fever is the main problem, but sir dard bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "4c998884d9885b92", "source": "synthetic"}
+{"text": "Started fever se pehle, now the sir dard is worse.", "label": "duration", "language": "mixed", "scenario_id": "936259d9e59ee282", "source": "synthetic"}
+{"text": "fever ke saath sir dard bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "4c998884d9885b92", "source": "synthetic"}
+{"text": "I have cough but the seene mein jalan started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "ee3da8ae173373fd", "source": "synthetic"}
+{"text": "Doctor, mujhe seene mein jalan hai, especially cough.", "label": "symptom", "language": "mixed", "scenario_id": "ee3da8ae173373fd", "source": "synthetic"}
+{"text": "Mere ko seene mein jalan hai aur cough bhi.", "label": "symptom", "language": "mixed", "scenario_id": "ee3da8ae173373fd", "source": "synthetic"}
+{"text": "cough is the main problem, but seene mein jalan bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "ee3da8ae173373fd", "source": "synthetic"}
+{"text": "Started cough se pehle, now the seene mein jalan is worse.", "label": "duration", "language": "mixed", "scenario_id": "e6f899cbbd0da239", "source": "synthetic"}
+{"text": "cough ke saath seene mein jalan bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "ee3da8ae173373fd", "source": "synthetic"}
+{"text": "I have chest pain but the saans phulna started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "2330d67e9d7563f3", "source": "synthetic"}
+{"text": "Doctor, mujhe saans phulna hai, especially chest pain.", "label": "symptom", "language": "mixed", "scenario_id": "2330d67e9d7563f3", "source": "synthetic"}
+{"text": "Mere ko saans phulna hai aur chest pain bhi.", "label": "symptom", "language": "mixed", "scenario_id": "2330d67e9d7563f3", "source": "synthetic"}
+{"text": "chest pain is the main problem, but saans phulna bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "2330d67e9d7563f3", "source": "synthetic"}
+{"text": "Started chest pain se pehle, now the saans phulna is worse.", "label": "duration", "language": "mixed", "scenario_id": "c46b91361d56bdb3", "source": "synthetic"}
+{"text": "chest pain ke saath saans phulna bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "2330d67e9d7563f3", "source": "synthetic"}
+{"text": "I have loose motions but the pet dard started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "e380adc72cc1ae5e", "source": "synthetic"}
+{"text": "Doctor, mujhe pet dard hai, especially loose motions.", "label": "symptom", "language": "mixed", "scenario_id": "e380adc72cc1ae5e", "source": "synthetic"}
+{"text": "Mere ko pet dard hai aur loose motions bhi.", "label": "symptom", "language": "mixed", "scenario_id": "e380adc72cc1ae5e", "source": "synthetic"}
+{"text": "loose motions is the main problem, but pet dard bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "e380adc72cc1ae5e", "source": "synthetic"}
+{"text": "Started loose motions se pehle, now the pet dard is worse.", "label": "duration", "language": "mixed", "scenario_id": "6de5f236e7a000ab", "source": "synthetic"}
+{"text": "loose motions ke saath pet dard bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "e380adc72cc1ae5e", "source": "synthetic"}
+{"text": "I have rash but the khujli started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "7b509ec5dece8176", "source": "synthetic"}
+{"text": "Doctor, mujhe khujli hai, especially rash.", "label": "symptom", "language": "mixed", "scenario_id": "7b509ec5dece8176", "source": "synthetic"}
+{"text": "Mere ko khujli hai aur rash bhi.", "label": "symptom", "language": "mixed", "scenario_id": "7b509ec5dece8176", "source": "synthetic"}
+{"text": "rash is the main problem, but khujli bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "7b509ec5dece8176", "source": "synthetic"}
+{"text": "Started rash se pehle, now the khujli is worse.", "label": "duration", "language": "mixed", "scenario_id": "9472be345e08d484", "source": "synthetic"}
+{"text": "rash ke saath khujli bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "7b509ec5dece8176", "source": "synthetic"}
+{"text": "I have dizziness but the kamar dard started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "bc39b3cc375c3f55", "source": "synthetic"}
+{"text": "Doctor, mujhe kamar dard hai, especially dizziness.", "label": "symptom", "language": "mixed", "scenario_id": "bc39b3cc375c3f55", "source": "synthetic"}
+{"text": "Mere ko kamar dard hai aur dizziness bhi.", "label": "symptom", "language": "mixed", "scenario_id": "bc39b3cc375c3f55", "source": "synthetic"}
+{"text": "dizziness is the main problem, but kamar dard bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "bc39b3cc375c3f55", "source": "synthetic"}
+{"text": "Started dizziness se pehle, now the kamar dard is worse.", "label": "duration", "language": "mixed", "scenario_id": "539998320814b298", "source": "synthetic"}
+{"text": "dizziness ke saath kamar dard bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "bc39b3cc375c3f55", "source": "synthetic"}
+{"text": "I have vomiting but the pet mein jalan started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "9bacf0778e0f9a6d", "source": "synthetic"}
+{"text": "Doctor, mujhe pet mein jalan hai, especially vomiting.", "label": "symptom", "language": "mixed", "scenario_id": "9bacf0778e0f9a6d", "source": "synthetic"}
+{"text": "Mere ko pet mein jalan hai aur vomiting bhi.", "label": "symptom", "language": "mixed", "scenario_id": "9bacf0778e0f9a6d", "source": "synthetic"}
+{"text": "vomiting is the main problem, but pet mein jalan bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "9bacf0778e0f9a6d", "source": "synthetic"}
+{"text": "Started vomiting se pehle, now the pet mein jalan is worse.", "label": "duration", "language": "mixed", "scenario_id": "88765e136bf7f7cb", "source": "synthetic"}
+{"text": "vomiting ke saath pet mein jalan bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "9bacf0778e0f9a6d", "source": "synthetic"}
+{"text": "I have sore throat but the bukhar started earlier.", "label": "symptom", "language": "mixed", "scenario_id": "11c7187fbf7158dd", "source": "synthetic"}
+{"text": "Doctor, mujhe bukhar hai, especially sore throat.", "label": "symptom", "language": "mixed", "scenario_id": "11c7187fbf7158dd", "source": "synthetic"}
+{"text": "Mere ko bukhar hai aur sore throat bhi.", "label": "symptom", "language": "mixed", "scenario_id": "11c7187fbf7158dd", "source": "synthetic"}
+{"text": "sore throat is the main problem, but bukhar bhi ho raha hai.", "label": "symptom", "language": "mixed", "scenario_id": "11c7187fbf7158dd", "source": "synthetic"}
+{"text": "Started sore throat se pehle, now the bukhar is worse.", "label": "duration", "language": "mixed", "scenario_id": "9599f04e1aff0117", "source": "synthetic"}
+{"text": "sore throat ke saath bukhar bhi hai.", "label": "symptom", "language": "mixed", "scenario_id": "11c7187fbf7158dd", "source": "synthetic"}

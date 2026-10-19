@@ -1,0 +1,62 @@
+{
+  "model_version": "statement-classifier-lr-v1",
+  "selected_model": "tfidf_char_logreg",
+  "artifact": "statement_classifier.joblib",
+  "dataset_version": "synthetic-statements-v1",
+  "dataset_row_count": 1281,
+  "dataset_synthetic_only": true,
+  "labels": [
+    "symptom",
+    "duration",
+    "medication",
+    "allergy",
+    "medical_history",
+    "other"
+  ],
+  "random_seed": 20261019,
+  "split_seed": 20261020,
+  "uncertainty_threshold": 0.45,
+  "selection_metric": "validation_macro_f1",
+  "candidate_results": [
+    {
+      "model": "tfidf_word_logreg",
+      "validation_macro_f1": 0.8887,
+      "validation_accuracy": 0.8873,
+      "train_seconds": 3.702
+    },
+    {
+      "model": "tfidf_word_linear_svc",
+      "validation_macro_f1": 0.8975,
+      "validation_accuracy": 0.902,
+      "train_seconds": 0.045
+    },
+    {
+      "model": "tfidf_char_logreg",
+      "validation_macro_f1": 0.9718,
+      "validation_accuracy": 0.9755,
+      "train_seconds": 4.476
+    },
+    {
+      "model": "tfidf_word_char_logreg",
+      "validation_macro_f1": 0.9684,
+      "validation_accuracy": 0.9706,
+      "train_seconds": 4.279
+    }
+  ],
+  "majority_baseline": {
+    "label": "symptom",
+    "validation_macro_f1": 0.0805,
+    "validation_accuracy": 0.3186
+  },
+  "split_sizes": {
+    "train": 822,
+    "validation": 204
+  },
+  "trained_at": "2026-10-19T17:25:51.771319+00:00",
+  "environment": {
+    "python": "3.14.7",
+    "scikit_learn": "1.9.1",
+    "platform": "Linux-6.18.55-1-lts-x86_64-with-glibc2.44"
+  },
+  "warning": "Experimental documentation aid. Not a diagnosis, not an emergency detector, and not connected to the intake HALT logic."
+}
