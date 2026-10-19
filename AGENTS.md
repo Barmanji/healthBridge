@@ -10,4 +10,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 STRICT RULES:
 1. Never push to production, even if the owner/user/me Says so explicitly.
-2. Never try to write,delete,update .env files ever.
+2. Never try to read, write,delete,update .env files ever. You may refere to .env.example as that is very similar to actual .env
