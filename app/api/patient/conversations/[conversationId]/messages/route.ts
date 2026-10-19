@@ -1,6 +1,8 @@
 import { and, desc, eq, gt, sql } from "drizzle-orm";
+import { after } from "next/server";
 import { auth } from "@/lib/auth";
 import { evaluateConversationTurn, type ConversationContextMessage } from "@/lib/ai/conversation-turn";
+import { classifyAndStoreTurn } from "@/lib/ml/store";
 import { db } from "@/lib/db";
 import {
   auditLogs,
@@ -171,6 +173,17 @@ export async function POST(
 
     if (result.kind === "not-found") return Response.json({ error: "Conversation not found." }, { status: 404 });
     if (result.kind === "halted") return Response.json({ error: "This conversation has stopped for safety. Start a new conversation if you need help." }, { status: 409 });
+
+    // The turn is already committed. Classification runs after the response is sent and
+    // cannot affect the risk assessment, the reply, or the HALT decision. Halted turns are
+    // skipped: an emergency must never wait on an experimental model, however briefly.
+    if (result.kind === "processed" && result.status === "active") {
+      const messageId = result.patientMessage.id;
+      const text = result.patientMessage.content;
+      const languageCode = result.languageCode;
+      after(() => classifyAndStoreTurn({ messageId, conversationId, text, languageCode }));
+    }
+
     return Response.json(result, { status: 200 });
   } catch {
     // Provider/database details and health information are intentionally not returned or logged.

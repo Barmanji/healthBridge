@@ -1,7 +1,9 @@
 import { createHash, randomUUID } from "node:crypto";
 import { and, desc, eq, gt, isNull, sql } from "drizzle-orm";
+import { after } from "next/server";
 import { z } from "zod";
 import { evaluateConversationTurn, type ConversationContextMessage } from "@/lib/ai/conversation-turn";
+import { classifyAndStoreTurn } from "@/lib/ml/store";
 import { db } from "@/lib/db";
 import {
   auditLogs,
@@ -225,9 +227,27 @@ export async function POST(request: Request) {
         entityId: riskEvent.id,
         meta: { assessment, escalation: "mock_only", modality: "voice" },
       });
-      return { kind: "complete" as const, content: reply };
+      return {
+        kind: "complete" as const,
+        content: reply,
+        halted,
+        messageId: patientMessage.id,
+        statement: content,
+        languageCode,
+      };
     });
     if (result.kind === "unavailable") return response(Boolean(body.data.stream), emergencyReply);
+    // Classification is scheduled only for non-halted turns and never blocks the reply:
+    // an emergency must not wait on an experimental model.
+    if (result.kind === "complete" && !result.halted && result.messageId) {
+      const { messageId, statement, languageCode } = result;
+      after(() => classifyAndStoreTurn({
+        messageId,
+        conversationId: voiceSession.conversationId,
+        text: statement,
+        languageCode,
+      }));
+    }
     return response(Boolean(body.data.stream), result.content);
   } catch {
     // Return one safe turn instead of asking Vapi to retry and potentially spend another model request.

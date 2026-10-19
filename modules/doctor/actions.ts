@@ -9,11 +9,14 @@ import { db } from "@/lib/db";
 import {
   auditLogs,
   appointments,
+  conversationMessages,
   doctorAvailabilityRules,
   doctorDocuments,
   doctorProfiles,
   doctorSoapNotes,
   doctorTimeOff,
+  statementClassifications,
+  triageAssessments,
 } from "@/lib/db/schema";
 import {
   availabilityStepSchema,
@@ -317,4 +320,74 @@ export async function updateDoctorAppointmentOutcome(formData: FormData) {
   if (!updated) throw new Error("This appointment is not ready for that outcome. Refresh and try again.");
   revalidatePath("/doctor/dashboard");
   revalidatePath("/patient/appointments");
+}
+
+/**
+ * Clinician correction of an ML statement category (ML.md §4.4).
+ *
+ * The model's label is a suggestion; the clinician's label becomes authoritative.
+ * Access is verified through the appointment chain, so a doctor can only correct
+ * statements belonging to a patient actually assigned to them.
+ */
+const statementCorrectionSchema = z.object({
+  classificationId: z.uuid(),
+  appointmentId: z.uuid(),
+  category: z.enum(["symptom", "duration", "medication", "allergy", "medical_history", "other"]),
+});
+
+export async function correctStatementCategory(formData: FormData) {
+  const doctor = await requireDoctor();
+  const parsed = statementCorrectionSchema.safeParse({
+    classificationId: formData.get("classificationId"),
+    appointmentId: formData.get("appointmentId"),
+    category: formData.get("category"),
+  });
+  if (!parsed.success) throw new Error("Choose a valid information category.");
+  const [profile] = await db.select({ id: doctorProfiles.id, verificationStatus: doctorProfiles.verificationStatus })
+    .from(doctorProfiles).where(eq(doctorProfiles.userId, doctor.id)).limit(1);
+  if (!profile || profile.verificationStatus !== "verified") throw new Error("Verified doctor access is required.");
+
+  const now = new Date();
+  const corrected = await db.transaction(async (tx) => {
+    // Ownership chain: appointment (this doctor) -> triage assessment -> conversation.
+    const [appointment] = await tx.select({ id: appointments.id, conversationId: triageAssessments.conversationId })
+      .from(appointments)
+      .innerJoin(triageAssessments, eq(triageAssessments.id, appointments.triageId))
+      .where(and(
+        eq(appointments.id, parsed.data.appointmentId),
+        eq(appointments.doctorId, profile.id),
+        inArray(appointments.status, ["confirmed", "completed"]),
+      ))
+      .limit(1);
+    // A statement is only reachable through a conversation this doctor is assigned to.
+    if (!appointment?.conversationId) return false;
+
+    const [row] = await tx.select({ id: statementClassifications.id })
+      .from(statementClassifications)
+      .innerJoin(conversationMessages, eq(conversationMessages.id, statementClassifications.messageId))
+      .where(and(
+        eq(statementClassifications.id, parsed.data.classificationId),
+        eq(conversationMessages.conversationId, appointment.conversationId),
+      ))
+      .limit(1)
+      .for("update");
+    if (!row) return false;
+
+    await tx.update(statementClassifications).set({
+      correctedCategory: parsed.data.category,
+      status: "corrected",
+      correctedByUserId: doctor.id,
+      correctedAt: now,
+    }).where(eq(statementClassifications.id, row.id));
+    await tx.insert(auditLogs).values({
+      actorUserId: doctor.id,
+      action: "statement_category_corrected",
+      entity: "statement_classification",
+      entityId: row.id,
+      meta: { category: parsed.data.category },
+    });
+    return true;
+  });
+  if (!corrected) throw new Error("That statement is not part of a patient assigned to you.");
+  revalidatePath("/doctor/dashboard");
 }

@@ -3,8 +3,8 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { appointments, doctorAvailabilityRules, doctorProfiles, doctorSoapNotes, doctorTimeOff, patientProfiles, triageAssessments, user } from "@/lib/db/schema";
-import { saveDoctorSoapNote, updateDoctorAppointmentOutcome } from "@/modules/doctor/actions";
+import { appointments, conversationMessages, doctorAvailabilityRules, doctorProfiles, doctorSoapNotes, doctorTimeOff, patientProfiles, statementClassifications, triageAssessments, user } from "@/lib/db/schema";
+import { correctStatementCategory, saveDoctorSoapNote, updateDoctorAppointmentOutcome } from "@/modules/doctor/actions";
 
 export default async function DoctorDashboardPage({ searchParams }: { searchParams: Promise<{ status?: string; mode?: string }> }) {
   const params = await searchParams;
@@ -34,6 +34,7 @@ export default async function DoctorDashboardPage({ searchParams }: { searchPara
     severity: triageAssessments.severity,
     summary: triageAssessments.summary,
     triageSoap: triageAssessments.soap,
+    triageConversationId: triageAssessments.conversationId,
     noteSubjective: doctorSoapNotes.subjective,
     noteObjective: doctorSoapNotes.objective,
     noteAssessment: doctorSoapNotes.assessment,
@@ -47,6 +48,37 @@ export default async function DoctorDashboardPage({ searchParams }: { searchPara
     .where(and(...queueFilters))
     .orderBy(sql`case ${triageAssessments.severity} when 'urgent' then 0 when 'soon' then 1 when 'routine' then 2 else 3 end`, asc(appointments.startsAt))
     .limit(50);
+
+  // Experimental ML aid (ML.md §4.3). Statements are shown verbatim so the clinician can
+  // always see the original text; the category is only a suggestion they can correct.
+  const conversationIds = queue.map((visit) => visit.triageConversationId).filter((id): id is string => Boolean(id));
+  const statements = conversationIds.length
+    ? await db.select({
+        id: statementClassifications.id,
+        conversationId: conversationMessages.conversationId,
+        statement: statementClassifications.statement,
+        category: statementClassifications.predictedCategory,
+        correctedCategory: statementClassifications.correctedCategory,
+        confidence: statementClassifications.confidence,
+        status: statementClassifications.status,
+        modelVersion: statementClassifications.modelVersion,
+      })
+        .from(statementClassifications)
+        .innerJoin(conversationMessages, eq(conversationMessages.id, statementClassifications.messageId))
+        .where(inArray(conversationMessages.conversationId, conversationIds))
+        .orderBy(asc(statementClassifications.createdAt), asc(statementClassifications.statementIndex))
+        .limit(400)
+    : [];
+  const statementsByConversation = new Map<string, typeof statements>();
+  for (const row of statements) {
+    const bucket = statementsByConversation.get(row.conversationId) ?? [];
+    bucket.push(row);
+    statementsByConversation.set(row.conversationId, bucket);
+  }
+  const categoryLabels: Record<string, string> = {
+    symptom: "Symptom", duration: "Duration", medication: "Medication",
+    allergy: "Allergy", medical_history: "Medical history", other: "Other context",
+  };
   return <main className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-8 sm:py-10">
     <header><p className="text-sm font-semibold text-primary">Doctor workspace</p><h1 className="mt-2 text-3xl font-semibold tracking-tight">Welcome, {profile.fullName}</h1><p className="mt-2 text-muted-foreground">Appointments are limited to patients who have confirmed a visit with you.</p></header>
     <section className="grid gap-4 sm:grid-cols-3"><article className="rounded-2xl border bg-card p-5"><p className="text-sm text-muted-foreground">Verification</p><p className="mt-2 font-semibold">Verified</p></article><article className="rounded-2xl border bg-card p-5"><p className="text-sm text-muted-foreground">Weekly availability blocks</p><p className="mt-2 font-semibold">{schedule.length}</p></article><article className="rounded-2xl border bg-card p-5"><p className="text-sm text-muted-foreground">Planned time off</p><p className="mt-2 font-semibold">{leave.length}</p></article></section>
@@ -57,6 +89,36 @@ export default async function DoctorDashboardPage({ searchParams }: { searchPara
         return <article key={visit.id} className="space-y-4 rounded-2xl border bg-card p-5">
           <div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-semibold">{visit.patientName}</h3><p className="mt-1 text-sm text-muted-foreground">{new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short", timeZone: profile.timeZone }).format(visit.startsAt)} · {visit.mode} · {visit.language} · {visit.status.replaceAll("_", " ")}</p></div><span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">{visit.severity ?? "appointment"}</span></div>
           {visit.summary && <div className="rounded-xl bg-muted/50 p-4"><p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">AI intake summary · clinician review required</p><p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed">{visit.summary}</p></div>}
+          {(() => {
+            // Experimental ML aid (ML.md §4.3). Statements are always shown verbatim; the
+            // category is a suggestion the clinician can correct, never a diagnosis.
+            const rows = visit.triageConversationId ? statementsByConversation.get(visit.triageConversationId) ?? [] : [];
+            if (!rows.length) return null;
+            return <details className="rounded-xl border p-4">
+              <summary className="cursor-pointer font-semibold">Patient statements <span className="font-normal text-muted-foreground">· {rows.length} categorised by a local model · experimental, not a diagnosis</span></summary>
+              <ul className="mt-4 space-y-3">
+                {rows.map((row) => {
+                  const effective = row.correctedCategory ?? row.category;
+                  return <li key={row.id} className="grid gap-2 border-t pt-3 first:border-t-0 first:pt-0">
+                    <p className="whitespace-pre-wrap text-sm leading-relaxed">{row.statement}</p>
+                    <form action={correctStatementCategory} className="flex flex-wrap items-center gap-2 text-xs">
+                      <input type="hidden" name="classificationId" value={row.id} />
+                      <input type="hidden" name="appointmentId" value={visit.id} />
+                      <span className={`rounded-full px-2 py-0.5 font-semibold ${row.status === "corrected" ? "bg-primary/10 text-primary" : row.status === "uncertain" ? "bg-amber-100 text-amber-900" : "bg-muted text-muted-foreground"}`}>
+                        {row.correctedCategory ? "corrected" : row.status}
+                      </span>
+                      <select name="category" defaultValue={effective ?? "other"} className="h-8 rounded-lg border bg-background px-2">
+                        {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                      </select>
+                      {row.confidence !== null && <span className="text-muted-foreground">confidence {row.confidence.toFixed(2)}</span>}
+                      <button className="h-8 rounded-full border px-3 font-semibold">Save category</button>
+                    </form>
+                  </li>;
+                })}
+              </ul>
+              <p className="mt-3 text-xs text-muted-foreground">Categories only describe the type of information the patient gave. They never record a diagnosis, severity, or emergency status.</p>
+            </details>;
+          })()}
           {visit.status !== "no_show" && <details className="rounded-xl border p-4"><summary className="cursor-pointer font-semibold">SOAP note {visit.reviewedAt ? "· reviewed" : "· review needed"}</summary>
             <form action={saveDoctorSoapNote} className="mt-4 grid gap-3">
               <input type="hidden" name="appointmentId" value={visit.id} />

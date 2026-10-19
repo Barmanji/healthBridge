@@ -64,6 +64,13 @@
       "when": 1792315011459,
       "tag": "0008_phase_5_appointment_confirmation_check",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1792431092008,
+      "tag": "0009_phase_6_statement_classifications",
+      "breakpoints": true
     }
   ]
 }

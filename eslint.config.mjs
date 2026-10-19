@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The Python side (see ML.md) is linted by pytest/ruff conventions, not ESLint. Its
+    // virtualenv ships third-party JavaScript that is not ours to lint.
+    "ml/.venv/**",
   ]),
 ]);
 

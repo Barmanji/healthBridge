@@ -9,6 +9,7 @@ import {
   integer,
   jsonb,
   time,
+  real,
   uniqueIndex,
   pgEnum,
   check,
@@ -37,6 +38,20 @@ export const riskAssessmentEnum = pgEnum("risk_assessment", ["not_critical", "cr
 export const triageSeverityEnum = pgEnum("triage_severity", ["routine", "soon", "urgent", "emergency"]);
 export const appointmentStatusEnum = pgEnum("appointment_status", ["held", "confirmed", "cancelled", "completed", "no_show", "expired", "declined"]);
 export const consultModeEnum = pgEnum("consult_mode", ["video", "audio"]);
+export const statementCategoryEnum = pgEnum("statement_category", [
+  "symptom",
+  "duration",
+  "medication",
+  "allergy",
+  "medical_history",
+  "other",
+]);
+export const statementClassificationStatusEnum = pgEnum("statement_classification_status", [
+  "auto",
+  "uncertain",
+  "corrected",
+  "unavailable",
+]);
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -369,6 +384,35 @@ export const doctorSoapNotes = pgTable(
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().$onUpdate(() => new Date()).notNull(),
   },
   (table) => [index("doctor_soap_notes_doctor_idx").on(table.doctorId, table.updatedAt)],
+);
+
+/**
+ * Experimental ML aid (see ML.md). The statement classifier labels each patient
+ * statement with a documentation category so a clinician can review an intake
+ * faster. These rows are never used for emergency detection or severity, and the
+ * original statement is always preserved verbatim.
+ */
+export const statementClassifications = pgTable(
+  "statement_classifications",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    messageId: uuid("message_id").notNull().references(() => conversationMessages.id, { onDelete: "cascade" }),
+    statementIndex: integer("statement_index").notNull(),
+    statement: text("statement").notNull(),
+    languageCode: text("language_code"),
+    modelVersion: text("model_version"),
+    predictedCategory: statementCategoryEnum("predicted_category"),
+    confidence: real("confidence"),
+    status: statementClassificationStatusEnum("status").notNull().default("auto"),
+    correctedCategory: statementCategoryEnum("corrected_category"),
+    correctedByUserId: text("corrected_by_user_id").references(() => user.id, { onDelete: "set null" }),
+    correctedAt: timestamp("corrected_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => [
+    uniqueIndex("statement_classifications_message_idx_uq").on(table.messageId, table.statementIndex),
+    index("statement_classifications_message_idx").on(table.messageId),
+  ],
 );
 
 export const auditLogs = pgTable(
