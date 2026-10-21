@@ -13,7 +13,7 @@ interface NavUser {
 export const Navbar = ({ user }: { user: NavUser | null }) => {
   return (
     <nav aria-label="Main navigation" className="mx-auto mt-4 w-full max-w-5xl px-4">
-      <div className="flex items-center justify-between rounded-2xl border border-border bg-card/90 px-5 py-3 shadow-sm backdrop-blur">
+      <div className="flex items-center justify-between rounded-2xl border border-border bg-card px-5 py-3 shadow-sm">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
           <span className="flex size-8 items-center justify-center rounded-xl bg-primary text-lg text-primary-foreground" aria-hidden="true">+</span>
           <span>health<span className="text-primary">bridge</span></span>

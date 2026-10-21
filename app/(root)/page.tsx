@@ -37,7 +37,7 @@ export default async function HomePage() {
   }
   return (
     <>
-      <header className="relative z-10 border-b border-[var(--hb-border)]/80 bg-[var(--hb-bg)]/70 backdrop-blur-xl">
+      <header className="relative z-10 border-b border-[var(--hb-border)] bg-[var(--hb-bg)]">
         <div className="hb-container flex h-[76px] items-center justify-between">
           <Link href="/" aria-label="Health-Bridge home" className="flex items-center gap-3">
             <span className="flex size-10 items-center justify-center rounded-2xl bg-[var(--hb-brand-700)] text-white shadow-sm">
@@ -67,7 +67,7 @@ export default async function HomePage() {
         <div className="hb-orb left-[7%] top-72 size-24 bg-[var(--hb-warm-100)]/80" aria-hidden="true" />
         <div className="hb-container relative grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-8">
           <div className="relative z-10 max-w-[620px]">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[var(--hb-border)] bg-[var(--hb-surface)]/75 px-3.5 py-2 text-xs font-semibold text-[var(--hb-brand-700)] shadow-sm">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-[var(--hb-border)] bg-[var(--hb-surface)] px-3.5 py-2 text-xs font-semibold text-[var(--hb-brand-700)] shadow-sm">
               <span className="size-2 rounded-full bg-[var(--hb-brand-500)]" aria-hidden="true" />
               Care that starts with being understood
             </div>
@@ -140,7 +140,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="border-y border-[var(--hb-border)] bg-[var(--hb-surface)]/55 py-20 sm:py-24">
+      <section id="how-it-works" className="border-y border-[var(--hb-border)] bg-[var(--hb-surface)] py-20 sm:py-24">
         <div className="hb-container">
           <div className="mx-auto max-w-[620px] text-center">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--hb-brand-700)]">A clearer path to care</p>
