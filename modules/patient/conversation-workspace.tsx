@@ -95,7 +95,7 @@ export function ConversationWorkspace({ currentId, currentStatus, initialMessage
         throw new Error("Voice mode needs a secure HTTPS address. You can continue by typing.");
       }
       if (["localhost", "127.0.0.1"].includes(endpoint.hostname)) {
-        throw new Error("Vapi needs a public HTTPS address to reach this server. Set NEXT_PUBLIC_APP_URL to your HTTPS tunnel URL, or continue by typing.");
+        throw new Error("Vapi needs a public HTTPS address to reach this server. Set VAPI_CALLBACK_BASE_URL to your HTTPS tunnel URL, or continue by typing.");
       }
 
       const { default: VapiClient } = await import("@vapi-ai/web");

@@ -54,7 +54,11 @@ export async function POST(request: Request, { params }: { params: Promise<{ con
     meta: { expiresInMinutes: 15, voiceProcessingConsent: true },
   });
 
-  const configuredOrigin = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  // Vapi's cloud must reach this app over public HTTPS, which is a different
+  // requirement from the URL the browser and Better Auth use. Keeping them in
+  // separate variables lets you browse on localhost while voice stays reachable.
+  const configuredOrigin =
+    process.env.VAPI_CALLBACK_BASE_URL?.trim() || process.env.NEXT_PUBLIC_APP_URL?.trim();
   const baseOrigin = configuredOrigin || new URL(request.url).origin;
   const apiBaseUrl = `${baseOrigin.replace(/\/$/, "")}/api/vapi/v1`;
   return Response.json({ token: rawToken, publicKey, assistantId, apiBaseUrl, expiresAt: expiresAt.toISOString() }, { status: 201 });
