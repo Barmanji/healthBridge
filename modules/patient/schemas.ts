@@ -49,6 +49,11 @@ export const createConversationSchema = z.object({
   aiProcessingConsent: z.literal(true, { error: "Consent is required to start an AI conversation." }),
 });
 
+export const conversationTitleSchema = z.object({
+  conversationId: z.uuid(),
+  title: z.string().trim().min(2, "Use at least 2 characters.").max(60, "Titles must be 60 characters or fewer."),
+});
+
 export const conversationMessageSchema = z.object({
   clientMessageId: z.uuid(),
   content: z.string().trim().min(1, "Write or say a message first.").max(1800, "Messages must be 1,800 characters or fewer."),

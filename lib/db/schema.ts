@@ -32,6 +32,7 @@ export const doctorDocumentTypeEnum = pgEnum("doctor_document_type", [
   "profile_photo",
 ]);
 export const conversationStatusEnum = pgEnum("conversation_status", ["active", "halted", "closed"]);
+export const conversationTitleSourceEnum = pgEnum("conversation_title_source", ["auto", "patient"]);
 export const conversationMessageRoleEnum = pgEnum("conversation_message_role", ["patient", "assistant", "system"]);
 export const conversationModalityEnum = pgEnum("conversation_modality", ["text", "voice"]);
 export const riskAssessmentEnum = pgEnum("risk_assessment", ["not_critical", "critical", "needs_human_review"]);
@@ -161,6 +162,12 @@ export const conversations = pgTable(
     patientId: uuid("patient_id").notNull().references(() => patientProfiles.id, { onDelete: "cascade" }),
     languageCode: text("language_code").notNull().default("hi-IN"),
     status: conversationStatusEnum("status").notNull().default("active"),
+    // Short, recognizable topic for the sidebar. Null until the first turns give
+    // the model something to summarize. "patient" means the user renamed it, and
+    // an automatic refresh must never overwrite that.
+    title: text("title"),
+    titleSource: conversationTitleSourceEnum("title_source").notNull().default("auto"),
+    titleUpdatedAt: timestamp("title_updated_at"),
     aiProcessingConsentAt: timestamp("ai_processing_consent_at").notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().$onUpdate(() => new Date()).notNull(),

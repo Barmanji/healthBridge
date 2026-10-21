@@ -16,7 +16,7 @@ export default async function PatientConversationsPage({
   if (!session || session.user.role !== "patient") redirect("/sign-in");
   const [{ id: requestedId, new: newConversation }, profileRows] = await Promise.all([
     searchParams,
-    db.select({ id: patientProfiles.id }).from(patientProfiles)
+    db.select({ id: patientProfiles.id, preferredLanguage: patientProfiles.preferredLanguage }).from(patientProfiles)
       .where(eq(patientProfiles.userId, session.user.id)).limit(1),
   ]);
   const profile = profileRows[0];
@@ -26,6 +26,7 @@ export default async function PatientConversationsPage({
     id: conversations.id,
     languageCode: conversations.languageCode,
     status: conversations.status,
+    title: conversations.title,
     createdAt: conversations.createdAt,
   }).from(conversations)
     .where(eq(conversations.patientId, profile.id))
@@ -74,7 +75,9 @@ export default async function PatientConversationsPage({
     key={`${selectedThread?.id ?? "new-conversation"}:${selectedThread?.status ?? "none"}:${allMessages.at(-1)?.id ?? "empty"}`}
     currentId={selectedThread?.id ?? null}
     currentStatus={selectedThread?.status ?? null}
+    currentTitle={selectedThread?.title ?? null}
     voiceEnabled={Boolean(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY && process.env.VAPI_ASSISTANT_ID)}
+    preferredLanguage={profile.preferredLanguage}
     triage={triage ? { id: triage.id, summary: triage.summary, severity: triage.severity, languageCode: triage.languageCode } : null}
     doctorSuggestions={doctorSuggestions}
     appointment={savedAppointment ? { ...savedAppointment, status: savedAppointment.status === "held" && savedAppointment.holdExpiresAt && savedAppointment.holdExpiresAt <= new Date() ? "expired" : savedAppointment.status, startsAt: savedAppointment.startsAt.toISOString(), endsAt: savedAppointment.endsAt.toISOString(), holdExpiresAt: savedAppointment.holdExpiresAt?.toISOString() ?? null } : null}

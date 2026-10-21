@@ -3,6 +3,7 @@ import { after } from "next/server";
 import { auth } from "@/lib/auth";
 import { evaluateConversationTurn, type ConversationContextMessage } from "@/lib/ai/conversation-turn";
 import { classifyAndStoreTurn } from "@/lib/ml/store";
+import { refreshConversationTitle } from "@/lib/conversations/title-store";
 import { db } from "@/lib/db";
 import {
   auditLogs,
@@ -182,6 +183,8 @@ export async function POST(
       const text = result.patientMessage.content;
       const languageCode = result.languageCode;
       after(() => classifyAndStoreTurn({ messageId, conversationId, text, languageCode }));
+      // Sidebar label only. Failures are swallowed inside the helper.
+      after(() => refreshConversationTitle(conversationId).catch(() => {}));
     }
 
     return Response.json(result, { status: 200 });

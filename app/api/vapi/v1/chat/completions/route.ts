@@ -4,6 +4,7 @@ import { after } from "next/server";
 import { z } from "zod";
 import { evaluateConversationTurn, type ConversationContextMessage } from "@/lib/ai/conversation-turn";
 import { classifyAndStoreTurn } from "@/lib/ml/store";
+import { refreshConversationTitle } from "@/lib/conversations/title-store";
 import { db } from "@/lib/db";
 import {
   auditLogs,
@@ -247,6 +248,7 @@ export async function POST(request: Request) {
         text: statement,
         languageCode,
       }));
+      after(() => refreshConversationTitle(voiceSession.conversationId).catch(() => {}));
     }
     return response(Boolean(body.data.stream), result.content);
   } catch {

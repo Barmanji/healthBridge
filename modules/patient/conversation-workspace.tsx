@@ -19,14 +19,16 @@ type ThreadMessage = {
   createdAt: string;
 };
 
-type ThreadSummary = { id: string; languageCode: string; status: "active" | "halted" | "closed"; createdAt: string };
+type ThreadSummary = { id: string; languageCode: string; status: "active" | "halted" | "closed"; title: string | null; createdAt: string };
 
 type Props = {
   currentId: string | null;
   currentStatus: "active" | "halted" | "closed" | null;
+  currentTitle: string | null;
   initialMessages: ThreadMessage[];
   threads: ThreadSummary[];
   voiceEnabled: boolean;
+  preferredLanguage: string;
   triage: { id: string; summary: string; severity: "routine" | "soon" | "urgent" | "emergency"; languageCode: string } | null;
   doctorSuggestions: DoctorSuggestion[];
   appointment: { id: string; status: string; startsAt: string; endsAt: string; holdExpiresAt: string | null; consultMode: "video" | "audio"; timeZone: string } | null;
@@ -34,10 +36,32 @@ type Props = {
 
 const fallbackMessage = "We could not safely review this message, so this chat has stopped. If you may be in immediate danger, contact local emergency services or someone you trust now.\n\nहम इस संदेश की सुरक्षित जाँच नहीं कर पाए, इसलिए यह चैट रोक दी गई है। अगर आपको तत्काल खतरा हो सकता है, तो अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें।";
 
-export function ConversationWorkspace({ currentId, currentStatus, initialMessages, threads, voiceEnabled, triage, doctorSuggestions, appointment }: Props) {
+// The voice opening line follows the patient's chosen language so the call does
+// not start in a language they may not read. Only the greeting is localized; the
+// assistant continues in whatever language the person actually speaks.
+const voiceGreetings: Record<string, string> = {
+  "en-IN": "Hello, I am Health-Bridge. You can speak in English or any language you are comfortable with. What has been worrying you?",
+  "hi-IN": "नमस्ते, मैं हेल्थ-ब्रिज हूँ। आप हिंदी या किसी भी भाषा में बोल सकते हैं। बताइए, आपको किस बात की चिंता है?",
+  "bn-IN": "নমস্কার, আমি হেলথ-ব্রিজ। আপনি বাংলা বা যেকোনো ভাষায় কথা বলতে পারেন। আপনার কী নিয়ে চিন্তা হচ্ছে?",
+  "mr-IN": "नमस्कार, मी हेल्थ-ब्रिज आहे. तुम्ही मराठी किंवा कोणत्याही भाषेत बोलू शकता. तुम्हाला कशाची काळजी वाटत आहे?",
+  "te-IN": "నమస్కారం, నేను హెల్త్-బ్రిడ్జ్. మీరు తెలుగు లేదా ఏ భాషలోనైనా మాట్లాడవచ్చు. మీకు ఏమి ఆందోళన కలిగిస్తోంది?",
+  "ta-IN": "வணக்கம், நான் ஹெல்த்-பிரிட்ஜ். நீங்கள் தமிழ் அல்லது எந்த மொழியிலும் பேசலாம். உங்களுக்கு என்ன கவலை?",
+  "gu-IN": "નમસ્તે, હું હેલ્થ-બ્રિજ છું. તમે ગુજરાતી કે કોઈપણ ભાષામાં બોલી શકો છો. તમને કઈ બાબતની ચિંતા છે?",
+  "kn-IN": "ನಮಸ್ಕಾರ, ನಾನು ಹೆಲ್ತ್-ಬ್ರಿಡ್ಜ್. ನೀವು ಕನ್ನಡ ಅಥವಾ ಯಾವುದೇ ಭಾಷೆಯಲ್ಲಿ ಮಾತನಾಡಬಹುದು. ನಿಮಗೆ ಏನು ಚಿಂತೆ?",
+  "ml-IN": "നമസ്കാരം, ഞാൻ ഹെൽത്ത്-ബ്രിഡ്ജ് ആണ്. നിങ്ങൾക്ക് മലയാളത്തിലോ ഏത് ഭാഷയിലോ സംസാരിക്കാം. നിങ്ങളെ എന്താണ് ആശങ്കപ്പെടുത്തുന്നത്?",
+  "pa-IN": "ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਹੈਲਥ-ਬ੍ਰਿਜ ਹਾਂ। ਤੁਸੀਂ ਪੰਜਾਬੀ ਜਾਂ ਕਿਸੇ ਵੀ ਭਾਸ਼ਾ ਵਿੱਚ ਬੋਲ ਸਕਦੇ ਹੋ। ਤੁਹਾਨੂੰ ਕੀ ਚਿੰਤਾ ਹੈ?",
+  "or-IN": "ନମସ୍କାର, ମୁଁ ହେଲଥ-ବ୍ରିଜ। ଆପଣ ଓଡ଼ିଆ କିମ୍ବା ଯେକୌଣସି ଭାଷାରେ କହିପାରିବେ। ଆପଣଙ୍କୁ କଣ ଚିନ୍ତା କରୁଛି?",
+  "as-IN": "নমস্কাৰ, মই হেলথ-ব্ৰিজ। আপুনি অসমীয়া বা যিকোনো ভাষাত ক'ব পাৰে। আপোনাক কি চিন্তা কৰাইছে?",
+  "ur-IN": "السلام علیکم، میں ہیلتھ بریج ہوں۔ آپ اردو یا کسی بھی زبان میں بول سکتے ہیں۔ آپ کو کس بات کی فکر ہے؟",
+};
+
+export function ConversationWorkspace({ currentId, currentStatus, currentTitle, initialMessages, threads, voiceEnabled, preferredLanguage, triage, doctorSuggestions, appointment }: Props) {
   const router = useRouter();
   const [conversationId, setConversationId] = useState(currentId);
   const [status, setStatus] = useState(currentStatus);
+  const [title, setTitle] = useState(currentTitle);
+  const [renaming, setRenaming] = useState(false);
+  const [titleDraft, setTitleDraft] = useState(currentTitle ?? "");
   const [messages, setMessages] = useState(initialMessages);
   const [consent, setConsent] = useState(false);
   const [draft, setDraft] = useState("");
@@ -148,7 +172,7 @@ export function ConversationWorkspace({ currentId, currentStatus, initialMessage
         },
         transcriber: { provider: "deepgram", model: "nova-3", language: "multi" },
         voice: { provider: "vapi", voiceId: "Naina", version: "2", language: "auto" },
-        firstMessage: "नमस्ते। आप हिंदी या किसी भी भाषा में बोल सकते हैं। बताइए, आपको किस बात की चिंता है?",
+        firstMessage: voiceGreetings[preferredLanguage] ?? voiceGreetings["en-IN"],
         firstMessageMode: "assistant-speaks-first",
         endCallPhrases: ["This conversation has stopped for safety."],
         artifactPlan: { recordingEnabled: false, loggingEnabled: false, transcriptPlan: { enabled: false } },
@@ -260,15 +284,35 @@ export function ConversationWorkspace({ currentId, currentStatus, initialMessage
     router.replace("/patient/conversations?new=1");
   }
 
+  async function saveTitle(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = titleDraft.trim();
+    if (!conversationId || next.length < 2) return;
+    try {
+      const response = await fetch(`/api/patient/conversations/${conversationId}/title`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: next }),
+      });
+      const payload = await response.json() as { conversation?: { title: string | null }; error?: string };
+      if (!response.ok) throw new Error(payload.error || "This title could not be saved.");
+      setTitle(payload.conversation?.title ?? next);
+      setRenaming(false);
+      router.refresh();
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "This title could not be saved.");
+    }
+  }
+
   return (
-    <main className="mx-auto grid max-w-7xl gap-6 px-4 py-7 sm:px-8 lg:grid-cols-[260px_minmax(0,1fr)]">
+    <main className="grid w-full gap-6 px-4 py-7 sm:px-8 lg:grid-cols-[280px_minmax(0,1fr)] xl:px-10">
       <aside className="space-y-4">
         <Button className="min-h-11 w-full" onClick={createNewThread}>New conversation</Button>
         <section className="rounded-2xl border bg-card p-4" aria-label="Conversation history">
           <h2 className="text-sm font-semibold">Recent conversations</h2>
           {threads.length ? <ul className="mt-3 space-y-1">{threads.map((thread) => (
             <li key={thread.id}><Link href={`/patient/conversations?id=${thread.id}`} className={`block rounded-xl px-3 py-2.5 text-sm ${thread.id === conversationId ? "bg-primary/10 font-medium text-primary" : "text-muted-foreground hover:bg-muted"}`}>
-              <span className="block">{thread.status === "halted" ? "Safety review" : "Health conversation"}</span>
+              <span className="block line-clamp-2">{thread.title ?? (thread.status === "halted" ? "Safety review" : "New conversation")}</span>
               <span className="mt-1 block text-xs">{new Date(thread.createdAt).toLocaleDateString()}</span>
             </Link></li>
           ))}</ul> : <p className="mt-2 text-sm text-muted-foreground">Your saved conversations will appear here.</p>}
@@ -278,13 +322,21 @@ export function ConversationWorkspace({ currentId, currentStatus, initialMessage
 
       <section className="flex min-h-[70vh] flex-col overflow-hidden rounded-3xl border bg-card shadow-sm">
         <header className="border-b px-5 py-4 sm:px-7">
-          <p className="text-sm font-semibold text-primary">Hindi first · switches with your message</p>
-          <h1 className="mt-1 text-xl font-semibold">Health conversation</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Type naturally in Hindi, English, or a mix. The language is detected from each message.</p>
+          <p className="text-sm font-semibold text-primary">Any language · detected from each message</p>
+          {renaming && conversationId ? <form onSubmit={saveTitle} className="mt-1 flex flex-wrap items-center gap-2">
+            <label htmlFor="conversation-title" className="sr-only">Conversation title</label>
+            <input id="conversation-title" value={titleDraft} onChange={(event) => setTitleDraft(event.target.value)} maxLength={60} autoFocus className="min-w-0 flex-1 rounded-lg border bg-background px-3 py-2 text-lg font-semibold" />
+            <Button type="submit" size="sm" disabled={titleDraft.trim().length < 2}>Save</Button>
+            <Button type="button" size="sm" variant="outline" onClick={() => { setRenaming(false); setTitleDraft(title ?? ""); }}>Cancel</Button>
+          </form> : <div className="mt-1 flex flex-wrap items-center gap-3">
+            <h1 className="text-xl font-semibold">{title ?? (status === "halted" ? "Safety review" : "New conversation")}</h1>
+            {conversationId && <Button type="button" size="sm" variant="ghost" onClick={() => { setTitleDraft(title ?? ""); setRenaming(true); }}>Rename</Button>}
+          </div>}
+          <p className="mt-1 text-sm text-muted-foreground">Type naturally in any language, including a mix. The language is detected from each message.</p>
         </header>
 
         {!conversationId ? (
-          <div className="m-auto w-full max-w-xl p-5 sm:p-8">
+          <div className="m-auto w-full max-w-3xl p-5 sm:p-8">
             <div className="rounded-2xl border bg-muted/30 p-5 sm:p-7">
               <p className="text-sm font-semibold text-primary">Before you begin</p>
               <h2 className="mt-2 text-xl font-semibold">A private, continuous intake thread</h2>
@@ -300,7 +352,7 @@ export function ConversationWorkspace({ currentId, currentStatus, initialMessage
         ) : (
           <>
             <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-7" aria-live="polite" aria-relevant="additions text">
-              {!messages.length && <div className="mx-auto mt-12 max-w-lg rounded-2xl bg-muted/40 p-5 text-center"><p className="font-medium">नमस्ते — how can I help you get ready to speak with a doctor?</p><p className="mt-2 text-sm text-muted-foreground">Tell me what is bothering you. You can switch languages at any time.</p></div>}
+              {!messages.length && <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-muted/40 p-5 text-center"><p className="font-medium">नमस्ते — how can I help you get ready to speak with a doctor?</p><p className="mt-2 text-sm text-muted-foreground">Tell me what is bothering you. You can switch languages at any time.</p></div>}
               {messages.map((message) => <article key={message.id} className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[76%] ${message.role === "patient" ? "ml-auto rounded-br-sm bg-primary text-primary-foreground" : "rounded-bl-sm border bg-background"}`}>
                 <p className="mb-1 text-[11px] font-semibold opacity-70">{message.role === "patient" ? "You" : "Health-Bridge · AI intake"}{message.modality === "voice" ? " · voice" : ""}{message.languageCode ? ` · ${message.languageCode}` : ""}</p>
                 <p>{message.content}</p>
@@ -332,9 +384,16 @@ export function ConversationWorkspace({ currentId, currentStatus, initialMessage
                 <Button type="submit" className="min-h-11" disabled={pending || !draft.trim() || status !== "active" || localSafetyStop}>Send</Button>
               </div>
               {voiceEnabled && <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-muted/40 p-3">
-                <label className="flex max-w-2xl cursor-pointer items-start gap-2 text-xs leading-relaxed text-muted-foreground"><input type="checkbox" checked={voiceConsent} onChange={(event) => setVoiceConsent(event.target.checked)} className="mt-0.5 size-4 accent-primary" disabled={voiceState !== "idle"} /><span>I consent to Vapi processing live audio for transcription and speech. The transcript is sent to OpenAI for language and safety review, then saved in this account. Call recording and Vapi transcript artifacts are disabled for this session.</span></label>
+                <label className="flex max-w-3xl cursor-pointer items-start gap-2 text-xs leading-relaxed text-muted-foreground"><input type="checkbox" checked={voiceConsent} onChange={(event) => setVoiceConsent(event.target.checked)} className="mt-0.5 size-4 accent-primary" disabled={voiceState !== "idle"} /><span>I consent to Vapi processing live audio for transcription and speech. The transcript is sent to OpenAI for language and safety review, then saved in this account. Call recording and Vapi transcript artifacts are disabled for this session.</span></label>
                 {voiceState === "active" && <Button type="button" size="sm" variant="outline" onClick={() => { const nextMuted = !muted; vapiRef.current?.setMuted(nextMuted); setMuted(nextMuted); }}>{muted ? "Unmute" : "Mute"}</Button>}
-                {voiceCaption && <p className="w-full text-xs text-foreground" aria-live="polite">{voiceCaption}</p>}
+                {voiceState === "active" && <div className="flex w-full items-center gap-3" role="status" aria-live="polite">
+                  <span className="hb-breathe flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/15 text-lg text-primary" aria-hidden="true">●</span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold text-primary">{muted ? "Voice mode active · muted" : "Listening… speak in any language"}</p>
+                    <p className="truncate text-xs text-muted-foreground">{voiceCaption || "Waiting for you to speak."}</p>
+                  </div>
+                </div>}
+                {voiceState !== "active" && voiceCaption && <p className="w-full text-xs text-foreground" aria-live="polite">{voiceCaption}</p>}
               </div>}
               <p className="mt-2 flex justify-between gap-2 text-xs text-muted-foreground"><span>Messages are checked one at a time; repeated submissions are deduplicated.</span><span>{draft.length}/1800</span></p>
             </form>
