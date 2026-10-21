@@ -222,6 +222,18 @@ export const triageAssessments = pgTable(
     summary: text("summary").notNull(),
     severity: triageSeverityEnum("severity").notNull(),
     soap: jsonb("soap").$type<{ subjective: string; objective: string; assessment: string; plan: string }>().notNull(),
+    // Structured sections for the patient-facing PDF. Null until the patient
+    // generates it, so no extra model call happens unless they ask.
+    careReport: jsonb("care_report").$type<{
+      symptoms: string[];
+      possibleConditions: Array<{ condition: string; confidencePercent: number; confidenceLabel: "low" | "moderate" | "high"; reasoning: string }>;
+      recommendedTests: string[];
+      medicalHistory: string[];
+      familyHistory: string[];
+      patientConcern: string | null;
+      nextSteps: string[];
+    }>(),
+    careReportGeneratedAt: timestamp("care_report_generated_at"),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   },
   (table) => [
