@@ -93,6 +93,7 @@
   body {
     min-height: 100%;
     background: var(--hb-grad-hero);
+    background-repeat: no-repeat;
     color: var(--foreground);
     font-family: var(--font-inter), var(--font-noto-devanagari), sans-serif;
     font-size: 16px;
