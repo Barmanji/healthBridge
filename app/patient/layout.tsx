@@ -12,10 +12,10 @@ export default async function PatientLayout({ children }: { children: React.Reac
   if (!session) redirect("/sign-in");
   if (session.user.role !== "patient") redirect(session.user.role === "admin" ? "/admin/applications" : "/doctor/onboarding");
 
-  return <div className="min-h-screen">
+  return <div className="flex min-h-dvh flex-col">
     <RegisterServiceWorker />
-    <header className="border-b bg-card/85 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-8">
+    <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center border-b bg-card">
+      <div className="flex h-full w-full items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/patient/dashboard" className="flex items-center gap-2 font-semibold tracking-tight"><span className="flex size-9 items-center justify-center rounded-xl bg-primary text-lg text-primary-foreground" aria-hidden="true">+</span><span>health<span className="text-primary">bridge</span></span></Link>
         <div className="flex items-center gap-2 sm:gap-4">
           <ModeToggle />
@@ -23,7 +23,7 @@ export default async function PatientLayout({ children }: { children: React.Reac
         </div>
       </div>
     </header>
-    <div className="mx-auto flex max-w-7xl flex-col sm:min-h-[calc(100vh-65px)] sm:flex-row">
+    <div className="flex w-full min-w-0 flex-col sm:flex-row">
       <PatientNav />
       <div className="min-w-0 flex-1">{children}</div>
     </div>

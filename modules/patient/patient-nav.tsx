@@ -14,8 +14,8 @@ const links = [
 
 export function PatientNav() {
   const pathname = usePathname();
-  return <aside className="border-b bg-card/40 sm:w-60 sm:shrink-0 sm:border-b-0 sm:border-r" aria-label="Patient sections">
-    <nav aria-label="Patient dashboard" className="flex gap-2 overflow-x-auto px-4 py-3 sm:sticky sm:top-0 sm:flex-col sm:overflow-visible sm:px-3 sm:py-6">
+  return <aside className="shrink-0 border-b bg-card sm:w-60 sm:border-b-0 sm:border-r" aria-label="Patient sections">
+    <nav aria-label="Patient dashboard" className="flex gap-2 overflow-x-auto px-3 py-3 sm:sticky sm:top-16 sm:h-[calc(100dvh-4rem)] sm:flex-col sm:overflow-y-auto sm:py-5">
       {links.map(([href, label]) => {
         const active = pathname === href || (href !== "/patient/dashboard" && pathname.startsWith(`${href}/`));
         return <Link key={href} href={href} aria-current={active ? "page" : undefined} className={`shrink-0 rounded-xl px-4 py-3 text-sm font-medium transition-colors sm:w-full ${active ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}>{label}</Link>;

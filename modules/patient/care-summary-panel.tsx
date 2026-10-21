@@ -148,7 +148,7 @@ export function CareSummaryPanel({ conversationId }: Props) {
       <iframe
         src={state.url}
         title="Care summary PDF"
-        className="min-h-[60vh] w-full flex-1 rounded-xl border bg-white"
+        className="h-full min-h-[50vh] w-full flex-1 rounded-xl border bg-white"
       />
     </div>
   );

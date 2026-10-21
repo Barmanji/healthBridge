@@ -350,8 +350,8 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
   }
 
   return (
-    <main className="grid w-full gap-6 px-4 py-7 sm:px-8 lg:grid-cols-[280px_minmax(0,1fr)] xl:px-10">
-      <aside className="space-y-4">
+    <main className="grid w-full gap-4 overflow-y-auto p-3 sm:p-4 lg:h-[calc(100dvh-4rem)] lg:min-h-0 lg:grid-cols-[280px_minmax(0,1fr)] lg:overflow-hidden lg:p-5">
+      <aside className="space-y-4 lg:min-h-0 lg:overflow-y-auto lg:pr-1">
         <Button className="min-h-11 w-full" onClick={createNewThread}>New conversation</Button>
         <section className="rounded-2xl border bg-card p-4" aria-label="Conversation history">
           <h2 className="text-sm font-semibold">Recent conversations</h2>
@@ -375,8 +375,8 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
         <p className="px-1 text-xs leading-relaxed text-muted-foreground">Health-Bridge offers intake support, not a diagnosis or a substitute for a doctor or emergency services.</p>
       </aside>
 
-      <section className="flex min-h-[70vh] flex-col overflow-hidden rounded-3xl border bg-card shadow-sm">
-        <header className="border-b px-5 py-4 sm:px-7">
+      <section className="flex min-h-[70vh] flex-col overflow-hidden rounded-3xl border bg-card shadow-sm lg:min-h-0">
+        <header className="shrink-0 border-b px-5 py-4 sm:px-7">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-sm font-semibold text-primary">Any language · detected from each message</p>
@@ -430,7 +430,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
             </div>
 
             <TabsContent value="conversation" className="flex min-h-0 flex-1 flex-col">
-              <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-7" aria-live="polite" aria-relevant="additions text">
+              <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 sm:p-7" aria-live="polite" aria-relevant="additions text">
                 {!messages.length && <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-muted/40 p-5 text-center"><p className="font-medium">नमस्ते — how can I help you get ready to speak with a doctor?</p><p className="mt-2 text-sm text-muted-foreground">Tell me what is bothering you. You can switch languages at any time.</p></div>}
                 {messages.map((message) => <article key={message.id} className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[76%] ${message.role === "patient" ? "ml-auto rounded-br-sm bg-primary text-primary-foreground" : "rounded-bl-sm border bg-background"}`}>
                   <p className="mb-1 flex flex-wrap items-center gap-x-2 text-[11px] font-semibold opacity-70">
@@ -468,7 +468,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
                 {/* Anchor used to resume at the newest turn when a saved thread opens. */}
                 <div ref={threadEndRef} aria-hidden="true" />
               </div>
-              <form onSubmit={sendMessage} className="border-t bg-card p-3 sm:p-4">
+              <form onSubmit={sendMessage} className="shrink-0 border-t bg-card p-3 sm:p-4">
                 <label htmlFor="conversation-message" className="sr-only">Write your health message</label>
                 <div className="flex items-end gap-2">
                   <Textarea id="conversation-message" value={draft} onChange={(event) => setDraft(event.target.value)} maxLength={1800} rows={2} placeholder="Type in Hindi, English, or a mix…" disabled={pending || status !== "active" || localSafetyStop} className="max-h-40 min-h-12 flex-1" />
