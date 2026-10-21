@@ -34,6 +34,8 @@ flowchart LR
 - Consent-gated text conversations and optional Vapi voice sessions in the same conversation thread.
 - Conversation risk review. Critical, uncertain, unavailable, or rate-limited review stops the intake rather than suggesting an appointment. Deterministic red-flag rules remain disabled pending clinical review.
 - An explicit, bounded care-summary request that validates the AI response before saving triage and SOAP data.
+- A downloadable patient care summary PDF with a fixed layout: symptoms and AI assessment side by side, recommended tests, medical and family history, an optional patient concern, and next steps. Possible conditions carry an explicit unverified confidence label and a "not a diagnosis" disclaimer; the same stored summary always produces the same document.
+- Automatically named conversations with a patient rename option, so saved threads read as topics instead of one generic label.
 - Matching against verified doctors using department, language, consultation mode, and available time.
 - One-minute appointment holds, explicit patient confirmation, cancellation, history, and rescheduling. Database constraints and transactions protect booking conflicts.
 - An offline-capable application shell and cached doctor-directory support.
@@ -49,6 +51,8 @@ flowchart LR
 ### Current scope boundaries
 
 The repository does not yet implement live video/audio consultations, prescription OCR, medication reminders, scheduled follow-ups, external emergency-service dispatch, or payment processing. Doctor availability and time-off data support slot generation, but a complete availability-management workspace is not currently part of the shipped UI. Background job and messaging variables in `.env.example` are reserved for future phases and are not active integrations.
+
+The care summary PDF is rendered in English by design so any clinician can read it and so the built-in PDF fonts can be used. Conversations may be held in any language, but a generated PDF does not currently preserve Indic scripts; a localised document would need embedded Unicode fonts and is not implemented.
 
 ## Architecture
 
@@ -219,5 +223,6 @@ PHASE-5-PROGRESS.md   Phase 5 implementation and verification checkpoint
 | 4 — AI intake and voice | Consent-based patient conversation, risk-aware intake, and optional Vapi voice flow |
 | 5 — Triage and appointments | Validated care summary, verified-doctor matching, slot holds, confirmation, cancellation/rescheduling, doctor queue, and SOAP review |
 | 6 — Statement classifier | Experimental local, CPU-only classifier that categorises patient statements for clinician review. Synthetic-only benchmark, fail-open integration, and no coupling to the risk or HALT path. |
+| 7 — Conversation and report | Warmer multilingual intake persona, per-language voice greeting, generated conversation titles, a fixed-layout care summary PDF, and an explicit no-doctor-available state. |
 
 For detailed implementation decisions and the broader product roadmap, see [`HEALTH-BRIDGE.md`](HEALTH-BRIDGE.md). Phase-level resume notes are kept in [`PHASE-5-PROGRESS.md`](PHASE-5-PROGRESS.md).

@@ -30,6 +30,7 @@ export function AppointmentProposal({
   const [rescheduling, setRescheduling] = useState(false);
   const [remaining, setRemaining] = useState(initialAppointment?.status === "held" ? 60 : 0);
   const [pending, setPending] = useState(false);
+  const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState("");
   const [dismissed, setDismissed] = useState(false);
 
@@ -57,6 +58,32 @@ export function AppointmentProposal({
       setError(reason instanceof Error ? reason.message : "Could not prepare the care summary.");
     } finally {
       setPending(false);
+    }
+  }
+
+  async function downloadReport() {
+    if (!triage || downloading) return;
+    setDownloading(true);
+    setError("");
+    try {
+      const response = await fetch(`/api/patient/conversations/${conversationId}/report`, { method: "POST" });
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({})) as { error?: string };
+        throw new Error(payload.error || "The PDF could not be downloaded.");
+      }
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = `health-bridge-summary-${triage.id.slice(0, 8)}.pdf`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "The PDF could not be downloaded.");
+    } finally {
+      setDownloading(false);
     }
   }
 
@@ -117,7 +144,7 @@ export function AppointmentProposal({
 
   const displayDate = (value: string, timeZone: string) => new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short", timeZone }).format(new Date(value));
   return <section className="space-y-4 rounded-2xl border bg-card p-5" aria-label="Triage and doctor suggestions">
-    <div><p className="text-sm font-semibold text-primary">Care summary · {triage.severity}</p><p className="mt-2 text-sm leading-6">{triage.summary}</p><p className="mt-2 text-xs text-muted-foreground">This is an AI-generated handoff for a clinician, not a diagnosis or treatment plan.</p></div>
+    <div><p className="text-sm font-semibold text-primary">Care summary · {triage.severity}</p><p className="mt-2 text-sm leading-6">{triage.summary}</p><p className="mt-2 text-xs text-muted-foreground">This is an AI-generated handoff for a clinician, not a diagnosis or treatment plan.</p><div className="mt-4 flex flex-wrap items-center gap-2"><Button onClick={downloadReport} disabled={downloading}>{downloading ? "Preparing PDF…" : "Download summary as PDF"}</Button></div></div>
     {appointment?.status === "confirmed" && <div role="status" className="rounded-xl bg-primary/10 p-4"><p className="font-semibold">Appointment confirmed</p><p className="mt-1 text-sm">{displayDate(appointment.startsAt, appointment.timeZone ?? "Asia/Kolkata")} · {appointment.consultMode} · Free for now</p><Link href="/patient/appointments" className="mt-2 inline-block text-sm font-semibold underline">View appointments</Link><Button className="mt-3 block" size="sm" variant="outline" onClick={() => { setPreviousAppointment(appointment); setRescheduling(true); setDismissed(false); }}>Find another time</Button></div>}
     {appointment?.status === "held" && remaining > 0 && <div className="rounded-xl border border-primary/30 bg-primary/5 p-4"><p className="font-semibold">Review before booking</p><p className="mt-1 text-sm">{displayDate(appointment.startsAt, appointment.timeZone ?? "Asia/Kolkata")} · {appointment.consultMode} · Free for now</p><p className="mt-1 text-xs text-muted-foreground">This time is held for you for {remaining} seconds. It is not booked until you confirm.</p><Button className="mt-3" onClick={confirmAppointment} disabled={pending}>{pending ? "Confirming…" : "Confirm appointment"}</Button></div>}
     {appointment?.status === "held" && remaining <= 0 && <div role="status" className="rounded-xl bg-muted/50 p-3 text-sm"><p>The one-minute hold expired. Choose another available time.</p>{previousAppointment && <Button className="mt-2" size="sm" variant="outline" onClick={() => { setAppointment(previousAppointment); setPreviousAppointment(null); setRescheduling(false); }}>Keep my current appointment</Button>}</div>}
@@ -129,7 +156,7 @@ export function AppointmentProposal({
         <p className="mt-2 text-xs">{doctor.why.join(" · ")}</p>
         <ul className="mt-3 space-y-2">{doctor.slots.map((slot) => <li key={slot.startsAt} className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-muted/50 p-3"><span className="text-sm">{displayDate(slot.startsAt, doctor.timeZone)}</span><span className="flex flex-wrap gap-2">{doctor.consultModes.map((mode) => <Button key={mode} size="sm" variant="outline" disabled={pending} onClick={() => holdSlot(doctor.doctorId, slot.startsAt, mode)}>Choose {mode}</Button>)}</span></li>)}</ul>
         {index === 0 && suggestions.length > 1 && <p className="mt-2 text-xs text-muted-foreground">Other options are listed below. Nothing is booked until you confirm.</p>}
-      </article>)}</div> : <p className="rounded-xl bg-muted/50 p-4 text-sm">No verified doctor with an available time matched this summary. You can search the full directory for other choices.</p>}
+      </article>)}</div> : <div className="rounded-xl bg-muted/50 p-4 text-sm"><p className="font-medium">No doctor is available right now.</p><p className="mt-1 text-muted-foreground">There are no verified doctors with an open slot for this summary. You can still search the full directory, or try again later when more slots open up.</p></div>}
       <Link href="/patient/doctors" className="inline-block text-sm font-semibold text-primary underline">Search all verified doctors</Link>
     </>}
     {error && <p role="alert" className="rounded-xl bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}

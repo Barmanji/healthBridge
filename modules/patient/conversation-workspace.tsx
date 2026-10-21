@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import type Vapi from "@vapi-ai/web";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -75,6 +75,14 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
   const [muted, setMuted] = useState(false);
   const vapiRef = useRef<Vapi | null>(null);
   const voiceEndingRef = useRef(false);
+  const threadEndRef = useRef<HTMLDivElement | null>(null);
+
+  // Resume where the patient left off: on opening a saved thread, land on the
+  // newest turn instead of the top of the history.
+  useEffect(() => {
+    if (!initialMessages.length) return;
+    threadEndRef.current?.scrollIntoView({ block: "end" });
+  }, [initialMessages.length]);
 
   async function revokeVoiceSession() {
     if (!conversationId) return;
@@ -375,6 +383,8 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
                 initialSuggestions={[]}
                 requiresEmergencyHelp
               />}
+              {/* Anchor used to resume at the newest turn when a saved thread opens. */}
+              <div ref={threadEndRef} aria-hidden="true" />
             </div>
             <form onSubmit={sendMessage} className="border-t bg-background/80 p-3 sm:p-5">
               <label htmlFor="conversation-message" className="sr-only">Write your health message</label>
