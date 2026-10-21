@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -16,7 +17,7 @@ export default async function PatientLayout({ children }: { children: React.Reac
     <RegisterServiceWorker />
     <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center border-b bg-card">
       <div className="flex h-full w-full items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/patient/dashboard" className="flex items-center gap-2 font-semibold tracking-tight"><span className="flex size-9 items-center justify-center rounded-xl bg-primary text-lg text-primary-foreground" aria-hidden="true">+</span><span>health<span className="text-primary">bridge</span></span></Link>
+        <Link href="/patient/dashboard" className="flex items-center gap-2 font-semibold tracking-tight"><span className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-xl" aria-hidden="true"><Image src="/1.png" alt="" width={36} height={36} priority className="size-9 scale-[1.7]" /></span><span>health<span className="text-primary">bridge</span></span></Link>
         <div className="flex items-center gap-2 sm:gap-4">
           <ModeToggle />
           <UserButton user={{ name: session.user.name, email: session.user.email, image: session.user.image, createdAt: session.user.createdAt }} dashboardHref="/patient/dashboard" settingsHref="/patient/settings" />

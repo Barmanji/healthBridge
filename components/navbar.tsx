@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
 import UserButton from "@/modules/auth/components/user-button";
@@ -15,7 +16,7 @@ export const Navbar = ({ user }: { user: NavUser | null }) => {
     <nav aria-label="Main navigation" className="mx-auto mt-4 w-full max-w-5xl px-4">
       <div className="flex items-center justify-between rounded-2xl border border-border bg-card px-5 py-3 shadow-sm">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="flex size-8 items-center justify-center rounded-xl bg-primary text-lg text-primary-foreground" aria-hidden="true">+</span>
+          <span className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-xl" aria-hidden="true"><Image src="/1.png" alt="" width={32} height={32} className="size-8 scale-[1.7]" /></span>
           <span>health<span className="text-primary">bridge</span></span>
         </Link>
 

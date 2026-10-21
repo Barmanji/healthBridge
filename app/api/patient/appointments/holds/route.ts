@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       const [triage] = await tx.select({ id: triageAssessments.id, patientId: triageAssessments.patientId, severity: triageAssessments.severity, conversationStatus: conversations.status })
         .from(triageAssessments).innerJoin(conversations, eq(conversations.id, triageAssessments.conversationId))
         .where(and(eq(triageAssessments.id, parsed.data.triageId), eq(triageAssessments.patientId, patient.id))).limit(1);
-      if (!triage || triage.severity === "emergency" || triage.conversationStatus === "halted") return { kind: "unavailable" as const };
+      if (!triage) return { kind: "unavailable" as const };
 
       await tx.update(appointments).set({ status: "expired", holdExpiresAt: null, updatedAt: now })
         .where(and(eq(appointments.patientId, patient.id), eq(appointments.status, "held"), lte(appointments.holdExpiresAt, now)));

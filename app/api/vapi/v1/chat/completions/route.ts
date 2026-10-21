@@ -7,25 +7,38 @@ import { classifyAndStoreTurn } from "@/lib/ml/store";
 import { refreshConversationTitle } from "@/lib/conversations/title-store";
 import { db } from "@/lib/db";
 import {
-  auditLogs,
   conversationMessages,
   conversations,
   patientProfiles,
-  riskEvents,
   voiceSessions,
 } from "@/lib/db/schema";
 
 export const runtime = "nodejs";
 export const maxDuration = 20;
 
-const maxBodyBytes = 32 * 1024;
-const turnsPerMinute = 5;
-// Spoken when a turn looks risky or cannot be reviewed. It gives the same
-// emergency advice as a halt, but does not announce that the call has stopped:
-// voice calls keep going so a frightened patient is not cut off mid-sentence.
-// The risk event, the red in-call indicator, and the triage block below still
-// prevent this conversation from producing an appointment.
-const safetyAdviceReply = "This sounds like it could be urgent. Please contact local emergency services or someone you trust now, and do not wait for this app. I am still here and will keep listening — tell me what is happening right now.\n\nयह गंभीर लग रहा है। कृपया अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें, और इस ऐप का इंतज़ार न करें। मैं अभी भी यहाँ हूँ और सुनता रहूँगा — बताइए अभी क्या हो रहा है।";
+// Vapi can send a full turn history. Thirty two messages at the supported
+// per-message limit can exceed 32 KB, so leave room for the full request and
+// bound the actual model context after parsing.
+const maxBodyBytes = 128 * 1024;
+const defaultVoiceFallback = "I'm listening. What else would you like me to know?";
+
+function voiceFallback(languageCode: string | null | undefined) {
+  const language = languageCode?.toLowerCase().split("-")[0];
+  const localized: Record<string, string> = {
+    en: defaultVoiceFallback,
+    hi: "Main sun rahi hoon. Aap bataiye, aur kya jaanana zaroori hai?",
+    bn: "আমি শুনছি। আর কী জানা জরুরি?",
+    mr: "मी ऐकत आहे. आणखी काय जाणून घेणे महत्त्वाचे आहे?",
+    te: "నేను వింటున్నాను. ఇంకా ఏం తెలుసుకోవడం ముఖ్యం?",
+    ta: "நான் கேட்கிறேன். மேலும் என்ன தெரிந்துகொள்வது முக்கியம்?",
+    gu: "હું સાંભળી રહી છું. હજી શું જાણવું જરૂરી છે?",
+    kn: "ನಾನು ಕೇಳುತ್ತಿದ್ದೇನೆ. ಇನ್ನೇನು ತಿಳಿದುಕೊಳ್ಳುವುದು ಮುಖ್ಯ?",
+    ml: "ഞാൻ കേൾക്കുന്നുണ്ട്. ഇനി എന്താണ് അറിയേണ്ടത്?",
+    pa: "ਮੈਂ ਸੁਣ ਰਹੀ ਹਾਂ। ਹੋਰ ਕੀ ਜਾਣਨਾ ਜ਼ਰੂਰੀ ਹੈ?",
+    ur: "میں سن رہی ہوں۔ اور کیا جاننا ضروری ہے؟",
+  };
+  return { content: localized[language ?? ""] ?? defaultVoiceFallback, english: defaultVoiceFallback };
+}
 
 const payloadSchema = z.object({
   messages: z.array(z.object({
@@ -120,7 +133,7 @@ export async function POST(request: Request) {
   const clientMessageId = deterministicMessageId(voiceSession.id, callId, userTurn);
   try {
     const result = await db.transaction(async (tx) => {
-      const [owner] = await tx.select({ userId: patientProfiles.userId, patientId: patientProfiles.id })
+      const [owner] = await tx.select({ userId: patientProfiles.userId })
         .from(conversations)
         .innerJoin(patientProfiles, eq(patientProfiles.id, conversations.patientId))
         .where(eq(conversations.id, voiceSession.conversationId))
@@ -154,25 +167,18 @@ export async function POST(request: Request) {
           .from(conversationMessages)
           .where(and(eq(conversationMessages.conversationId, voiceSession.conversationId), eq(conversationMessages.replyToMessageId, existing.id)))
           .limit(1);
-        return { kind: "complete" as const, content: reply?.content ?? safetyAdviceReply };
+        return { kind: "complete" as const, content: reply?.content ?? voiceFallback(locked.languageCode).content };
       }
-      if (locked.status !== "active") return { kind: "complete" as const, content: safetyAdviceReply };
-
-      const [recentCount] = await tx.select({ value: sql<number>`count(*)::int` })
-        .from(conversationMessages)
-        .innerJoin(conversations, eq(conversations.id, conversationMessages.conversationId))
-        .where(and(
-          eq(conversations.patientId, owner.patientId),
-          eq(conversationMessages.role, "patient"),
-          gt(conversationMessages.createdAt, new Date(Date.now() - 60_000)),
-        ));
-      const overLimit = (recentCount?.value ?? 0) >= turnsPerMinute;
+      if (locked.status !== "active") return { kind: "complete" as const, content: "" };
 
       const historyRows = await tx.select({ role: conversationMessages.role, content: conversationMessages.content })
         .from(conversationMessages)
         .where(eq(conversationMessages.conversationId, voiceSession.conversationId))
-        .orderBy(desc(conversationMessages.createdAt))
-        .limit(8);
+        .orderBy(
+          desc(conversationMessages.createdAt),
+          desc(sql`case when ${conversationMessages.role} = 'patient' then 0 when ${conversationMessages.role} = 'assistant' then 1 else 2 end`),
+        )
+        .limit(40);
       const history: ConversationContextMessage[] = historyRows.reverse()
         .filter((message): message is typeof message & { role: "patient" | "assistant" } => message.role === "patient" || message.role === "assistant")
         .map((message) => ({ role: message.role, content: message.content }));
@@ -187,68 +193,44 @@ export async function POST(request: Request) {
         vapiCallId: callId ?? null,
       }).returning({ id: conversationMessages.id });
 
-      let assessment: "not_critical" | "critical" | "needs_human_review" = "needs_human_review";
-      let flags = [overLimit ? "turn_limit_reached" : "risk_check_unavailable"];
       let languageCode = locked.languageCode;
       let englishTranslation: string | null = null;
-      let reply = safetyAdviceReply;
-      let triggeredBy = "fail_safe";
-      if (!overLimit) {
-        try {
-          const turn = await evaluateConversationTurn(history, content);
-          assessment = turn.riskAssessment;
-          flags = turn.riskFlags;
-          languageCode = turn.detectedLanguageCode;
-          englishTranslation = turn.englishTranslation;
-          triggeredBy = "openai";
-          reply = assessment === "not_critical" ? turn.reply : safetyAdviceReply;
-        } catch {
-          // A missing key, timeout, provider error, or malformed model reply becomes a HALT response.
-        }
+      let assistantEnglishTranslation: string | null = null;
+      let reply = voiceFallback(languageCode).content;
+      assistantEnglishTranslation = voiceFallback(languageCode).english;
+      let intakeComplete = false;
+      try {
+        const turn = await evaluateConversationTurn(history, content);
+        languageCode = turn.detectedLanguageCode;
+        englishTranslation = turn.englishTranslation;
+        reply = turn.reply;
+        assistantEnglishTranslation = turn.replyEnglishTranslation;
+        intakeComplete = turn.intakeComplete;
+      } catch {
+        // Keep voice available with a short fallback if the model is unavailable.
       }
-
-      // Voice never force-stops the conversation. A risky turn is recorded,
-      // advised on, and surfaced to the patient as a red in-call indicator, but
-      // the call continues so they are not cut off while asking for help.
-      const escalated = assessment !== "not_critical";
-      const [riskEvent] = await tx.insert(riskEvents).values({
-        conversationId: voiceSession.conversationId,
-        messageId: patientMessage.id,
-        assessment,
-        triggeredBy,
-        flags,
-        actionTaken: escalated ? "safety_advised_and_voice_continued" : "conversation_continued",
-      }).returning({ id: riskEvents.id });
       await tx.update(conversationMessages).set({ languageCode, contentEnglish: englishTranslation }).where(eq(conversationMessages.id, patientMessage.id));
       await tx.insert(conversationMessages).values({
-        conversationId: voiceSession.conversationId,
-        replyToMessageId: patientMessage.id,
-        role: "assistant",
-        modality: "voice",
-        languageCode,
-        content: reply,
-      });
-      await tx.update(conversations).set({ languageCode, status: "active", updatedAt: new Date() }).where(eq(conversations.id, voiceSession.conversationId));
-      if (escalated) await tx.insert(auditLogs).values({
-        actorUserId: owner.userId,
-        action: "conversation.safety_escalated",
-        entity: "risk_event",
-        entityId: riskEvent.id,
-        meta: { assessment, escalation: "advised_continued", modality: "voice" },
-      });
+          conversationId: voiceSession.conversationId,
+          replyToMessageId: patientMessage.id,
+          role: "assistant",
+          modality: "voice",
+          languageCode,
+          content: reply,
+          contentEnglish: assistantEnglishTranslation,
+        });
+      const nextStatus = intakeComplete ? "closed" as const : "active" as const;
+      await tx.update(conversations).set({ languageCode, status: nextStatus, updatedAt: new Date() }).where(eq(conversations.id, voiceSession.conversationId));
       return {
         kind: "complete" as const,
         content: reply,
-        escalated,
         messageId: patientMessage.id,
         statement: content,
         languageCode,
       };
     });
-    if (result.kind === "unavailable") return response(Boolean(body.data.stream), safetyAdviceReply);
-    // Classification is scheduled only for non-escalated turns and never blocks the reply:
-    // an emergency must not wait on an experimental model.
-    if (result.kind === "complete" && !result.escalated && result.messageId) {
+    if (result.kind === "unavailable") return response(Boolean(body.data.stream), "");
+    if (result.kind === "complete" && result.messageId) {
       const { messageId, statement, languageCode } = result;
       after(() => classifyAndStoreTurn({
         messageId,
@@ -261,6 +243,6 @@ export async function POST(request: Request) {
     return response(Boolean(body.data.stream), result.content);
   } catch {
     // Return one safe turn instead of asking Vapi to retry and potentially spend another model request.
-    return response(Boolean(body.data.stream), safetyAdviceReply);
+    return response(Boolean(body.data.stream), defaultVoiceFallback);
   }
 }

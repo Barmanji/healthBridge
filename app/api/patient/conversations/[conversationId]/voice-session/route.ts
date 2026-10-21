@@ -35,7 +35,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ con
     .where(and(eq(conversations.id, conversationId), eq(patientProfiles.userId, session.user.id)))
     .limit(1);
   if (!owned) return Response.json({ error: "Conversation not found." }, { status: 404 });
-  if (owned.status !== "active") return Response.json({ error: "This conversation has stopped for safety." }, { status: 409 });
+  if (owned.status !== "active") return Response.json({ error: "This conversation is finished. Continue it before starting voice mode." }, { status: 409 });
 
   const publicKey = process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY;
   const assistantId = process.env.VAPI_ASSISTANT_ID;

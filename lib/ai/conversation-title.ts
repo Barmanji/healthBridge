@@ -13,9 +13,8 @@ const outputJsonSchema = {
 
 /**
  * Produce a short topic label for a conversation so the sidebar reads as real
- * subjects instead of one repeated generic string. This is presentation only:
- * it never feeds the risk engine, the reply, or the HALT decision, and a failure
- * simply leaves the previous title in place.
+ * subjects instead of one repeated generic string. This is presentation only;
+ * a failure simply leaves the previous title in place.
  *
  * The title must stay a description of what the patient reported, never a
  * diagnosis. A label such as "Chest pain" is a topic; "Angina" would be a

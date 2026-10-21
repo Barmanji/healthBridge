@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -40,8 +41,8 @@ export default async function HomePage() {
       <header className="relative z-10 border-b border-[var(--hb-border)] bg-[var(--hb-bg)]">
         <div className="hb-container flex h-[76px] items-center justify-between">
           <Link href="/" aria-label="Health-Bridge home" className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-2xl bg-[var(--hb-brand-700)] text-white shadow-sm">
-              <span className="text-xl font-semibold leading-none" aria-hidden="true">+</span>
+            <span className="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl">
+              <Image src="/1.png" alt="" width={40} height={40} priority className="size-10 scale-[1.7]" aria-hidden="true" />
             </span>
             <span className="text-[17px] font-semibold tracking-[-0.04em] text-[var(--hb-text)]">
               health<span className="text-[var(--hb-brand-700)]">bridge</span>

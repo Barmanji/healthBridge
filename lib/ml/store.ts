@@ -8,7 +8,7 @@ import { classifyTurn } from "@/lib/ml/classifier";
  *
  * Contract:
  * - Called **after** the conversation turn has been committed and the response sent, so
- *   it can never influence the risk assessment, the reply, or the HALT path.
+ *   it can never influence the reply or triage.
  * - Stores the original statement verbatim. Nothing is rewritten or discarded.
  * - If the classifier is unavailable, nothing is stored for that turn. The intake flow
  *   is untouched and the doctor UI simply shows no categories.

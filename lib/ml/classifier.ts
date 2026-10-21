@@ -6,12 +6,11 @@ import { z } from "zod";
  *
  * Design rules, all deliberate:
  * - **Fail open.** If the service is down, slow, or returns junk, classification is
- *   skipped. Intake, triage, and the emergency HALT path must never depend on this.
+ *   skipped. Intake and triage never depend on this.
  * - **Never blocking.** The HTTP timeout is short and the caller invokes this after the
  *   conversation turn has already been committed.
  * - **No PII in logs.** Statement text is never logged or echoed into an error message.
- * - **Not a safety signal.** The returned category is a documentation label. It is not
- *   used for risk assessment, severity, routing, or any emergency decision.
+ * - The returned category is a documentation label, not a severity or routing decision.
  */
 
 const DEFAULT_BASE_URL = "http://127.0.0.1:8000";

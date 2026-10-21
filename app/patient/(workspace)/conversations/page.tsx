@@ -1,4 +1,4 @@
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
@@ -46,7 +46,10 @@ export default async function PatientConversationsPage({
     createdAt: conversationMessages.createdAt,
   }).from(conversationMessages)
     .where(eq(conversationMessages.conversationId, selectedThread.id))
-    .orderBy(conversationMessages.createdAt)
+    .orderBy(
+      desc(conversationMessages.createdAt),
+      desc(sql`case when ${conversationMessages.role} = 'patient' then 0 when ${conversationMessages.role} = 'assistant' then 1 else 2 end`),
+    )
     .limit(100) : [];
   const [triage] = selectedThread ? await db.select({
     id: triageAssessments.id,
@@ -54,6 +57,7 @@ export default async function PatientConversationsPage({
     severity: triageAssessments.severity,
     languageCode: triageAssessments.languageCode,
     departmentId: triageAssessments.departmentId,
+    soap: triageAssessments.soap,
   }).from(triageAssessments).where(eq(triageAssessments.conversationId, selectedThread.id)).limit(1) : [];
   const appointmentRows = triage ? await db.select({
     id: appointments.id,
@@ -68,20 +72,20 @@ export default async function PatientConversationsPage({
   const savedAppointment = appointmentRows.find((item) => item.status === "confirmed")
     ?? appointmentRows.find((item) => item.status === "held")
     ?? appointmentRows[0];
-  const doctorSuggestions = triage && triage.severity !== "emergency"
+  const doctorSuggestions = triage
     ? await findDoctorSuggestions({ departmentId: triage.departmentId, languageCode: triage.languageCode })
     : [];
   return <ConversationWorkspace
-    key={`${selectedThread?.id ?? "new-conversation"}:${selectedThread?.status ?? "none"}:${allMessages.at(-1)?.id ?? "empty"}`}
     currentId={selectedThread?.id ?? null}
     currentStatus={selectedThread?.status ?? null}
     currentTitle={selectedThread?.title ?? null}
     voiceEnabled={Boolean(process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY && process.env.VAPI_ASSISTANT_ID)}
     preferredLanguage={profile.preferredLanguage}
     triage={triage ? { id: triage.id, summary: triage.summary, severity: triage.severity, languageCode: triage.languageCode } : null}
+    soap={triage?.soap ?? null}
     doctorSuggestions={doctorSuggestions}
     appointment={savedAppointment ? { ...savedAppointment, status: savedAppointment.status === "held" && savedAppointment.holdExpiresAt && savedAppointment.holdExpiresAt <= new Date() ? "expired" : savedAppointment.status, startsAt: savedAppointment.startsAt.toISOString(), endsAt: savedAppointment.endsAt.toISOString(), holdExpiresAt: savedAppointment.holdExpiresAt?.toISOString() ?? null } : null}
-    initialMessages={allMessages.map((message) => ({ ...message, createdAt: message.createdAt.toISOString() }))}
+    initialMessages={allMessages.reverse().map((message) => ({ ...message, createdAt: message.createdAt.toISOString() }))}
     threads={threads.map((thread) => ({ ...thread, createdAt: thread.createdAt.toISOString() }))}
   />;
 }

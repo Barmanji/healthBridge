@@ -104,14 +104,18 @@ function newPage(
   regular: PDFFont,
 ): Cursor {
   const page = document.addPage([pageWidth, pageHeight]);
-  page.drawText("Health-Bridge care summary", {
-    x: margin,
-    y: pageHeight - margin + 12,
-    size: 7.5,
-    font: regular,
-    color: muted,
-  });
-  return { page, y: pageHeight - margin, pages: [] };
+  let y = pageHeight - margin;
+  if (document.getPageCount() > 1) {
+    page.drawText("Health-Bridge care summary", {
+      x: margin,
+      y: y + 7,
+      size: 7.5,
+      font: regular,
+      color: muted,
+    });
+    y -= 12;
+  }
+  return { page, y, pages: [] };
 }
 
 function ensure(
@@ -128,15 +132,6 @@ function ensure(
   }
 }
 
-function drawRule(cursor: Cursor) {
-  cursor.page.drawLine({
-    start: { x: margin, y: cursor.y + 6 },
-    end: { x: pageWidth - margin, y: cursor.y + 6 },
-    thickness: 0.7,
-    color: rule,
-  });
-}
-
 function drawSectionHeading(
   cursor: Cursor,
   text: string,
@@ -145,7 +140,7 @@ function drawSectionHeading(
   regular: PDFFont,
   color: ReturnType<typeof rgb> = brand,
 ) {
-  ensure(cursor, 30, document, bold, regular);
+  ensure(cursor, 42, document, bold, regular);
   cursor.y -= 8;
   cursor.page.drawText(sanitize(text).toUpperCase(), {
     x: margin,
@@ -154,9 +149,14 @@ function drawSectionHeading(
     font: bold,
     color,
   });
-  cursor.y -= 6;
-  drawRule(cursor);
-  cursor.y -= 10;
+  const ruleY = cursor.y - 4;
+  cursor.page.drawLine({
+    start: { x: margin, y: ruleY },
+    end: { x: pageWidth - margin, y: ruleY },
+    thickness: 0.7,
+    color: rule,
+  });
+  cursor.y = ruleY - 11;
 }
 
 function drawParagraphs(

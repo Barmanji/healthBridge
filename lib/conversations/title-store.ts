@@ -7,8 +7,8 @@ import { generateConversationTitle } from "@/lib/ai/conversation-title";
  * Refresh a conversation's sidebar title after a completed turn.
  *
  * Runs after the response is sent and is entirely non-essential: any failure is
- * swallowed so a title problem can never affect intake, the risk assessment, or
- * the HALT decision. A conversation the patient renamed is never overwritten.
+ * swallowed so a title problem can never affect intake. A conversation the
+ * patient renamed is never overwritten.
  */
 export async function refreshConversationTitle(conversationId: string): Promise<void> {
   const [conversation] = await db.select({

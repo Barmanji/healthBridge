@@ -11,10 +11,10 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#176f60",
     icons: [
       {
-        src: "/health-bridge-icon.svg",
-        sizes: "any",
-        type: "image/svg+xml",
-        purpose: "maskable",
+        src: "/1.png",
+        sizes: "1254x1254",
+        type: "image/png",
+        purpose: "any",
       },
     ],
   };

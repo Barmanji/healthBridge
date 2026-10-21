@@ -4,8 +4,7 @@ import { z } from "zod";
  * The structured care document shown to a patient as a PDF and to their doctor.
  *
  * This is deliberately separate from the classic four-field SOAP stored on
- * `triage_assessments.soap`, which the doctor dashboard already renders. Nothing
- * here feeds the risk engine or the HALT decision.
+ * `triage_assessments.soap`, which the doctor dashboard already renders.
  *
  * The assessment is an unverified impression, never a diagnosis: it is expressed
  * as a possibility with an explicit confidence label, and `confidencePercent` is
@@ -104,12 +103,13 @@ export async function createCareReport(
         {
           role: "system",
           content: [
-            "Build a structured health report from a patient's own words, for the patient to share with a doctor. Write everything in English.",
+            "Build a structured health report from a patient's own words, for the patient to share with a doctor. Write every field in clear English, including symptoms, medicine names as provided, patient concerns, and next steps. If any source text is in another language, translate its meaning into English instead of copying the original wording.",
             "You are not a clinician. Report only what the patient actually said, and never invent findings, test results, or history.",
             "symptoms: the symptoms or concerns the patient described, as short plain statements. Do not add symptoms they did not mention.",
             "possibleConditions: up to four conditions that COULD fit, each an unverified possibility, never a diagnosis. Set confidencePercent to your own rough estimate (1-99) and confidenceLabel to low, moderate, or high. Keep confidence low when information is thin. reasoning is one short plain sentence on what suggested it. Never say the patient has a condition.",
             "recommendedTests: investigations a doctor might reasonably consider for these symptoms. Phrase each as a suggestion for a clinician to confirm, never as an order, and never include a medicine or a dose.",
-            "medicalHistory and familyHistory: only what the patient stated. If they said nothing about either, return an empty array. Never guess or infer.",
+            "medicalHistory: include each relevant condition, prior illness or surgery, current prescription or over-the-counter medicine, supplement, and home remedy the patient mentioned. Preserve medicine names and stated dose/frequency when available. Include allergies and the reported reaction. Keep each item concise. If none were mentioned, return an empty array. Never guess or infer.",
+            "familyHistory: include only relevant family conditions the patient explicitly mentioned, with the relative when known. If none were mentioned, return an empty array. Never guess or infer.",
             "patientConcern: the patient's own question or worry, paraphrased briefly, or null if they raised none.",
             "nextSteps: what the patient should do next, given the symptoms. Include seeking urgent care when appropriate. Never include a medicine, a dose, or a treatment instruction.",
             "If any section has no supporting information, return an empty array or null rather than speculating.",
@@ -119,7 +119,7 @@ export async function createCareReport(
         {
           role: "user",
           content: JSON.stringify({
-            messages: messages.slice(-16).map((message) => ({
+            messages: messages.slice(-40).map((message) => ({
               role: message.role,
               content: message.content.slice(0, 1200),
             })),
