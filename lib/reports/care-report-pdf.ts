@@ -33,6 +33,17 @@ const muted = rgb(0.42, 0.47, 0.52);
 const rule = rgb(0.85, 0.88, 0.9);
 const warn = rgb(0.72, 0.35, 0.1);
 
+// One colour per section so the document can be scanned without reading it.
+const sectionColors = {
+  symptoms: rgb(0.09, 0.42, 0.72), // blue
+  assessment: rgb(0.78, 0.25, 0.16), // red-orange, draws attention to the impression
+  tests: rgb(0.45, 0.28, 0.68), // violet
+  medicalHistory: rgb(0.13, 0.52, 0.31), // green
+  familyHistory: rgb(0.05, 0.45, 0.47), // teal
+  concern: rgb(0.66, 0.40, 0.07), // amber
+  nextSteps: rgb(0.15, 0.39, 0.68), // deep blue
+} as const;
+
 /**
  * pdf-lib's standard fonts are WinAnsi-only and throw on characters outside it,
  * so unsupported code points are replaced instead of failing the whole document.
@@ -132,6 +143,7 @@ function drawSectionHeading(
   bold: PDFFont,
   document: PDFDocument,
   regular: PDFFont,
+  color: ReturnType<typeof rgb> = brand,
 ) {
   ensure(cursor, 30, document, bold, regular);
   cursor.y -= 8;
@@ -140,7 +152,7 @@ function drawSectionHeading(
     y: cursor.y,
     size: headingSize,
     font: bold,
-    color: brand,
+    color,
   });
   cursor.y -= 6;
   drawRule(cursor);
@@ -384,10 +396,10 @@ export async function renderCareReportPdf(
       }];
 
   const drawColumnHeadings = (page: PDFPage, y: number) => {
-    page.drawText("SYMPTOMS", { x: leftX, y, size: headingSize, font: bold, color: brand });
-    page.drawText("ASSESSMENT (AI IMPRESSION)", { x: rightX, y, size: headingSize, font: bold, color: brand });
-    page.drawLine({ start: { x: leftX, y: y - 7 }, end: { x: leftX + columnWidth, y: y - 7 }, thickness: 0.7, color: rule });
-    page.drawLine({ start: { x: rightX, y: y - 7 }, end: { x: rightX + columnWidth, y: y - 7 }, thickness: 0.7, color: rule });
+    page.drawText("SYMPTOMS", { x: leftX, y, size: headingSize, font: bold, color: sectionColors.symptoms });
+    page.drawText("ASSESSMENT (AI IMPRESSION)", { x: rightX, y, size: headingSize, font: bold, color: sectionColors.assessment });
+    page.drawLine({ start: { x: leftX, y: y - 7 }, end: { x: leftX + columnWidth, y: y - 7 }, thickness: 0.7, color: sectionColors.symptoms });
+    page.drawLine({ start: { x: rightX, y: y - 7 }, end: { x: rightX + columnWidth, y: y - 7 }, thickness: 0.7, color: sectionColors.assessment });
     return y - 20;
   };
 
@@ -453,7 +465,7 @@ export async function renderCareReportPdf(
   cursor.y = Math.min(leftY, rightY) - 14;
 
   // --- Remaining fixed sections --------------------------------------------
-  drawSectionHeading(cursor, "Recommended tests", bold, document, regular);
+  drawSectionHeading(cursor, "Recommended tests", bold, document, regular, sectionColors.tests);
   if (report.recommendedTests.length) {
     drawBullets(cursor, report.recommendedTests, regular, document, bold);
   } else {
@@ -467,7 +479,7 @@ export async function renderCareReportPdf(
     );
   }
 
-  drawSectionHeading(cursor, "Medical history", bold, document, regular);
+  drawSectionHeading(cursor, "Medical history", bold, document, regular, sectionColors.medicalHistory);
   if (report.medicalHistory.length) {
     drawBullets(cursor, report.medicalHistory, regular, document, bold);
   } else {
@@ -481,7 +493,7 @@ export async function renderCareReportPdf(
     );
   }
 
-  drawSectionHeading(cursor, "Family history", bold, document, regular);
+  drawSectionHeading(cursor, "Family history", bold, document, regular, sectionColors.familyHistory);
   if (report.familyHistory.length) {
     drawBullets(cursor, report.familyHistory, regular, document, bold);
   } else {
@@ -504,11 +516,12 @@ export async function renderCareReportPdf(
       bold,
       document,
       regular,
+      sectionColors.concern,
     );
     drawParagraphs(cursor, report.patientConcern, regular, document, bold);
   }
 
-  drawSectionHeading(cursor, "Next steps", bold, document, regular);
+  drawSectionHeading(cursor, "Next steps", bold, document, regular, sectionColors.nextSteps);
   if (report.nextSteps.length) {
     drawBullets(cursor, report.nextSteps, regular, document, bold);
   } else {

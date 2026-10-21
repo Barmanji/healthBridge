@@ -52,3 +52,6 @@ pnpm-workspace.yaml
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local Playwright MCP screenshots and logs
+.playwright-mcp/

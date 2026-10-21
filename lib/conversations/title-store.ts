@@ -29,7 +29,19 @@ export async function refreshConversationTitle(conversationId: string): Promise<
     .map((message) => ({ role: message.role as "patient" | "assistant", content: message.content }));
   if (!usable.some((message) => message.role === "patient")) return;
 
-  const title = await generateConversationTitle(usable);
+  // A failure here must never leave the thread labelled "New conversation", so
+  // pick a stable neutral name instead of returning an empty title.
+  const genericTitles = ["Health check-in", "Care conversation", "Health question", "Symptom check-in", "Care check-in"];
+  let title: string;
+  try {
+    title = await generateConversationTitle(usable);
+  } catch {
+    let hash = 0;
+    for (const character of conversationId) hash = (hash * 31 + character.charCodeAt(0)) % 997;
+    title = genericTitles[hash % genericTitles.length];
+  }
+  if (!title.trim()) title = genericTitles[0];
+
   // Guard the write with the same condition: a rename that lands while the model
   // call is in flight must still win.
   await db.update(conversations)

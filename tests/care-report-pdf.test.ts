@@ -108,6 +108,22 @@ describe("renderCareReportPdf", () => {
     expect(text).toContain("NEXT STEPS");
   });
 
+  it("gives every section its own heading colour so the page scans quickly", async () => {
+    const text = pdfText(await renderCareReportPdf(baseReport, fixedMeta));
+    // symptoms, assessment, tests, medical history, family history, concern, next steps
+    for (const colour of [
+      "0.09 0.42 0.72",
+      "0.78 0.25 0.16",
+      "0.45 0.28 0.68",
+      "0.13 0.52 0.31",
+      "0.05 0.45 0.47",
+      "0.66 0.4 0.07",
+      "0.15 0.39 0.68",
+    ]) {
+      expect(text).toContain(`${colour} rg`);
+    }
+  });
+
   it("states unknown history as unknown instead of inventing it", async () => {
     const text = pdfText(
       await renderCareReportPdf(

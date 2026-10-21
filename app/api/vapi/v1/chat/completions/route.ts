@@ -20,7 +20,12 @@ export const maxDuration = 20;
 
 const maxBodyBytes = 32 * 1024;
 const turnsPerMinute = 5;
-const emergencyReply = "This conversation has stopped for safety. Contact local emergency services or someone you trust now if you may be in immediate danger.\n\nयह बातचीत सुरक्षा के लिए रोक दी गई है। अगर आपको तत्काल खतरा हो सकता है, तो अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें। इस ऐप का इंतज़ार न करें।";
+// Spoken when a turn looks risky or cannot be reviewed. It gives the same
+// emergency advice as a halt, but does not announce that the call has stopped:
+// voice calls keep going so a frightened patient is not cut off mid-sentence.
+// The risk event, the red in-call indicator, and the triage block below still
+// prevent this conversation from producing an appointment.
+const safetyAdviceReply = "This sounds like it could be urgent. Please contact local emergency services or someone you trust now, and do not wait for this app. I am still here and will keep listening — tell me what is happening right now.\n\nयह गंभीर लग रहा है। कृपया अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें, और इस ऐप का इंतज़ार न करें। मैं अभी भी यहाँ हूँ और सुनता रहूँगा — बताइए अभी क्या हो रहा है।";
 
 const payloadSchema = z.object({
   messages: z.array(z.object({
@@ -149,9 +154,9 @@ export async function POST(request: Request) {
           .from(conversationMessages)
           .where(and(eq(conversationMessages.conversationId, voiceSession.conversationId), eq(conversationMessages.replyToMessageId, existing.id)))
           .limit(1);
-        return { kind: "complete" as const, content: reply?.content ?? emergencyReply };
+        return { kind: "complete" as const, content: reply?.content ?? safetyAdviceReply };
       }
-      if (locked.status !== "active") return { kind: "complete" as const, content: emergencyReply };
+      if (locked.status !== "active") return { kind: "complete" as const, content: safetyAdviceReply };
 
       const [recentCount] = await tx.select({ value: sql<number>`count(*)::int` })
         .from(conversationMessages)
@@ -186,7 +191,7 @@ export async function POST(request: Request) {
       let flags = [overLimit ? "turn_limit_reached" : "risk_check_unavailable"];
       let languageCode = locked.languageCode;
       let englishTranslation: string | null = null;
-      let reply = emergencyReply;
+      let reply = safetyAdviceReply;
       let triggeredBy = "fail_safe";
       if (!overLimit) {
         try {
@@ -196,20 +201,23 @@ export async function POST(request: Request) {
           languageCode = turn.detectedLanguageCode;
           englishTranslation = turn.englishTranslation;
           triggeredBy = "openai";
-          reply = assessment === "not_critical" ? turn.reply : emergencyReply;
+          reply = assessment === "not_critical" ? turn.reply : safetyAdviceReply;
         } catch {
           // A missing key, timeout, provider error, or malformed model reply becomes a HALT response.
         }
       }
 
-      const halted = assessment !== "not_critical";
+      // Voice never force-stops the conversation. A risky turn is recorded,
+      // advised on, and surfaced to the patient as a red in-call indicator, but
+      // the call continues so they are not cut off while asking for help.
+      const escalated = assessment !== "not_critical";
       const [riskEvent] = await tx.insert(riskEvents).values({
         conversationId: voiceSession.conversationId,
         messageId: patientMessage.id,
         assessment,
         triggeredBy,
         flags,
-        actionTaken: halted ? "halted_and_mock_escalation_recorded" : "conversation_continued",
+        actionTaken: escalated ? "safety_advised_and_voice_continued" : "conversation_continued",
       }).returning({ id: riskEvents.id });
       await tx.update(conversationMessages).set({ languageCode, contentEnglish: englishTranslation }).where(eq(conversationMessages.id, patientMessage.id));
       await tx.insert(conversationMessages).values({
@@ -220,27 +228,27 @@ export async function POST(request: Request) {
         languageCode,
         content: reply,
       });
-      await tx.update(conversations).set({ languageCode, status: halted ? "halted" : "active", updatedAt: new Date() }).where(eq(conversations.id, voiceSession.conversationId));
-      if (halted) await tx.insert(auditLogs).values({
+      await tx.update(conversations).set({ languageCode, status: "active", updatedAt: new Date() }).where(eq(conversations.id, voiceSession.conversationId));
+      if (escalated) await tx.insert(auditLogs).values({
         actorUserId: owner.userId,
-        action: "conversation.halted",
+        action: "conversation.safety_escalated",
         entity: "risk_event",
         entityId: riskEvent.id,
-        meta: { assessment, escalation: "mock_only", modality: "voice" },
+        meta: { assessment, escalation: "advised_continued", modality: "voice" },
       });
       return {
         kind: "complete" as const,
         content: reply,
-        halted,
+        escalated,
         messageId: patientMessage.id,
         statement: content,
         languageCode,
       };
     });
-    if (result.kind === "unavailable") return response(Boolean(body.data.stream), emergencyReply);
-    // Classification is scheduled only for non-halted turns and never blocks the reply:
+    if (result.kind === "unavailable") return response(Boolean(body.data.stream), safetyAdviceReply);
+    // Classification is scheduled only for non-escalated turns and never blocks the reply:
     // an emergency must not wait on an experimental model.
-    if (result.kind === "complete" && !result.halted && result.messageId) {
+    if (result.kind === "complete" && !result.escalated && result.messageId) {
       const { messageId, statement, languageCode } = result;
       after(() => classifyAndStoreTurn({
         messageId,
@@ -253,6 +261,6 @@ export async function POST(request: Request) {
     return response(Boolean(body.data.stream), result.content);
   } catch {
     // Return one safe turn instead of asking Vapi to retry and potentially spend another model request.
-    return response(Boolean(body.data.stream), emergencyReply);
+    return response(Boolean(body.data.stream), safetyAdviceReply);
   }
 }

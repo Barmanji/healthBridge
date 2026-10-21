@@ -184,13 +184,6 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-
-      <footer className="border-t border-[var(--hb-border)] bg-[var(--hb-surface)]/50 py-7">
-        <div className="hb-container flex flex-col justify-between gap-3 text-xs text-[var(--hb-text-muted)] sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} Health-Bridge</span>
-          <span>Healthcare that speaks your language, even when your signal doesn’t.</span>
-        </div>
-      </footer>
     </>
   );
 }

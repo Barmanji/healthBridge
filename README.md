@@ -32,9 +32,10 @@ flowchart LR
 - Dashboard sections for doctor search, appointments, AI conversations, and health history.
 - Doctor directory limited to verified clinicians, with profiles and available consultation modes.
 - Consent-gated text conversations and optional Vapi voice sessions in the same conversation thread.
-- Conversation risk review. Critical, uncertain, unavailable, or rate-limited review stops the intake rather than suggesting an appointment. Deterministic red-flag rules remain disabled pending clinical review.
+- Conversation risk review. Critical, uncertain, unavailable, or rate-limited review stops a typed intake and blocks any appointment suggestion. A live voice call is not cut off: the patient hears urgent emergency advice, sees a red blinking safety indicator, and the conversation still cannot produce an appointment. Deterministic red-flag rules remain disabled pending clinical review.
 - An explicit, bounded care-summary request that validates the AI response before saving triage and SOAP data.
 - A downloadable patient care summary PDF with a fixed layout: symptoms and AI assessment side by side, recommended tests, medical and family history, an optional patient concern, and next steps. Possible conditions carry an explicit unverified confidence label and a "not a diagnosis" disclaimer; the same stored summary always produces the same document.
+- The same summary viewable in a second tab without downloading, plus a per-message clock time and a conversation list showing when each thread started.
 - Automatically named conversations with a patient rename option, so saved threads read as topics instead of one generic label.
 - Matching against verified doctors using department, language, consultation mode, and available time.
 - One-minute appointment holds, explicit patient confirmation, cancellation, history, and rescheduling. Database constraints and transactions protect booking conflicts.

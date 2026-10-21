@@ -6,7 +6,9 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import type Vapi from "@vapi-ai/web";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppointmentProposal } from "@/modules/patient/appointment-proposal";
+import { CareSummaryPanel } from "@/modules/patient/care-summary-panel";
 import type { DoctorSuggestion } from "@/modules/patient/matching";
 
 type ThreadMessage = {
@@ -69,7 +71,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
   const [starting, setStarting] = useState(false);
   const [error, setError] = useState("");
   const [localSafetyStop, setLocalSafetyStop] = useState(false);
-  const [voiceConsent, setVoiceConsent] = useState(false);
+  const [safetyEscalated, setSafetyEscalated] = useState(false);
   const [voiceState, setVoiceState] = useState<"idle" | "starting" | "active">("idle");
   const [voiceCaption, setVoiceCaption] = useState("");
   const [muted, setMuted] = useState(false);
@@ -83,6 +85,26 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
     if (!initialMessages.length) return;
     threadEndRef.current?.scrollIntoView({ block: "end" });
   }, [initialMessages.length]);
+
+  // A thread flagged in an earlier session must show its red light immediately
+  // on open, not only after the next turn.
+  useEffect(() => {
+    if (!conversationId) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const response = await fetch(`/api/patient/conversations/${conversationId}/safety`);
+        if (!response.ok || cancelled) return;
+        const payload = (await response.json()) as { escalated?: boolean };
+        if (!cancelled) setSafetyEscalated(Boolean(payload.escalated));
+      } catch {
+        // Never block the conversation on a status check.
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [conversationId]);
 
   async function revokeVoiceSession() {
     if (!conversationId) return;
@@ -105,8 +127,22 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
     voiceEndingRef.current = false;
   }
 
+  // Asks the server whether this conversation has a non-routine risk event so
+  // the red in-call light can be shown without reading the transcript aloud.
+  async function checkSafety() {
+    if (!conversationId) return;
+    try {
+      const response = await fetch(`/api/patient/conversations/${conversationId}/safety`);
+      if (!response.ok) return;
+      const payload = (await response.json()) as { escalated?: boolean };
+      setSafetyEscalated(Boolean(payload.escalated));
+    } catch {
+      // A failed status check must never interrupt the call or the chat.
+    }
+  }
+
   async function startVoice() {
-    if (!conversationId || !voiceConsent || voiceState !== "idle" || status !== "active" || pending) return;
+    if (!conversationId || voiceState !== "idle" || status !== "active" || pending) return;
     setVoiceState("starting");
     setError("");
     setVoiceCaption("");
@@ -157,10 +193,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
           languageCode: null,
           createdAt: new Date().toISOString(),
         }]);
-        if (role === "assistant" && transcript.startsWith("This conversation has stopped for safety.")) {
-          setStatus("halted");
-          setLocalSafetyStop(true);
-        }
+        if (role === "assistant") void checkSafety();
       });
       client.on("error", () => {
         setError("Voice mode stopped. You can continue by typing; if you may be in immediate danger, contact local emergency services or someone you trust now.");
@@ -182,7 +215,8 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
         voice: { provider: "vapi", voiceId: "Naina", version: "2", language: "auto" },
         firstMessage: voiceGreetings[preferredLanguage] ?? voiceGreetings["en-IN"],
         firstMessageMode: "assistant-speaks-first",
-        endCallPhrases: ["This conversation has stopped for safety."],
+        // No endCallPhrases: a risky or unreviewable turn adds the red in-call
+        // light and spoken emergency advice, but the patient is never hung up on.
         artifactPlan: { recordingEnabled: false, loggingEnabled: false, transcriptPlan: { enabled: false } },
       });
       if (!call) throw new Error("Voice mode could not connect. You can continue by typing.");
@@ -211,6 +245,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
       setStatus("active");
       setMessages([]);
       setLocalSafetyStop(false);
+      setSafetyEscalated(false);
       router.replace(`/patient/conversations?id=${payload.conversation.id}`);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Could not start this conversation.");
@@ -274,6 +309,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
       setMessages((previous) => [...previous.filter((message) => message.id !== clientMessageId), ...savedMessages]);
       setStatus(payload.status ?? "active");
       if (payload.status === "halted") setLocalSafetyStop(true);
+      void checkSafety();
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "Your message could not be processed.");
     } finally {
@@ -289,6 +325,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
     setConsent(false);
     setError("");
     setLocalSafetyStop(false);
+    setSafetyEscalated(false);
     router.replace("/patient/conversations?new=1");
   }
 
@@ -318,29 +355,55 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
         <Button className="min-h-11 w-full" onClick={createNewThread}>New conversation</Button>
         <section className="rounded-2xl border bg-card p-4" aria-label="Conversation history">
           <h2 className="text-sm font-semibold">Recent conversations</h2>
-          {threads.length ? <ul className="mt-3 space-y-1">{threads.map((thread) => (
-            <li key={thread.id}><Link href={`/patient/conversations?id=${thread.id}`} className={`block rounded-xl px-3 py-2.5 text-sm ${thread.id === conversationId ? "bg-primary/10 font-medium text-primary" : "text-muted-foreground hover:bg-muted"}`}>
-              <span className="block line-clamp-2">{thread.title ?? (thread.status === "halted" ? "Safety review" : "New conversation")}</span>
-              <span className="mt-1 block text-xs">{new Date(thread.createdAt).toLocaleDateString()}</span>
-            </Link></li>
-          ))}</ul> : <p className="mt-2 text-sm text-muted-foreground">Your saved conversations will appear here.</p>}
+          {threads.length ? <ul className="mt-3 space-y-1">{threads.map((thread) => {
+            const active = thread.id === conversationId;
+            const halted = thread.status === "halted";
+            return <li key={thread.id}><Link href={`/patient/conversations?id=${thread.id}`} className={`block rounded-xl px-3 py-2.5 text-sm ${active ? "bg-primary/10 font-medium text-primary" : "text-muted-foreground hover:bg-muted"}`}>
+              {halted
+                ? <span className="block line-clamp-2">Safety review</span>
+                : thread.title
+                  ? <span className="block line-clamp-2">{thread.title}</span>
+                  : <span className="hb-title-shimmer my-1 block" aria-label="Naming this conversation" />}
+              <span className="mt-1 block text-xs">
+                {new Date(thread.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })}
+                {" · "}
+                {new Date(thread.createdAt).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })}
+              </span>
+            </Link></li>;
+          })}</ul> : <p className="mt-2 text-sm text-muted-foreground">Your saved conversations will appear here.</p>}
         </section>
         <p className="px-1 text-xs leading-relaxed text-muted-foreground">Health-Bridge offers intake support, not a diagnosis or a substitute for a doctor or emergency services.</p>
       </aside>
 
       <section className="flex min-h-[70vh] flex-col overflow-hidden rounded-3xl border bg-card shadow-sm">
         <header className="border-b px-5 py-4 sm:px-7">
-          <p className="text-sm font-semibold text-primary">Any language · detected from each message</p>
-          {renaming && conversationId ? <form onSubmit={saveTitle} className="mt-1 flex flex-wrap items-center gap-2">
-            <label htmlFor="conversation-title" className="sr-only">Conversation title</label>
-            <input id="conversation-title" value={titleDraft} onChange={(event) => setTitleDraft(event.target.value)} maxLength={60} autoFocus className="min-w-0 flex-1 rounded-lg border bg-background px-3 py-2 text-lg font-semibold" />
-            <Button type="submit" size="sm" disabled={titleDraft.trim().length < 2}>Save</Button>
-            <Button type="button" size="sm" variant="outline" onClick={() => { setRenaming(false); setTitleDraft(title ?? ""); }}>Cancel</Button>
-          </form> : <div className="mt-1 flex flex-wrap items-center gap-3">
-            <h1 className="text-xl font-semibold">{title ?? (status === "halted" ? "Safety review" : "New conversation")}</h1>
-            {conversationId && <Button type="button" size="sm" variant="ghost" onClick={() => { setTitleDraft(title ?? ""); setRenaming(true); }}>Rename</Button>}
-          </div>}
-          <p className="mt-1 text-sm text-muted-foreground">Type naturally in any language, including a mix. The language is detected from each message.</p>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-primary">Any language · detected from each message</p>
+              {renaming && conversationId ? <form onSubmit={saveTitle} className="mt-1 flex flex-wrap items-center gap-2">
+                <label htmlFor="conversation-title" className="sr-only">Conversation title</label>
+                <input id="conversation-title" value={titleDraft} onChange={(event) => setTitleDraft(event.target.value)} maxLength={60} autoFocus className="min-w-0 flex-1 rounded-lg border bg-background px-3 py-2 text-lg font-semibold" />
+                <Button type="submit" size="sm" disabled={titleDraft.trim().length < 2}>Save</Button>
+                <Button type="button" size="sm" variant="outline" onClick={() => { setRenaming(false); setTitleDraft(title ?? ""); }}>Cancel</Button>
+              </form> : <div className="mt-1 flex flex-wrap items-center gap-3">
+                <h1 className="flex items-center gap-2 text-xl font-semibold">
+                  {title
+                    ? title
+                    : status === "halted"
+                      ? "Safety review"
+                      : conversationId
+                        ? <span className="hb-title-shimmer" aria-label="Naming this conversation" />
+                        : "New conversation"}
+                </h1>
+                {conversationId && <Button type="button" size="sm" variant="ghost" onClick={() => { setTitleDraft(title ?? ""); setRenaming(true); }}>Rename</Button>}
+              </div>}
+              <p className="mt-1 text-sm text-muted-foreground">Type naturally in any language, including a mix. The language is detected from each message.</p>
+            </div>
+            {safetyEscalated && <p className="flex shrink-0 items-center gap-2 rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1 text-xs font-medium text-destructive" role="status">
+              <span className="hb-alert-blink size-2 rounded-full bg-destructive" aria-hidden="true" />
+              Safety alert
+            </p>}
+          </div>
         </header>
 
         {!conversationId ? (
@@ -358,56 +421,80 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
             </div>
           </div>
         ) : (
-          <>
-            <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-7" aria-live="polite" aria-relevant="additions text">
-              {!messages.length && <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-muted/40 p-5 text-center"><p className="font-medium">नमस्ते — how can I help you get ready to speak with a doctor?</p><p className="mt-2 text-sm text-muted-foreground">Tell me what is bothering you. You can switch languages at any time.</p></div>}
-              {messages.map((message) => <article key={message.id} className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[76%] ${message.role === "patient" ? "ml-auto rounded-br-sm bg-primary text-primary-foreground" : "rounded-bl-sm border bg-background"}`}>
-                <p className="mb-1 text-[11px] font-semibold opacity-70">{message.role === "patient" ? "You" : "Health-Bridge · AI intake"}{message.modality === "voice" ? " · voice" : ""}{message.languageCode ? ` · ${message.languageCode}` : ""}</p>
-                <p>{message.content}</p>
-                {message.role === "patient" && message.contentEnglish && message.contentEnglish !== message.content && <details className="mt-2 border-t border-current/20 pt-2 text-xs"><summary className="cursor-pointer">English translation</summary><p className="mt-1">{message.contentEnglish}</p></details>}
-              </article>)}
-              {pending && <p className="text-sm text-muted-foreground" role="status">Checking this message safely…</p>}
-              {(status === "halted" || localSafetyStop) && <div role="alert" className="rounded-2xl border border-destructive/40 bg-destructive/10 p-5 text-sm leading-6"><p className="font-semibold text-destructive">This conversation has stopped for safety.</p><p className="mt-2">If you may be in immediate danger, contact local emergency services or someone you trust now. Do not wait for this app.</p><p className="mt-2" lang="hi">अगर आपको तत्काल खतरा हो सकता है, तो अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें। इस ऐप का इंतज़ार न करें।</p></div>}
-              {error && <p role="alert" className="rounded-xl bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
-              {conversationId && status !== "halted" && <AppointmentProposal
-                key={`triage-${conversationId}`}
-                conversationId={conversationId}
-                initialTriage={triage}
-                initialSuggestions={doctorSuggestions}
-                initialAppointment={appointment}
-              />}
-              {status === "halted" && triage?.severity === "emergency" && <AppointmentProposal
-                key={`emergency-${conversationId}`}
-                conversationId={conversationId ?? ""}
-                initialTriage={triage}
-                initialSuggestions={[]}
-                requiresEmergencyHelp
-              />}
-              {/* Anchor used to resume at the newest turn when a saved thread opens. */}
-              <div ref={threadEndRef} aria-hidden="true" />
+          <Tabs defaultValue="conversation" className="flex min-h-0 flex-1 flex-col gap-0">
+            <div className="border-b px-4 sm:px-6">
+              <TabsList variant="line">
+                <TabsTrigger value="conversation">Conversation</TabsTrigger>
+                <TabsTrigger value="summary">Summary</TabsTrigger>
+              </TabsList>
             </div>
-            <form onSubmit={sendMessage} className="border-t bg-background/80 p-3 sm:p-5">
-              <label htmlFor="conversation-message" className="sr-only">Write your health message</label>
-              <div className="flex items-end gap-2">
-                <Textarea id="conversation-message" value={draft} onChange={(event) => setDraft(event.target.value)} maxLength={1800} rows={2} placeholder="Type in Hindi, English, or a mix…" disabled={pending || status !== "active" || localSafetyStop} className="max-h-40 min-h-12 flex-1" />
-                {voiceEnabled && <Button type="button" variant={voiceState === "active" ? "destructive" : "outline"} className="min-h-11" disabled={pending || status !== "active" || localSafetyStop || voiceState === "starting" || !voiceConsent} onClick={() => voiceState === "active" ? void stopVoice() : void startVoice()} aria-label={voiceState === "active" ? "End voice conversation" : "Start voice conversation"}>{voiceState === "starting" ? "Starting…" : voiceState === "active" ? "End voice" : "Mic"}</Button>}
-                <Button type="submit" className="min-h-11" disabled={pending || !draft.trim() || status !== "active" || localSafetyStop}>Send</Button>
-              </div>
-              {voiceEnabled && <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-muted/40 p-3">
-                <label className="flex max-w-3xl cursor-pointer items-start gap-2 text-xs leading-relaxed text-muted-foreground"><input type="checkbox" checked={voiceConsent} onChange={(event) => setVoiceConsent(event.target.checked)} className="mt-0.5 size-4 accent-primary" disabled={voiceState !== "idle"} /><span>I consent to Vapi processing live audio for transcription and speech. The transcript is sent to OpenAI for language and safety review, then saved in this account. Call recording and Vapi transcript artifacts are disabled for this session.</span></label>
-                {voiceState === "active" && <Button type="button" size="sm" variant="outline" onClick={() => { const nextMuted = !muted; vapiRef.current?.setMuted(nextMuted); setMuted(nextMuted); }}>{muted ? "Unmute" : "Mute"}</Button>}
-                {voiceState === "active" && <div className="flex w-full items-center gap-3" role="status" aria-live="polite">
-                  <span className="hb-breathe flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/15 text-lg text-primary" aria-hidden="true">●</span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-semibold text-primary">{muted ? "Voice mode active · muted" : "Listening… speak in any language"}</p>
-                    <p className="truncate text-xs text-muted-foreground">{voiceCaption || "Waiting for you to speak."}</p>
+
+            <TabsContent value="conversation" className="flex min-h-0 flex-1 flex-col">
+              <div className="flex-1 space-y-4 overflow-y-auto p-4 sm:p-7" aria-live="polite" aria-relevant="additions text">
+                {!messages.length && <div className="mx-auto mt-12 max-w-2xl rounded-2xl bg-muted/40 p-5 text-center"><p className="font-medium">नमस्ते — how can I help you get ready to speak with a doctor?</p><p className="mt-2 text-sm text-muted-foreground">Tell me what is bothering you. You can switch languages at any time.</p></div>}
+                {messages.map((message) => <article key={message.id} className={`max-w-[88%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[76%] ${message.role === "patient" ? "ml-auto rounded-br-sm bg-primary text-primary-foreground" : "rounded-bl-sm border bg-background"}`}>
+                  <p className="mb-1 flex flex-wrap items-center gap-x-2 text-[11px] font-semibold opacity-70">
+                    <span>{message.role === "patient" ? "You" : "Health-Bridge · AI intake"}{message.modality === "voice" ? " · voice" : ""}{message.languageCode ? ` · ${message.languageCode}` : ""}</span>
+                    <time dateTime={message.createdAt}>{new Date(message.createdAt).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })}</time>
+                  </p>
+                  <p>{message.content}</p>
+                  {message.role === "patient" && message.contentEnglish && message.contentEnglish !== message.content && <details className="mt-2 border-t border-current/20 pt-2 text-xs"><summary className="cursor-pointer">English translation</summary><p className="mt-1">{message.contentEnglish}</p></details>}
+                </article>)}
+                {pending && <p className="text-sm text-muted-foreground" role="status">Checking this message safely…</p>}
+                {safetyEscalated && status !== "halted" && <div role="status" className="flex items-start gap-3 rounded-2xl border border-destructive/40 bg-destructive/10 p-4 text-sm leading-6">
+                  <span className="hb-alert-blink mt-1.5 size-2.5 shrink-0 rounded-full bg-destructive" aria-hidden="true" />
+                  <div>
+                    <p className="font-semibold text-destructive">This conversation has been flagged for safety.</p>
+                    <p className="mt-1">You can keep talking — this chat stays open. But please do not wait for this app: contact local emergency services or someone you trust now if you may be in immediate danger.</p>
+                    <p className="mt-1" lang="hi">अगर आपको तत्काल खतरा हो सकता है, तो अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें। इस ऐप का इंतज़ार न करें।</p>
                   </div>
                 </div>}
-                {voiceState !== "active" && voiceCaption && <p className="w-full text-xs text-foreground" aria-live="polite">{voiceCaption}</p>}
-              </div>}
-              <p className="mt-2 flex justify-between gap-2 text-xs text-muted-foreground"><span>Messages are checked one at a time; repeated submissions are deduplicated.</span><span>{draft.length}/1800</span></p>
-            </form>
-          </>
+                {(status === "halted" || localSafetyStop) && <div role="alert" className="rounded-2xl border border-destructive/40 bg-destructive/10 p-5 text-sm leading-6"><p className="font-semibold text-destructive">This conversation has stopped for safety.</p><p className="mt-2">If you may be in immediate danger, contact local emergency services or someone you trust now. Do not wait for this app.</p><p className="mt-2" lang="hi">अगर आपको तत्काल खतरा हो सकता है, तो अभी स्थानीय आपातकालीन सेवा या किसी भरोसेमंद व्यक्ति से संपर्क करें। इस ऐप का इंतज़ार न करें।</p></div>}
+                {error && <p role="alert" className="rounded-xl bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
+                {conversationId && status !== "halted" && <AppointmentProposal
+                  key={`triage-${conversationId}`}
+                  conversationId={conversationId}
+                  initialTriage={triage}
+                  initialSuggestions={doctorSuggestions}
+                  initialAppointment={appointment}
+                />}
+                {status === "halted" && triage?.severity === "emergency" && <AppointmentProposal
+                  key={`emergency-${conversationId}`}
+                  conversationId={conversationId ?? ""}
+                  initialTriage={triage}
+                  initialSuggestions={[]}
+                  requiresEmergencyHelp
+                />}
+                {/* Anchor used to resume at the newest turn when a saved thread opens. */}
+                <div ref={threadEndRef} aria-hidden="true" />
+              </div>
+              <form onSubmit={sendMessage} className="border-t bg-card p-3 sm:p-4">
+                <label htmlFor="conversation-message" className="sr-only">Write your health message</label>
+                <div className="flex items-end gap-2">
+                  <Textarea id="conversation-message" value={draft} onChange={(event) => setDraft(event.target.value)} maxLength={1800} rows={2} placeholder="Type in Hindi, English, or a mix…" disabled={pending || status !== "active" || localSafetyStop} className="max-h-40 min-h-12 flex-1" />
+                  {voiceEnabled && <Button type="button" variant={voiceState === "active" ? "destructive" : "outline"} className="min-h-11" disabled={pending || status !== "active" || localSafetyStop || voiceState === "starting"} onClick={() => voiceState === "active" ? void stopVoice() : void startVoice()} aria-label={voiceState === "active" ? "End voice conversation" : "Start voice conversation"}>{voiceState === "starting" ? "Starting…" : voiceState === "active" ? "End voice" : "Mic"}</Button>}
+                  <Button type="submit" className="min-h-11" disabled={pending || !draft.trim() || status !== "active" || localSafetyStop}>Send</Button>
+                </div>
+                {voiceEnabled && voiceState === "active" && <div className="mt-3 flex items-center gap-3 rounded-xl border border-primary/30 bg-primary/5 px-3 py-2" role="status" aria-live="polite">
+                  <span className="hb-voice-bars shrink-0" aria-hidden="true"><span /><span /><span /><span /><span /></span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold text-primary">{muted ? "Microphone muted" : "Listening — speak in any language"}</p>
+                    <p className="truncate text-xs text-muted-foreground">{voiceCaption || "Waiting for you to speak."}</p>
+                  </div>
+                  <Button type="button" size="sm" variant="outline" onClick={() => { const nextMuted = !muted; vapiRef.current?.setMuted(nextMuted); setMuted(nextMuted); }}>{muted ? "Unmute" : "Mute"}</Button>
+                </div>}
+                {voiceEnabled && voiceState !== "active" && <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  Press Mic to speak. Live audio is transcribed by Vapi and reviewed by OpenAI for language and safety, then saved to this account. Call recording and Vapi transcript archives stay off for this session.
+                </p>}
+                {voiceEnabled && voiceState !== "active" && voiceCaption && <p className="mt-1 text-xs text-foreground" aria-live="polite">{voiceCaption}</p>}
+                <p className="mt-2 flex justify-between gap-2 text-xs text-muted-foreground"><span>Messages are checked one at a time; repeated submissions are deduplicated.</span><span>{draft.length}/1800</span></p>
+              </form>
+            </TabsContent>
+
+            <TabsContent value="summary" className="flex min-h-0 flex-1 flex-col">
+              <CareSummaryPanel key={`${conversationId}:${triage?.id ?? "none"}`} conversationId={conversationId} />
+            </TabsContent>
+          </Tabs>
         )}
       </section>
     </main>
