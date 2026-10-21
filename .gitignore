@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+paper/*
+!paper/research-viva-guide.md
 ML.md
 HEALTH-BRIDGE.md
 # dependencies

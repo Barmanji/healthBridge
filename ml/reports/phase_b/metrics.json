@@ -1,0 +1,1988 @@
+{
+  "experiment": "health-bridge-phase-b",
+  "run_at": "2026-10-21T16:59:11.891999+00:00",
+  "seed": 20261021,
+  "split_seed": 20261020,
+  "data": {
+    "dataset_version": "synthetic-statements-v1",
+    "row_count": 1281,
+    "source": "synthetic authored scenario templates",
+    "grouped_split_sizes": {
+      "train": 822,
+      "validation": 204,
+      "test": 255
+    }
+  },
+  "models_grouped": [
+    {
+      "model": "majority",
+      "validation_macro_f1": 0.080545229244114,
+      "test": {
+        "accuracy": 0.30980392156862746,
+        "macro_precision": 0.05163398692810458,
+        "macro_recall": 0.16666666666666666,
+        "macro_f1": 0.07884231536926148,
+        "weighted_f1": 0.14655395092168605,
+        "per_class": {
+          "symptom": {
+            "precision": 0.30980392156862746,
+            "recall": 1.0,
+            "f1": 0.47305389221556887,
+            "support": 79
+          },
+          "duration": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 47
+          },
+          "medication": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 45
+          },
+          "allergy": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 27
+          },
+          "medical_history": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 30
+          },
+          "other": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 27
+          }
+        },
+        "classification_report": {
+          "symptom": {
+            "precision": 0.30980392156862746,
+            "recall": 1.0,
+            "f1-score": 0.47305389221556887,
+            "support": 79.0
+          },
+          "duration": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 47.0
+          },
+          "medication": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 45.0
+          },
+          "allergy": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 27.0
+          },
+          "medical_history": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 30.0
+          },
+          "other": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 27.0
+          },
+          "accuracy": 0.30980392156862746,
+          "macro avg": {
+            "precision": 0.05163398692810458,
+            "recall": 0.16666666666666666,
+            "f1-score": 0.07884231536926148,
+            "support": 255.0
+          },
+          "weighted avg": {
+            "precision": 0.09597846981930028,
+            "recall": 0.30980392156862746,
+            "f1-score": 0.14655395092168605,
+            "support": 255.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            79,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            47,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            45,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            27,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            30,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            27,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "train_seconds": 0.005287143983878195
+    },
+    {
+      "model": "keyword",
+      "validation_macro_f1": 0.6309048969971186,
+      "test": {
+        "accuracy": 0.6078431372549019,
+        "macro_precision": 0.8303765950824774,
+        "macro_recall": 0.5287300542305481,
+        "macro_f1": 0.5644955079582582,
+        "weighted_f1": 0.5941079705762696,
+        "per_class": {
+          "symptom": {
+            "precision": 0.5378151260504201,
+            "recall": 0.810126582278481,
+            "f1": 0.6464646464646465,
+            "support": 79
+          },
+          "duration": {
+            "precision": 0.4444444444444444,
+            "recall": 0.7659574468085106,
+            "f1": 0.5625,
+            "support": 47
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 0.5777777777777777,
+            "f1": 0.7323943661971831,
+            "support": 45
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 0.4074074074074074,
+            "f1": 0.5789473684210527,
+            "support": 27
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 30
+          },
+          "other": {
+            "precision": 1.0,
+            "recall": 0.1111111111111111,
+            "f1": 0.2,
+            "support": 27
+          }
+        },
+        "classification_report": {
+          "symptom": {
+            "precision": 0.5378151260504201,
+            "recall": 0.810126582278481,
+            "f1-score": 0.6464646464646465,
+            "support": 79.0
+          },
+          "duration": {
+            "precision": 0.4444444444444444,
+            "recall": 0.7659574468085106,
+            "f1-score": 0.5625,
+            "support": 47.0
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 0.5777777777777777,
+            "f1-score": 0.7323943661971831,
+            "support": 45.0
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 0.4074074074074074,
+            "f1-score": 0.5789473684210527,
+            "support": 27.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1-score": 0.6666666666666666,
+            "support": 30.0
+          },
+          "other": {
+            "precision": 1.0,
+            "recall": 0.1111111111111111,
+            "f1-score": 0.2,
+            "support": 27.0
+          },
+          "accuracy": 0.6078431372549019,
+          "macro avg": {
+            "precision": 0.8303765950824774,
+            "recall": 0.5287300542305481,
+            "f1-score": 0.5644955079582582,
+            "support": 255.0
+          },
+          "weighted avg": {
+            "precision": 0.7544167993994984,
+            "recall": 0.6078431372549019,
+            "f1-score": 0.5941079705762696,
+            "support": 255.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            64,
+            15,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            11,
+            36,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            13,
+            6,
+            26,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            14,
+            0,
+            11,
+            0,
+            0
+          ],
+          [
+            11,
+            4,
+            0,
+            0,
+            15,
+            0
+          ],
+          [
+            18,
+            6,
+            0,
+            0,
+            0,
+            3
+          ]
+        ]
+      },
+      "train_seconds": 0.0002140360011253506
+    },
+    {
+      "model": "word_logreg",
+      "validation_macro_f1": 0.8886793149366866,
+      "test": {
+        "accuracy": 0.9254901960784314,
+        "macro_precision": 0.948931784107946,
+        "macro_recall": 0.9077681685635722,
+        "macro_f1": 0.9247832366716732,
+        "weighted_f1": 0.924981105615115,
+        "per_class": {
+          "symptom": {
+            "precision": 0.8620689655172413,
+            "recall": 0.9493670886075949,
+            "f1": 0.9036144578313253,
+            "support": 79
+          },
+          "duration": {
+            "precision": 0.9583333333333334,
+            "recall": 0.9787234042553191,
+            "f1": 0.968421052631579,
+            "support": 47
+          },
+          "medication": {
+            "precision": 0.9166666666666666,
+            "recall": 0.9777777777777777,
+            "f1": 0.946236559139785,
+            "support": 45
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 0.9259259259259259,
+            "f1": 0.9615384615384616,
+            "support": 27
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "support": 30
+          },
+          "other": {
+            "precision": 0.9565217391304348,
+            "recall": 0.8148148148148148,
+            "f1": 0.88,
+            "support": 27
+          }
+        },
+        "classification_report": {
+          "symptom": {
+            "precision": 0.8620689655172413,
+            "recall": 0.9493670886075949,
+            "f1-score": 0.9036144578313253,
+            "support": 79.0
+          },
+          "duration": {
+            "precision": 0.9583333333333334,
+            "recall": 0.9787234042553191,
+            "f1-score": 0.968421052631579,
+            "support": 47.0
+          },
+          "medication": {
+            "precision": 0.9166666666666666,
+            "recall": 0.9777777777777777,
+            "f1-score": 0.946236559139785,
+            "support": 45.0
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 0.9259259259259259,
+            "f1-score": 0.9615384615384616,
+            "support": 27.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1-score": 0.8888888888888888,
+            "support": 30.0
+          },
+          "other": {
+            "precision": 0.9565217391304348,
+            "recall": 0.8148148148148148,
+            "f1-score": 0.88,
+            "support": 27.0
+          },
+          "accuracy": 0.9254901960784314,
+          "macro avg": {
+            "precision": 0.948931784107946,
+            "recall": 0.9077681685635722,
+            "f1-score": 0.9247832366716732,
+            "support": 255.0
+          },
+          "weighted avg": {
+            "precision": 0.9302792231335313,
+            "recall": 0.9254901960784314,
+            "f1-score": 0.924981105615115,
+            "support": 255.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            75,
+            0,
+            3,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            46,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            44,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            25,
+            0,
+            0
+          ],
+          [
+            5,
+            1,
+            0,
+            0,
+            24,
+            0
+          ],
+          [
+            3,
+            1,
+            1,
+            0,
+            0,
+            22
+          ]
+        ]
+      },
+      "train_seconds": 3.8572801369882654
+    },
+    {
+      "model": "char_logreg",
+      "validation_macro_f1": 0.9718195591362493,
+      "test": {
+        "accuracy": 0.9490196078431372,
+        "macro_precision": 0.946527851647581,
+        "macro_recall": 0.936634713535692,
+        "macro_f1": 0.9404454269592605,
+        "weighted_f1": 0.9487624765449922,
+        "per_class": {
+          "symptom": {
+            "precision": 0.9397590361445783,
+            "recall": 0.9873417721518988,
+            "f1": 0.9629629629629629,
+            "support": 79
+          },
+          "duration": {
+            "precision": 0.9565217391304348,
+            "recall": 0.9361702127659575,
+            "f1": 0.946236559139785,
+            "support": 47
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 0.9777777777777777,
+            "f1": 0.9887640449438202,
+            "support": 45
+          },
+          "allergy": {
+            "precision": 0.9310344827586207,
+            "recall": 1.0,
+            "f1": 0.9642857142857143,
+            "support": 27
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8666666666666667,
+            "f1": 0.9285714285714286,
+            "support": 30
+          },
+          "other": {
+            "precision": 0.8518518518518519,
+            "recall": 0.8518518518518519,
+            "f1": 0.8518518518518519,
+            "support": 27
+          }
+        },
+        "classification_report": {
+          "symptom": {
+            "precision": 0.9397590361445783,
+            "recall": 0.9873417721518988,
+            "f1-score": 0.9629629629629629,
+            "support": 79.0
+          },
+          "duration": {
+            "precision": 0.9565217391304348,
+            "recall": 0.9361702127659575,
+            "f1-score": 0.946236559139785,
+            "support": 47.0
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 0.9777777777777777,
+            "f1-score": 0.9887640449438202,
+            "support": 45.0
+          },
+          "allergy": {
+            "precision": 0.9310344827586207,
+            "recall": 1.0,
+            "f1-score": 0.9642857142857143,
+            "support": 27.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8666666666666667,
+            "f1-score": 0.9285714285714286,
+            "support": 30.0
+          },
+          "other": {
+            "precision": 0.8518518518518519,
+            "recall": 0.8518518518518519,
+            "f1-score": 0.8518518518518519,
+            "support": 27.0
+          },
+          "accuracy": 0.9490196078431372,
+          "macro avg": {
+            "precision": 0.946527851647581,
+            "recall": 0.936634713535692,
+            "f1-score": 0.9404454269592605,
+            "support": 255.0
+          },
+          "weighted avg": {
+            "precision": 0.9503349671726858,
+            "recall": 0.9490196078431372,
+            "f1-score": 0.9487624765449922,
+            "support": 255.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            78,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            44,
+            0,
+            0,
+            0,
+            3
+          ],
+          [
+            1,
+            0,
+            44,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            27,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            1,
+            26,
+            1
+          ],
+          [
+            3,
+            1,
+            0,
+            0,
+            0,
+            23
+          ]
+        ]
+      },
+      "train_seconds": 5.61367679599789
+    },
+    {
+      "model": "word_char_logreg",
+      "validation_macro_f1": 0.9683894199398075,
+      "test": {
+        "accuracy": 0.9607843137254902,
+        "macro_precision": 0.974472049689441,
+        "macro_recall": 0.9460384435067978,
+        "macro_f1": 0.9575339546934156,
+        "weighted_f1": 0.9597556062502394,
+        "per_class": {
+          "symptom": {
+            "precision": 0.9285714285714286,
+            "recall": 0.9873417721518988,
+            "f1": 0.9570552147239264,
+            "support": 79
+          },
+          "duration": {
+            "precision": 0.94,
+            "recall": 1.0,
+            "f1": 0.9690721649484536,
+            "support": 47
+          },
+          "medication": {
+            "precision": 0.9782608695652174,
+            "recall": 1.0,
+            "f1": 0.989010989010989,
+            "support": 45
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 27
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "support": 30
+          },
+          "other": {
+            "precision": 1.0,
+            "recall": 0.8888888888888888,
+            "f1": 0.9411764705882353,
+            "support": 27
+          }
+        },
+        "classification_report": {
+          "symptom": {
+            "precision": 0.9285714285714286,
+            "recall": 0.9873417721518988,
+            "f1-score": 0.9570552147239264,
+            "support": 79.0
+          },
+          "duration": {
+            "precision": 0.94,
+            "recall": 1.0,
+            "f1-score": 0.9690721649484536,
+            "support": 47.0
+          },
+          "medication": {
+            "precision": 0.9782608695652174,
+            "recall": 1.0,
+            "f1-score": 0.989010989010989,
+            "support": 45.0
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 27.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1-score": 0.8888888888888888,
+            "support": 30.0
+          },
+          "other": {
+            "precision": 1.0,
+            "recall": 0.8888888888888888,
+            "f1-score": 0.9411764705882353,
+            "support": 27.0
+          },
+          "accuracy": 0.9607843137254902,
+          "macro avg": {
+            "precision": 0.974472049689441,
+            "recall": 0.9460384435067978,
+            "f1-score": 0.9575339546934156,
+            "support": 255.0
+          },
+          "weighted avg": {
+            "precision": 0.9629760077944222,
+            "recall": 0.9607843137254902,
+            "f1-score": 0.9597556062502394,
+            "support": 255.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            78,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            47,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            45,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            27,
+            0,
+            0
+          ],
+          [
+            4,
+            2,
+            0,
+            0,
+            24,
+            0
+          ],
+          [
+            2,
+            1,
+            0,
+            0,
+            0,
+            24
+          ]
+        ]
+      },
+      "train_seconds": 4.301540723012295
+    },
+    {
+      "model": "word_linear_svm",
+      "validation_macro_f1": 0.8974576503481169,
+      "test": {
+        "accuracy": 0.9254901960784314,
+        "macro_precision": 0.9505950442381805,
+        "macro_recall": 0.9061741695012188,
+        "macro_f1": 0.9247775421459633,
+        "weighted_f1": 0.9251280690413817,
+        "per_class": {
+          "symptom": {
+            "precision": 0.8539325842696629,
+            "recall": 0.9620253164556962,
+            "f1": 0.9047619047619048,
+            "support": 79
+          },
+          "duration": {
+            "precision": 0.9583333333333334,
+            "recall": 0.9787234042553191,
+            "f1": 0.968421052631579,
+            "support": 47
+          },
+          "medication": {
+            "precision": 0.9347826086956522,
+            "recall": 0.9555555555555556,
+            "f1": 0.945054945054945,
+            "support": 45
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 0.9259259259259259,
+            "f1": 0.9615384615384616,
+            "support": 27
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "support": 30
+          },
+          "other": {
+            "precision": 0.9565217391304348,
+            "recall": 0.8148148148148148,
+            "f1": 0.88,
+            "support": 27
+          }
+        },
+        "classification_report": {
+          "symptom": {
+            "precision": 0.8539325842696629,
+            "recall": 0.9620253164556962,
+            "f1-score": 0.9047619047619048,
+            "support": 79.0
+          },
+          "duration": {
+            "precision": 0.9583333333333334,
+            "recall": 0.9787234042553191,
+            "f1-score": 0.968421052631579,
+            "support": 47.0
+          },
+          "medication": {
+            "precision": 0.9347826086956522,
+            "recall": 0.9555555555555556,
+            "f1-score": 0.945054945054945,
+            "support": 45.0
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 0.9259259259259259,
+            "f1-score": 0.9615384615384616,
+            "support": 27.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1-score": 0.8888888888888888,
+            "support": 30.0
+          },
+          "other": {
+            "precision": 0.9565217391304348,
+            "recall": 0.8148148148148148,
+            "f1-score": 0.88,
+            "support": 27.0
+          },
+          "accuracy": 0.9254901960784314,
+          "macro avg": {
+            "precision": 0.9505950442381805,
+            "recall": 0.9061741695012188,
+            "f1-score": 0.9247775421459633,
+            "support": 255.0
+          },
+          "weighted avg": {
+            "precision": 0.9309554712619457,
+            "recall": 0.9254901960784314,
+            "f1-score": 0.9251280690413817,
+            "support": 255.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            76,
+            0,
+            2,
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            46,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            43,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            25,
+            0,
+            0
+          ],
+          [
+            5,
+            1,
+            0,
+            0,
+            24,
+            0
+          ],
+          [
+            3,
+            1,
+            1,
+            0,
+            0,
+            22
+          ]
+        ]
+      },
+      "train_seconds": 0.020650104008382186
+    },
+    {
+      "model": "MuRIL fine-tuned CPU (afd9f36c)",
+      "validation_macro_f1": 0.080545229244114,
+      "test": {
+        "accuracy": 0.30980392156862746,
+        "macro_f1": 0.07884231536926148
+      },
+      "train_seconds": 383.95364940399304
+    }
+  ],
+  "calibration": {
+    "model": "char_logreg",
+    "method": "raw logistic-regression predict_proba; 10 equal-width bins",
+    "ece": 0.2756086273505116,
+    "bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.30000000000000004,
+        "count": 5,
+        "mean_confidence": 0.24815693856775253,
+        "accuracy": 0.4
+      },
+      {
+        "lower": 0.30000000000000004,
+        "upper": 0.4,
+        "count": 23,
+        "mean_confidence": 0.3558932285905535,
+        "accuracy": 0.6521739130434783
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 19,
+        "mean_confidence": 0.4467501327423311,
+        "accuracy": 0.9473684210526315
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6000000000000001,
+        "count": 27,
+        "mean_confidence": 0.5567945644633011,
+        "accuracy": 0.9629629629629629
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.7000000000000001,
+        "count": 46,
+        "mean_confidence": 0.6479042066982208,
+        "accuracy": 1.0
+      },
+      {
+        "lower": 0.7000000000000001,
+        "upper": 0.8,
+        "count": 68,
+        "mean_confidence": 0.7497434898411527,
+        "accuracy": 1.0
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 51,
+        "mean_confidence": 0.8479371787731043,
+        "accuracy": 1.0
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 16,
+        "mean_confidence": 0.9213011486149851,
+        "accuracy": 1.0
+      }
+    ],
+    "threshold_045": {
+      "threshold": 0.45,
+      "covered_count": 215,
+      "coverage": 0.8431372549019608,
+      "accuracy_on_covered": 0.9953488372093023,
+      "error_rate_on_covered": 0.004651162790697674,
+      "accuracy_on_all": 0.9490196078431372,
+      "interpretation": "descriptive operating point only; threshold is not validated as a clinical rule"
+    },
+    "note": "ECE is sample-size dependent and is not a clinical safety guarantee"
+  },
+  "cross_lingual_transfer": {
+    "training_language": "en",
+    "training_rows": 264,
+    "targets": {
+      "hi": {
+        "support": 63,
+        "accuracy": 0.47619047619047616,
+        "macro_f1": 0.28703703703703703,
+        "classification_report": {
+          "symptom": {
+            "precision": 0.4166666666666667,
+            "recall": 0.8333333333333334,
+            "f1-score": 0.5555555555555556,
+            "support": 24.0
+          },
+          "duration": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 9.0
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.5,
+            "support": 9.0
+          },
+          "allergy": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "medical_history": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "other": {
+            "precision": 0.5833333333333334,
+            "recall": 0.7777777777777778,
+            "f1-score": 0.6666666666666666,
+            "support": 9.0
+          },
+          "accuracy": 0.47619047619047616,
+          "macro avg": {
+            "precision": 0.3333333333333333,
+            "recall": 0.3240740740740741,
+            "f1-score": 0.28703703703703703,
+            "support": 63.0
+          },
+          "weighted avg": {
+            "precision": 0.38492063492063494,
+            "recall": 0.47619047619047616,
+            "f1-score": 0.37830687830687837,
+            "support": 63.0
+          }
+        }
+      },
+      "hinglish": {
+        "support": 84,
+        "accuracy": 0.5119047619047619,
+        "macro_f1": 0.49078111431052607,
+        "classification_report": {
+          "symptom": {
+            "precision": 0.4634146341463415,
+            "recall": 0.7916666666666666,
+            "f1-score": 0.5846153846153846,
+            "support": 24.0
+          },
+          "duration": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 24.0
+          },
+          "medication": {
+            "precision": 0.5833333333333334,
+            "recall": 0.5833333333333334,
+            "f1-score": 0.5833333333333334,
+            "support": 12.0
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1-score": 0.9090909090909091,
+            "support": 12.0
+          },
+          "medical_history": {
+            "precision": 0.8571428571428571,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.75,
+            "support": 9.0
+          },
+          "other": {
+            "precision": 0.07142857142857142,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.11764705882352941,
+            "support": 3.0
+          },
+          "accuracy": 0.5119047619047619,
+          "macro avg": {
+            "precision": 0.49588656600851727,
+            "recall": 0.5347222222222222,
+            "f1-score": 0.49078111431052607,
+            "support": 84.0
+          },
+          "weighted avg": {
+            "precision": 0.45298241247718607,
+            "recall": 0.5119047619047619,
+            "f1-score": 0.46479525376584196,
+            "support": 84.0
+          }
+        }
+      }
+    }
+  },
+  "split_ablation": {
+    "random_split_seed": 20261021,
+    "train_rows": 819,
+    "validation_rows": 205,
+    "test_rows": 257,
+    "grouped_char_test_macro_f1": 0.9404454269592605,
+    "random_char_test": {
+      "accuracy": 0.9922178988326849,
+      "macro_precision": 0.9958333333333332,
+      "macro_recall": 0.9907407407407408,
+      "macro_f1": 0.9931283905967451,
+      "weighted_f1": 0.9921559797637225,
+      "per_class": {
+        "symptom": {
+          "precision": 0.975,
+          "recall": 1.0,
+          "f1": 0.9873417721518988,
+          "support": 78
+        },
+        "duration": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 40
+        },
+        "medication": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 36
+        },
+        "allergy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 31
+        },
+        "medical_history": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 36
+        },
+        "other": {
+          "precision": 1.0,
+          "recall": 0.9444444444444444,
+          "f1": 0.9714285714285714,
+          "support": 36
+        }
+      },
+      "classification_report": {
+        "symptom": {
+          "precision": 0.975,
+          "recall": 1.0,
+          "f1-score": 0.9873417721518988,
+          "support": 78.0
+        },
+        "duration": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 40.0
+        },
+        "medication": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 36.0
+        },
+        "allergy": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 31.0
+        },
+        "medical_history": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 36.0
+        },
+        "other": {
+          "precision": 1.0,
+          "recall": 0.9444444444444444,
+          "f1-score": 0.9714285714285714,
+          "support": 36.0
+        },
+        "accuracy": 0.9922178988326849,
+        "macro avg": {
+          "precision": 0.9958333333333332,
+          "recall": 0.9907407407407408,
+          "f1-score": 0.9931283905967451,
+          "support": 257.0
+        },
+        "weighted avg": {
+          "precision": 0.9924124513618677,
+          "recall": 0.9922178988326849,
+          "f1-score": 0.9921559797637225,
+          "support": 257.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          78,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          40,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          36,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          31,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          36,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          34
+        ]
+      ]
+    },
+    "warning": "random split permits scenario templates to occur in multiple splits; this is leakage-prone by design"
+  },
+  "error_analysis": {
+    "by_language": {
+      "en": {
+        "support": 96,
+        "accuracy": 0.9479166666666666,
+        "macro_f1": 0.9469114890978428,
+        "classification_report": {
+          "symptom": {
+            "precision": 0.9130434782608695,
+            "recall": 1.0,
+            "f1-score": 0.9545454545454546,
+            "support": 21.0
+          },
+          "duration": {
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1-score": 0.9230769230769231,
+            "support": 12.0
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 0.9583333333333334,
+            "f1-score": 0.9787234042553191,
+            "support": 24.0
+          },
+          "allergy": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 9.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8666666666666667,
+            "f1-score": 0.9285714285714286,
+            "support": 15.0
+          },
+          "other": {
+            "precision": 0.9285714285714286,
+            "recall": 0.8666666666666667,
+            "f1-score": 0.896551724137931,
+            "support": 15.0
+          },
+          "accuracy": 0.9479166666666666,
+          "macro avg": {
+            "precision": 0.9497929606625259,
+            "recall": 0.9486111111111111,
+            "f1-score": 0.9469114890978428,
+            "support": 96.0
+          },
+          "weighted avg": {
+            "precision": 0.9519604037267081,
+            "recall": 0.9479166666666666,
+            "f1-score": 0.9477977772411008,
+            "support": 96.0
+          }
+        }
+      },
+      "hi": {
+        "support": 63,
+        "accuracy": 0.9682539682539683,
+        "macro_f1": 0.958822689915127,
+        "classification_report": {
+          "symptom": {
+            "precision": 0.96,
+            "recall": 1.0,
+            "f1-score": 0.9795918367346939,
+            "support": 24.0
+          },
+          "duration": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 9.0
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 9.0
+          },
+          "allergy": {
+            "precision": 0.8571428571428571,
+            "recall": 1.0,
+            "f1-score": 0.9230769230769231,
+            "support": 6.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1-score": 0.9090909090909091,
+            "support": 6.0
+          },
+          "other": {
+            "precision": 1.0,
+            "recall": 0.8888888888888888,
+            "f1-score": 0.9411764705882353,
+            "support": 9.0
+          },
+          "accuracy": 0.9682539682539683,
+          "macro avg": {
+            "precision": 0.9695238095238095,
+            "recall": 0.9537037037037036,
+            "f1-score": 0.958822689915127,
+            "support": 63.0
+          },
+          "weighted avg": {
+            "precision": 0.9711564625850341,
+            "recall": 0.9682539682539683,
+            "f1-score": 0.9678380842846629,
+            "support": 63.0
+          }
+        }
+      },
+      "hinglish": {
+        "support": 84,
+        "accuracy": 0.9285714285714286,
+        "macro_f1": 0.8788808856876084,
+        "classification_report": {
+          "symptom": {
+            "precision": 0.92,
+            "recall": 0.9583333333333334,
+            "f1-score": 0.9387755102040817,
+            "support": 24.0
+          },
+          "duration": {
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1-score": 0.9333333333333333,
+            "support": 24.0
+          },
+          "medication": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 12.0
+          },
+          "allergy": {
+            "precision": 0.9230769230769231,
+            "recall": 1.0,
+            "f1-score": 0.96,
+            "support": 12.0
+          },
+          "medical_history": {
+            "precision": 1.0,
+            "recall": 0.8888888888888888,
+            "f1-score": 0.9411764705882353,
+            "support": 9.0
+          },
+          "other": {
+            "precision": 0.4,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.5,
+            "support": 3.0
+          },
+          "accuracy": 0.9285714285714286,
+          "macro avg": {
+            "precision": 0.8738461538461539,
+            "recall": 0.8981481481481483,
+            "f1-score": 0.8788808856876084,
+            "support": 84.0
+          },
+          "weighted avg": {
+            "precision": 0.9447252747252748,
+            "recall": 0.9285714285714286,
+            "f1-score": 0.9335857200022866,
+            "support": 84.0
+          }
+        }
+      },
+      "mixed": {
+        "support": 12,
+        "accuracy": 1.0,
+        "macro_f1": 0.3333333333333333,
+        "classification_report": {
+          "symptom": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 10.0
+          },
+          "duration": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2.0
+          },
+          "medication": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "allergy": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "medical_history": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "other": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 1.0,
+          "macro avg": {
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3333333333333333,
+            "support": 12.0
+          },
+          "weighted avg": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 12.0
+          }
+        }
+      }
+    },
+    "by_label": {
+      "symptom": {
+        "support": 79,
+        "correct": 78,
+        "recall": 0.9873417721518988,
+        "predicted_as": {
+          "symptom": 78,
+          "allergy": 1
+        }
+      },
+      "duration": {
+        "support": 47,
+        "correct": 44,
+        "recall": 0.9361702127659575,
+        "predicted_as": {
+          "duration": 44,
+          "other": 3
+        }
+      },
+      "medication": {
+        "support": 45,
+        "correct": 44,
+        "recall": 0.9777777777777777,
+        "predicted_as": {
+          "medication": 44,
+          "symptom": 1
+        }
+      },
+      "allergy": {
+        "support": 27,
+        "correct": 27,
+        "recall": 1.0,
+        "predicted_as": {
+          "allergy": 27
+        }
+      },
+      "medical_history": {
+        "support": 30,
+        "correct": 26,
+        "recall": 0.8666666666666667,
+        "predicted_as": {
+          "medical_history": 26,
+          "symptom": 1,
+          "duration": 1,
+          "other": 1,
+          "allergy": 1
+        }
+      },
+      "other": {
+        "support": 27,
+        "correct": 23,
+        "recall": 0.8518518518518519,
+        "predicted_as": {
+          "other": 23,
+          "duration": 1,
+          "symptom": 3
+        }
+      }
+    },
+    "misclassified_examples": [
+      {
+        "true": "symptom",
+        "predicted": "allergy",
+        "language": "hinglish",
+        "source": "synthetic",
+        "confidence": 0.37383896568792085,
+        "text": "Mujhe dhundhla dikhna ki takleef hai."
+      },
+      {
+        "true": "duration",
+        "predicted": "other",
+        "language": "hinglish",
+        "source": "synthetic",
+        "confidence": 0.3226537253875606,
+        "text": "Mujhe ye dheere dheere chaar mahino mein se hai."
+      },
+      {
+        "true": "duration",
+        "predicted": "other",
+        "language": "hinglish",
+        "source": "synthetic",
+        "confidence": 0.37265822331161685,
+        "text": "Maine ye dheere dheere chaar mahino mein dekha."
+      },
+      {
+        "true": "duration",
+        "predicted": "other",
+        "language": "hinglish",
+        "source": "synthetic",
+        "confidence": 0.3019045825705276,
+        "text": "Ye dheere dheere chaar mahino mein se chal raha hai."
+      },
+      {
+        "true": "medication",
+        "predicted": "symptom",
+        "language": "en",
+        "source": "synthetic",
+        "confidence": 0.2588414600777542,
+        "text": "I am on painkillers only when needed."
+      },
+      {
+        "true": "medical_history",
+        "predicted": "symptom",
+        "language": "hinglish",
+        "source": "synthetic",
+        "confidence": 0.5288594993806113,
+        "text": "Mujhe dama hai."
+      },
+      {
+        "true": "medical_history",
+        "predicted": "duration",
+        "language": "en",
+        "source": "synthetic",
+        "confidence": 0.31131063962131783,
+        "text": "I had childhood chickenpox."
+      },
+      {
+        "true": "medical_history",
+        "predicted": "other",
+        "language": "en",
+        "source": "synthetic",
+        "confidence": 0.22042996519876046,
+        "text": "I have childhood chickenpox."
+      },
+      {
+        "true": "medical_history",
+        "predicted": "allergy",
+        "language": "hi",
+        "source": "synthetic",
+        "confidence": 0.2691761032799176,
+        "text": "मुझे पिछले साल कलाई की हड्डी टूटी थी है।"
+      },
+      {
+        "true": "other",
+        "predicted": "duration",
+        "language": "en",
+        "source": "synthetic",
+        "confidence": 0.44570575085650976,
+        "text": "I stopped smoking four months ago."
+      },
+      {
+        "true": "other",
+        "predicted": "symptom",
+        "language": "en",
+        "source": "synthetic",
+        "confidence": 0.3064299587110949,
+        "text": "I am vegetarian."
+      },
+      {
+        "true": "other",
+        "predicted": "symptom",
+        "language": "hi",
+        "source": "synthetic",
+        "confidence": 0.3508582632345937,
+        "text": "और, मुझे अपॉइंटमेंट की याद दिलानी है।"
+      },
+      {
+        "true": "other",
+        "predicted": "symptom",
+        "language": "hinglish",
+        "source": "synthetic",
+        "confidence": 0.3735273780549077,
+        "text": "mere pati call mein shamil honge."
+      }
+    ]
+  },
+  "external_dataset": {
+    "status": "not_trained",
+    "dataset": "SMM4H-2017 Task 2",
+    "reason": "The public release contains tweet IDs, user IDs, and labels only; its README prohibits redistributing tweets, annotations, or the resulting corpus. Text is not available in this environment under a non-paid, compliant route.",
+    "source": "https://data.mendeley.com/datasets/rxwfb3tysd/2",
+    "next_step": "A lawful locally obtained text TSV is required before real-data training/evaluation; do not commit it or derived corpus rows."
+  },
+  "environment": {
+    "python": "3.14.7",
+    "scikit_learn": "1.9.1",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "torch": null,
+    "transformers": null,
+    "platform": "Linux-6.18.55-1-lts-x86_64-with-glibc2.44",
+    "cpu_only": true
+  },
+  "limitations": [
+    "Synthetic metrics measure learnability of the authored label scheme.",
+    "No clinician adjudication; single-annotator labels; no real patient data.",
+    "Mixed-language held-out subset is small.",
+    "No clinical, diagnostic, triage, severity, or emergency performance claim."
+  ],
+  "transformer": {
+    "model": "google/muril-base-cased",
+    "revision": "afd9f36c7923d54e97903922ff1b260d091d202f",
+    "model_card": "https://huggingface.co/google/muril-base-cased",
+    "selection": "highest validation macro-F1 across the fixed epoch budget",
+    "training_method": "partial fine-tuning: classification head and top encoder block(s); lower MuRIL layers frozen to fit CPU budget",
+    "hyperparameters": {
+      "epochs": 3,
+      "batch_size": 16,
+      "max_length": 64,
+      "learning_rate": 2e-05,
+      "unfreeze_last_layers": 1,
+      "classifier_head_learning_rate": 0.0005,
+      "loss": "class-weighted cross entropy",
+      "trainable_parameters": 7092486,
+      "total_parameters": 237560838,
+      "seed": 20261021,
+      "device": "CPU",
+      "threads": 4
+    },
+    "train_seconds": 383.95364940399304,
+    "validation_best_macro_f1": 0.080545229244114,
+    "test": {
+      "accuracy": 0.30980392156862746,
+      "macro_f1": 0.07884231536926148,
+      "macro_precision": 0.05163398692810458,
+      "macro_recall": 0.16666666666666666,
+      "per_class": {
+        "symptom": {
+          "precision": 0.30980392156862746,
+          "recall": 1.0,
+          "f1-score": 0.47305389221556887,
+          "support": 79.0
+        },
+        "duration": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 47.0
+        },
+        "medication": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 45.0
+        },
+        "allergy": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 27.0
+        },
+        "medical_history": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 30.0
+        },
+        "other": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 27.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          79,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          47,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          45,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          27,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          27,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "calibration": {
+      "method": "raw softmax; 10 equal-width bins",
+      "ece": 0.13918978332304488,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 255,
+          "mean_confidence": 0.17061413824558258,
+          "accuracy": 0.30980392156862746
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        }
+      ],
+      "threshold_045_coverage": 0.0
+    },
+    "by_language": {
+      "en": {
+        "support": 96,
+        "accuracy": 0.21875,
+        "macro_f1": 0.05982905982905983
+      },
+      "hi": {
+        "support": 63,
+        "accuracy": 0.38095238095238093,
+        "macro_f1": 0.09195402298850575
+      },
+      "hinglish": {
+        "support": 84,
+        "accuracy": 0.2857142857142857,
+        "macro_f1": 0.07407407407407407
+      },
+      "mixed": {
+        "support": 12,
+        "accuracy": 0.8333333333333334,
+        "macro_f1": 0.15151515151515152
+      }
+    },
+    "by_label": {
+      "symptom": {
+        "support": 79,
+        "accuracy": 1.0,
+        "macro_f1": 0.16666666666666666
+      },
+      "duration": {
+        "support": 47,
+        "accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "medication": {
+        "support": 45,
+        "accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "allergy": {
+        "support": 27,
+        "accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "medical_history": {
+        "support": 30,
+        "accuracy": 0.0,
+        "macro_f1": 0.0
+      },
+      "other": {
+        "support": 27,
+        "accuracy": 0.0,
+        "macro_f1": 0.0
+      }
+    },
+    "epochs": [
+      {
+        "epoch": 1,
+        "mean_training_loss": 1.7926406280257696,
+        "validation_macro_f1": 0.080545229244114
+      },
+      {
+        "epoch": 2,
+        "mean_training_loss": 1.7919229080497203,
+        "validation_macro_f1": 0.080545229244114
+      },
+      {
+        "epoch": 3,
+        "mean_training_loss": 1.7900000004292695,
+        "validation_macro_f1": 0.080545229244114
+      }
+    ],
+    "split": {
+      "train": 822,
+      "validation": 204,
+      "test": 255,
+      "strategy": "grouped by scenario_id"
+    },
+    "environment": {
+      "python": "3.14.7",
+      "torch": "2.14.1+cpu",
+      "transformers": "5.20.2",
+      "platform": "Linux-6.18.55-1-lts-x86_64-with-glibc2.44",
+      "device": "CPU"
+    },
+    "weight_artifact": "not persisted; only metrics are saved",
+    "notice": "Synthetic-data learnability only; no clinical validity claim."
+  }
+}

@@ -116,6 +116,60 @@ ml/.venv/bin/python ml/train.py
 ml/.venv/bin/uvicorn api:app --app-dir ml --host 127.0.0.1 --port 8000
 ```
 
+## Phase B research experiments
+
+The extended paper experiments are reproducible without changing the service model:
+
+```bash
+ml/.venv/bin/python ml/phase_b.py
+ml/.venv/bin/pip install -r ml/requirements-transformer.txt
+ml/.venv/bin/python ml/phase_b_transformer.py
+```
+
+`phase_b.py` writes baseline comparisons, ten-bin ECE and a reliability plot,
+English-only to Hindi/Hinglish transfer, a random-row versus scenario-grouped split
+ablation, and error slices to `reports/phase_b/`. The selected production research
+artifact remains unchanged. The optional MuRIL runner pins `google/muril-base-cased`
+to a specific Hub revision, uses CPU-only PyTorch, and fine-tunes the task head plus
+the top encoder block while freezing lower layers to make the run tractable on this
+computer. It records the exact trainable parameter count and runtime; this is partial
+fine-tuning, not full-model fine-tuning.
+
+### SMM4H medication data status
+
+SMM4H-2017 Task 2 is a useful medication-intake corpus, but its public release contains
+tweet IDs, user IDs, and annotations rather than tweet text. Its README says not to
+redistribute the tweets, annotations, or the corpus obtained by resolving those IDs.
+The archive and identifiers are not committed here. The current environment does not
+have tweet text through an existing compliant, non-paid access route, so no SMM4H
+training or evaluation score is reported. To complete that part, obtain text under the
+applicable platform terms and institutional review requirements, keep it outside Git,
+and rerun only from a local file. Do not treat the tweet IDs as examples or reproduce
+the original label categories as Health-Bridge labels without documenting that mapping.
+
+Dataset source: [SMM4H-2017 Task 2 release](https://data.mendeley.com/datasets/rxwfb3tysd/2),
+licensed at the dataset-page level under CC BY 4.0; the task README separately states
+the tweet/annotation non-redistribution restriction. Citation: Sarker et al.,
+“Data and systems for medication-related text classification and concept normalization
+from Twitter: Insights from the Social Media Mining for Health (SMM4H)-2017 shared task,”
+*Journal of the American Medical Informatics Association*, 2018, doi:10.1093/jamia/ocy114.
+
+When compliant local tweet text is available, create separate TSVs with columns
+`tweet_id`, `text`, and original Task 2 `label` (`1`, `2`, or `3`) for training and
+official evaluation, then run:
+
+```bash
+ml/.venv/bin/python ml/phase_b_smm4h.py \
+  --train-tsv /path/outside/repository/smm4h-train.tsv \
+  --evaluation-tsv /path/outside/repository/smm4h-evaluation.tsv
+```
+
+The script samples exactly 2,000 training posts with a fixed seed, compares synthetic
+only with synthetic-plus-SMM4H training on the unchanged grouped synthetic test set, and
+reports positive-only medication-category recall on the official evaluation posts.
+It writes aggregate metrics only. The original SMM4H intake certainty labels are kept
+as aggregate counts; they are not incorrectly mapped to the Health-Bridge `other` class.
+
 The app reads `ML_SERVICE_URL` (default `http://127.0.0.1:8000`). If the service is not
 running, intake works normally and the doctor just sees no categories — see below.
 

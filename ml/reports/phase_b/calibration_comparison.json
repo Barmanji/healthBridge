@@ -1,0 +1,175 @@
+{
+  "method": "scalar temperature scaling fitted by validation negative log-likelihood",
+  "model": "char_logreg",
+  "split": "fixed scenario-grouped split",
+  "training_seed": 20261019,
+  "split_seed": 20261020,
+  "temperature": 0.25223462484645653,
+  "train_rows": 822,
+  "validation_rows": 204,
+  "test_rows": 255,
+  "validation": {
+    "raw_nll": 0.4203929090341278,
+    "temperature_scaled_nll": 0.09156875022956668,
+    "optimizer_success": true
+  },
+  "test": {
+    "raw": {
+      "accuracy": 0.9490196078431372,
+      "nll": 0.4618853122973266,
+      "multiclass_brier": 0.18657591564765771,
+      "ece_10_equal_width": 0.2756086273505116,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 5,
+          "mean_confidence": 0.24815693856775253,
+          "accuracy": 0.4
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 23,
+          "mean_confidence": 0.3558932285905535,
+          "accuracy": 0.6521739130434783
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 19,
+          "mean_confidence": 0.4467501327423311,
+          "accuracy": 0.9473684210526315
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "count": 27,
+          "mean_confidence": 0.5567945644633011,
+          "accuracy": 0.9629629629629629
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 46,
+          "mean_confidence": 0.6479042066982208,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 68,
+          "mean_confidence": 0.7497434898411527,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 51,
+          "mean_confidence": 0.8479371787731043,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 16,
+          "mean_confidence": 0.9213011486149851,
+          "accuracy": 1.0
+        }
+      ]
+    },
+    "temperature_scaled": {
+      "accuracy": 0.9490196078431372,
+      "nll": 0.1548275376798927,
+      "multiclass_brier": 0.08017023524451412,
+      "ece_10_equal_width": 0.011921695131291347,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "count": 2,
+          "mean_confidence": 0.3305922237680027,
+          "accuracy": 0.5
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "count": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "count": 7,
+          "mean_confidence": 0.5390065578780422,
+          "accuracy": 0.5714285714285714
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "count": 4,
+          "mean_confidence": 0.617671147965583,
+          "accuracy": 0.25
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "count": 11,
+          "mean_confidence": 0.7501478050297595,
+          "accuracy": 0.7272727272727273
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "count": 8,
+          "mean_confidence": 0.8530332955250235,
+          "accuracy": 0.875
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "count": 223,
+          "mean_confidence": 0.9936153297227448,
+          "accuracy": 0.9910313901345291
+        }
+      ]
+    }
+  },
+  "note": "Temperature is fitted on validation only. Test metrics are held out. This is a synthetic-data calibration analysis, not a clinical threshold or safety guarantee."
+}

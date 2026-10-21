@@ -1,0 +1,280 @@
+{
+  "model": "google/muril-base-cased",
+  "revision": "afd9f36c7923d54e97903922ff1b260d091d202f",
+  "model_card": "https://huggingface.co/google/muril-base-cased",
+  "selection": "highest validation macro-F1 across the fixed epoch budget",
+  "training_method": "partial fine-tuning: classification head and top encoder block(s); lower MuRIL layers frozen to fit CPU budget",
+  "hyperparameters": {
+    "epochs": 3,
+    "batch_size": 16,
+    "max_length": 64,
+    "learning_rate": 2e-05,
+    "unfreeze_last_layers": 1,
+    "classifier_head_learning_rate": 0.0005,
+    "loss": "class-weighted cross entropy",
+    "trainable_parameters": 7092486,
+    "total_parameters": 237560838,
+    "seed": 20261021,
+    "device": "CPU",
+    "threads": 4
+  },
+  "train_seconds": 383.95364940399304,
+  "validation_best_macro_f1": 0.080545229244114,
+  "test": {
+    "accuracy": 0.30980392156862746,
+    "macro_f1": 0.07884231536926148,
+    "macro_precision": 0.05163398692810458,
+    "macro_recall": 0.16666666666666666,
+    "per_class": {
+      "symptom": {
+        "precision": 0.30980392156862746,
+        "recall": 1.0,
+        "f1-score": 0.47305389221556887,
+        "support": 79.0
+      },
+      "duration": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 47.0
+      },
+      "medication": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 45.0
+      },
+      "allergy": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 27.0
+      },
+      "medical_history": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 30.0
+      },
+      "other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 27.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        79,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        47,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        45,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        27,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        30,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        27,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "calibration": {
+    "method": "raw softmax; 10 equal-width bins",
+    "ece": 0.13918978332304488,
+    "bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 255,
+        "mean_confidence": 0.17061413824558258,
+        "accuracy": 0.30980392156862746
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.30000000000000004,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.30000000000000004,
+        "upper": 0.4,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6000000000000001,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.7000000000000001,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.7000000000000001,
+        "upper": 0.8,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      }
+    ],
+    "threshold_045_coverage": 0.0
+  },
+  "by_language": {
+    "en": {
+      "support": 96,
+      "accuracy": 0.21875,
+      "macro_f1": 0.05982905982905983
+    },
+    "hi": {
+      "support": 63,
+      "accuracy": 0.38095238095238093,
+      "macro_f1": 0.09195402298850575
+    },
+    "hinglish": {
+      "support": 84,
+      "accuracy": 0.2857142857142857,
+      "macro_f1": 0.07407407407407407
+    },
+    "mixed": {
+      "support": 12,
+      "accuracy": 0.8333333333333334,
+      "macro_f1": 0.15151515151515152
+    }
+  },
+  "by_label": {
+    "symptom": {
+      "support": 79,
+      "accuracy": 1.0,
+      "macro_f1": 0.16666666666666666
+    },
+    "duration": {
+      "support": 47,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "medication": {
+      "support": 45,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "allergy": {
+      "support": 27,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "medical_history": {
+      "support": 30,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    },
+    "other": {
+      "support": 27,
+      "accuracy": 0.0,
+      "macro_f1": 0.0
+    }
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "mean_training_loss": 1.7926406280257696,
+      "validation_macro_f1": 0.080545229244114
+    },
+    {
+      "epoch": 2,
+      "mean_training_loss": 1.7919229080497203,
+      "validation_macro_f1": 0.080545229244114
+    },
+    {
+      "epoch": 3,
+      "mean_training_loss": 1.7900000004292695,
+      "validation_macro_f1": 0.080545229244114
+    }
+  ],
+  "split": {
+    "train": 822,
+    "validation": 204,
+    "test": 255,
+    "strategy": "grouped by scenario_id"
+  },
+  "environment": {
+    "python": "3.14.7",
+    "torch": "2.14.1+cpu",
+    "transformers": "5.20.2",
+    "platform": "Linux-6.18.55-1-lts-x86_64-with-glibc2.44",
+    "device": "CPU"
+  },
+  "weight_artifact": "not persisted; only metrics are saved",
+  "notice": "Synthetic-data learnability only; no clinical validity claim."
+}

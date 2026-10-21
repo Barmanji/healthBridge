@@ -1,0 +1,5 @@
+# Optional Phase B CPU transformer environment (keep separate from the app service).
+# Verified on Python 3.14; the exact model checkpoint commit is pinned in the runner.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+transformers==5.20.2
