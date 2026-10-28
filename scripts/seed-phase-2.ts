@@ -4,26 +4,12 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "../lib/db";
 import { account, departments, user } from "../lib/db/schema";
+import { departmentSeeds } from "../lib/db/seed-data";
 
 const bootstrapEnvSchema = z.object({
   ADMIN_BOOTSTRAP_EMAIL: z.string().trim().email().max(254),
   ADMIN_BOOTSTRAP_PASSWORD: z.string().min(16).max(128),
 });
-
-const departmentSeeds = [
-  ["General Medicine", "general-medicine"],
-  ["Cardiology", "cardiology"],
-  ["Dermatology", "dermatology"],
-  ["Endocrinology", "endocrinology"],
-  ["ENT", "ent"],
-  ["Gastroenterology", "gastroenterology"],
-  ["Gynecology", "gynecology"],
-  ["Neurology", "neurology"],
-  ["Orthopedics", "orthopedics"],
-  ["Pediatrics", "pediatrics"],
-  ["Psychiatry", "psychiatry"],
-  ["Pulmonology", "pulmonology"],
-] as const;
 
 async function seedDepartments() {
   for (const [name, slug] of departmentSeeds) {

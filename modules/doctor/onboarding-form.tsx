@@ -1,70 +1,185 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { saveDoctorStep, submitDoctorApplication } from "@/modules/doctor/actions";
 import type { doctorProfiles } from "@/lib/db/schema";
 
 type DoctorProfile = typeof doctorProfiles.$inferSelect;
+type Department = { id: string; name: string };
 
 const fields = [
-  ["fullName", "Full legal name"], ["phone", "Phone with country code"], ["city", "City"], ["state", "State"], ["dateOfBirth", "Date of birth"],
-  ["registrationNumber", "Medical registration number"], ["registrationCouncil", "Medical council"],
-  ["registrationYear", "Registration year"], ["departmentId", "Department"], ["yearsExperience", "Years of experience"],
-  ["clinicName", "Clinic name (optional)"], ["clinicAddress", "Clinic address (optional)"],
+  { key: "fullName", label: "Full legal name", required: true },
+  { key: "phone", label: "Phone with country code", required: true },
+  { key: "city", label: "City", required: true },
+  { key: "state", label: "State", required: true },
+  { key: "dateOfBirth", label: "Date of birth", required: false },
+  { key: "registrationNumber", label: "Medical registration number", required: true },
+  { key: "registrationCouncil", label: "Medical council", required: true },
+  { key: "registrationYear", label: "Registration year", required: true },
+  { key: "departmentId", label: "Department", required: true },
+  { key: "yearsExperience", label: "Years of experience", required: true },
+  { key: "clinicName", label: "Clinic name (optional)", required: false },
+  { key: "clinicAddress", label: "Clinic address (optional)", required: false },
 ] as const;
 
-export function OnboardingForm({ profile, departments, documents }: { profile: DoctorProfile; departments: { id: string; name: string }[]; documents: { id: string; type: string; originalName: string }[] }) {
+const declarationFields = [
+  ["terms", "I agree to the terms of service."],
+  ["data", "I consent to processing my information and credentials for verification."],
+  ["telemedicine", "I confirm I will follow applicable telemedicine requirements."],
+] as const;
+
+function RequiredMarker() {
+  return <><span aria-hidden="true" className="ml-1 text-red-600">*</span><span className="sr-only"> required</span></>;
+}
+
+export function OnboardingForm({ profile, departments }: { profile: DoctorProfile; departments: Department[] }) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState<Record<string, string>>({
     fullName: profile.fullName ?? "", phone: profile.phone ?? "", city: profile.city ?? "", state: profile.state ?? "",
     registrationNumber: profile.registrationNumber ?? "", registrationCouncil: profile.registrationCouncil ?? "",
     registrationYear: profile.registrationYear?.toString() ?? "", departmentId: profile.departmentId ?? "",
-    yearsExperience: profile.yearsExperience?.toString() ?? "", clinicName: profile.clinicName ?? "", clinicAddress: profile.clinicAddress ?? "", dateOfBirth: profile.dateOfBirth?.toISOString?.().slice(0,10) ?? "",
-    degree: profile.qualifications?.[0]?.degree ?? "", institution: profile.qualifications?.[0]?.institution ?? "", qualificationYear: profile.qualifications?.[0]?.year?.toString() ?? "",
+    yearsExperience: profile.yearsExperience?.toString() ?? "", clinicName: profile.clinicName ?? "", clinicAddress: profile.clinicAddress ?? "",
+    dateOfBirth: profile.dateOfBirth?.toISOString?.().slice(0, 10) ?? "",
+    degree: profile.qualifications?.[0]?.degree ?? "", institution: profile.qualifications?.[0]?.institution ?? "",
+    qualificationYear: profile.qualifications?.[0]?.year?.toString() ?? "",
     languages: profile.languages?.join(", ") ?? "English", consultModes: profile.consultModes?.join(",") ?? "video",
   });
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [accepted, setAccepted] = useState({ terms: false, data: false, telemedicine: false });
   const set = (key: string, value: string) => setValues((old) => ({ ...old, [key]: value }));
-  async function save() {
-    setBusy(true); setMessage("");
+
+  async function persistProfile() {
     const personal = await saveDoctorStep(2, { ...values, gender: "", bio: "" });
-    if (!personal.ok) { setMessage(personal.message); setBusy(false); return; }
+    if (!personal.ok) return personal;
+
     const professional = await saveDoctorStep(3, {
-      ...values, registrationYear: Number(values.registrationYear), yearsExperience: Number(values.yearsExperience),
-      subSpecialties: [], qualifications: [{ degree: values.degree, institution: values.institution, year: Number(values.qualificationYear) }],
+      ...values,
+      registrationYear: Number(values.registrationYear),
+      yearsExperience: Number(values.yearsExperience),
+      subSpecialties: [],
+      qualifications: [{ degree: values.degree, institution: values.institution, year: Number(values.qualificationYear) }],
     });
-    if (!professional.ok) { setMessage(professional.message); setBusy(false); return; }
-    const practice = await saveDoctorStep(4, { clinicName: values.clinicName, clinicAddress: values.clinicAddress, languages: values.languages.split(",").map((x) => x.trim()).filter(Boolean), consultModes: values.consultModes.split(",").map((x) => x.trim()).filter(Boolean), feeInr: undefined });
-    if (!practice.ok) { setMessage(practice.message); setBusy(false); return; }
-    const availability = await saveDoctorStep(5, { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Kolkata", slotMinutes: 15, bufferMinutes: 0, weeklySchedule: [{ weekday: 1, startTime: "09:00", endTime: "17:00" }], plannedLeave: [] });
-    setMessage(availability.ok ? "Profile saved. Add required documents below, then submit for review." : availability.message);
-    setBusy(false);
+    if (!professional.ok) return professional;
+
+    const practice = await saveDoctorStep(4, {
+      clinicName: values.clinicName,
+      clinicAddress: values.clinicAddress,
+      languages: values.languages.split(",").map((value) => value.trim()).filter(Boolean),
+      consultModes: values.consultModes.split(",").map((value) => value.trim()).filter(Boolean),
+      feeInr: undefined,
+    });
+    if (!practice.ok) return practice;
+
+    const availability = await saveDoctorStep(5, {
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Kolkata",
+      slotMinutes: 15,
+      bufferMinutes: 0,
+      weeklySchedule: [{ weekday: 1, startTime: "09:00", endTime: "17:00" }],
+      plannedLeave: [],
+    });
+    return availability.ok ? { ok: true as const } : availability;
   }
-  async function upload(form: FormData) {
-    setBusy(true); setMessage("");
-    const response = await fetch("/api/doctor/documents", { method: "POST", body: form });
-    const result = await response.json().catch(() => ({}));
-    setMessage(response.ok ? "Document uploaded. Refresh this page to see it." : result.error ?? "Upload failed.");
-    setBusy(false);
-  }
-  async function submit() {
+
+  async function save() {
+    if (busy) return;
     setBusy(true);
-    const result = await submitDoctorApplication({ acceptedTerms: accepted.terms, acceptedDataProcessing: accepted.data, acceptedTelemedicineDeclaration: accepted.telemedicine });
-    setMessage(result.ok ? "Application submitted for manual review." : result.message);
-    setBusy(false);
+    setMessage("");
+    try {
+      const result = await persistProfile();
+      setMessage(result.ok ? "Profile saved. You can submit it for manual review." : result.message);
+    } catch {
+      setMessage("Could not save your profile. Please try again.");
+    } finally {
+      setBusy(false);
+    }
   }
-  return <div className="space-y-8">
-    <section className="grid gap-4 sm:grid-cols-2">{fields.map(([key, label]) => <label key={key} className="grid gap-2 text-sm">{label}
-      {key === "departmentId" ? <select value={values[key]} onChange={(e) => set(key, e.target.value)} className="rounded-xl border bg-background px-3 py-3"><option value="">Choose department</option>{departments.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}</select> : <input required={!key.startsWith("clinic")} type={key === "dateOfBirth" ? "date" : key.endsWith("Year") || key === "yearsExperience" ? "number" : "text"} value={values[key]} onChange={(e) => set(key, e.target.value)} className="rounded-xl border bg-background px-3 py-3" />}
-    </label>)}</section>
-    <section className="grid gap-4 sm:grid-cols-2"><label className="grid gap-2 text-sm">Degree<input value={values.degree} onChange={(e) => set("degree",e.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label><label className="grid gap-2 text-sm">Institution<input value={values.institution} onChange={(e) => set("institution",e.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label><label className="grid gap-2 text-sm">Graduation year<input type="number" value={values.qualificationYear} onChange={(e) => set("qualificationYear",e.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label><label className="grid gap-2 text-sm">Languages (comma separated)<input value={values.languages} onChange={(e) => set("languages",e.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label><label className="grid gap-2 text-sm">Consult modes: video, audio<input value={values.consultModes} onChange={(e) => set("consultModes",e.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label></section>
-    <button disabled={busy} onClick={save} className="rounded-xl bg-primary px-5 py-3 text-primary-foreground">Save profile</button>
-    <section className="space-y-4 rounded-2xl border p-5"><h2 className="text-xl font-semibold">Required documents</h2><p className="text-sm text-muted-foreground">PDF, PNG, or JPEG; maximum 10 MB each.</p>
-      {["registration_certificate", "degree_certificate", "government_id", "profile_photo"].map((type) => <form key={type} action={upload} className="flex flex-wrap items-center gap-3 border-b py-3"><input type="hidden" name="type" value={type} /><span className="min-w-48 text-sm">{type.replaceAll("_", " ")}</span><input name="file" type="file" accept={type === "profile_photo" ? "image/png,image/jpeg" : "application/pdf,image/png,image/jpeg"} required /><button disabled={busy} className="rounded-lg border px-3 py-2">Upload</button><span className="text-xs text-muted-foreground">{documents.filter((d) => d.type === type).map((d) => d.originalName).join(", ")}</span></form>)}
+
+  async function submit() {
+    if (busy) return;
+    if (!accepted.terms || !accepted.data || !accepted.telemedicine) {
+      setMessage("Accept all three declarations before submitting.");
+      return;
+    }
+
+    setBusy(true);
+    setMessage("");
+    try {
+      const saved = await persistProfile();
+      if (!saved.ok) {
+        setMessage(saved.message);
+        return;
+      }
+      const result = await submitDoctorApplication({
+        acceptedTerms: accepted.terms,
+        acceptedDataProcessing: accepted.data,
+        acceptedTelemedicineDeclaration: accepted.telemedicine,
+      });
+      setMessage(result.ok ? "Application submitted for manual review." : result.message);
+    } catch {
+      setMessage("Could not submit your application. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const intent = (event.nativeEvent as SubmitEvent).submitter instanceof HTMLElement
+      ? (event.nativeEvent as SubmitEvent).submitter?.getAttribute("data-intent")
+      : "save";
+    if (intent === "submit") void submit();
+    else void save();
+  }
+
+  return <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+    <p className="text-sm text-muted-foreground"><span className="text-red-600">*</span> Required fields</p>
+    <section className="grid gap-4 sm:grid-cols-2">
+      {fields.map(({ key, label, required }) => <label key={key} className="grid gap-2 text-sm">
+        <span>{label}{required && <RequiredMarker />}</span>
+        {key === "departmentId" ? <>
+          <select required value={values[key]} onChange={(event) => set(key, event.target.value)} className="rounded-xl border bg-background px-3 py-3">
+            <option value="">{departments.length ? "Choose specialization" : "No specializations available"}</option>
+            {departments.map((department) => <option key={department.id} value={department.id}>{department.name}</option>)}
+          </select>
+          {!departments.length && <span className="text-xs text-muted-foreground">Specializations are not configured yet. Please contact support.</span>}
+        </> : <input
+          required={required}
+          type={key === "dateOfBirth" ? "date" : key === "registrationYear" || key === "yearsExperience" ? "number" : "text"}
+          min={key === "registrationYear" ? 1900 : key === "yearsExperience" ? 0 : undefined}
+          max={key === "registrationYear" ? new Date().getFullYear() : key === "yearsExperience" ? 80 : undefined}
+          value={values[key]}
+          onChange={(event) => set(key, event.target.value)}
+          className="rounded-xl border bg-background px-3 py-3"
+        />}
+      </label>)}
     </section>
-    <section className="space-y-3 rounded-2xl border p-5"><h2 className="text-xl font-semibold">Declarations</h2>{([["terms", "I agree to the terms of service."], ["data", "I consent to processing my information and credentials for verification."], ["telemedicine", "I confirm I will follow applicable telemedicine requirements."]] as const).map(([key, label]) => <label key={key} className="flex gap-3 text-sm"><input type="checkbox" checked={accepted[key]} onChange={(e) => setAccepted((old) => ({ ...old, [key]: e.target.checked }))}/>{label}</label>)}</section>
-    <button disabled={busy || !accepted.terms || !accepted.data || !accepted.telemedicine} onClick={submit} className="rounded-xl bg-primary px-5 py-3 text-primary-foreground">Submit for verification</button>
-    {message && <p role="status" className="text-sm">{message}</p>}
-  </div>;
+
+    <section className="grid gap-4 sm:grid-cols-2">
+      <label className="grid gap-2 text-sm"><span>Degree<RequiredMarker /></span><input required value={values.degree} onChange={(event) => set("degree", event.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label>
+      <label className="grid gap-2 text-sm"><span>Institution<RequiredMarker /></span><input required value={values.institution} onChange={(event) => set("institution", event.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label>
+      <label className="grid gap-2 text-sm"><span>Graduation year<RequiredMarker /></span><input required type="number" min={1900} max={new Date().getFullYear()} value={values.qualificationYear} onChange={(event) => set("qualificationYear", event.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label>
+      <label className="grid gap-2 text-sm"><span>Languages (comma separated)<RequiredMarker /></span><input required value={values.languages} onChange={(event) => set("languages", event.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label>
+      <label className="grid gap-2 text-sm"><span>Consult modes: video, audio<RequiredMarker /></span><input required value={values.consultModes} onChange={(event) => set("consultModes", event.target.value)} className="rounded-xl border bg-background px-3 py-3" /></label>
+    </section>
+
+    <div className="flex flex-wrap gap-3">
+      <button type="submit" data-intent="save" disabled={busy} className="rounded-xl bg-primary px-5 py-3 text-primary-foreground disabled:opacity-50">{busy ? "Saving…" : "Save profile"}</button>
+    </div>
+
+    <section className="space-y-3 rounded-2xl border p-5">
+      <h2 className="text-xl font-semibold">Declarations</h2>
+      {declarationFields.map(([key, label]) => <label key={key} className="flex gap-3 text-sm">
+        <input
+          type="checkbox"
+          checked={accepted[key]}
+          onChange={(event) => setAccepted((old) => ({ ...old, [key]: event.target.checked }))}
+        />
+        <span>{label}<RequiredMarker /></span>
+      </label>)}
+    </section>
+
+    <button type="submit" data-intent="submit" disabled={busy} className="rounded-xl bg-primary px-5 py-3 text-primary-foreground disabled:opacity-50">{busy ? "Submitting…" : "Submit for verification"}</button>
+    {message && <p role="status" aria-live="polite" className="text-sm">{message}</p>}
+  </form>;
 }

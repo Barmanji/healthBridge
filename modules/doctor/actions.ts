@@ -11,7 +11,6 @@ import {
   appointments,
   conversationMessages,
   doctorAvailabilityRules,
-  doctorDocuments,
   doctorProfiles,
   doctorSoapNotes,
   doctorTimeOff,
@@ -156,12 +155,8 @@ export async function submitDoctorApplication(input: unknown) {
     profile.departmentId && profile.qualifications.length && profile.yearsExperience !== null &&
     profile.languages.length && profile.consultModes.length,
   );
-  const documents = await db.select({ type: doctorDocuments.type }).from(doctorDocuments).where(eq(doctorDocuments.doctorId, profile.id));
-  const availableTypes = new Set(documents.map((document) => document.type));
-  const hasRequiredDocuments = ["registration_certificate", "degree_certificate", "government_id", "profile_photo"]
-    .every((type) => availableTypes.has(type as typeof documents[number]["type"]));
-  if (!complete || !hasRequiredDocuments) {
-    return { ok: false as const, message: "Complete every required section and upload all four required document types before submitting." };
+  if (!complete) {
+    return { ok: false as const, message: "Complete every required profile detail before submitting." };
   }
 
   await db.transaction(async (tx) => {
