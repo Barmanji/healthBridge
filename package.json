@@ -10,7 +10,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:seed": "tsx scripts/seed-phase-2.ts"
+    "db:seed": "tsx scripts/seed-phase-2.ts",
+    "db:seed:demo": "tsx scripts/seed-demo-doctors.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1152.0",
