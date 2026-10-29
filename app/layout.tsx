@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { Fraunces, Inter, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           defaultTheme="light"
           enableSystem={false}
         >
+          <Toaster />
           {children}
         </ThemeProvider>
       </body>
