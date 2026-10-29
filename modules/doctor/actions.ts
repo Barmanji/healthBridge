@@ -248,11 +248,12 @@ const doctorSoapFormSchema = z.object({
   reviewed: z.boolean(),
 });
 
-export async function saveDoctorSoapNote(formData: FormData) {
+export async function saveDoctorSoapNote(_previousState: { ok: boolean; message: string }, formData: FormData) {
+  try {
   const doctor = await requireDoctor();
   const [profile] = await db.select({ id: doctorProfiles.id, verificationStatus: doctorProfiles.verificationStatus })
     .from(doctorProfiles).where(eq(doctorProfiles.userId, doctor.id)).limit(1);
-  if (!profile || profile.verificationStatus !== "verified") throw new Error("Verified doctor access is required.");
+  if (!profile || profile.verificationStatus !== "verified") return { ok: false, message: "Verified doctor access is required." };
   const parsed = doctorSoapFormSchema.safeParse({
     appointmentId: formData.get("appointmentId"),
     subjective: formData.get("subjective"),
@@ -261,12 +262,12 @@ export async function saveDoctorSoapNote(formData: FormData) {
     plan: formData.get("plan"),
     reviewed: formData.get("reviewed") === "on",
   });
-  if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Check the SOAP note.");
+  if (!parsed.success) return { ok: false, message: parsed.error.issues[0]?.message ?? "Check the SOAP note." };
   const now = new Date();
-  await db.transaction(async (tx) => {
+  const saved = await db.transaction(async (tx) => {
     const [appointment] = await tx.select({ id: appointments.id }).from(appointments)
       .where(and(eq(appointments.id, parsed.data.appointmentId), eq(appointments.doctorId, profile.id), inArray(appointments.status, ["confirmed", "completed"]))).limit(1).for("update");
-    if (!appointment) throw new Error("This patient is not assigned to your verified appointment queue.");
+    if (!appointment) return false;
     await tx.insert(doctorSoapNotes).values({
       appointmentId: appointment.id,
       doctorId: profile.id,
@@ -294,8 +295,14 @@ export async function saveDoctorSoapNote(formData: FormData) {
       entityId: appointment.id,
       meta: null,
     });
+    return true;
   });
+  if (!saved) return { ok: false, message: "This patient is not assigned to your verified appointment queue. Refresh and try again." };
   revalidatePath("/doctor/dashboard");
+  return { ok: true, message: parsed.data.reviewed ? "SOAP note saved and marked reviewed." : "SOAP note saved." };
+  } catch {
+    return { ok: false, message: "Could not save the SOAP note. Check your connection and try again." };
+  }
 }
 
 const appointmentOutcomeSchema = z.object({ appointmentId: z.uuid(), outcome: z.enum(["completed", "no_show"]) });
