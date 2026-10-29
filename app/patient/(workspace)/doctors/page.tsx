@@ -26,7 +26,7 @@ export default async function DoctorSearchPage({ searchParams }: DoctorSearchPro
   if (departmentId) filters.push(eq(doctorProfiles.departmentId, departmentId));
 
   const [doctors, departmentOptions] = await Promise.all([
-    db.select({ id: doctorProfiles.id, name: sql<string>`coalesce(${doctorProfiles.fullName}, ${user.name})`, bio: doctorProfiles.bio, department: departments.name, city: doctorProfiles.city, state: doctorProfiles.state, languages: doctorProfiles.languages, consultModes: doctorProfiles.consultModes, yearsExperience: doctorProfiles.yearsExperience, feeInr: doctorProfiles.feeInr })
+    db.select({ id: doctorProfiles.id, name: sql<string>`coalesce(${doctorProfiles.fullName}, ${user.name})`, image: user.image, bio: doctorProfiles.bio, department: departments.name, city: doctorProfiles.city, state: doctorProfiles.state, languages: doctorProfiles.languages, consultModes: doctorProfiles.consultModes, yearsExperience: doctorProfiles.yearsExperience, feeInr: doctorProfiles.feeInr })
       .from(doctorProfiles)
       .innerJoin(user, eq(user.id, doctorProfiles.userId))
       .leftJoin(departments, eq(departments.id, doctorProfiles.departmentId))

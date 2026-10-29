@@ -16,6 +16,7 @@ import {
   doctorTimeOff,
   statementClassifications,
   triageAssessments,
+  user,
 } from "@/lib/db/schema";
 import {
   availabilityStepSchema,
@@ -157,6 +158,11 @@ export async function submitDoctorApplication(input: unknown) {
   );
   if (!complete) {
     return { ok: false as const, message: "Complete every required profile detail before submitting." };
+  }
+
+  const [account] = await db.select({ image: user.image }).from(user).where(eq(user.id, doctor.id)).limit(1);
+  if (!account?.image) {
+    return { ok: false as const, message: "Upload a profile photo before submitting your application." };
   }
 
   await db.transaction(async (tx) => {

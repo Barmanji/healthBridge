@@ -10,6 +10,17 @@ const r2EnvSchema = z.object({
 
 let cachedClient: S3Client | undefined;
 
+/**
+ * Cloudflare shows the S3 endpoint as a URL and the account ID as a bare hex string,
+ * so either form gets pasted into R2_ACCOUNT_ID. Accept both instead of building
+ * `https://https://<account>.r2.cloudflarestorage.com`, which fails with ENOTFOUND.
+ */
+function r2Endpoint(value: string) {
+  const trimmed = value.trim().replace(/\/+$/, "");
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  return `https://${trimmed}.r2.cloudflarestorage.com`;
+}
+
 export function getR2Storage() {
   const parsed = r2EnvSchema.safeParse(process.env);
   if (!parsed.success) {
@@ -18,8 +29,12 @@ export function getR2Storage() {
   if (!cachedClient) {
     cachedClient = new S3Client({
       region: "auto",
-      endpoint: `https://${parsed.data.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+      endpoint: r2Endpoint(parsed.data.R2_ACCOUNT_ID),
       forcePathStyle: true,
+      // Cloudflare's documented setting for the S3 SDK against R2. Newer SDKs add
+      // flexible-checksum headers that R2 has been inconsistent about supporting.
+      requestChecksumCalculation: "WHEN_REQUIRED",
+      responseChecksumValidation: "WHEN_REQUIRED",
       credentials: {
         accessKeyId: parsed.data.R2_ACCESS_KEY_ID,
         secretAccessKey: parsed.data.R2_SECRET_ACCESS_KEY,
