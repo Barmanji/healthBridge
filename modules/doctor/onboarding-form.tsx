@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { ProfilePhoto } from "@/components/ui/profile-photo";
 import { saveDoctorStep, submitDoctorApplication } from "@/modules/doctor/actions";
 import type { doctorProfiles } from "@/lib/db/schema";
 
@@ -32,7 +33,7 @@ function RequiredMarker() {
   return <><span aria-hidden="true" className="ml-1 text-red-600">*</span><span className="sr-only"> required</span></>;
 }
 
-export function OnboardingForm({ profile, departments }: { profile: DoctorProfile; departments: Department[] }) {
+export function OnboardingForm({ profile, departments, profileImage }: { profile: DoctorProfile; departments: Department[]; profileImage: string | null }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState<Record<string, string>>({
     fullName: profile.fullName ?? "", phone: profile.phone ?? "", city: profile.city ?? "", state: profile.state ?? "",
@@ -46,8 +47,34 @@ export function OnboardingForm({ profile, departments }: { profile: DoctorProfil
   });
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
+  const [photo, setPhoto] = useState<string | null>(profileImage);
+  const [uploading, setUploading] = useState(false);
   const [accepted, setAccepted] = useState({ terms: false, data: false, telemedicine: false });
   const set = (key: string, value: string) => setValues((old) => ({ ...old, [key]: value }));
+
+  async function uploadPhoto(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setMessage("");
+    const payload = new FormData();
+    payload.set("file", file);
+    try {
+      const response = await fetch("/api/doctor/profile-image", { method: "POST", body: payload });
+      const result = await response.json().catch(() => ({})) as { imageUrl?: string; error?: string };
+      if (!response.ok || !result.imageUrl) {
+        setMessage(result.error ?? "The photo could not be saved. Please try again.");
+      } else {
+        setPhoto(result.imageUrl);
+        setMessage("Profile photo saved.");
+      }
+    } catch {
+      setMessage("The photo could not be saved. Check your connection and try again.");
+    } finally {
+      setUploading(false);
+      event.target.value = "";
+    }
+  }
 
   async function persistProfile() {
     const personal = await saveDoctorStep(2, { ...values, gender: "", bio: "" });
@@ -97,6 +124,10 @@ export function OnboardingForm({ profile, departments }: { profile: DoctorProfil
 
   async function submit() {
     if (busy) return;
+    if (!photo) {
+      setMessage("Upload a profile photo before submitting your application.");
+      return;
+    }
     if (!accepted.terms || !accepted.data || !accepted.telemedicine) {
       setMessage("Accept all three declarations before submitting.");
       return;
@@ -133,6 +164,19 @@ export function OnboardingForm({ profile, departments }: { profile: DoctorProfil
   }
 
   return <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+    <section className="flex flex-wrap items-center gap-5 rounded-2xl border p-5">
+      <ProfilePhoto src={photo} name={values.fullName || "Doctor"} className="size-24 text-2xl" sizes="96px" />
+      <div className="min-w-56 flex-1">
+        <h2 className="font-semibold">Profile photo<RequiredMarker /></h2>
+        <p className="mt-1 text-sm text-muted-foreground">Shown on your public doctor listing. PNG, JPEG, or WebP · up to 5 MB.</p>
+        <label className="mt-3 inline-flex min-h-11 cursor-pointer items-center rounded-full border px-4 text-sm font-semibold hover:bg-muted">
+          {uploading ? "Uploading…" : photo ? "Replace photo" : "Choose a photo"}
+          <input type="file" accept="image/png,image/jpeg,image/webp" className="sr-only" onChange={uploadPhoto} disabled={uploading} />
+        </label>
+        {!photo && <p className="mt-2 text-xs text-red-600">A profile photo is required before you can submit.</p>}
+      </div>
+    </section>
+
     <p className="text-sm text-muted-foreground"><span className="text-red-600">*</span> Required fields</p>
     <section className="grid gap-4 sm:grid-cols-2">
       {fields.map(({ key, label, required }) => <label key={key} className="grid gap-2 text-sm">
@@ -179,7 +223,8 @@ export function OnboardingForm({ profile, departments }: { profile: DoctorProfil
       </label>)}
     </section>
 
-    <button type="submit" data-intent="submit" disabled={busy} className="rounded-xl bg-primary px-5 py-3 text-primary-foreground disabled:opacity-50">{busy ? "Submitting…" : "Submit for verification"}</button>
+    <button type="submit" data-intent="submit" disabled={busy || !photo} className="rounded-xl bg-primary px-5 py-3 text-primary-foreground disabled:opacity-50">{busy ? "Submitting…" : "Submit for verification"}</button>
+    {!photo && <p className="text-xs text-muted-foreground">Add a profile photo above to enable submission.</p>}
     {message && <p role="status" aria-live="polite" className="text-sm">{message}</p>}
   </form>;
 }

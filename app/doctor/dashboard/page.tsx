@@ -4,7 +4,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { appointments, conversationMessages, doctorAvailabilityRules, doctorProfiles, doctorSoapNotes, doctorTimeOff, patientProfiles, statementClassifications, triageAssessments, user } from "@/lib/db/schema";
-import { correctStatementCategory, saveDoctorSoapNote, updateDoctorAppointmentOutcome } from "@/modules/doctor/actions";
+import { correctStatementCategory, updateDoctorAppointmentOutcome } from "@/modules/doctor/actions";
+import { SoapNoteForm } from "@/modules/doctor/soap-note-form";
 
 export default async function DoctorDashboardPage({ searchParams }: { searchParams: Promise<{ status?: string; mode?: string }> }) {
   const params = await searchParams;
@@ -120,15 +121,7 @@ export default async function DoctorDashboardPage({ searchParams }: { searchPara
             </details>;
           })()}
           {visit.status !== "no_show" && <details className="rounded-xl border p-4"><summary className="cursor-pointer font-semibold">SOAP note {visit.reviewedAt ? "· reviewed" : "· review needed"}</summary>
-            <form action={saveDoctorSoapNote} className="mt-4 grid gap-3">
-              <input type="hidden" name="appointmentId" value={visit.id} />
-              <label className="grid gap-1 text-sm font-medium">Subjective<textarea name="subjective" maxLength={4000} defaultValue={visit.noteSubjective ?? soap?.subjective ?? ""} className="min-h-20 rounded-xl border bg-background p-3 font-normal" /></label>
-              <label className="grid gap-1 text-sm font-medium">Objective<textarea name="objective" maxLength={3000} defaultValue={visit.noteObjective ?? soap?.objective ?? "Not assessed in chat"} className="min-h-20 rounded-xl border bg-background p-3 font-normal" /></label>
-              <label className="grid gap-1 text-sm font-medium">Assessment<textarea name="assessment" maxLength={4000} defaultValue={visit.noteAssessment ?? soap?.assessment ?? ""} className="min-h-20 rounded-xl border bg-background p-3 font-normal" /></label>
-              <label className="grid gap-1 text-sm font-medium">Plan<textarea name="plan" maxLength={4000} defaultValue={visit.notePlan ?? soap?.plan ?? ""} className="min-h-20 rounded-xl border bg-background p-3 font-normal" /></label>
-              <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="reviewed" defaultChecked={Boolean(visit.reviewedAt)} /> I reviewed this note</label>
-              <button className="min-h-10 w-fit rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground">Save SOAP note</button>
-            </form>
+            <SoapNoteForm appointmentId={visit.id} subjective={visit.noteSubjective ?? soap?.subjective ?? ""} objective={visit.noteObjective ?? soap?.objective ?? "Not assessed in chat"} assessment={visit.noteAssessment ?? soap?.assessment ?? ""} plan={visit.notePlan ?? soap?.plan ?? ""} reviewed={Boolean(visit.reviewedAt)} />
           </details>}
           {visit.status === "confirmed" && visit.endsAt <= new Date() && <form action={updateDoctorAppointmentOutcome} className="flex flex-wrap gap-2"><input type="hidden" name="appointmentId" value={visit.id} /><button name="outcome" value="completed" className="min-h-10 rounded-full border px-4 text-sm">Mark completed</button>{visit.startsAt <= new Date() && <button name="outcome" value="no_show" className="min-h-10 rounded-full border px-4 text-sm">Mark no-show</button>}</form>}
         </article>;

@@ -1,6 +1,7 @@
 export type CachedDoctor = {
   id: string;
   name: string;
+  image: string | null;
   bio: string | null;
   department: string | null;
   city: string | null;
@@ -18,7 +19,7 @@ type DirectorySnapshot = {
 };
 
 const DATABASE_NAME = "health-bridge-public-cache";
-const DATABASE_VERSION = 1;
+const DATABASE_VERSION = 2;
 const STORE_NAME = "directory";
 
 function openDatabase(): Promise<IDBDatabase> {

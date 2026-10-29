@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -6,7 +7,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
     <main className="min-h-screen bg-[var(--hb-surface)] px-4 py-8 sm:px-6 sm:py-12">
       <div className="mx-auto flex max-w-5xl items-center justify-between">
         <Link href="/" aria-label="Health-Bridge home" className="flex items-center gap-2.5 font-semibold tracking-tight text-[var(--hb-text)]">
-          <span aria-hidden="true" className="flex size-9 items-center justify-center rounded-2xl bg-[var(--hb-brand-600)] text-lg text-white">+</span>
+          <Image src="/health-bridge-mark.png" alt="" width={792} height={607} sizes="36px" priority className="h-9 w-auto" />
           Health-Bridge
         </Link>
         <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">Back to home</Link>

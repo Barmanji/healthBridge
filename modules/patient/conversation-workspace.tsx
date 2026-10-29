@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import type Vapi from "@vapi-ai/web";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppointmentProposal } from "@/modules/patient/appointment-proposal";
@@ -86,6 +88,8 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
   const [draft, setDraft] = useState("");
   const [pending, setPending] = useState(false);
   const [starting, setStarting] = useState(false);
+  const [deletingThreadId, setDeletingThreadId] = useState<string | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<ThreadSummary | null>(null);
   const [error, setError] = useState("");
   const [voiceState, setVoiceState] = useState<"idle" | "starting" | "active">("idle");
   const [muted, setMuted] = useState(false);
@@ -541,6 +545,32 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
     router.replace("/patient/conversations?new=1");
   }
 
+  async function confirmDeleteConversation() {
+    if (!deleteTarget) return;
+    const thread = deleteTarget;
+    setDeletingThreadId(thread.id);
+    try {
+      if (voiceConversationIdRef.current === thread.id) await stopVoice();
+      const response = await fetch(`/api/patient/conversations/${thread.id}/close`, { method: "DELETE" });
+      const payload = response.status === 204 ? null : await response.json() as { error?: string };
+      if (!response.ok) throw new Error(payload?.error || "This conversation could not be deleted.");
+      if (conversationId === thread.id) {
+        setConversationId(null);
+        setStatus(null);
+        setMessages([]);
+        setTitle(null);
+        router.replace("/patient/conversations?new=1");
+      }
+      toast.success("Conversation deleted", { description: "Its messages and AI summary were removed." });
+      router.refresh();
+    } catch (reason) {
+      toast.error("Could not delete conversation", { description: reason instanceof Error ? reason.message : "Try again." });
+    } finally {
+      setDeletingThreadId(null);
+      setDeleteTarget(null);
+    }
+  }
+
   async function saveTitle(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const next = titleDraft.trim();
@@ -693,7 +723,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
           <h2 className="text-sm font-semibold">Recent conversations</h2>
           {threads.length ? <ul className="mt-3 space-y-1">{threads.map((thread) => {
             const active = thread.id === conversationId;
-            return <li key={thread.id}><Link href={`/patient/conversations?id=${thread.id}`} onClick={async (event) => {
+            return <li key={thread.id} className="group flex items-start gap-1"><Link href={`/patient/conversations?id=${thread.id}`} onClick={async (event) => {
               if (active) return;
               event.preventDefault();
               if (conversationId && !messages.some((message) => message.role === "patient")) {
@@ -701,7 +731,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
                 await fetch(`/api/patient/conversations/${conversationId}/close`, { method: "DELETE" }).catch(() => {});
               }
               router.push(`/patient/conversations?id=${thread.id}`);
-            }} className={`block rounded-xl px-3 py-2.5 text-sm ${active ? "bg-primary/10 font-medium text-primary" : "text-muted-foreground hover:bg-muted"}`}>
+            }} className={`min-w-0 flex-1 rounded-xl px-3 py-2.5 text-sm ${active ? "bg-primary/10 font-medium text-primary" : "text-muted-foreground hover:bg-muted"}`}>
               {threadTitles[thread.id] || thread.title || (active && !hasMessages)
                 ? <span className="block line-clamp-2">{threadTitles[thread.id] || thread.title || "New conversation"}</span>
                 : <span className="hb-title-shimmer my-1 block" aria-label="Naming this conversation" />}
@@ -710,7 +740,7 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
                 {" · "}
                 {new Date(thread.createdAt).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })}
               </span>
-            </Link></li>;
+            </Link><button type="button" onClick={() => setDeleteTarget(thread)} disabled={deletingThreadId === thread.id || pending || starting} aria-label={`Delete ${thread.title || "conversation"}`} title="Delete conversation" className="mt-2 inline-flex size-9 shrink-0 items-center justify-center rounded-full text-red-600 transition-opacity hover:bg-red-50 focus-visible:opacity-100 disabled:opacity-50 dark:hover:bg-red-950/30 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100"><svg aria-hidden="true" viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18M8 6V4h8v2m3 0-.9 14H5.9L5 6m4 4v6m6-6v6" /></svg></button></li>;
           })}</ul> : <p className="mt-2 text-sm text-muted-foreground">Your saved conversations will appear here.</p>}
         </section>
         <p className="px-1 text-xs leading-relaxed text-muted-foreground">Health-Bridge offers intake support, not a diagnosis or a substitute for a doctor.</p>
@@ -825,6 +855,12 @@ export function ConversationWorkspace({ currentId, currentStatus, currentTitle, 
           </Tabs>
         )}
       </section>
+      <AlertDialog open={deleteTarget !== null} onOpenChange={(open) => { if (!open && !deletingThreadId) setDeleteTarget(null); }}>
+        <AlertDialogContent>
+          <AlertDialogHeader><AlertDialogTitle>Delete this conversation?</AlertDialogTitle><AlertDialogDescription>This permanently removes the conversation, its messages, and its AI summary. Existing appointments remain. This action cannot be undone.</AlertDialogDescription></AlertDialogHeader>
+          <AlertDialogFooter><AlertDialogCancel disabled={deletingThreadId !== null} onClick={() => setDeleteTarget(null)}>Keep conversation</AlertDialogCancel><AlertDialogAction disabled={deletingThreadId !== null} className="bg-destructive text-destructive-foreground hover:bg-destructive/90" onClick={() => void confirmDeleteConversation()}>{deletingThreadId ? "Deleting…" : "Delete conversation"}</AlertDialogAction></AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </main>
   );
 }
