@@ -43,12 +43,13 @@ export async function POST(
       if (existing) {
         const cachedText = JSON.stringify({ summary: existing.summary, soap: existing.soap });
         const containsNonEnglishScript = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u0900-\u0DFF\u0E00-\u0E7F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/u.test(cachedText);
-        if (!containsNonEnglishScript) return { kind: "ready" as const, triage: existing };
+        const containsGenericAbsenceTemplate = /no medications or supplements|no allergies reported and no other symptoms|denies any chronic conditions or previous illnesses/i.test(existing.summary);
+        if (!containsNonEnglishScript && !containsGenericAbsenceTemplate) return { kind: "ready" as const, triage: existing };
 
         const messages = await tx.select({ role: conversationMessages.role, content: conversationMessages.content, contentEnglish: conversationMessages.contentEnglish })
           .from(conversationMessages)
           .where(and(eq(conversationMessages.conversationId, conversationId), ne(conversationMessages.role, "system")))
-          .orderBy(desc(conversationMessages.createdAt)).limit(12);
+          .orderBy(desc(conversationMessages.createdAt)).limit(80);
         const transcript = messages.reverse().filter((message): message is typeof message & { role: "patient" | "assistant" } => message.role === "patient" || message.role === "assistant")
           .map((message) => ({ role: message.role, content: message.contentEnglish?.trim() || message.content }));
         const departmentOptions = await tx.select({ id: departments.id, name: departments.name, slug: departments.slug }).from(departments);
@@ -61,7 +62,7 @@ export async function POST(
       const messages = await tx.select({ role: conversationMessages.role, content: conversationMessages.content, contentEnglish: conversationMessages.contentEnglish })
         .from(conversationMessages)
         .where(and(eq(conversationMessages.conversationId, conversationId), ne(conversationMessages.role, "system")))
-        .orderBy(desc(conversationMessages.createdAt)).limit(12);
+        .orderBy(desc(conversationMessages.createdAt)).limit(80);
       const transcript = messages.reverse().filter((message): message is typeof message & { role: "patient" | "assistant" } => message.role === "patient" || message.role === "assistant")
         .map((message) => ({ role: message.role, content: message.contentEnglish?.trim() || message.content }));
       if (!transcript.some((message) => message.role === "patient")) return { kind: "empty" as const };
