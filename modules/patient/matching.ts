@@ -90,7 +90,9 @@ export async function findDoctorSuggestions(input: {
         bufferMinutes: doctor.bufferMinutes,
         now,
         horizonDays: 14,
-        limit: 3,
+        // Keep a full two-week calendar for the expanded date/time picker. The UI
+        // still shows only the first three recommended slots until expanded.
+        limit: 1000,
       });
     } catch {
       // Invalid legacy time-zone values are excluded from matching until corrected by the doctor.

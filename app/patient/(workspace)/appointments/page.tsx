@@ -34,20 +34,27 @@ export default async function PatientAppointmentsPage() {
     .orderBy(desc(appointments.startsAt))
     .limit(100);
   const now = new Date();
-  const items = rows.map((row) => ({
-    id: row.id,
-    status: row.status === "held" && (row.holdExpiresAt === null || row.holdExpiresAt <= now) ? "expired" : row.status,
-    startsAt: row.startsAt.toISOString(),
-    endsAt: row.endsAt.toISOString(),
-    consultMode: row.consultMode,
-    doctorName: row.doctorName ?? row.fallbackDoctorName,
-    department: row.department,
-    timeZone: row.timeZone,
-    severity: row.severity,
-    summary: row.summary,
-    conversationId: row.conversationId,
-    section: ["held", "confirmed"].includes(row.status) && row.startsAt > now ? "upcoming" as const : "history" as const,
-  }));
+  const items = rows.map((row) => {
+    // A hold that ran out is not a booking. Derive that once and use it everywhere,
+    // otherwise an expired hold still lands in "Upcoming" while the doctor's dashboard
+    // (which only lists confirmed visits) shows nothing.
+    const status = row.status === "held" && (row.holdExpiresAt === null || row.holdExpiresAt <= now) ? "expired" : row.status;
+    return {
+      id: row.id,
+      status,
+      holdExpiresAt: status === "held" ? row.holdExpiresAt?.toISOString() ?? null : null,
+      startsAt: row.startsAt.toISOString(),
+      endsAt: row.endsAt.toISOString(),
+      consultMode: row.consultMode,
+      doctorName: row.doctorName ?? row.fallbackDoctorName,
+      department: row.department,
+      timeZone: row.timeZone,
+      severity: row.severity,
+      summary: row.summary,
+      conversationId: row.conversationId,
+      section: ["held", "confirmed"].includes(status) && row.startsAt > now ? "upcoming" as const : "history" as const,
+    };
+  });
 
   return <main className="mx-auto max-w-4xl space-y-7 px-4 py-8 sm:px-8 sm:py-10">
     <header><p className="text-sm font-semibold text-primary">Your care</p><h1 className="mt-2 text-3xl font-semibold tracking-tight">Appointments</h1><p className="mt-2 text-muted-foreground">Review upcoming visits and your booking history.</p></header>
